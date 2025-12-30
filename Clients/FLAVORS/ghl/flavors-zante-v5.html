@@ -215,6 +215,7 @@
     <script>
         // Global function to ensure it's accessible
         window.fadeOutIntro = function() {
+            console.log("Exiting intro...");
             var intro = document.getElementById('video-intro');
             if (intro) {
                 intro.style.opacity = '0';
@@ -227,30 +228,6 @@
                 }, 500);
             }
         };
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            // Force close intro after 5 seconds (safety net)
-            setTimeout(window.fadeOutIntro, 5000);
-            
-            var vid = document.getElementById('introVideo');
-            if (vid) {
-                // Ensure muted for autoplay policy
-                vid.muted = true;
-                
-                vid.addEventListener('ended', window.fadeOutIntro);
-                
-                // Try to play
-                var playPromise = vid.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(function(error) {
-                        console.log("Autoplay prevented:", error);
-                        // If autoplay fails, show play button or close? 
-                        // For now, let's keep it visible but add a tap-to-play hint if needed
-                        // Or just rely on the skip button which is always visible
-                    });
-                }
-            }
-        });
     </script>
 </head>
 <body style="background-color: #000 !important;">
@@ -700,6 +677,32 @@
                 FLAVORS_GHL.storeLocalEvent('page_view', { page: 'home', timestamp: new Date().toISOString() });
             }
         });
+    </script>
+
+    <!-- Initialize Video Logic (Placed at end to ensure elements exist) -->
+    <script>
+        (function() {
+            console.log("Initializing intro video logic...");
+            var vid = document.getElementById('introVideo');
+            if (vid) {
+                // Ensure muted for mobile autoplay policy
+                vid.muted = true;
+                
+                // Attach 'ended' listener
+                vid.addEventListener('ended', window.fadeOutIntro);
+                
+                // Attempt autoplay
+                var playPromise = vid.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function(error) {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }
+            }
+            
+            // Safety net: Force close after 6 seconds
+            setTimeout(window.fadeOutIntro, 6000);
+        })();
     </script>
 </body>
 </html>
