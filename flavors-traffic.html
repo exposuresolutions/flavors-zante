@@ -234,6 +234,68 @@
         }
         @keyframes pulse-gold { 0% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.9); } 100% { transform: scale(1); } }
 
+        /* Info Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        .modal-title {
+            font-family: 'Bebas Neue';
+            font-size: 2.5rem;
+            margin: 0 0 15px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .modal-text {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .modal-text strong {
+            color: #fff;
+        }
+        .modal-close-btn {
+            background: var(--neon-blue);
+            color: #000;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
     </style>
 </head>
 <body>
@@ -282,6 +344,8 @@
             <h2 class="status-title" style="color: var(--amber);">COMPLICATED</h2>
             <p class="status-desc">"It's... a long story. Buy me a drink and I might tell you about it."</p>
             
+            <div class="deal-badge" style="background: linear-gradient(45deg, var(--amber), #FFD700); color: #000;">? WINGMAN MISSION</div>
+
             <div class="mission-box" style="border-color: var(--amber);">
                 <span class="mission-label">YOUR MISSION: THE WINGMAN</span>
                 <div class="mission-text">Find a Green Status and introduce them to your friend.</div>
@@ -325,6 +389,23 @@
 
     </div>
 
+    <!-- Info Modal -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">THE TRAFFIC LIGHT GAME</h2>
+            <p class="modal-text">
+                Welcome to the official Flavors Stop Light Party! This is how you find your summer romance (or just a drinking buddy).
+                <br><br>
+                <strong style="color: var(--green);">GREEN:</strong> You're single & ready to mingle.
+                <br>
+                <strong style="color: var(--amber);">AMBER:</strong> It's complicated, but you could be persuaded.
+                <br>
+                <strong style="color: var(--red);">RED:</strong> You're taken or just here for the music.
+            </p>
+            <button id="closeModalBtn" class="modal-close-btn">Got It, Let's Play</button>
+        </div>
+    </div>
+
     <script>
         const COOLDOWN_MINUTES = 30;
 
@@ -337,7 +418,7 @@
                 const diff = (now - parseInt(lastChange)) / 1000 / 60; // in minutes
                 if (diff < COOLDOWN_MINUTES) {
                     const remaining = Math.ceil(COOLDOWN_MINUTES - diff);
-                    alert(`?? COOLDOWN ACTIVE\nYou can only change your status once every ${COOLDOWN_MINUTES} minutes.\n\nWait ${remaining} more minutes.`);
+                    alert(`🌟 COOLDOWN ACTIVE\nYou can only change your status once every ${COOLDOWN_MINUTES} minutes.\n\nWait ${remaining} more minutes.`);
                     return;
                 }
             }
@@ -402,6 +483,21 @@
 
         // Randomize stats slightly on load for realism
         document.addEventListener('DOMContentLoaded', () => {
+            // Modal Logic
+            const infoModal = document.getElementById('infoModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const hasSeenModal = localStorage.getItem('traffic_modal_seen');
+
+            if (!hasSeenModal) {
+                infoModal.classList.add('visible');
+            }
+
+            closeModalBtn.addEventListener('click', () => {
+                infoModal.classList.remove('visible');
+                localStorage.setItem('traffic_modal_seen', 'true');
+            });
+
+
             // Restore State if exists
             const savedStatus = localStorage.getItem('traffic_status');
             if (savedStatus) {

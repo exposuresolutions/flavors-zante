@@ -13,20 +13,16 @@
 </div>
 
 <script>
-    // CONFIGURATION: Change this to your specific file URL on GitHub Pages
-    // Example: 'https://exposure-solutions.github.io/clients/flavors/flavors-zante-v5.html'
-    
-    // LIVE DOMAIN CONFIGURATION
-    // Uncomment the line for the page you are pasting this into:
+    // CONFIGURATION: Using RAW GitHub URLs to bypass DNS propagation
     
     // 1. HOME PAGE:
-    const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/flavors-zante-v5.html';
+    const GITHUB_FILE_URL = 'https://raw.githubusercontent.com/exposuresolutions/flavors-zante/main/Clients/FLAVORS/ghl/flavors-zante-v5.html';
     
     // 2. TRAFFIC LIGHT APP:
-    // const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/flavors-traffic.html';
+    // const GITHUB_FILE_URL = 'https://raw.githubusercontent.com/exposuresolutions/flavors-zante/main/Clients/FLAVORS/ghl/flavors-traffic.html';
 
     // 3. FEEDBACK / ONBOARDING:
-    // const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/feedback-survey.html';
+    // const GITHUB_FILE_URL = 'https://raw.githubusercontent.com/exposuresolutions/flavors-zante/main/Clients/FLAVORS/ghl/feedback-survey.html';
 
     async function loadContent() {
         try {
@@ -48,20 +44,28 @@
             existingViewports.forEach(el => el.remove());
 
             // 3. Replace the current page content
-            // Inject Head Elements (Styles, Fonts, Metadata)
+            
+            // HEAD INJECTION (Styles, Fonts, Metadata, Scripts)
             Array.from(doc.head.children).forEach(child => {
-                // Avoid duplicating meta tags that might clash
-                if (child.tagName !== 'TITLE') {
+                if (child.tagName === 'TITLE') return;
+                
+                // Explicitly recreate scripts in HEAD to ensure they execute
+                if (child.tagName === 'SCRIPT') {
+                    const newScript = document.createElement('script');
+                    Array.from(child.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(child.innerHTML));
+                    document.head.appendChild(newScript);
+                } else {
                     document.head.appendChild(child);
                 }
             });
             document.title = doc.title;
 
-            // Inject Body Elements
+            // BODY INJECTION
             document.body.innerHTML = doc.body.innerHTML;
 
-            // 4. Re-execute Scripts (innerHTML doesn't run scripts automatically)
-            Array.from(doc.querySelectorAll('script')).forEach(oldScript => {
+            // BODY SCRIPT RE-EXECUTION (Find scripts in the LIVE document, not the parsed one)
+            Array.from(document.body.querySelectorAll('script')).forEach(oldScript => {
                 const newScript = document.createElement('script');
                 Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
                 newScript.appendChild(document.createTextNode(oldScript.innerHTML));
