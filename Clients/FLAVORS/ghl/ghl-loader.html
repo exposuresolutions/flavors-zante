@@ -15,7 +15,18 @@
 <script>
     // CONFIGURATION: Change this to your specific file URL on GitHub Pages
     // Example: 'https://exposure-solutions.github.io/clients/flavors/flavors-zante-v5.html'
-    const GITHUB_FILE_URL = 'REPLACE_WITH_YOUR_GITHUB_PAGES_URL';
+    
+    // LIVE DOMAIN CONFIGURATION
+    // Uncomment the line for the page you are pasting this into:
+    
+    // 1. HOME PAGE:
+    const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/flavors-zante-v5.html';
+    
+    // 2. TRAFFIC LIGHT APP:
+    // const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/flavors-traffic.html';
+
+    // 3. FEEDBACK / ONBOARDING:
+    // const GITHUB_FILE_URL = 'https://flavorsdaiquiribar.com/feedback-survey.html';
 
     async function loadContent() {
         try {
@@ -27,6 +38,14 @@
             // 2. Parse the HTML
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+
+            // CLEANUP: Remove existing GHL styles/classes that might conflict
+            document.body.className = '';
+            document.body.style = '';
+            
+            // Remove existing viewport meta tags to prevent conflicts
+            const existingViewports = document.querySelectorAll('meta[name="viewport"]');
+            existingViewports.forEach(el => el.remove());
 
             // 3. Replace the current page content
             // Inject Head Elements (Styles, Fonts, Metadata)

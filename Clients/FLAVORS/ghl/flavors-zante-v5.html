@@ -1,9 +1,7 @@
-<!--
-=====================================================
-FLAVORS ZANTE - FIRE MEETS ICE
-"The Ultimate Zante Experience"
-VERSION 9.0 - GLOBAL VENUE EDITION
-=====================================================
+<!-- 
+    FLAVORS ZANTE v5.0
+    Deployed via GitHub Actions
+    Last Update: Trigger Re-Deploy
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +35,19 @@ VERSION 9.0 - GLOBAL VENUE EDITION
         }
         
         * { box-sizing: border-box; }
-        html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; background-color: #000 !important; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--text-main); line-height: 1.6; position: relative; }
+        html { width: 100vw; height: 100%; margin: 0; padding: 0; overflow-x: hidden; background-color: #000 !important; }
+        body { 
+            width: 100vw; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 0; 
+            overflow-x: hidden; 
+            background-color: #000 !important; 
+            font-family: 'Montserrat', sans-serif; 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            position: relative; 
+        }
         h1,h2,h3,h4,h5,h6 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -109,7 +118,7 @@ VERSION 9.0 - GLOBAL VENUE EDITION
             transition: opacity 0.5s ease; 
         }
         #video-intro video { width:100%; height:100%; object-fit:cover; background: #000 !important; }
-        #skip-intro-btn { position:absolute; top:20px; right:20px; z-index:10001; background: rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:10px 20px; border-radius:30px; cursor:pointer; font-size:0.85rem; text-transform:uppercase; font-weight: 600; }
+        #skip-intro-btn { position:absolute; top:20px; right:20px; z-index:10001; background: rgba(0,0,0,0.7); border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:30px; font-weight: bold; cursor: pointer; }
         #skip-intro-btn:hover { background: var(--neon-pink); border-color: var(--neon-pink); }
 
         /* HERO */
@@ -204,32 +213,40 @@ VERSION 9.0 - GLOBAL VENUE EDITION
     </style>
     
     <script>
+        // Global function to ensure it's accessible
         window.fadeOutIntro = function() {
             var intro = document.getElementById('video-intro');
-            if (intro && intro.style.display !== 'none') {
+            if (intro) {
                 intro.style.opacity = '0';
-                // Allow clicks to pass through immediately
                 intro.style.pointerEvents = 'none';
-                setTimeout(function() { intro.style.display = 'none'; }, 500);
+                setTimeout(function() { 
+                    intro.style.display = 'none'; 
+                    // Stop video to save data/battery
+                    var vid = document.getElementById('introVideo');
+                    if(vid) vid.pause();
+                }, 500);
             }
         };
         
         document.addEventListener("DOMContentLoaded", function() {
-            // Force close intro after 3 seconds (reduced for mobile safety)
-            setTimeout(window.fadeOutIntro, 3000);
+            // Force close intro after 5 seconds (safety net)
+            setTimeout(window.fadeOutIntro, 5000);
             
             var vid = document.getElementById('introVideo');
             if (vid) {
+                // Ensure muted for autoplay policy
+                vid.muted = true;
+                
                 vid.addEventListener('ended', window.fadeOutIntro);
                 
-                // Try to play, if fails (mobile restriction), close intro immediately
+                // Try to play
                 var playPromise = vid.play();
                 if (playPromise !== undefined) {
                     playPromise.catch(function(error) {
-                        console.log("Autoplay prevented, closing intro");
-                        // If autoplay is blocked, show play button or just close
-                        // For smooth UX, we'll just close it so they see the site
-                        window.fadeOutIntro();
+                        console.log("Autoplay prevented:", error);
+                        // If autoplay fails, show play button or close? 
+                        // For now, let's keep it visible but add a tap-to-play hint if needed
+                        // Or just rely on the skip button which is always visible
                     });
                 }
             }
@@ -238,11 +255,13 @@ VERSION 9.0 - GLOBAL VENUE EDITION
 </head>
 <body style="background-color: #000 !important;">
     <!-- VIDEO INTRO -->
-    <div id="video-intro" onclick="fadeOutIntro()" ontouchstart="fadeOutIntro()">
-        <video id="introVideo" muted playsinline webkit-playsinline autoplay poster="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" onended="fadeOutIntro()" onclick="fadeOutIntro()">
+    <div id="video-intro" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <video id="introVideo" muted playsinline webkit-playsinline autoplay poster="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" style="width: 100%; height: 100%; object-fit: cover;">
             <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e16d873a5e0677f237059.mp4" type="video/mp4">
         </video>
-        <button id="skip-intro-btn" onclick="fadeOutIntro()">SKIP <i class="fas fa-forward"></i></button>
+        <button id="skip-intro-btn" onclick="window.fadeOutIntro()" style="position: absolute; top: 20px; right: 20px; z-index: 10001; background: rgba(0,0,0,0.7); border: 1px solid #fff; color: #fff; padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer;">SKIP <i class="fas fa-forward"></i></button>
+        <!-- Invisible overlay to catch clicks anywhere -->
+        <div onclick="window.fadeOutIntro()" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; cursor: pointer;"></div>
     </div>
 
     <!-- HEADER -->
@@ -262,7 +281,7 @@ VERSION 9.0 - GLOBAL VENUE EDITION
                 <!-- Mobile Bottom Nav (Matches Build Summary v5.0) -->
                 <a href="flavors-menu.html" class="show-mobile-only" style="display:none;"><i class="fas fa-cocktail"></i> <span>MENU</span></a>
                 <a href="#frozen-challenge" class="show-mobile-only" style="display:none;"><i class="fas fa-glass-cheers"></i> <span>PARTY</span></a>
-                <a href="#ladies" class="show-mobile-only" style="display:none;"><i class="fas fa-female"></i> <span>LADIES</span></a>
+                <a href="#ladies" class="show-mobile-only" style="display:none;"><i class="fas fa-female"></i> <span>LAS DAMAS</span></a>
                 <a href="flavors-casino.html" class="show-mobile-only" style="display:none;"><i class="fas fa-dice"></i> <span>WIN</span></a>
                 <a href="javascript:void(0)" onclick="contactUs('Chat from Mobile Nav')" class="show-mobile-only" style="display:none;"><i class="fab fa-whatsapp"></i> <span>CHAT</span></a>
             </nav>
