@@ -3,8 +3,6 @@ name: Deploy Flavors Zante to Pages
 on:
   push:
     branches: ["main", "master"]
-    paths:
-      - 'Clients/FLAVORS/ghl/**'
   workflow_dispatch:
 
 permissions:
@@ -32,8 +30,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload only the Flavors GHL directory so it becomes the root of the site
-          path: 'Clients/FLAVORS/ghl'
+          # Upload the root directory where all Flavors files now live
+          path: '.'
           
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
