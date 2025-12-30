@@ -50,6 +50,13 @@
             z-index: 1;
             transition: background 0.5s ease;
         }
+        .bg-glow.pulsing {
+            animation: bgPulse 2s infinite alternate;
+        }
+        @keyframes bgPulse {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
 
         /* Header */
         .header { margin-top: 40px; margin-bottom: 30px; }
@@ -66,27 +73,35 @@
 
         /* Traffic Light Interactive */
         .traffic-light-container {
-            background: #1a1a1a;
-            padding: 20px;
+            background: rgba(20, 20, 20, 0.6);
+            padding: 30px;
             border-radius: 60px;
             display: inline-flex;
             flex-direction: column;
-            gap: 20px;
-            border: 4px solid #333;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            gap: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);
             position: relative;
             margin-bottom: 40px;
+            backdrop-filter: blur(15px);
         }
         .light {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            background: #333;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            border: 4px solid rgba(0,0,0,0.5);
+            border: 4px solid rgba(0,0,0,0.2);
+            /* Default State: ON (Bright) */
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 0 20px currentColor;
         }
+        .light.red { background: var(--red); color: var(--red); box-shadow: 0 0 25px var(--red); }
+        .light.amber { background: var(--amber); color: var(--amber); box-shadow: 0 0 25px var(--amber); }
+        .light.green { background: var(--green); color: var(--green); box-shadow: 0 0 25px var(--green); }
+
         .light::after {
             content: '';
             position: absolute;
@@ -94,27 +109,33 @@
             left: 15%;
             width: 30%;
             height: 30%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.4);
             border-radius: 50%;
-            filter: blur(2px);
+            filter: blur(4px);
         }
-        .light:hover { transform: scale(1.1); }
         
-        .light.red.active { 
-            background: var(--red); 
-            box-shadow: 0 0 40px var(--red), inset 0 0 20px rgba(255,255,255,0.5); 
+        /* Interaction States */
+        .light:hover { transform: scale(1.05); filter: brightness(1.2); }
+        
+        /* When one is selected, others go dim */
+        .traffic-light-container.has-selection .light {
+            opacity: 0.2;
+            transform: scale(0.9);
+            box-shadow: none;
+            filter: grayscale(0.8);
+        }
+        
+        /* The Selected One */
+        .traffic-light-container.has-selection .light.active {
+            opacity: 1;
+            transform: scale(1.2);
+            filter: brightness(1.3);
+            z-index: 10;
             border-color: #fff;
         }
-        .light.amber.active { 
-            background: var(--amber); 
-            box-shadow: 0 0 40px var(--amber), inset 0 0 20px rgba(255,255,255,0.5); 
-            border-color: #fff;
-        }
-        .light.green.active { 
-            background: var(--green); 
-            box-shadow: 0 0 40px var(--green), inset 0 0 20px rgba(255,255,255,0.5); 
-            border-color: #fff;
-        }
+        .traffic-light-container.has-selection .light.active.red { box-shadow: 0 0 60px var(--red), 0 0 100px var(--red); }
+        .traffic-light-container.has-selection .light.active.amber { box-shadow: 0 0 60px var(--amber), 0 0 100px var(--amber); }
+        .traffic-light-container.has-selection .light.active.green { box-shadow: 0 0 60px var(--green), 0 0 100px var(--green); }
 
         /* Status Card */
         .status-card {
@@ -196,6 +217,23 @@
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         .pulse { animation: pulse 2s infinite; }
 
+        /* Deal Badges */
+        .deal-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            margin-top: 15px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: pulse-gold 2s infinite;
+            display: none; /* Hidden by default */
+        }
+        @keyframes pulse-gold { 0% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.9); } 100% { transform: scale(1); } }
+
     </style>
 </head>
 <body>
@@ -214,20 +252,24 @@
             <div class="sub">OFFICIAL PARTY STATUS</div>
         </div>
 
-        <div class="traffic-light-container">
+        <div class="traffic-light-container" id="lightContainer">
             <div class="light red" onclick="setStatus('red')"></div>
             <div class="light amber" onclick="setStatus('amber')"></div>
             <div class="light green" onclick="setStatus('green')"></div>
         </div>
 
-        <p id="instruction" style="color: #888; font-size: 0.9rem;">TAP YOUR COLOUR TO REVEAL YOUR MISSION</p>
+        <p id="instruction" style="color: #aaa; font-size: 1rem; font-family: 'Orbitron'; letter-spacing: 1px; margin-top: -20px; margin-bottom: 30px;">TAP YOUR COLOUR</p>
 
         <!-- RED STATUS -->
         <div id="card-red" class="status-card" style="border-color: var(--red);">
             <h2 class="status-title" style="color: var(--red);">TAKEN / STOP</h2>
             <p class="status-desc">"I'm just here for the music (and the cocktails). Try again next year."</p>
             
-            <div class="mission-box" style="border-color: var(--red);">
+            <!-- RED TAX DEAL -->
+            <div class="deal-badge">? BODYGUARD PACKAGE UNLOCKED</div>
+            <p style="font-size: 0.9rem; color: #fff; margin-top: 10px;">Show this screen for <strong>€5 OFF</strong> a Bucket of Beers.</p>
+            
+            <div class="mission-box" style="border-color: var(--red); margin-top: 20px;">
                 <span class="mission-label">YOUR MISSION</span>
                 <div class="mission-text">Buy a round of shots for your crew to prove loyalty.</div>
             </div>
@@ -241,8 +283,8 @@
             <p class="status-desc">"It's... a long story. Buy me a drink and I might tell you about it."</p>
             
             <div class="mission-box" style="border-color: var(--amber);">
-                <span class="mission-label">YOUR MISSION</span>
-                <div class="mission-text">Find someone in GREEN and ask them their best pickup line.</div>
+                <span class="mission-label">YOUR MISSION: THE WINGMAN</span>
+                <div class="mission-text">Find a Green Status and introduce them to your friend.</div>
             </div>
 
             <button class="btn btn-primary" style="background: var(--amber); color: #000;" onclick="shareStatus('It\'s Complicated ?')">SHARE STATUS</button>
@@ -253,7 +295,11 @@
             <h2 class="status-title" style="color: var(--green);">SINGLE / GO</h2>
             <p class="status-desc">"Ready to mingle. If you're reading this, you owe me a drink."</p>
             
-            <div class="mission-box" style="border-color: var(--green);">
+            <!-- GREEN HOUR DEAL -->
+            <div class="deal-badge" style="background: linear-gradient(45deg, var(--green), #fff);">? GREEN HOUR ACTIVE</div>
+            <p style="font-size: 0.9rem; color: #fff; margin-top: 10px;">Show this screen for <strong>2-4-1 SHOTS</strong> at the bar.</p>
+            
+            <div class="mission-box" style="border-color: var(--green); margin-top: 20px;">
                 <span class="mission-label">YOUR MISSION</span>
                 <div class="mission-text">Find the DJ and request "Single Ladies" or "Mr. Brightside".</div>
             </div>
@@ -280,7 +326,35 @@
     </div>
 
     <script>
+        const COOLDOWN_MINUTES = 30;
+
         function setStatus(color) {
+            // Check Cooldown
+            const lastChange = localStorage.getItem('traffic_last_change');
+            const now = new Date().getTime();
+            
+            if (lastChange) {
+                const diff = (now - parseInt(lastChange)) / 1000 / 60; // in minutes
+                if (diff < COOLDOWN_MINUTES) {
+                    const remaining = Math.ceil(COOLDOWN_MINUTES - diff);
+                    alert(`?? COOLDOWN ACTIVE\nYou can only change your status once every ${COOLDOWN_MINUTES} minutes.\n\nWait ${remaining} more minutes.`);
+                    return;
+                }
+            }
+
+            // Save State & Time
+            localStorage.setItem('traffic_status', color);
+            localStorage.setItem('traffic_last_change', now.toString());
+
+            applyVisuals(color);
+        }
+
+        function applyVisuals(color) {
+            const container = document.getElementById('lightContainer');
+            
+            // Add selection state to container (dims other lights)
+            container.classList.add('has-selection');
+
             // Reset lights
             document.querySelectorAll('.light').forEach(l => l.classList.remove('active'));
             
@@ -296,12 +370,18 @@
             // Show selected card
             const card = document.getElementById(`card-${color}`);
             card.classList.add('visible');
+            
+            // Show Deal Badges (if applicable)
+            const badges = card.querySelectorAll('.deal-badge');
+            badges.forEach(b => b.style.display = 'inline-block');
 
-            // Update Background Glow
+            // Update Background Glow & Pulse
             const bg = document.getElementById('bgGlow');
-            if(color === 'red') bg.style.background = 'radial-gradient(circle, rgba(100,0,0,0.4) 0%, rgba(0,0,0,1) 100%)';
-            if(color === 'amber') bg.style.background = 'radial-gradient(circle, rgba(100,70,0,0.4) 0%, rgba(0,0,0,1) 100%)';
-            if(color === 'green') bg.style.background = 'radial-gradient(circle, rgba(0,100,0,0.4) 0%, rgba(0,0,0,1) 100%)';
+            bg.classList.add('pulsing');
+            
+            if(color === 'red') bg.style.background = 'radial-gradient(circle, rgba(255,0,0,0.6) 0%, rgba(0,0,0,1) 100%)';
+            if(color === 'amber') bg.style.background = 'radial-gradient(circle, rgba(255,180,0,0.6) 0%, rgba(0,0,0,1) 100%)';
+            if(color === 'green') bg.style.background = 'radial-gradient(circle, rgba(0,255,100,0.6) 0%, rgba(0,0,0,1) 100%)';
         }
 
         function shareStatus(status) {
@@ -322,6 +402,12 @@
 
         // Randomize stats slightly on load for realism
         document.addEventListener('DOMContentLoaded', () => {
+            // Restore State if exists
+            const savedStatus = localStorage.getItem('traffic_status');
+            if (savedStatus) {
+                applyVisuals(savedStatus);
+            }
+
             const r = 20 + Math.floor(Math.random() * 20); // 20-40
             const a = 15 + Math.floor(Math.random() * 15); // 15-30
             const g = 100 - r - a; // Remainder
