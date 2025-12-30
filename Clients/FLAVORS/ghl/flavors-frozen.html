@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors | Frozen Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00FFFF;
+            --neon-pink: #FF00FF;
+            --gold: #FFD700;
+            --ice: #E0FFFF;
+            --bg: #050505;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #001a1a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .challenge-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .challenge-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-blue);
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+        .challenge-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 0 30px var(--neon-blue);
+        }
+        .challenge-header h1 span {
+            color: var(--ice);
+        }
+        .tagline {
+            color: #ccc;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .video-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #333;
+            transition: all 0.3s;
+        }
+        .video-item:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+        .video-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Rules Section */
+        .rules-section {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .rules-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .rule-item {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        .rule-item i {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+        }
+        .rule-item h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin: 10px 0;
+        }
+        .rule-item p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Prizes */
+        .prizes-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .prizes-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+        .prize-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .prize-card {
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 30px;
+            min-width: 200px;
+            text-align: center;
+        }
+        .prize-card.gold { border-color: var(--gold); }
+        .prize-card.silver { border-color: #C0C0C0; }
+        .prize-card.bronze { border-color: #CD7F32; }
+        .prize-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .prize-card.gold i { color: var(--gold); }
+        .prize-card.silver i { color: #C0C0C0; }
+        .prize-card.bronze i { color: #CD7F32; }
+        .prize-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin: 10px 0;
+        }
+        .prize-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.1));
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        .btn-epic {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, var(--neon-blue), #fff, var(--neon-blue));
+            color: #000;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-epic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+            z-index: 100;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 30px;
+        }
+        .back-link:hover { color: #fff; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .snowflake {
+            animation: float 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <a href="flavors-zante-v5.html" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO FLAVORS</a>
+
+    <div class="challenge-header">
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Logo">
+        <i class="fas fa-snowflake snowflake" style="font-size: 4rem; color: var(--neon-blue); display: block; margin-bottom: 20px;"></i>
+        <h1>THE <span>FROZEN CHALLENGE</span></h1>
+        <p class="tagline"><strong>CAN YOU HANDLE THE BRAIN FREEZE?</strong><br>Down a slushy in record time. Win the shirt. Make the wall of fame.</p>
+    </div>
+
+    <div class="container">
+        <div class="video-grid">
+            <div class="video-item">
+                <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e16d873a5e0677f237059.mp4" muted loop autoplay playsinline></video>
+            </div>
+            <div class="video-item">
+                <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694dae7cb716f54fd047a588.mp4" muted loop autoplay playsinline></video>
+            </div>
+            <div class="video-item">
+                <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b131f1dea10b856999083.mp4" muted loop autoplay playsinline></video>
+            </div>
+            <div class="video-item">
+                <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b131f264de61a3dc62b65.mp4" muted loop autoplay playsinline></video>
+            </div>
+        </div>
+
+        <div class="rules-section">
+            <h2><i class="fas fa-list-ol"></i> THE RULES</h2>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h4>1. ORDER UP</h4>
+                    <p>Buy a Frozen Daiquiri (any flavor) and tell the bartender you're entering the challenge.</p>
+                </div>
+                <div class="rule-item">
+                    <i class="fas fa-stopwatch"></i>
+                    <h4>2. BEAT THE CLOCK</h4>
+                    <p>Down the entire slushy as fast as you can. Timer starts when you say GO!</p>
+                </div>
+                <div class="rule-item">
+                    <i class="fas fa-brain"></i>
+                    <h4>3. SURVIVE</h4>
+                    <p>Brain freeze is coming. Push through. Legends are made here.</p>
+                </div>
+                <div class="rule-item">
+                    <i class="fas fa-trophy"></i>
+                    <h4>4. WIN</h4>
+                    <p>Beat the current record? You win the Frozen Challenge T-Shirt & Wall of Fame!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="prizes-section">
+            <h2><i class="fas fa-medal"></i> THE PRIZES</h2>
+            <div class="prize-cards">
+                <div class="prize-card gold">
+                    <i class="fas fa-crown"></i>
+                    <h3>1ST PLACE</h3>
+                    <p>Frozen Challenge T-Shirt<br>+ Wall of Fame<br>+ Free VIP Night</p>
+                </div>
+                <div class="prize-card silver">
+                    <i class="fas fa-medal"></i>
+                    <h3>2ND PLACE</h3>
+                    <p>Frozen Challenge T-Shirt<br>+ Wall of Fame<br>+ Free Daiquiri</p>
+                </div>
+                <div class="prize-card bronze">
+                    <i class="fas fa-award"></i>
+                    <h3>3RD PLACE</h3>
+                    <p>Wall of Fame<br>+ Free Shot</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="font-family: 'Bebas Neue'; font-size: 3rem; margin-bottom: 20px;">READY TO FREEZE?</h2>
+            <p style="color: #ccc; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">Visit Flavors Laganas or Tsilivi, order your weapon of choice, and take on the challenge. Your legacy awaits.</p>
+            <button class="btn-epic" onclick="enterChallenge()">
+                <i class="fas fa-snowflake"></i> ENTER THE CHALLENGE
+            </button>
+        </div>
+    </div>
+
+    <!-- FLAVORS GHL Integration Helper -->
+    <script src="js/flavors-ghl.js"></script>
+
+    <script>
+        // Enter Challenge function with GHL logging
+        function enterChallenge() {
+            // Log to GHL analytics
+            if (window.FLAVORS_GHL) {
+                FLAVORS_GHL.logFrozenChallenge('Guest');
+                FLAVORS_GHL.contact('I want to enter the Frozen Challenge!');
+                console.log('?? Frozen Challenge entry logged');
+            } else {
+                window.open('https://api.whatsapp.com/send?text=I%20want%20to%20enter%20the%20Frozen%20Challenge!', '_blank');
+            }
+        }
+        
+        // Add some visual flair - random snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '??';
+            snowflake.style.cssText = `
+                position: fixed;
+                top: -20px;
+                left: ${Math.random() * 100}vw;
+                font-size: ${Math.random() * 20 + 10}px;
+                opacity: ${Math.random() * 0.5 + 0.3};
+                z-index: 1;
+                pointer-events: none;
+                animation: snowfall ${Math.random() * 5 + 5}s linear forwards;
+            `;
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 10000);
+        }
+
+        // Create snowflakes periodically
+        setInterval(createSnowflake, 2000);
+
+        // Add snowfall animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes snowfall {
+                to { transform: translateY(110vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

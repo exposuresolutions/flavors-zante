@@ -1,0 +1,226 @@
+<!--
+=====================================================
+FLAVORS ZANTE - SPIN & WIN
+"The Ultimate Zante Experience"
+VERSION 10.0 - HYPNOTIC VEGAS EDITION
+=====================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flavors Zante | Spin & Win</title>
+    <meta name="description" content="Spin the wheel at Flavors Zante. Everyone's a winner! Win free samples, shots, and epic prizes.">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --neon-pink: #FF00FF;
+            --neon-blue: #00FFFF;
+            --neon-purple: #BC13FE;
+            --dark-bg: #050505;
+            --card-bg: #161616;
+            --text-main: #ffffff;
+            --gold: #FFD700;
+            --gold-glow: rgba(255, 215, 0, 0.6);
+            --red: #FF3B3B;
+            --green: #00D26A;
+        }
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; background-color: #000 !important; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-main); line-height: 1.6; position: relative; min-height: 100vh; display: flex; flex-direction: column; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+        
+        /* ANIMATIONS */
+        @keyframes neonPulse { 0%, 100% { text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); } 50% { text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue); } }
+        @keyframes borderGlow { 0%, 100% { box-shadow: 0 0 20px var(--neon-purple); border-color: var(--neon-purple); } 50% { box-shadow: 0 0 40px var(--neon-pink); border-color: var(--neon-pink); } }
+        @keyframes spinGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* HEADER */
+        header { background: rgba(5,5,5,0.95); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .header-container { width: 100%; padding: 0 20px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .logo img { height: 60px; width: auto; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2); }
+        .nav-links a:hover { background: var(--neon-pink); transform: scale(1.1); }
+
+        /* MAIN SECTION */
+        .casino-floor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+            background: radial-gradient(circle at center, #1a051a 0%, #000 90%);
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Background Grid Effect */
+        .casino-floor::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .game-title { font-size: 3.5rem; margin: 0; line-height: 1; animation: neonPulse 3s infinite; }
+        .game-subtitle { color: #aaa; font-size: 1rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* THE WHEEL */
+        .wheel-wrapper {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            padding: 15px;
+            background: linear-gradient(135deg, #222, #000);
+            box-shadow: 0 0 60px rgba(255,0,255,0.4), inset 0 0 40px #000;
+            border: 4px solid #333;
+        }
+        
+        /* Outer Ring Lights */
+        .wheel-lights {
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border-radius: 50%;
+            border: 4px dashed rgba(255,215,0,0.4);
+            animation: spinGlow 30s linear infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 5s cubic-bezier(0.15, 0.90, 0.25, 1.0);
+            border: 8px solid #111;
+            background: #000;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        /* Segment Colors & Rotation (8 segments = 45deg each) */
+        .wheel-bg {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--neon-pink) 0deg 45deg,    /* 1. Free Sample */
+                #222 45deg 90deg,               /* 2. 2-4-1 */
+                var(--neon-blue) 90deg 135deg,  /* 3. Free Sample */
+                #222 135deg 180deg,             /* 4. 50% Golf */
+                var(--gold) 180deg 225deg,      /* 5. Free Sample */
+                #222 225deg 270deg,             /* 6. Test Tube */
+                var(--neon-purple) 270deg 315deg, /* 7. Pitcher */
+                #222 315deg 360deg              /* 8. 1 Daiquiri */
+            );
+            /* Add texture overlay */
+            mask-image: radial-gradient(transparent 30%, black 30%);
+            -webkit-mask-image: radial-gradient(transparent 30%, black 30%);
+        }
+
+        .segment-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            transform-origin: 0 0;
+            pointer-events: none;
+        }
+
+        /* 3D Button Look for Text */
+        .segment-text {
+            position: absolute;
+            left: 15px; top: -25px;
+            transform-origin: 0 0;
+            width: 140px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            /* Button Styling */
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 5px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+        }
+        
+        .segment-text span {
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            line-height: 1.1;
+            text-shadow: 0 2px 2px rgba(0,0,0,0.8);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .segment-text i { 
+            font-size: 1.2rem; 
+            margin-right: 8px; 
+            color: var(--gold);
+            filter: drop-shadow(0 0 5px var(--gold));
+        }
+
+        /* Center Cap - 3D Effect */
+        .wheel-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px; height: 80px;
+            background: radial-gradient(circle at 30% 30%, #444, #000);
+            border: 4px solid var(--gold);
+            border-radius: 50%;
+            z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 
+                0 0 0 5px rgba(0,0,0,0.8), /* Inner rim */
+                0 0 30px var(--gold-glow), /* Glow */
+                inset 2px 2px 5px rgba(255,255,255,0.3); /* Highlight */
+            cursor: pointer;
+        }
+        .wheel-center img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); }
+
+        /* 3D Pointer */
+        .pointer {
+            position: absolute;
+            top: -35px; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 70px;
+            z-index: 20;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
+        }
+        .pointer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 60px solid var(--gold);
+        }
+        .pointer::after {
+            content: '';
+            position: absolute;
+            top: -10px; left: 50%;
+            transform: translateX(-50%);
+            width: 20px; height: 20px;
+            background: radial-gradient(circle at 30% 30%, #fff,

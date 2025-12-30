@@ -1,0 +1,1350 @@
+<!-- 
+=====================================================
+FLAVORS ZANTE - CASINO GAMES EXPERIENCE
+"Spin & Win" + "Traffic Light" Social Game
+VERSION 6.0 - THE HOUSE ALWAYS WINS (But Everyone Gets Something!)
+=====================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors Casino | Spin & Win + Traffic Light Game</title>
+    <meta name="description" content="Flavors Zante exclusive games - Spin & Win prizes and meet people with Traffic Light social game.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --neon-pink: #FF00FF;
+            --neon-blue: #00FFFF;
+            --neon-purple: #BC13FE;
+            --casino-green: #1a472a;
+            --casino-felt: #0d5c2e;
+            --gold: #FFD700;
+            --gold-dark: #B8860B;
+            --dark-bg: #0a0a0a;
+            --card-bg: #161616;
+            --red: #FF3B3B;
+            --amber: #FFB627;
+            --green: #00D26A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== CASINO AMBIENT STYLING ===== */
+        .casino-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(255,0,255,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at center, #0f0f1a 0%, #050508 100%);
+            z-index: -1;
+        }
+
+        .casino-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== HEADER ===== */
+        .casino-header {
+            background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+            padding: 20px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .casino-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .casino-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        .casino-logo span {
+            color: var(--neon-pink);
+            -webkit-text-fill-color: var(--neon-pink);
+        }
+
+        .user-balance {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spins-count {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spins-count i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .spins-count .count {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .vip-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: black;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== GAME TABS ===== */
+        .game-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .game-tab {
+            flex: 1;
+            padding: 20px 30px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .game-tab:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .game-tab.active {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1));
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255,215,0,0.3);
+        }
+
+        .game-tab i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .game-tab.spin-tab i { color: var(--neon-pink); }
+        .game-tab.traffic-tab i { color: var(--green); }
+
+        .game-tab h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* ===== SPIN & WIN GAME ===== */
+        .game-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .spin-game {
+            background: linear-gradient(135deg, #1a0a0a, #0a0a1a);
+            border: 3px solid var(--gold);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spin-game::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,215,0,0.1), transparent, rgba(255,0,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .spin-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .spin-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .spin-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .spin-title p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ROULETTE WHEEL ===== */
+        .roulette-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 40px auto;
+        }
+
+        .roulette-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 8px solid;
+            border-image: linear-gradient(135deg, var(--gold), var(--gold-dark), var(--gold)) 1;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 0 4px #111,
+                0 0 0 8px var(--gold),
+                0 0 50px rgba(255,215,0,0.3),
+                inset 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .roulette-wheel {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            border-radius: 50%;
+            background: conic-gradient(
+                #FF3B3B 0deg 30deg,
+                #FFD700 30deg 60deg,
+                #00D26A 60deg 90deg,
+                #FF00FF 90deg 120deg,
+                #00FFFF 120deg 150deg,
+                #FF3B3B 150deg 180deg,
+                #FFD700 180deg 210deg,
+                #00D26A 210deg 240deg,
+                #FF00FF 240deg 270deg,
+                #00FFFF 270deg 300deg,
+                #FF3B3B 300deg 330deg,
+                #FFD700 330deg 360deg
+            );
+            transition: transform 5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .roulette-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .roulette-center img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .roulette-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+
+        .roulette-pointer::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 35px solid var(--gold);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+        }
+
+        /* Prize Segments Labels */
+        .prize-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .prize-label {
+            position: absolute;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            transform-origin: center;
+            width: 60px;
+            text-align: center;
+        }
+
+        /* ===== SPIN BUTTON ===== */
+        .spin-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .spin-btn {
+            padding: 20px 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spin-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .spin-btn:hover::before {
+            left: 100%;
+        }
+
+        .spin-btn-free {
+            background: linear-gradient(135deg, var(--neon-blue), #0088aa);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,255,255,0.3);
+        }
+
+        .spin-btn-free:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,255,255,0.5);
+        }
+
+        .spin-btn-premium {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: black;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+        }
+
+        .spin-btn-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.5);
+        }
+
+        .spin-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== PRIZE DISPLAY ===== */
+        .prize-display {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.5));
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            animation: prizeReveal 0.5s ease;
+        }
+
+        @keyframes prizeReveal {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .prize-display.show {
+            display: block;
+        }
+
+        .prize-display h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .prize-display .prize-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .prize-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .prize-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .prize-btn-claim {
+            background: var(--green);
+            color: white;
+        }
+
+        .prize-btn-gift {
+            background: var(--neon-pink);
+            color: white;
+        }
+
+        .prize-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .how-it-works h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        .rule-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .rule-item p {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .rule-item strong {
+            color: var(--gold);
+        }
+
+        /* ===== VIP SUPERPOWERS ===== */
+        .vip-powers {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.5));
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+        }
+
+        .vip-powers h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .power-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .power-tag {
+            background: rgba(255,215,0,0.2);
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== TRAFFIC LIGHT GAME ===== */
+        .traffic-game {
+            display: none;
+            background: linear-gradient(135deg, #0a1a0a, #0a0a1a);
+            border: 3px solid var(--green);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .traffic-game.active {
+            display: block;
+        }
+
+        .traffic-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .traffic-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--red), var(--amber), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .traffic-title p {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        /* Traffic Light Selector */
+        .traffic-selector {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .traffic-option {
+            width: 120px;
+            height: 160px;
+            border-radius: 60px;
+            background: #1a1a1a;
+            border: 4px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .traffic-option:hover {
+            transform: scale(1.05);
+        }
+
+        .traffic-option.selected {
+            border-width: 6px;
+        }
+
+        .traffic-option.red { border-color: var(--red); }
+        .traffic-option.red.selected { box-shadow: 0 0 40px var(--red); }
+
+        .traffic-option.amber { border-color: var(--amber); }
+        .traffic-option.amber.selected { box-shadow: 0 0 40px var(--amber); }
+
+        .traffic-option.green { border-color: var(--green); }
+        .traffic-option.green.selected { box-shadow: 0 0 40px var(--green); }
+
+        .traffic-light {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .traffic-option.red .traffic-light {
+            background: linear-gradient(135deg, var(--red), #aa0000);
+            box-shadow: 0 0 20px var(--red);
+        }
+
+        .traffic-option.amber .traffic-light {
+            background: linear-gradient(135deg, var(--amber), #cc8800);
+            box-shadow: 0 0 20px var(--amber);
+        }
+
+        .traffic-option.green .traffic-light {
+            background: linear-gradient(135deg, var(--green), #00aa55);
+            box-shadow: 0 0 20px var(--green);
+        }
+
+        .traffic-option:not(.selected) .traffic-light {
+            opacity: 0.3;
+            box-shadow: none;
+        }
+
+        .traffic-option span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Status Meanings */
+        .status-meanings {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .status-meaning {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            min-width: 150px;
+        }
+
+        .status-meaning i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .status-meaning.red-meaning i { color: var(--red); }
+        .status-meaning.amber-meaning i { color: var(--amber); }
+        .status-meaning.green-meaning i { color: var(--green); }
+
+        .status-meaning h5 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .status-meaning p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Live Feed */
+        .live-feed {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .live-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .live-header h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .live-count {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+        }
+
+        .player-card {
+            text-align: center;
+            padding: 15px 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .player-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .player-status {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid #1a1a1a;
+        }
+
+        .player-status.red { background: var(--red); }
+        .player-status.amber { background: var(--amber); }
+        .player-status.green { background: var(--green); }
+
+        .player-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Send Drink / Message */
+        .interaction-panel {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .interaction-panel h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--neon-pink);
+        }
+
+        .interaction-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .interaction-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .interaction-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-send-drink {
+            background: linear-gradient(135deg, var(--neon-blue), #0088aa);
+            color: white;
+        }
+
+        .btn-send-message {
+            background: linear-gradient(135deg, var(--neon-pink), #aa0066);
+            color: white;
+        }
+
+        .btn-big-screen {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: black;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .game-tabs {
+                flex-direction: column;
+            }
+
+            .spin-game, .traffic-game {
+                padding: 20px;
+            }
+
+            .roulette-container {
+                width: 260px;
+                height: 260px;
+            }
+
+            .spin-title h2, .traffic-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .spin-actions {
+                flex-direction: column;
+            }
+
+            .spin-btn {
+                width: 100%;
+            }
+
+            .traffic-selector {
+                gap: 15px;
+            }
+
+            .traffic-option {
+                width: 90px;
+                height: 120px;
+            }
+
+            .traffic-light {
+                width: 40px;
+                height: 40px;
+            }
+
+            .status-meanings {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Casino Ambient Background -->
+    <div class="casino-bg"></div>
+    <div class="casino-particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 4.5s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="casino-header">
+        <div class="header-content">
+            <div class="casino-logo">FLAVORS <span>CASINO</span></div>
+            <div class="user-balance">
+                <div class="spins-count">
+                    <i class="fas fa-coins"></i>
+                    <span class="count" id="spinCount">3</span>
+                    <span style="font-size: 0.8rem; color: #888;">SPINS</span>
+                </div>
+                <div class="vip-badge">
+                    <i class="fas fa-crown"></i>
+                    VIP MEMBER
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game Tabs -->
+    <div class="game-tabs">
+        <div class="game-tab spin-tab active" onclick="switchGame('spin')">
+            <i class="fas fa-dharmachakra"></i>
+            <h3>Spin & Win</h3>
+            <p style="font-size: 0.8rem; color: #888;">Everyone's a Winner!</p>
+        </div>
+        <div class="game-tab traffic-tab" onclick="switchGame('traffic')">
+            <i class="fas fa-traffic-light"></i>
+            <h3>Traffic Light</h3>
+            <p style="font-size: 0.8rem; color: #888;">Meet & Connect</p>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div class="game-container">
+
+        <!-- ===== SPIN & WIN GAME ===== -->
+        <div class="spin-game" id="spinGame">
+            <div class="spin-content">
+                <div class="spin-title">
+                    <h2>SPIN & WIN</h2>
+                    <p>Every spin is a winner! Buy a drink = Earn a spin ??</p>
+                </div>
+
+                <!-- Roulette Wheel -->
+                <div class="roulette-container">
+                    <div class="roulette-outer"></div>
+                    <div class="roulette-wheel" id="rouletteWheel"></div>
+                    <div class="roulette-center">
+                        <i class="fas fa-cocktail" style="font-size: 2rem; color: var(--gold);"></i>
+                    </div>
+                    <div class="roulette-pointer"></div>
+                </div>
+
+                <!-- Spin Buttons -->
+                <div class="spin-actions">
+                    <button class="spin-btn spin-btn-free" onclick="spinTheWheel('free')" id="freeSpinBtn">
+                        <i class="fas fa-play"></i> FREE SPIN
+                    </button>
+                    <button class="spin-btn spin-btn-premium" onclick="spinTheWheel('premium')">
+                        <i class="fas fa-gem"></i> PREMIUM €5
+                    </button>
+                </div>
+
+                <!-- Prize Display (Hidden until win) -->
+                <div class="prize-display" id="prizeDisplay">
+                    <h3>?? WINNER! ??</h3>
+                    <p class="prize-name" id="prizeName">Free Frozen Sample</p>
+                    <p style="color: #888; margin-bottom: 20px;">Show this to the bar to claim!</p>
+                    <div class="prize-actions">
+                        <button class="prize-btn prize-btn-claim" onclick="claimPrize()">
+                            <i class="fas fa-check"></i> CLAIM NOW
+                        </button>
+                        <button class="prize-btn prize-btn-gift" onclick="giftPrize()">
+                            <i class="fas fa-gift"></i> GIFT TO FRIEND
+                        </button>
+                    </div>
+                </div>
+
+                <!-- How It Works -->
+                <div class="how-it-works">
+                    <h4>?? HOW IT WORKS</h4>
+                    <div class="rules-grid">
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-glass-cheers"></i></div>
+                            <p><strong>Buy a drink</strong> = Earn 1 spin. Every purchase gives you another chance!</p>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-trophy"></i></div>
+                            <p><strong>Everyone wins</strong> something! Free samples, discounts, or big prizes.</p>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-gift"></i></div>
+                            <p><strong>Gift your prize</strong> to a friend. They can claim it when they visit!</p>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-crown"></i></div>
+                            <p><strong>VIP Members</strong> can give FREE samples to anyone as a superpower!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIP Superpowers -->
+                <div class="vip-powers">
+                    <h4><i class="fas fa-bolt"></i> VIP SUPERPOWERS</h4>
+                    <div class="power-list">
+                        <span class="power-tag">?? Gift Free Samples</span>
+                        <span class="power-tag">?? Extra Daily Spins</span>
+                        <span class="power-tag">?? Premium Prizes Only</span>
+                        <span class="power-tag">?? Shoutout on Live Screen</span>
+                        <span class="power-tag">?? Birthday Bottle Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TRAFFIC LIGHT GAME ===== -->
+        <div class="traffic-game" id="trafficGame">
+            <div class="traffic-title">
+                <h2>TRAFFIC LIGHT</h2>
+                <p>Set your status. Meet new people. Send drinks. Get noticed! ??</p>
+            </div>
+
+            <!-- Status Meanings -->
+            <div class="status-meanings">
+                <div class="status-meaning red-meaning">
+                    <i class="fas fa-heart"></i>
+                    <h5>RED</h5>
+                    <p>Taken / Not Looking</p>
+                </div>
+                <div class="status-meaning amber-meaning">
+                    <i class="fas fa-question"></i>
+                    <h5>AMBER</h5>
+                    <p>It's Complicated</p>
+                </div>
+                <div class="status-meaning green-meaning">
+                    <i class="fas fa-check-circle"></i>
+                    <h5>GREEN</h5>
+                    <p>Single & Ready!</p>
+                </div>
+            </div>
+
+            <!-- Traffic Light Selector -->
+            <h4 style="text-align: center; margin-bottom: 20px; color: #888;">YOUR STATUS TONIGHT:</h4>
+            <div class="traffic-selector">
+                <div class="traffic-option red" onclick="selectStatus('red')">
+                    <div class="traffic-light"></div>
+                    <span>TAKEN</span>
+                </div>
+                <div class="traffic-option amber" onclick="selectStatus('amber')">
+                    <div class="traffic-light"></div>
+                    <span>MAYBE</span>
+                </div>
+                <div class="traffic-option green selected" onclick="selectStatus('green')">
+                    <div class="traffic-light"></div>
+                    <span>SINGLE</span>
+                </div>
+            </div>
+
+            <!-- Live Feed -->
+            <div class="live-feed">
+                <div class="live-header">
+                    <h4><span class="live-dot"></span> LIVE AT FLAVORS</h4>
+                    <span class="live-count"><i class="fas fa-users"></i> 47 Playing</span>
+                </div>
+                <div class="players-grid" id="playersGrid">
+                    <!-- Players will be dynamically added -->
+                </div>
+            </div>
+
+            <!-- Interaction Panel -->
+            <div class="interaction-panel">
+                <h4>?? MAKE A MOVE</h4>
+                <div class="interaction-options">
+                    <button class="interaction-btn btn-send-drink">
+                        <i class="fas fa-cocktail"></i> Send a Drink
+                    </button>
+                    <button class="interaction-btn btn-send-message">
+                        <i class="fas fa-comment-dots"></i> Send Message
+                    </button>
+                    <button class="interaction-btn btn-big-screen">
+                        <i class="fas fa-tv"></i> Big Screen Shoutout
+                    </button>
+                </div>
+                <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.8rem;">
+                    ?? VIP Members get <strong>FREE shoutouts</strong> on the Flavors Live Screen!
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===== GAME STATE =====
+        let currentGame = 'spin';
+        let spinsRemaining = 3;
+        let isSpinning = false;
+        let currentStatus = 'green';
+
+        // Prize Configuration (Everyone Wins!)
+        const prizes = [
+            { name: 'Free Frozen Sample', color: '#00D26A', weight: 25 },
+            { name: '10% Off Next Drink', color: '#FFD700', weight: 20 },
+            { name: 'Free Shot', color: '#FF3B3B', weight: 15 },
+            { name: '2-4-1 Cocktails', color: '#00FFFF', weight: 12 },
+            { name: 'Free Keyring', color: '#FF00FF', weight: 10 },
+            { name: 'FROZEN CHALLENGE ENTRY', color: '#E0FFFF', weight: 5 },
+            { name: '25% Off Your Bill', color: '#FFD700', weight: 8 },
+            { name: 'VIP Upgrade Tonight', color: '#BC13FE', weight: 5 },
+            { name: 'Free T-Shirt', color: '#00D26A', weight: 3 },
+            { name: '€20 Bar Tab', color: '#FFD700', weight: 1.5 },
+            { name: 'JACKPOT: Free Party!', color: '#FF3B3B', weight: 0.5 }
+        ];
+
+        const premiumPrizes = [
+            { name: 'Bottle of Vodka', color: '#FFD700', weight: 20 },
+            { name: '€50 Bar Tab', color: '#00D26A', weight: 20 },
+            { name: 'VIP Table Upgrade', color: '#BC13FE', weight: 20 },
+            { name: 'Full Merch Pack', color: '#00FFFF', weight: 15 },
+            { name: 'Free Party Night', color: '#FF3B3B', weight: 10 },
+            { name: '€100 Bar Tab', color: '#FFD700', weight: 10 },
+            { name: 'JACKPOT: VIP Season Pass!', color: '#FF00FF', weight: 5 }
+        ];
+
+        // Sample Players for Traffic Light
+        const samplePlayers = [
+            { name: 'Sophie', status: 'green', avatar: 'https://i.pravatar.cc/100?img=1' },
+            { name: 'Jake', status: 'green', avatar: 'https://i.pravatar.cc/100?img=2' },
+            { name: 'Emma', status: 'amber', avatar: 'https://i.pravatar.cc/100?img=3' },
+            { name: 'Liam', status: 'green', avatar: 'https://i.pravatar.cc/100?img=4' },
+            { name: 'Olivia', status: 'red', avatar: 'https://i.pravatar.cc/100?img=5' },
+            { name: 'Noah', status: 'green', avatar: 'https://i.pravatar.cc/100?img=6' },
+            { name: 'Ava', status: 'amber', avatar: 'https://i.pravatar.cc/100?img=7' },
+            { name: 'Mason', status: 'green', avatar: 'https://i.pravatar.cc/100?img=8' },
+            { name: 'Mia', status: 'green', avatar: 'https://i.pravatar.cc/100?img=9' },
+            { name: 'Lucas', status: 'red', avatar: 'https://i.pravatar.cc/100?img=10' },
+            { name: 'Charlotte', status: 'green', avatar: 'https://i.pravatar.cc/100?img=11' },
+            { name: 'Ethan', status: 'amber', avatar: 'https://i.pravatar.cc/100?img=12' },
+        ];
+
+        // ===== GAME SWITCHING =====
+        function switchGame(game) {
+            currentGame = game;
+            
+            // Update tabs
+            document.querySelectorAll('.game-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.${game}-tab`).classList.add('active');
+            
+            // Show/hide games
+            document.getElementById('spinGame').style.display = game === 'spin' ? 'block' : 'none';
+            document.getElementById('trafficGame').style.display = game === 'traffic' ? 'block' : 'none';
+            document.getElementById('trafficGame').classList.toggle('active', game === 'traffic');
+        }
+
+        // ===== SPIN & WIN LOGIC =====
+        function spinTheWheel(type) {
+            if (isSpinning) return;
+            
+            if (type === 'free' && spinsRemaining <= 0) {
+                alert('No spins remaining! Buy a drink to earn more spins ??');
+                return;
+            }
+
+            isSpinning = true;
+            
+            // Decrease spin count for free spins
+            if (type === 'free') {
+                spinsRemaining--;
+                document.getElementById('spinCount').textContent = spinsRemaining;
+            }
+
+            // Hide previous prize
+            document.getElementById('prizeDisplay').classList.remove('show');
+
+            // Disable buttons
+            document.querySelectorAll('.spin-btn').forEach(btn => btn.disabled = true);
+
+            // Get random prize
+            const prizeList = type === 'premium' ? premiumPrizes : prizes;
+            const prize = getWeightedPrize(prizeList);
+
+            // Calculate rotation based on prize index
+            const totalPrizes = prizeList.reduce((sum, p) => sum + p.weight, 0);
+            const prizeIndex = prizeList.findIndex(p => p.name === prize.name);
+            const rotationDegrees = 360 / totalPrizes * (prizeIndex + 1) + 1440; // Additional spins
+
+            // Spin the wheel
+            const wheel = document.getElementById('rouletteWheel');
+            wheel.style.transition = 'transform 5s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+            wheel.style.transform = `rotate(${rotationDegrees}deg)`;
+
+            // Show prize after delay
+            setTimeout(() => {
+                // Highlight winning segment
+                document.querySelectorAll('.prize-label').forEach(label => label.style.opacity = '0.3');
+                const winningLabel = Array.from(document.querySelectorAll('.prize-label')).find(label => label.textContent.trim() === prize.name);
+                if (winningLabel) {
+                    winningLabel.style.opacity = '1';
+                    winningLabel.style.transform = 'scale(1.2)';
+                }
+
+                document.getElementById('prizeName').textContent = prize.name;
+                document.getElementById('prizeDisplay').classList.add('show');
+
+                // Enable buttons
+                document.querySelectorAll('.spin-btn').forEach(btn => btn.disabled = false);
+                isSpinning = false;
+            }, 5500);
+        }
+
+        // Get a weighted prize based on the defined weights
+        function getWeightedPrize(prizeList) {
+            const totalWeight = prizeList.reduce((total, prize) => total + prize.weight, 0);
+            let randomNum = Math.random() * totalWeight;
+            for (const prize of prizeList) {
+                if (randomNum < prize.weight) {
+                    return prize;
+                }
+                randomNum -= prize.weight;
+            }
+            return prizeList[prizeList.length - 1];
+        }
+
+        // ===== TRAFFIC LIGHT LOGIC =====
+        function selectStatus(status) {
+            currentStatus = status;
+            
+            // Update selection
+            document.querySelectorAll('.traffic-option').forEach(option => option.classList.remove('selected'));
+            document.querySelector(`.traffic-option.${status}`).classList.add('selected');
+
+            // Update player status in live feed (simulated)
+            updatePlayerStatus('me', status);
+        }
+
+        function updatePlayerStatus(playerId, status) {
+            const playerCard = Array.from(document.querySelectorAll('.player-card')).find(card => card.dataset.playerId === playerId);
+            if (playerCard) {
+                playerCard.classList.remove('red', 'amber', 'green');
+                playerCard.classList.add(status);
+            }
+        }
+
+        // Initialize sample players
+        function initSamplePlayers() {
+            const grid = document.getElementById('playersGrid');
+            grid.innerHTML = '';
+            samplePlayers.forEach(player => {
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-card ' + player.status;
+                playerDiv.dataset.playerId = player.name.toLowerCase();
+                playerDiv.innerHTML = `
+                    <div class="player-avatar">
+                        <img src="${player.avatar}" alt="${player.name}">
+                        <div class="player-status ${player.status}"></div>
+                    </div>
+                    <div class="player-name">${player.name}</div>
+                `;
+                grid.appendChild(playerDiv);
+            });
+        }
+
+        // Initialize game on load
+        window.onload = function() {
+            initSamplePlayers();
+            switchGame('spin');
+        };
+    </script>
+</body>
+</html>

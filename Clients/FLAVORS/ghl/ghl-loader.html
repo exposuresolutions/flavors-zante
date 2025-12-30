@@ -1,0 +1,61 @@
+<!-- 
+    GHL GITHUB LOADER 
+    Paste this into the "Custom Code" (Header or Body) of your GHL Page.
+    It will fetch the latest content from your GitHub Pages URL and inject it.
+-->
+<div id="app-container">
+    <style>
+        body { margin: 0; padding: 0; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        .loader { border: 4px solid #333; border-top: 4px solid #FF00FF; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <div class="loader"></div>
+</div>
+
+<script>
+    // CONFIGURATION: Change this to your specific file URL on GitHub Pages
+    // Example: 'https://exposure-solutions.github.io/clients/flavors/flavors-zante-v5.html'
+    const GITHUB_FILE_URL = 'REPLACE_WITH_YOUR_GITHUB_PAGES_URL';
+
+    async function loadContent() {
+        try {
+            // 1. Fetch the raw HTML from GitHub
+            const response = await fetch(GITHUB_FILE_URL);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const html = await response.text();
+
+            // 2. Parse the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // 3. Replace the current page content
+            // Inject Head Elements (Styles, Fonts, Metadata)
+            Array.from(doc.head.children).forEach(child => {
+                // Avoid duplicating meta tags that might clash
+                if (child.tagName !== 'TITLE') {
+                    document.head.appendChild(child);
+                }
+            });
+            document.title = doc.title;
+
+            // Inject Body Elements
+            document.body.innerHTML = doc.body.innerHTML;
+
+            // 4. Re-execute Scripts (innerHTML doesn't run scripts automatically)
+            Array.from(doc.querySelectorAll('script')).forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+
+            console.log('Content loaded from GitHub successfully.');
+
+        } catch (error) {
+            console.error('Failed to load content:', error);
+            document.getElementById('app-container').innerHTML = '<p style="color:red; text-align:center;">Error loading content. Please check console.</p>';
+        }
+    }
+
+    loadContent();
+</script>

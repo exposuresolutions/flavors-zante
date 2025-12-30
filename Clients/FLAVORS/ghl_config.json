@@ -1,0 +1,77 @@
+﻿{
+    "project": "FLAVORS ZANTE",
+    "ghl_api_key": "pit-2092e990-2c0f-4723-98ec-dd8483c87da1",
+    "location_id": "KbiucErIMNPbO1mY4qXL",
+    "website_name": "Flavors Daiquiri Bar",
+    "website_path": "Clients/FLAVORS/ghl",
+    "domain": "flavorsdaiquiribar.com",
+    
+    "pipelines": {
+        "vip_bookings": {
+            "id": "",
+            "name": "VIP & Final Boss Bookings",
+            "stages": ["New Lead", "Contacted", "Deposit Paid", "Confirmed", "Completed"]
+        },
+        "world_cup": {
+            "id": "",
+            "name": "World Cup 2026 Bookings",
+            "stages": ["Interested", "Match Selected", "Deposit Paid", "Confirmed"]
+        },
+        "frozen_challenge": {
+            "id": "",
+            "name": "Frozen Challenge Entries",
+            "stages": ["Registered", "Completed", "Winner"]
+        }
+    },
+    
+    "tags": {
+        "spin_win": "spin-win-player",
+        "traffic_light": "traffic-light-user",
+        "frozen_challenge": "frozen-challenge-entry",
+        "vip_inquiry": "vip-booking-inquiry",
+        "world_cup": "world-cup-2026",
+        "final_boss": "final-boss-inquiry"
+    },
+    
+    "automations": {
+        "spin_win_prize": {
+            "trigger": "prize_won",
+            "action": "send_sms_with_code"
+        },
+        "traffic_light_match": {
+            "trigger": "status_set",
+            "action": "notify_matches"
+        },
+        "booking_inquiry": {
+            "trigger": "form_submitted",
+            "action": "create_opportunity"
+        }
+    },
+    
+    "chat_widget_id": "694e7ef43773e0b8ca3489f7",
+    
+    // Open AI Chat
+    "openChat": true,
+
+    // Log game plays (stored locally, ready for webhook)
+    "logSpinWin": {
+        "playerName": "Player Name",
+        "type": "FREE SHOT"
+    },
+    "logTrafficLight": "green",
+    "logFrozenChallenge": {
+        "playerName": "Player Name"
+    },
+
+    // Generate prize codes
+    "generatePrizeCode": "FLV", // FLV-ABC123
+
+    // Show toast notifications
+    "showToast": "🎉 You won!",
+
+    // Contact via WhatsApp + Email
+    "contact": "VIP Booking Request",
+
+    // View local analytics
+    "getLocalAnalytics": true
+}

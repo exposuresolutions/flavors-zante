@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Shape Flavors Zante 2026 | Your Feedback Matters</title>
+    <meta name="description" content="Vote on the final party themes, drinks, and features for Flavors Zante 2026. Your opinion counts!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF00FF; /* Neon Pink */
+            --primary-dark: #BC13FE; /* Neon Purple */
+            --secondary: #00FFFF; /* Neon Blue */
+            --accent: #FFD700; /* Gold */
+            --dark: #0a0a0a;
+            --light: #f4f4f4;
+            --white: #ffffff;
+            --gray: #888;
+            --green: #00D26A;
+            --radius: 15px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(135deg, #000 0%, #1a051a 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding-bottom: 80px; 
+            color: var(--white);
+            background-attachment: fixed; 
+        }
+        h1,h2,h3 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        /* Header Card */
+        .header-card {
+            background: rgba(20,20,20,0.9);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(255,0,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .logo { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; border: 3px solid var(--secondary); box-shadow: 0 0 20px var(--secondary); }
+        .header-card h1 { color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; }
+        .header-card p { color: #ccc; font-size: 1.1rem; }
+        .badge { display: inline-block; background: var(--accent); color: #000; padding: 8px 20px; border-radius: 30px; font-weight: bold; margin-top: 15px; }
+        
+        /* Survey Card */
+        .survey-card {
+            background: rgba(20,20,20,0.8);
+            border: 1px solid #333;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .survey-card h2 { color: var(--secondary); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
+        .survey-card p { color: #aaa; margin-bottom: 20px; line-height: 1.6; }
+        
+        /* Options */
+        .options { display: grid; gap: 15px; }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #111;
+        }
+        .option:hover { border-color: var(--primary); background: #1a051a; }
+        .option.selected { border-color: var(--green); background: rgba(0, 210, 106, 0.1); }
+        .option input { display: none; }
+        .option-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: #222;
+        }
+        .option-check i {
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 14px;
+            color: #fff;
+        }
+        .option.selected .option-check { background: var(--green); border-color: var(--green); }
+        .option.selected .option-check i { opacity: 1; }
+        
+        .option-content { flex: 1; }
+        .option-content h4 { color: #fff; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        .option-content h4 i { color: var(--primary); width: 20px; text-align: center; }
+        .option-content p { color: #888; font-size: 0.9rem; margin: 0; }
+        
+        /* Text Areas */
+        textarea, input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            background: #111;
+            border: 1px solid #444;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        textarea:focus, input:focus { outline: none; border-color: var(--primary); }
+        textarea { min-height: 100px; resize: vertical; }
+        
+        /* Rating */
+        .rating { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .rating-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #444;
+            border-radius: var(--radius);
+            background: #111;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .rating-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .rating-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,0,255,0.5); }
+        
+        /* Footer */
+        .footer { text-align: center; color: #666; padding: 30px; font-size: 0.9rem; }
+        .footer a { color: var(--secondary); text-decoration: none; }
+        
+        /* Share Section */
+        .share-section { 
+            background: linear-gradient(135deg, #222, #111); 
+            border: 1px solid var(--accent);
+            color: #fff; 
+            padding: 25px; 
+            border-radius: var(--radius); 
+            text-align: center; 
+            margin-top: 30px; 
+        }
+        .share-section h3 { margin-bottom: 15px; color: var(--accent); }
+        .share-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .share-btn {
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .share-btn:hover { transform: scale(1.05); }
+        .share-wa { background: #25D366; }
+        .share-fb { background: #1877F2; }
+        .share-snap { background: #FFFC00; color: black; text-shadow: none; }
+        .share-tg { background: #0088cc; }
+        .share-email { background: #444; }
+
+        /* Floating Social Icons */
+        .floating-socials {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .float-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .float-icon:hover { transform: scale(1.2); }
+        .float-wa { background: #25D366; }
+        .float-snap { background: #FFFC00; color: black; }
+        .float-tg { background: #0088cc; }
+        .float-fb { background: #1877F2; }
+
+        @media (max-width: 768px) {
+            .floating-socials {
+                bottom: 20px;
+                top: auto;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+            }
+            .container { padding: 15px; }
+            .header-card { padding: 25px 15px; }
+            .survey-card { padding: 20px 15px; }
+            .header-card h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Socials -->
+    <div class="floating-socials">
+        <a href="https://wa.me/353851026371" class="float-icon float-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="float-icon float-snap" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+        <a href="#" class="float-icon float-tg" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="#" class="float-icon float-fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Zante Logo" class="logo">
+            <h1>Help Shape Flavors Zante 2026</h1>
+            <p>Natasha wants YOUR input on the final party themes, drinks, and features for the new season.</p>
+            <div class="badge"><i class="fas fa-trophy"></i> Complete for a chance to win a VIP TABLE!</div>
+        </div>
+
+        <form id="surveyForm" onsubmit="submitSurvey(event)">
+            <!-- Q1: Party Theme -->
+            <div class="survey-card">
+                <h2>1. Best Party Theme?</h2>
+                <p>Which of these nights would you definitely attend?</p>
+                <div class="options" id="theme-options">
+                    <label class="option" onclick="selectOption(this, 'theme')">
+                        <input type="radio" name="party_theme" value="Traffic Light Party">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-traffic-light"></i> Traffic Light Party</h4>
+                            <p>Red (Taken), Amber (Maybe), Green (Single). The ultimate mixer.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'theme')">
+                        <input type="radio" name="party_theme" value="Full Moon Party">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-moon"></i> Full Moon Party</h4>
+                            <p>Neon paint, buckets, and beach vibes.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'theme')">
+                        <input type="radio" name="party_theme" value="Foam Party">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-soap"></i> Foam Party</h4>
+                            <p>Classic Zante chaos. Get wet, get wild.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'theme')">
+                        <input type="radio" name="party_theme" value="Silent Disco">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-headphones"></i> Silent Disco</h4>
+                            <p>3 Channels. You choose the music.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q2: Best Drink -->
+            <div class="survey-card">
+                <h2>2. Best Drink?</h2>
+                <p>What's your go-to fuel for the night?</p>
+                <div class="options" id="drink-options">
+                    <label class="option" onclick="selectOption(this, 'drink')">
+                        <input type="radio" name="best_drink" value="Frozen Daiquiri">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-snowflake"></i> Frozen Daiquiri</h4>
+                            <p>Strawberry, Mango, Blue Lagoon. Ice cold.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'drink')">
+                        <input type="radio" name="best_drink" value="Pornstar Martini">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-cocktail"></i> Pornstar Martini</h4>
+                            <p>Classy start to a messy night.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'drink')">
+                        <input type="radio" name="best_drink" value="Fishbowl">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-fish"></i> Fishbowl</h4>
+                            <p>Sharing is caring. Or drink it all yourself.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q3: Pain Points -->
+            <div class="survey-card">
+                <h2>3. What Sucks About Zante?</h2>
+                <p>Be honest. What ruins a night out for you?</p>
+                <div class="options" id="pain-options">
+                    <label class="option" onclick="selectOption(this, 'pain')">
+                        <input type="radio" name="pain_point" value="crowds">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Too Crowded / No Space</h4>
+                            <p>"I hate being crushed at the bar."</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'pain')">
+                        <input type="radio" name="pain_point" value="music">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Bad Music</h4>
+                            <p>"DJs playing the same 5 songs on repeat."</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'pain')">
+                        <input type="radio" name="pain_point" value="warm_drinks">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Warm Drinks</h4>
+                            <p>"Nothing worse than a warm beer or cocktail."</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'pain')">
+                        <input type="radio" name="pain_point" value="creeps">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Creeps / Safety</h4>
+                            <p>"I want to feel safe and looked after."</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q4: Website Rating -->
+            <div class="survey-card">
+                <h2>4. Rate Our New App/Site</h2>
+                <p>We built this new platform to give you control. How does it feel?</p>
+                <div class="rating" id="design-rating">
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">1</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">2</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">3</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">4</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">5</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">6</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">7</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">8</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">9</button>
+                    <button type="button" class="rating-btn" onclick="selectRating(this, 'design')">10</button>
+                </div>
+                <input type="hidden" name="design_rating" id="design_rating_input">
+            </div>
+
+            <!-- Q5: Features Wanted -->
+            <div class="survey-card">
+                <h2>5. Features You Want?</h2>
+                <p>Select all that apply.</p>
+                <div class="options" id="features-options">
+                    <label class="option" onclick="toggleMulti(this)">
+                        <input type="checkbox" name="features" value="table_service">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-concierge-bell"></i> Table Service App</h4>
+                            <p>Order drinks from your phone to your table.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="toggleMulti(this)">
+                        <input type="checkbox" name="features" value="song_requests">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-music"></i> Song Requests</h4>
+                            <p>Vote on the next track via the app.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="toggleMulti(this)">
+                        <input type="checkbox" name="features" value="digital_tattoos">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-dragon"></i> Digital Tattoos</h4>
+                            <p>Temporary ink printer at the bar.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="toggleMulti(this)">
+                        <input type="checkbox" name="features" value="shisha">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4><i class="fas fa-cloud"></i> Premium Shisha</h4>
+                            <p>Available at tables.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q6: Final Boss -->
+            <div class="survey-card" style="border-top: 4px solid var(--accent);">
+                <h2>6. "Final Boss" VIP Package</h2>
+                <p><strong>Rent the entire bar for 3 hours.</strong> You control the music, screens, and vibe. Includes custom merch.</p>
+                <p>Would you be interested in this for a special occasion?</p>
+                <div class="options" id="upgrade-options">
+                    <label class="option" onclick="selectOption(this, 'upgrade')">
+                        <input type="radio" name="upgrade_interest" value="yes">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Yes, definitely</h4>
+                            <p>Sounds epic for a birthday or stag/hen.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'upgrade')">
+                        <input type="radio" name="upgrade_interest" value="maybe">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>Maybe / Tell me more</h4>
+                            <p>Depends on the price.</p>
+                        </div>
+                    </label>
+                    <label class="option" onclick="selectOption(this, 'upgrade')">
+                        <input type="radio" name="upgrade_interest" value="no">
+                        <div class="option-check"><i class="fas fa-check"></i></div>
+                        <div class="option-content">
+                            <h4>No, just standard entry</h4>
+                            <p>I prefer the normal crowd.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q7: General Feedback -->
+            <div class="survey-card">
+                <h2>7. Any Other Feedback?</h2>
+                <p>Comments, suggestions, or things you particularly like or dislike?</p>
+                <textarea name="general_feedback" placeholder="Your thoughts..."></textarea>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="survey-card">
+                <h2>8. Your Details (Optional)</h2>
+                <p>Enter to win a VIP TABLE and be first to hear about launch offers!</p>
+                <input type="text" name="name" placeholder="Your Name">
+                <input type="email" name="email" placeholder="Your Email">
+                <input type="text" name="phone" placeholder="Your Phone (for winner contact)">
+                <label style="display: flex; align-items: center; gap: 10px; color: #aaa;">
+                    <input type="checkbox" name="subscribe" value="yes" checked>
+                    Keep me updated on Flavors Zante launch and offers
+                </label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit My Feedback</button>
+
+            <!-- Share Section -->
+            <div class="share-section">
+                <h3><i class="fas fa-share-alt"></i> Share With Your Squad!</h3>
+                <p style="margin-bottom: 15px;">Help Natasha get more feedback by sharing this survey.</p>
+                <div class="share-btns">
+                    <a href="https://wa.me/?text=Help%20shape%20Flavors%20Zante%202026!%20Vote%20on%20themes%20and%20drinks%3A%20https%3A%2F%2Fflavors.exposuresolutions.me%2Ffeedback" class="share-btn share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fflavors.exposuresolutions.me%2Ffeedback" class="share-btn share-snap"><i class="fab fa-snapchat-ghost"></i> Snapchat</a>
+                    <a href="https://t.me/share/url?url=https%3A%2F%2Fflavors.exposuresolutions.me%2Ffeedback&text=Help%20shape%20Flavors%20Zante%202026!" class="share-btn share-tg"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://flavors.exposuresolutions.me/feedback" class="share-btn share-fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Survey by <a href="https://exposuresolutions.ie" target="_blank">Exposure Solutions</a> for Flavors Zante</p>
+        <p style="margin-top: 10px;">Questions? WhatsApp Natasha: <a href="https://wa.me/353851026371">+353 85 102 6371</a></p>
+    </div>
+
+    <script>
+        function selectOption(el, group) {
+            document.querySelectorAll(`#${group}-options .option`).forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+            const input = el.querySelector('input');
+            input.checked = true;
+        }
+
+        function toggleMulti(el) {
+            const input = el.querySelector('input');
+            setTimeout(() => {
+                if (input.checked) {
+                    el.classList.add('selected');
+                } else {
+                    el.classList.remove('selected');
+                }
+            }, 0);
+        }
+
+        function selectRating(el, group) {
+            document.querySelectorAll(`#${group}-rating .rating-btn`).forEach(btn => btn.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById(`${group}_rating_input`).value = el.textContent;
+        }
+
+        async function submitSurvey(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.submit-btn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            
+            const formData = new FormData(e.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            Object.keys(data).forEach(key => {
+                if (Array.isArray(data[key])) {
+                    data[key] = data[key].join(', ');
+                }
+            });
+
+            const expectedKeys = [
+                'party_theme', 'best_drink', 'pain_point', 'design_rating', 
+                'upgrade_interest', 'features', 'services', 
+                'general_feedback', 'name', 'email', 'phone'
+            ];
+            
+            expectedKeys.forEach(key => {
+                if (!data[key]) data[key] = 'Not Answered';
+            });
+
+            data['survey_summary'] = `
+FLAVORS ZANTE SURVEY:
+---------------------
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+
+1. Party Theme: ${data.party_theme}
+2. Best Drink: ${data.best_drink}
+3. Frustration: ${data.pain_point}
+4. Rating: ${data.design_rating}/10
+5. Features: ${data.features}
+6. Final Boss Interest: ${data.upgrade_interest}
+
+Feedback: ${data.general_feedback}
+            `.trim();
+
+            console.log('Survey Data:', data);
+            
+            // REPLACE WITH YOUR FLAVORS WEBHOOK URL
+            const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/KbiucErIMNPbO1mY4qXL/webhook-trigger/297f0e76-a8cd-401c-9230-433c3d44e8f7'; 
+            
+            if (WEBHOOK_URL) {
+                try {
+                    await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                } catch (err) {
+                    console.error('Failed to send to GHL:', err);
+                }
+            }
+
+            await new Promise(r => setTimeout(r, 500));
+
+            document.querySelector('.container').innerHTML = `
+                <div class="header-card">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Logo" class="logo">
+                    <h1><i class="fas fa-check-circle"></i> Thank You!</h1>
+                    <p>Your feedback has been submitted. Natasha really appreciates you taking the time!</p>
+                    <div class="badge"><i class="fas fa-trophy"></i> You're entered to win a VIP TABLE!</div>
+                    <div style="margin-top: 30px;">
+                        <a href="flavors-zante-v5.html" style="display: inline-block; padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Back to Party</a>
+                    </div>
+                </div>
+            `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

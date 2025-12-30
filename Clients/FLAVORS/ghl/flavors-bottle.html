@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors Bottle of Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-pink: #FF00FF;
+            --gold: #FFD700;
+            --bg: #050505;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #1a001a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Header */
+        .bottle-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--neon-pink);
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+        .tagline { color: #aaa; font-size: 0.9rem; margin-bottom: 30px; }
+
+        /* Setup Form */
+        #bottle-setup {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; color: #ccc; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 10px;
+            font-family: 'Montserrat';
+            box-sizing: border-box;
+        }
+        .status-options { display: flex; gap: 10px; }
+        .btn-status {
+            flex: 1;
+            padding: 12px;
+            background: #222;
+            border: 1px solid #444;
+            color: #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-status:hover { background: #333; }
+        .btn-status.active {
+            background: var(--neon-pink);
+            color: #fff;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255,0,255,0.4);
+        }
+
+        /* Game Area */
+        #bottle-game { display: none; }
+        .bottle-container { 
+            position: relative; 
+            width: 250px; 
+            height: 250px; 
+            margin: 40px auto; 
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        #theBottle { 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1); 
+        }
+        .bottle-center { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 15px; 
+            height: 15px; 
+            background: #fff; 
+            border-radius: 50%; 
+            box-shadow: 0 0 10px #fff;
+        }
+
+        #bottleResult { min-height: 80px; margin-bottom: 30px; }
+        #bottleResult h3 { color: var(--gold); font-size: 1.5rem; margin: 0; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+
+        /* Main Button */
+        .btn-epic {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            font-family: 'Orbitron';
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--neon-pink), #bc13fe);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-epic:hover { transform: scale(1.05); }
+        .btn-epic:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        .back-link { position: absolute; top: 20px; left: 20px; color: #888; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: color 0.3s; }
+        .back-link:hover { color: #fff; }
+
+        .confetti { position: fixed; width: 10px; height: 10px; top: -10px; z-index: 9999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); } }
+    </style>
+</head>
+<body>
+    <a href="flavors-zante-v5.html" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO VENUE</a>
+
+    <div class="container">
+        <div class="bottle-header">
+            <h1>BOTTLE OF LOVE</h1>
+            <p class="tagline">The classic game. Digital twist. Dangerous results.</p>
+        </div>
+
+        <div id="bottle-setup">
+            <div class="form-group">
+                <label>YOUR NAME</label>
+                <input type="text" id="bottleName" placeholder="Enter your name...">
+            </div>
+            <div class="form-group">
+                <label>STATUS (BE HONEST ??)</label>
+                <div class="status-options">
+                    <button class="btn-status" onclick="setBottleStatus(this, 'Single')">Single</button>
+                    <button class="btn-status" onclick="setBottleStatus(this, 'Taken')">Taken</button>
+                    <button class="btn-status" onclick="setBottleStatus(this, 'Complicated')">...Complex</button>
+                </div>
+            </div>
+            <button class="btn-epic" onclick="startBottleGame()">JOIN THE CIRCLE</button>
+        </div>
+
+        <div id="bottle-game">
+            <div class="bottle-container">
+                <div id="theBottle">
+                    <i class="fas fa-wine-bottle" style="font-size: 8rem; color: var(--neon-pink); transform: rotate(45deg); filter: drop-shadow(0 0 20px rgba(255,0,255,0.5));"></i>
+                </div>
+                <div class="bottle-center"></div>
+            </div>
+            
+            <div id="bottleResult">
+                <p style="color: #aaa; font-style: italic;">The bottle is waiting...</p>
+            </div>
+            
+            <button class="btn-epic" onclick="spinTheBottle()" id="spinBottleBtn">
+                <i class="fas fa-sync"></i> SPIN THE BOTTLE
+            </button>
+        </div>
+    </div>
+
+    <!-- FLAVORS GHL Integration Helper -->
+    <script src="js/flavors-ghl.js"></script>
+
+    <script>
+        let bottleStatus = '';
+
+        function setBottleStatus(btn, status) {
+            bottleStatus = status;
+            document.querySelectorAll('.btn-status').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function startBottleGame() {
+            const name = document.getElementById('bottleName').value;
+            if (!name || !bottleStatus) {
+                alert('?? Please enter name & status!');
+                return;
+            }
+            
+            // Log to GHL analytics
+            if (window.FLAVORS_GHL) {
+                FLAVORS_GHL.storeLocalEvent('bottle_game', {
+                    name: name,
+                    status: bottleStatus,
+                    game: 'bottle-of-love',
+                    timestamp: new Date().toISOString()
+                });
+                console.log('?? Bottle game started:', name, bottleStatus);
+            }
+            
+            document.getElementById('bottle-setup').style.display = 'none';
+            document.getElementById('bottle-game').style.display = 'block';
+            document.getElementById('bottleResult').innerHTML = '<p style="color: #fff;">Welcome, <strong>' + name + '</strong>.</p>';
+        }
+
+        function spinTheBottle() {
+            const bottle = document.getElementById('theBottle');
+            const result = document.getElementById('bottleResult');
+            const btn = document.getElementById('spinBottleBtn');
+            
+            btn.disabled = true;
+            result.innerHTML = '<p style="color: var(--neon-pink);">Spinning...</p>';
+            
+            const randomDeg = 720 + Math.floor(Math.random() * 1440); // At least 2 spins
+            bottle.style.transform = `rotate(${randomDeg}deg)`;
+            
+            setTimeout(() => {
+                const dares = [
+                    "?? KISS the person to your RIGHT!",
+                    "?? KISS the person to your LEFT!",
+                    "?? Buy a SHOT for the person opposite!",
+                    "?? DANCE on the table for 10 seconds!",
+                    "?? Show your last photo to the group!",
+                    "?? Whisper a secret to the person on your left."
+                ];
+                const randomDare = dares[Math.floor(Math.random() * dares.length)];
+                result.innerHTML = `<h3>${randomDare}</h3>`;
+                createConfetti(15);
+                
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-redo"></i> SPIN AGAIN';
+            }, 3000);
+        }
+
+        function createConfetti(count) { 
+            const colors = ['#FF00FF', '#00FFFF', '#FFD700', '#FF3B3B', '#00D26A']; 
+            for (let i = 0; i < count; i++) { 
+                setTimeout(() => { 
+                    const confetti = document.createElement('div'); 
+                    confetti.className = 'confetti'; 
+                    confetti.style.left = Math.random() * 100 + 'vw'; 
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)]; 
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's'; 
+                    document.body.appendChild(confetti); 
+                    setTimeout(() => confetti.remove(), 3000); 
+                }, i * 50); 
+            } 
+        }
+    </script>
+</body>
+</html>
