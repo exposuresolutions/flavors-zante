@@ -31,7 +31,7 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 
 /* POINTER - POSITIONED AT TOP CENTER POINTING DOWN */
 .sw-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:30;width:80px;height:100px;pointer-events:none}
-.sw-pointer img{width:100%;height:100%;object-fit:contain}
+.sw-pointer img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 20px rgba(0,255,255,0.6)) drop-shadow(0 5px 20px rgba(255,20,147,0.6))}
 
 /* OUTER RING - PREMIUM GOLD FRAME */
 .sw-outer-ring{position:absolute;top:60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:linear-gradient(145deg,#FFD700 0%,#B8860B 50%,#FFD700 100%);padding:8px;box-shadow:0 0 60px rgba(255,215,0,0.4),0 20px 60px rgba(0,0,0,0.8),inset 0 2px 4px rgba(255,255,255,0.3)}
@@ -119,7 +119,6 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 @media(max-width:400px){
 .sw-wheel-assembly{width:280px;height:340px}
 .sw-outer-ring{width:260px;height:260px;top:55px}
-.sw-leds{width:260px;height:260px;top:55px}
 .sw-pointer{width:70px;height:85px}
 .sw-hub{width:60px;height:60px}
 .sw-hero h1{font-size:2.8rem}
@@ -143,9 +142,9 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 
     <!-- WHEEL ASSEMBLY -->
     <div class="sw-wheel-assembly">
-        <!-- CUSTOM BRANDED POINTER - TOP CENTER -->
+        <!-- CUSTOM BRANDED POINTER - TRANSPARENT PNG -->
         <div class="sw-pointer">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f347e4125ac4cc7d64f8.png" alt="Pointer">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f6b6e4125aef597db958.png" alt="Pointer">
         </div>
 
         <!-- PREMIUM GOLD OUTER RING -->
@@ -223,17 +222,14 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
         btn.disabled=true;
         result.classList.remove('show');
         
-        // Casino-style spin: 8-12 full rotations + random landing
         var spins=8+Math.floor(Math.random()*5);
         var extra=Math.random()*360;
         rotation+=(spins*360)+extra;
         wheel.style.transform='rotate('+rotation+'deg)';
         
-        // Reveal after spin completes
         setTimeout(function(){
             spinning=false;
             btn.disabled=false;
-            // Calculate winning segment
             var finalAngle=(360-(rotation%360)+22.5)%360;
             var idx=Math.floor(finalAngle/45)%8;
             var prize=prizes[idx];
