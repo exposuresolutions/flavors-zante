@@ -2,15 +2,274 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=flavors-zante-v5.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavors Zante - Redirecting...</title>
-    <script>
-        window.location.href = "flavors-zante-v5.html";
-    </script>
+    <title>Flavors Gaming | Play & Win</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-pink: #FF00FF;
+            --neon-blue: #00FFFF;
+            --neon-purple: #BC13FE;
+            --gold: #FFD700;
+            --red: #FF3B3B;
+            --green: #00D26A;
+            --amber: #FFB627;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #1a0a1a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .gaming-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .gaming-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-pink);
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+        }
+        .gaming-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            margin: 0;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+        }
+        .tagline {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .game-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.3);
+        }
+        .game-card.spin:hover { border-color: var(--gold); }
+        .game-card.traffic:hover { border-color: var(--green); }
+        .game-card.bottle:hover { border-color: var(--neon-pink); }
+        .game-card.frozen:hover { border-color: var(--neon-blue); }
+
+        .game-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+        }
+        .game-card.spin .game-icon { background: linear-gradient(135deg, var(--gold), #B8860B); color: #000; }
+        .game-card.traffic .game-icon { background: linear-gradient(135deg, var(--red), var(--amber), var(--green)); color: #fff; }
+        .game-card.bottle .game-icon { background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)); color: #fff; }
+        .game-card.frozen .game-icon { background: linear-gradient(135deg, var(--neon-blue), #fff); color: #000; }
+
+        .game-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin: 15px 0 10px;
+        }
+        .game-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .game-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+        .status-live { background: var(--green); color: #fff; }
+        .status-coming { background: var(--amber); color: #000; }
+
+        /* How It Works */
+        .how-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        .how-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 0 auto 15px;
+            color: #fff;
+        }
+        .step h4 {
+            color: #fff;
+            margin: 10px 0;
+        }
+        .step p {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+            z-index: 100;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 30px;
+        }
+        .back-link:hover { color: #fff; }
+    </style>
 </head>
 <body>
-    <p>Redirecting to Flavors Zante homepage...</p>
-    <p>If you are not redirected, <a href="flavors-zante-v5.html">click here</a>.</p>
+    <a href="flavors-zante-v5.html" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO FLAVORS</a>
+
+    <div class="gaming-header">
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Logo">
+        <h1>FLAVORS GAMING</h1>
+        <p class="tagline">Play. Win. Party. Repeat.<br>Every drink unlocks a game. Every game unlocks a prize.</p>
+    </div>
+
+    <div class="container">
+        <div class="games-grid">
+            <a href="flavors-casino.html" class="game-card spin">
+                <div class="game-icon"><i class="fas fa-dice"></i></div>
+                <h3>SPIN & WIN</h3>
+                <p>The ultimate casino experience. Spin the wheel and win free drinks, VIP badges, and exclusive merch.</p>
+                <span class="game-status status-live">LIVE NOW</span>
+            </a>
+
+            <a href="flavors-traffic.html" class="game-card traffic">
+                <div class="game-icon"><i class="fas fa-traffic-light"></i></div>
+                <h3>TRAFFIC LIGHT</h3>
+                <p>Are you single, taken, or complicated? Set your status, find your match, and let the night begin.</p>
+                <span class="game-status status-live">LIVE NOW</span>
+            </a>
+
+            <a href="flavors-bottle.html" class="game-card bottle">
+                <div class="game-icon"><i class="fas fa-wine-bottle"></i></div>
+                <h3>BOTTLE OF LOVE</h3>
+                <p>The classic spin-the-bottle with a digital twist. Dare to play. Dare to kiss.</p>
+                <span class="game-status status-live">LIVE NOW</span>
+            </a>
+
+            <a href="flavors-frozen.html" class="game-card frozen">
+                <div class="game-icon"><i class="fas fa-snowflake"></i></div>
+                <h3>FROZEN CHALLENGE</h3>
+                <p>Can you handle the brain freeze? Down a slushy in record time and win the legendary t-shirt.</p>
+                <span class="game-status status-live">LIVE NOW</span>
+            </a>
+        </div>
+
+        <div class="how-section">
+            <h2><i class="fas fa-gamepad"></i> HOW IT WORKS</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>BUY A DRINK</h4>
+                    <p>Every drink at Flavors gives you a spin, a status, or a challenge entry.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>PLAY THE GAME</h4>
+                    <p>Use your phone or the venue screens to play. It's that simple.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>WIN PRIZES</h4>
+                    <p>Free drinks, VIP access, merch, and bragging rights. Winners get it all.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4>REPEAT</h4>
+                    <p>The more you play, the more you win. Keep the party going.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLAVORS GHL Integration Helper -->
+    <script src="js/flavors-ghl.js"></script>
+
+    <script>
+        // Track game page visits for analytics
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.FLAVORS_GHL) {
+                FLAVORS_GHL.storeLocalEvent('page_view', {
+                    page: 'gaming-hub',
+                    timestamp: new Date().toISOString()
+                });
+                console.log('?? Gaming Hub viewed');
+            }
+        });
+    </script>
 </body>
 </html>
