@@ -1,79 +1,85 @@
-<!-- FLAVORS FROZEN CHALLENGE - GHL v2 - PREMIUM ICE EXPERIENCE -->
+<!-- FLAVORS FROZEN CHALLENGE - GHL v3 FINAL - BRAND ALIGNED -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-:root{--ice:#00FFFF;--pink:#FF00FF;--gold:#FFD700;--silver:#C0C0C0;--bronze:#CD7F32;--frost:#E0FFFF}
+:root{--ice:#00BFFF;--pink:#FF1493;--gold:#FFB627;--silver:#C0C0C0;--bronze:#CD7F32;--frost:#E0FFFF;--dark:#0a0a0a}
 *{margin:0;padding:0;box-sizing:border-box}
-body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
+body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;min-height:100vh;overflow-x:hidden}
 
 /* ICE BG */
-.fc-bg{position:fixed;inset:0;background:radial-gradient(ellipse at center,#001a2a 0%,#000510 50%,#000 100%);z-index:0}
-.fc-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z' fill='%2300FFFF' fill-opacity='0.03'/%3E%3C/svg%3E");opacity:0.5}
+.fc-bg{position:fixed;inset:0;background:radial-gradient(ellipse at top,#002a3a 0%,#001020 40%,#000 100%);z-index:0}
+.fc-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z' fill='%2300BFFF' fill-opacity='0.03'/%3E%3C/svg%3E");opacity:0.5}
 
 /* HEADER */
-.fc-header{position:fixed;top:0;left:0;right:0;padding:12px 25px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.9);z-index:100;border-bottom:1px solid rgba(0,255,255,0.2)}
-.fc-logo{height:45px;filter:drop-shadow(0 0 15px var(--ice))}
-.fc-back{color:#fff;text-decoration:none;font-size:12px;display:flex;align-items:center;gap:8px;transition:0.3s;font-weight:600}
+.fc-header{position:fixed;top:0;left:0;right:0;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.95) 0%,transparent 100%);z-index:100;border-bottom:1px solid rgba(0,191,255,0.2)}
+.fc-logo{height:60px;filter:drop-shadow(0 0 20px var(--ice));transition:0.4s}
+.fc-logo:hover{filter:drop-shadow(0 0 40px var(--ice)) drop-shadow(0 0 60px var(--pink));transform:scale(1.05)}
+.fc-back{color:#fff;text-decoration:none;font-size:12px;display:flex;align-items:center;gap:8px;transition:0.3s;font-weight:600;letter-spacing:1px}
 .fc-back:hover{color:var(--ice)}
 
 /* MAIN */
-.fc-main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:80px 20px 50px}
+.fc-main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:100px 20px 50px}
 
 /* HERO */
 .fc-hero{text-align:center;margin-bottom:40px}
-.fc-snowflake{font-size:4rem;color:var(--ice);animation:float 3s infinite ease-in-out;margin-bottom:15px;text-shadow:0 0 40px var(--ice)}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.fc-hero h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:5px;margin-bottom:10px}
-.fc-hero h1 span{color:var(--ice);text-shadow:0 0 40px var(--ice)}
-.fc-hero p{color:#aaa;font-size:14px;max-width:500px;margin:0 auto;line-height:1.6}
+.fc-hero-logo{width:240px;height:auto;margin-bottom:20px;filter:drop-shadow(0 0 40px var(--ice));animation:float 3s infinite ease-in-out}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.fc-hero h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:6px;margin-bottom:12px}
+.fc-hero h1 span{background:linear-gradient(135deg,var(--ice) 0%,var(--frost) 50%,var(--ice) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+.fc-hero p{color:#aaa;font-size:14px;max-width:500px;margin:0 auto;line-height:1.7}
 .fc-hero strong{color:#fff}
 
 /* TIMER DISPLAY */
-.fc-timer{display:flex;justify-content:center;gap:20px;margin:30px 0}
-.fc-time-box{background:rgba(0,255,255,0.1);border:2px solid var(--ice);border-radius:15px;padding:20px 30px;text-align:center}
-.fc-time-box .num{font-family:'Orbitron',sans-serif;font-size:3rem;color:var(--ice);text-shadow:0 0 20px var(--ice)}
-.fc-time-box .label{font-size:10px;color:#666;letter-spacing:2px;margin-top:5px}
+.fc-timer{display:flex;justify-content:center;gap:15px;margin:35px 0}
+.fc-time-box{background:linear-gradient(145deg,rgba(0,191,255,0.1),rgba(0,0,0,0.5));border:2px solid var(--ice);border-radius:15px;padding:20px 25px;text-align:center;box-shadow:0 10px 40px rgba(0,191,255,0.15)}
+.fc-time-box .num{font-family:'Orbitron',sans-serif;font-size:2.8rem;color:var(--ice);text-shadow:0 0 25px var(--ice)}
+.fc-time-box .label{font-size:9px;color:#666;letter-spacing:2px;margin-top:5px;text-transform:uppercase}
+.fc-record-label{text-align:center;color:#555;font-size:11px;margin-bottom:30px;letter-spacing:2px}
+.fc-record-label i{color:var(--gold);margin-right:5px}
 
 /* VIDEO GALLERY */
 .fc-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:40px 0}
-.fc-video{border-radius:15px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;cursor:pointer;border:2px solid #222;transition:0.3s}
-.fc-video:hover{border-color:var(--ice);box-shadow:0 0 30px rgba(0,255,255,0.3);transform:scale(1.02)}
+.fc-video{border-radius:15px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;cursor:pointer;border:2px solid #1a1a1a;transition:0.3s}
+.fc-video:hover{border-color:var(--ice);box-shadow:0 0 35px rgba(0,191,255,0.3);transform:scale(1.02)}
 .fc-video video{width:100%;height:100%;object-fit:cover}
 .fc-video::after{content:'?';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;background:rgba(0,0,0,0.4);transition:0.3s}
 .fc-video.playing::after{opacity:0}
-.fc-video-rank{position:absolute;top:10px;left:10px;background:var(--gold);color:#000;font-family:'Orbitron',sans-serif;font-size:10px;font-weight:900;padding:5px 10px;border-radius:20px;z-index:5}
+.fc-video-rank{position:absolute;top:10px;left:10px;background:var(--gold);color:#000;font-family:'Orbitron',sans-serif;font-size:10px;font-weight:900;padding:5px 12px;border-radius:20px;z-index:5}
+.fc-video-rank.silver{background:var(--silver)}
+.fc-video-rank.bronze{background:var(--bronze)}
 
 /* RULES */
-.fc-rules{background:rgba(0,255,255,0.05);border:1px solid rgba(0,255,255,0.2);border-radius:20px;padding:35px;margin:40px 0}
-.fc-rules h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--ice);text-align:center;margin-bottom:25px;letter-spacing:3px}
+.fc-rules{background:linear-gradient(135deg,rgba(0,191,255,0.08),rgba(255,20,147,0.03));border:1px solid rgba(0,191,255,0.25);border-radius:25px;padding:40px;margin:40px 0}
+.fc-rules h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--ice);text-align:center;margin-bottom:30px;letter-spacing:4px}
 .fc-rules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.fc-rule{background:rgba(0,0,0,0.5);border:1px solid #222;border-radius:15px;padding:20px;text-align:center;transition:0.3s}
-.fc-rule:hover{border-color:var(--ice)}
-.fc-rule i{font-size:2rem;color:var(--ice);margin-bottom:12px}
-.fc-rule h4{font-family:'Orbitron',sans-serif;font-size:11px;margin-bottom:8px;letter-spacing:1px}
-.fc-rule p{color:#888;font-size:11px;line-height:1.5}
+.fc-rule{background:rgba(0,0,0,0.5);border:1px solid #222;border-radius:15px;padding:25px 15px;text-align:center;transition:0.3s}
+.fc-rule:hover{border-color:var(--ice);transform:translateY(-3px)}
+.fc-rule i{font-size:2rem;color:var(--ice);margin-bottom:15px}
+.fc-rule h4{font-family:'Bebas Neue',sans-serif;font-size:14px;margin-bottom:10px;letter-spacing:2px;color:var(--frost)}
+.fc-rule p{color:#777;font-size:11px;line-height:1.6}
 
 /* PRIZES */
-.fc-prizes{text-align:center;margin:40px 0}
-.fc-prizes h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);margin-bottom:25px;letter-spacing:3px}
-.fc-prize-cards{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-.fc-prize{background:linear-gradient(145deg,#1a1a1a,#0a0a0a);border-radius:20px;padding:25px;min-width:180px;text-align:center;border:2px solid #333;transition:0.3s}
-.fc-prize:hover{transform:translateY(-5px)}
-.fc-prize.gold{border-color:var(--gold);box-shadow:0 10px 40px rgba(255,215,0,0.2)}
-.fc-prize.silver{border-color:var(--silver);box-shadow:0 10px 40px rgba(192,192,192,0.15)}
-.fc-prize.bronze{border-color:var(--bronze);box-shadow:0 10px 40px rgba(205,127,50,0.15)}
-.fc-prize i{font-size:2.5rem;margin-bottom:12px}
+.fc-prizes{text-align:center;margin:50px 0}
+.fc-prizes h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);margin-bottom:30px;letter-spacing:4px}
+.fc-prize-cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.fc-prize{background:linear-gradient(145deg,#151515,#0a0a0a);border-radius:20px;padding:30px 25px;min-width:200px;text-align:center;border:2px solid #222;transition:0.3s}
+.fc-prize:hover{transform:translateY(-8px)}
+.fc-prize.gold{border-color:var(--gold);box-shadow:0 15px 50px rgba(255,182,39,0.2)}
+.fc-prize.silver{border-color:var(--silver);box-shadow:0 15px 50px rgba(192,192,192,0.15)}
+.fc-prize.bronze{border-color:var(--bronze);box-shadow:0 15px 50px rgba(205,127,50,0.15)}
+.fc-prize i{font-size:2.8rem;margin-bottom:15px}
 .fc-prize.gold i{color:var(--gold)}
 .fc-prize.silver i{color:var(--silver)}
 .fc-prize.bronze i{color:var(--bronze)}
-.fc-prize h3{font-family:'Orbitron',sans-serif;font-size:12px;margin-bottom:10px;letter-spacing:1px}
-.fc-prize p{color:#888;font-size:11px;line-height:1.6}
+.fc-prize h3{font-family:'Bebas Neue',sans-serif;font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.fc-prize p{color:#777;font-size:12px;line-height:1.7}
 
 /* LEADERBOARD */
-.fc-leaderboard{background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:20px;padding:35px;margin:40px 0}
-.fc-leaderboard h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);text-align:center;margin-bottom:25px;letter-spacing:3px}
-.fc-lb-item{display:flex;align-items:center;gap:15px;background:rgba(0,0,0,0.5);border-radius:12px;padding:15px;margin-bottom:10px;border-left:4px solid #333}
+.fc-leaderboard{background:linear-gradient(135deg,rgba(255,182,39,0.08),rgba(0,0,0,0.5));border:1px solid rgba(255,182,39,0.25);border-radius:25px;padding:40px;margin:40px 0}
+.fc-leaderboard h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);text-align:center;margin-bottom:30px;letter-spacing:4px}
+.fc-lb-item{display:flex;align-items:center;gap:15px;background:rgba(0,0,0,0.5);border-radius:12px;padding:18px 20px;margin-bottom:12px;border-left:4px solid #333;transition:0.3s}
+.fc-lb-item:hover{background:rgba(0,0,0,0.7)}
 .fc-lb-item.first{border-left-color:var(--gold)}
 .fc-lb-item.second{border-left-color:var(--silver)}
 .fc-lb-item.third{border-left-color:var(--bronze)}
@@ -81,16 +87,16 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 .fc-lb-item.first .fc-lb-rank{color:var(--gold)}
 .fc-lb-item.second .fc-lb-rank{color:var(--silver)}
 .fc-lb-item.third .fc-lb-rank{color:var(--bronze)}
-.fc-lb-name{flex:1;font-weight:700}
-.fc-lb-time{font-family:'Orbitron',sans-serif;color:var(--ice);font-weight:700}
+.fc-lb-name{flex:1;font-weight:700;font-size:14px}
+.fc-lb-time{font-family:'Orbitron',sans-serif;color:var(--ice);font-weight:700;font-size:14px}
 .fc-lb-flag{font-size:1.5rem}
 
 /* CTA */
-.fc-cta{text-align:center;padding:50px 30px;background:linear-gradient(180deg,transparent,rgba(0,255,255,0.1));border-radius:25px;margin:40px 0;border:1px solid rgba(0,255,255,0.2)}
-.fc-cta h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin-bottom:15px;letter-spacing:4px}
-.fc-cta p{color:#888;margin-bottom:25px;font-size:14px}
-.fc-btn{display:inline-block;padding:18px 50px;background:linear-gradient(135deg,var(--ice),#fff,var(--ice));color:#000;font-family:'Orbitron',sans-serif;font-weight:900;font-size:14px;text-decoration:none;border-radius:50px;border:2px solid #fff;box-shadow:0 0 40px rgba(0,255,255,0.5);transition:0.3s;letter-spacing:2px}
-.fc-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(0,255,255,0.8)}
+.fc-cta{text-align:center;padding:50px 35px;background:linear-gradient(180deg,rgba(0,191,255,0.1),rgba(255,20,147,0.05));border-radius:25px;margin:40px 0;border:1px solid rgba(0,191,255,0.2)}
+.fc-cta h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;margin-bottom:15px;letter-spacing:5px}
+.fc-cta p{color:#888;margin-bottom:25px;font-size:14px;max-width:400px;margin-left:auto;margin-right:auto}
+.fc-btn{display:inline-block;padding:18px 50px;background:linear-gradient(135deg,var(--ice),#fff,var(--ice));color:#000;font-family:'Orbitron',sans-serif;font-weight:900;font-size:13px;text-decoration:none;border-radius:50px;border:2px solid #fff;box-shadow:0 0 40px rgba(0,191,255,0.5);transition:0.3s;letter-spacing:2px}
+.fc-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(0,191,255,0.8)}
 
 /* FOOTER */
 .fc-footer{text-align:center;padding:30px;color:#333;font-size:11px}
@@ -98,17 +104,20 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 
 /* RESPONSIVE */
 @media(max-width:768px){
-.fc-hero h1{font-size:2.8rem}
+.fc-hero h1{font-size:2.8rem;letter-spacing:3px}
+.fc-hero-logo{width:180px}
 .fc-timer{gap:10px}
-.fc-time-box{padding:15px 20px}
+.fc-time-box{padding:15px 18px}
 .fc-time-box .num{font-size:2rem}
 .fc-videos{grid-template-columns:repeat(2,1fr)}
 .fc-rules-grid{grid-template-columns:repeat(2,1fr)}
 .fc-prize-cards{flex-direction:column;align-items:center}
+.fc-rules,.fc-leaderboard,.fc-cta{padding:30px 20px;margin:30px 10px}
 }
 @media(max-width:500px){
 .fc-videos{grid-template-columns:1fr 1fr}
 .fc-rules-grid{grid-template-columns:1fr 1fr}
+.fc-hero-logo{width:150px}
 }
 </style>
 
@@ -122,7 +131,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 <main class="fc-main">
     <!-- HERO -->
     <div class="fc-hero">
-        <div class="fc-snowflake">??</div>
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Logo" class="fc-hero-logo">
         <h1>THE <span>FROZEN CHALLENGE</span></h1>
         <p><strong>CAN YOU HANDLE THE BRAIN FREEZE?</strong><br>Down a frozen daiquiri in record time. Win the shirt. Make the wall of fame. Become a legend.</p>
     </div>
@@ -131,18 +140,18 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
     <div class="fc-timer">
         <div class="fc-time-box">
             <div class="num">00</div>
-            <div class="label">MINUTES</div>
+            <div class="label">Minutes</div>
         </div>
         <div class="fc-time-box">
             <div class="num">04</div>
-            <div class="label">SECONDS</div>
+            <div class="label">Seconds</div>
         </div>
         <div class="fc-time-box">
             <div class="num">73</div>
             <div class="label">MS</div>
         </div>
     </div>
-    <p style="text-align:center;color:#666;font-size:12px;margin-bottom:30px">?? CURRENT RECORD TO BEAT</p>
+    <p class="fc-record-label"><i class="fas fa-trophy"></i> CURRENT RECORD TO BEAT</p>
 
     <!-- VIDEO GALLERY -->
     <div class="fc-videos">
@@ -151,11 +160,11 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
             <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video>
         </div>
         <div class="fc-video" onclick="playVideo(this)">
-            <span class="fc-video-rank">?? #2</span>
+            <span class="fc-video-rank silver">?? #2</span>
             <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video>
         </div>
         <div class="fc-video" onclick="playVideo(this)">
-            <span class="fc-video-rank">?? #3</span>
+            <span class="fc-video-rank bronze">?? #3</span>
             <video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video>
         </div>
         <div class="fc-video" onclick="playVideo(this)">
@@ -171,7 +180,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 
     <!-- RULES -->
     <div class="fc-rules">
-        <h2>?? THE RULES</h2>
+        <h2>THE RULES</h2>
         <div class="fc-rules-grid">
             <div class="fc-rule">
                 <i class="fas fa-glass-cheers"></i>
@@ -198,7 +207,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 
     <!-- PRIZES -->
     <div class="fc-prizes">
-        <h2>?? THE PRIZES</h2>
+        <h2>THE PRIZES</h2>
         <div class="fc-prize-cards">
             <div class="fc-prize gold">
                 <i class="fas fa-crown"></i>
@@ -220,7 +229,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 
     <!-- LEADERBOARD -->
     <div class="fc-leaderboard">
-        <h2>?? WALL OF FAME - SEASON 2025</h2>
+        <h2>WALL OF FAME - SEASON 2025</h2>
         <div class="fc-lb-item first">
             <div class="fc-lb-rank">1</div>
             <div class="fc-lb-name">Jake "Ice King" Thompson</div>
@@ -240,13 +249,13 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
             <div class="fc-lb-flag">????</div>
         </div>
         <div class="fc-lb-item">
-            <div class="fc-lb-rank" style="color:#666">4</div>
+            <div class="fc-lb-rank" style="color:#555">4</div>
             <div class="fc-lb-name">Sophie Martinez</div>
             <div class="fc-lb-time">00:06.34</div>
             <div class="fc-lb-flag">????</div>
         </div>
         <div class="fc-lb-item">
-            <div class="fc-lb-rank" style="color:#666">5</div>
+            <div class="fc-lb-rank" style="color:#555">5</div>
             <div class="fc-lb-name">Max "The Chugger" Brown</div>
             <div class="fc-lb-time">00:06.88</div>
             <div class="fc-lb-flag">????</div>
@@ -257,7 +266,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
     <div class="fc-cta">
         <h2>THINK YOU CAN BEAT IT?</h2>
         <p>Come to Flavors, order a frozen daiquiri, and prove you're worthy of the Wall of Fame!</p>
-        <a href="https://flavorsdaiquiribar.com/" class="fc-btn">?? TAKE THE CHALLENGE</a>
+        <a href="https://flavorsdaiquiribar.com/" class="fc-btn">TAKE THE CHALLENGE</a>
     </div>
 </main>
 
