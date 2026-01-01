@@ -473,4 +473,47 @@ window.FLAVORS_GHL = FLAVORS_GHL;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('?? FLAVORS GHL Integration v2.0 loaded');
     console.log('?? Analytics summary:', FLAVORS_GHL.getLocalAnalytics().summary || FLAVORS_GHL.getLocalAnalytics());
+    
+    // Initialize mobile menu
+    initMobileMenu();
 });
+
+/**
+ * Initialize mobile menu functionality
+ */
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const offCanvasMenu = document.querySelector('.off-canvas-menu');
+    
+    if (mobileMenuBtn && offCanvasMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            offCanvasMenu.classList.add('active');
+        });
+    }
+    
+    if (closeMenuBtn && offCanvasMenu) {
+        closeMenuBtn.addEventListener('click', function() {
+            offCanvasMenu.classList.remove('active');
+        });
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (offCanvasMenu && offCanvasMenu.classList.contains('active')) {
+            if (!offCanvasMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                offCanvasMenu.classList.remove('active');
+            }
+        }
+    });
+    
+    // Close menu when clicking a link
+    if (offCanvasMenu) {
+        const menuLinks = offCanvasMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                offCanvasMenu.classList.remove('active');
+            });
+        });
+    }
+}
