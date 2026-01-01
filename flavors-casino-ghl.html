@@ -28,22 +28,16 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 /* WHEEL CONTAINER */
 .sw-wheel-container{position:relative;width:340px;height:340px;margin:20px auto}
 
-/* CUSTOM BRANDED POINTER - Replace URL with your uploaded pointer */
-.sw-pointer{position:absolute;top:-60px;left:50%;transform:translateX(-50%);z-index:20;width:80px;height:100px}
-.sw-pointer img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,255,255,0.4)) drop-shadow(0 10px 30px rgba(255,20,147,0.4))}
+/* CUSTOM BRANDED POINTER */
+.sw-pointer{position:absolute;top:-70px;left:50%;transform:translateX(-50%);z-index:20;width:90px;height:110px}
+.sw-pointer img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,255,255,0.5)) drop-shadow(0 10px 30px rgba(255,20,147,0.5))}
 
 /* WHEEL */
 .sw-wheel-wrap{position:absolute;inset:0;transition:transform 5s cubic-bezier(0.17,0.67,0.12,0.99)}
 .sw-wheel{width:100%;height:100%;border-radius:50%;position:relative;border:8px solid var(--gold);box-shadow:0 0 0 4px #000,0 0 50px rgba(255,215,0,0.3);overflow:hidden}
 
-/* 8 SEGMENT WHEEL - Purple & Black alternating */
-.sw-wheel-inner{width:100%;height:100%;position:relative}
-.sw-segment{position:absolute;width:50%;height:50%;left:50%;top:50%;transform-origin:0 0;overflow:hidden}
-.sw-segment::before{content:'';position:absolute;width:200%;height:200%;left:-100%;top:-100%;transform-origin:center}
-.sw-segment span{position:absolute;left:15%;top:50%;transform:translateY(-50%) rotate(22.5deg);font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 3px rgba(0,0,0,0.8);white-space:nowrap}
-
-/* Segments with conic gradient for clean pie slices */
-.sw-wheel-inner{background:conic-gradient(
+/* 8 SEGMENT WHEEL - Purple & Black alternating with conic gradient */
+.sw-wheel-inner{width:100%;height:100%;position:relative;background:conic-gradient(
     #9D00FF 0deg 45deg,
     #1a1a1a 45deg 90deg,
     #9D00FF 90deg 135deg,
@@ -111,7 +105,7 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 /* RESPONSIVE */
 @media(max-width:400px){
 .sw-wheel-container{width:300px;height:300px}
-.sw-pointer{width:70px;height:85px;top:-50px}
+.sw-pointer{width:80px;height:95px;top:-60px}
 .sw-hub{width:60px;height:60px}
 .sw-hero h1{font-size:3rem}
 .sw-prizes{grid-template-columns:repeat(2,1fr)}
@@ -135,13 +129,10 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 
     <!-- WHEEL -->
     <div class="sw-wheel-container">
-        <!-- CUSTOM BRANDED POINTER - Upload to GHL and replace this URL -->
+        <!-- CUSTOM BRANDED POINTER -->
         <div class="sw-pointer">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/REPLACE_WITH_POINTER_URL.png" alt="Pointer" onerror="this.style.display='none'">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f347e4125ac4cc7d64f8.png" alt="Flavors Pointer">
         </div>
-
-        <!-- Fallback CSS pointer if image fails -->
-        <div class="sw-pointer-fallback" style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:19;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid var(--gold);filter:drop-shadow(0 5px 15px rgba(255,215,0,0.8))"></div>
 
         <!-- WHEEL -->
         <div class="sw-wheel-wrap" id="swWheel">
@@ -188,7 +179,7 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
         <div class="sw-prize-item p3"><i class="fas fa-vial"></i><span>Test Tube</span></div>
         <div class="sw-prize-item p4"><i class="fas fa-blender"></i><span>Free Daiquiri</span></div>
         <div class="sw-prize-item p5"><i class="fas fa-crown"></i><span>VIP Badge</span></div>
-        <div class="sw-prize-item p6"><i class="fas fa-golf-ball"></i><span>€5 Off</span></div>
+        <div class="sw-prize-item p6"><i class="fas fa-tag"></i><span>€5 Off</span></div>
         <div class="sw-prize-item p7"><i class="fas fa-ribbon"></i><span>Flavors Band</span></div>
         <div class="sw-prize-item p8"><i class="fas fa-star"></i><span>VIP Tattoo</span></div>
     </div>
@@ -224,7 +215,6 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
         spinBtn.disabled=true;
         result.classList.remove('show');
         
-        // Random spins + random final position
         var spins=6+Math.floor(Math.random()*4);
         var extra=Math.random()*360;
         rotation+=(spins*360)+extra;
@@ -234,7 +224,6 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
             spinning=false;
             spinBtn.disabled=false;
             
-            // Calculate winner (8 segments, 45deg each)
             var angle=(360-(rotation%360)+22.5)%360;
             var idx=Math.floor(angle/45)%8;
             var prize=prizes[idx];
