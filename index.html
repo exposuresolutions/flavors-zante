@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Flavors Zante | The Ultimate Party Bar</title>
+    <title>Flavors Zante | The Ultimate Party Bar Franchise</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ========================================
-           FLAVORS ZANTE - ULTIMATE PARTY REDESIGN
+           FLAVORS ZANTE - PREMIUM FRANCHISE DESIGN
            ======================================== */
         :root {
             --neon-pink: #FF00FF;
@@ -23,7 +23,9 @@
             --neon-orange: #FF6B00;
             --neon-yellow: #FFE500;
             --gold: #FFD700;
-            --dark-bg: #0a0a0a;
+            --premium-gold: #D4AF37;
+            --dark-bg: #050508;
+            --card-bg: rgba(10, 5, 20, 0.95);
         }
 
         * {
@@ -48,7 +50,6 @@
             width: 100vw;
             height: 100vh;
             z-index: 0;
-            overflow: hidden;
         }
 
         .video-background::after {
@@ -59,9 +60,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(180deg,
-                    rgba(0, 0, 0, 0.7) 0%,
-                    rgba(10, 0, 20, 0.8) 50%,
-                    rgba(0, 0, 0, 0.9) 100%);
+                    rgba(5, 5, 8, 0.85) 0%,
+                    rgba(20, 5, 40, 0.75) 40%,
+                    rgba(5, 5, 8, 0.9) 100%);
             z-index: 1;
         }
 
@@ -74,121 +75,129 @@
             left: 0;
         }
 
-        /* HEADER */
+        /* HEADER - Premium Style */
         .main-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 15px 40px;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, transparent 100%);
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .logo-container img {
-            height: 70px;
-            filter: drop-shadow(0 0 20px var(--neon-pink));
-            transition: all 0.3s;
+            height: 65px;
+            filter: drop-shadow(0 0 25px var(--neon-pink));
+            transition: all 0.4s;
         }
 
         .logo-container img:hover {
             filter: drop-shadow(0 0 40px var(--neon-pink)) drop-shadow(0 0 60px var(--neon-blue));
-            transform: scale(1.05);
+            transform: scale(1.08);
+        }
+
+        .brand-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: none;
         }
 
         .main-nav {
             display: flex;
-            gap: 40px;
+            gap: 45px;
         }
 
         .main-nav a {
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             transition: all 0.3s;
             position: relative;
-            padding: 10px 0;
+            padding: 12px 0;
         }
 
-        .main-nav a::before {
+        .main-nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
+            left: 0;
+            right: 0;
+            height: 2px;
             background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
-            transition: all 0.3s;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
         }
 
         .main-nav a:hover {
-            color: var(--neon-pink);
-            text-shadow: 0 0 20px var(--neon-pink);
+            color: white;
         }
 
-        .main-nav a:hover::before {
-            width: 100%;
+        .main-nav a:hover::after {
+            transform: scaleX(1);
         }
 
         .header-social {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         .header-social a {
-            color: white;
-            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.4rem;
             transition: all 0.3s;
         }
 
         .header-social a:hover {
             color: var(--neon-pink);
-            transform: scale(1.3) rotate(10deg);
-            filter: drop-shadow(0 0 15px var(--neon-pink));
+            transform: translateY(-3px);
         }
 
         #mobile-menu-btn {
             display: none;
             background: transparent;
-            border: 2px solid var(--neon-pink);
+            border: 1px solid var(--neon-pink);
             color: white;
-            font-size: 1.8rem;
-            padding: 12px 18px;
+            font-size: 1.5rem;
+            padding: 12px 16px;
             cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s;
+            border-radius: 8px;
         }
 
-        #mobile-menu-btn:hover {
-            background: var(--neon-pink);
-            box-shadow: 0 0 30px var(--neon-pink);
-        }
-
-        /* OFF-CANVAS MENU */
+        /* MOBILE MENU */
         .off-canvas-menu {
             display: none;
             position: fixed;
             top: 0;
-            right: -350px;
-            width: 350px;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
             height: 100%;
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2a 100%);
+            background: linear-gradient(180deg, #0a0510 0%, #150820 100%);
             z-index: 1001;
-            padding: 100px 40px 40px;
+            padding: 100px 50px 50px;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
             transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 2px solid var(--neon-pink);
-            box-shadow: -10px 0 50px rgba(255, 0, 255, 0.3);
+            border-left: 1px solid var(--neon-pink);
         }
 
         .off-canvas-menu.active {
@@ -197,158 +206,162 @@
 
         #close-menu-btn {
             position: absolute;
-            top: 25px;
-            right: 25px;
+            top: 30px;
+            right: 30px;
             background: none;
             border: none;
             color: var(--neon-pink);
-            font-size: 3rem;
+            font-size: 2.5rem;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        #close-menu-btn:hover {
-            transform: rotate(90deg) scale(1.2);
-            text-shadow: 0 0 20px var(--neon-pink);
         }
 
         .off-canvas-menu a {
             color: white;
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            padding: 20px;
-            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
-            border: 1px solid transparent;
         }
 
         .off-canvas-menu a:hover {
             color: var(--neon-pink);
-            background: rgba(255, 0, 255, 0.1);
-            border-color: var(--neon-pink);
-            padding-left: 30px;
+            padding-left: 15px;
         }
 
         .off-canvas-social {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             margin-top: auto;
-            justify-content: center;
         }
 
         .off-canvas-social a {
-            font-size: 2rem;
-            padding: 0;
+            font-size: 1.8rem;
             border: none;
+            padding: 0;
         }
 
-        /* MAIN CONTAINER */
+        /* MAIN */
         .container {
             position: relative;
             z-index: 1;
-            padding: 140px 20px 60px;
+            padding: 130px 20px 80px;
             min-height: 100vh;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        /* HERO */
+        /* HERO - Premium */
         .hero-content {
             text-align: center;
-            margin-bottom: 60px;
-            padding-top: 20px;
+            margin-bottom: 50px;
+            padding-top: 30px;
         }
 
         .hero-content h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 6rem;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-blue) 50%, var(--neon-pink) 100%);
+            font-size: 5.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-pink) 50%, var(--neon-blue) 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shine 3s linear infinite;
-            letter-spacing: 8px;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.5));
+            animation: textShine 4s linear infinite;
+            letter-spacing: 10px;
         }
 
-        @keyframes shine {
+        @keyframes textShine {
             to {
                 background-position: 200% center;
             }
         }
 
-        .hero-content p {
+        .hero-content .tagline {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 8px;
+            font-size: 1.3rem;
+            letter-spacing: 10px;
             font-weight: 400;
             color: var(--neon-blue);
-            text-shadow: 0 0 30px var(--neon-blue);
+            text-shadow: 0 0 40px var(--neon-blue);
+            text-transform: uppercase;
         }
 
-        /* ROULETTE GAME HUB */
-        .game-hub {
-            margin: 40px auto;
-            padding: 60px 40px;
-            max-width: 1000px;
-            background: radial-gradient(ellipse at center, rgba(20, 0, 40, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+        .hero-content .sub-tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 15px;
+            letter-spacing: 3px;
+        }
+
+        /* FLAVORS GAME SELECTOR - Premium Roulette */
+        .game-selector {
+            margin: 50px auto;
+            padding: 60px;
+            max-width: 950px;
+            background: var(--card-bg);
             border-radius: 30px;
-            border: 3px solid transparent;
-            background-clip: padding-box;
             position: relative;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        .game-hub::before {
+        .game-selector::before {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-pink), transparent, var(--neon-blue), transparent, var(--neon-pink));
             background-size: 400% 400%;
             border-radius: 32px;
             z-index: -1;
-            animation: borderGlow 4s ease infinite;
+            animation: borderRotate 8s linear infinite;
+            opacity: 0.5;
         }
 
-        @keyframes borderGlow {
-            0%,
-            100% {
+        @keyframes borderRotate {
+            0% {
                 background-position: 0% 50%;
             }
 
-            50% {
-                background-position: 100% 50%;
+            100% {
+                background-position: 400% 50%;
             }
         }
 
-        .hub-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3.5rem;
+        .selector-title {
             text-align: center;
             margin-bottom: 50px;
+        }
+
+        .selector-title h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
             color: white;
-            text-shadow: 0 0 40px var(--neon-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
         }
 
-        /* ROULETTE WHEEL */
-        .roulette-container {
+        .selector-title p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+
+        /* WHEEL CONTAINER */
+        .wheel-wrapper {
             position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto 50px;
+            width: 380px;
+            height: 380px;
+            margin: 0 auto 40px;
         }
 
-        .roulette-wheel {
+        /* GAME SEGMENTS - Static wheel */
+        .game-wheel {
             width: 100%;
             height: 100%;
             border-radius: 50%;
@@ -362,85 +375,118 @@
                 var(--neon-yellow) 300deg 360deg
             );
             box-shadow:
-                0 0 60px rgba(255, 0, 255, 0.5),
-                0 0 100px rgba(0, 255, 255, 0.3),
-                inset 0 0 80px rgba(0, 0, 0, 0.8);
-            animation: slowSpin 20s linear infinite;
-            cursor: pointer;
-            transition: animation-duration 0.5s;
+                0 0 0 8px rgba(0, 0, 0, 0.8),
+                0 0 0 10px var(--premium-gold),
+                0 0 60px rgba(255, 0, 255, 0.3),
+                inset 0 0 100px rgba(0, 0, 0, 0.7);
         }
 
-        .roulette-wheel:hover {
-            animation-duration: 2s;
-        }
-
-        .roulette-wheel.spinning {
-            animation: fastSpin 0.3s linear infinite;
-        }
-
-        @keyframes slowSpin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fastSpin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Game icons on wheel */
-        .wheel-icon {
+        /* Game Labels on Wheel */
+        .wheel-segment {
             position: absolute;
-            font-size: 2rem;
+            width: 50%;
+            height: 50%;
+            transform-origin: 100% 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 25px;
+        }
+
+        .wheel-segment span {
+            transform: rotate(15deg);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
             color: white;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            transform-origin: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .wheel-icon:nth-child(1) {
-            top: 15%;
+        .wheel-segment i {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .wheel-segment:nth-child(1) {
+            transform: rotate(-60deg) translateY(-100%);
+        }
+
+        .wheel-segment:nth-child(2) {
+            transform: rotate(0deg) translateY(-100%);
+        }
+
+        .wheel-segment:nth-child(3) {
+            transform: rotate(60deg) translateY(-100%);
+        }
+
+        .wheel-segment:nth-child(4) {
+            transform: rotate(120deg) translateY(-100%);
+        }
+
+        .wheel-segment:nth-child(5) {
+            transform: rotate(180deg) translateY(-100%);
+        }
+
+        .wheel-segment:nth-child(6) {
+            transform: rotate(240deg) translateY(-100%);
+        }
+
+        /* SPINNING NEEDLE with Logo */
+        .needle-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+
+        .needle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+        }
+
+        .needle.spinning {
+            transition: none;
+        }
+
+        /* Needle arm */
+        .needle-arm {
+            position: absolute;
+            top: 0;
             left: 50%;
             transform: translateX(-50%);
+            width: 6px;
+            height: 85px;
+            background: linear-gradient(180deg, var(--premium-gold) 0%, #8B6914 100%);
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
-        .wheel-icon:nth-child(2) {
-            top: 30%;
-            right: 10%;
-        }
-
-        .wheel-icon:nth-child(3) {
-            bottom: 30%;
-            right: 10%;
-        }
-
-        .wheel-icon:nth-child(4) {
-            bottom: 15%;
+        .needle-arm::before {
+            content: '';
+            position: absolute;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 25px solid var(--premium-gold);
+            filter: drop-shadow(0 0 10px var(--premium-gold));
         }
 
-        .wheel-icon:nth-child(5) {
-            bottom: 30%;
-            left: 10%;
-        }
-
-        .wheel-icon:nth-child(6) {
-            top: 30%;
-            left: 10%;
-        }
-
-        /* Center logo */
-        .wheel-center {
+        /* Center Logo Hub */
+        .logo-hub {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -449,205 +495,214 @@
             height: 120px;
             border-radius: 50%;
             background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            border: 4px solid var(--premium-gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-            border: 4px solid var(--gold);
-            z-index: 10;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(212, 175, 55, 0.3);
+            z-index: 25;
         }
 
-        .wheel-center:hover {
+        .logo-hub:hover {
             transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 0 60px var(--gold);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 80px var(--premium-gold);
         }
 
-        .wheel-center img {
-            width: 80px;
-            height: 80px;
+        .logo-hub img {
+            width: 75px;
+            height: 75px;
             object-fit: contain;
-            filter: drop-shadow(0 0 10px var(--neon-pink));
+            filter: drop-shadow(0 0 15px var(--neon-pink));
+            transition: filter 0.3s;
         }
 
-        /* Pointer */
-        .wheel-pointer {
+        .logo-hub:hover img {
+            filter: drop-shadow(0 0 25px var(--neon-pink)) drop-shadow(0 0 35px var(--neon-blue));
+        }
+
+        .logo-hub .spin-text {
             position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 40px solid var(--gold);
-            filter: drop-shadow(0 0 20px var(--gold));
-            z-index: 20;
-        }
-
-        /* Selected Game Display */
-        .selected-game {
-            text-align: center;
-            margin-bottom: 40px;
-            min-height: 80px;
-        }
-
-        .selected-game h3 {
+            bottom: -35px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: var(--neon-pink);
-            text-shadow: 0 0 30px var(--neon-pink);
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            color: var(--premium-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* Result Display */
+        .result-display {
+            text-align: center;
+            min-height: 100px;
+            padding: 20px;
+        }
+
+        .result-display h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s;
         }
 
-        .selected-game h3.show {
+        .result-display h3.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .selected-game .play-btn {
+        .result-display .play-btn {
             display: inline-block;
-            padding: 15px 50px;
+            padding: 16px 50px;
             background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
             border: none;
             border-radius: 50px;
             color: white;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            cursor: pointer;
+            letter-spacing: 4px;
             transition: all 0.3s;
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.9);
         }
 
-        .selected-game .play-btn.show {
+        .result-display .play-btn.show {
             opacity: 1;
             transform: scale(1);
         }
 
-        .selected-game .play-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px var(--neon-pink);
+        .result-display .play-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.4);
         }
 
-        /* Quick Access Buttons */
-        .quick-games {
+        /* QUICK ACCESS - Premium Cards */
+        .quick-access {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
-        .quick-btn {
+        .quick-card {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 18px 15px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            padding: 25px 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
             color: white;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .quick-btn i {
-            font-size: 1.3rem;
-        }
-
-        .quick-btn:nth-child(1) {
-            --btn-color: var(--neon-pink);
-        }
-
-        .quick-btn:nth-child(2) {
-            --btn-color: var(--neon-blue);
-        }
-
-        .quick-btn:nth-child(3) {
-            --btn-color: var(--neon-purple);
-        }
-
-        .quick-btn:nth-child(4) {
-            --btn-color: var(--neon-green);
-        }
-
-        .quick-btn:nth-child(5) {
-            --btn-color: var(--neon-orange);
-        }
-
-        .quick-btn:nth-child(6) {
-            --btn-color: var(--neon-yellow);
-            color: #000;
-        }
-
-        .quick-btn:hover {
-            background: var(--btn-color);
-            border-color: var(--btn-color);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 40px var(--btn-color);
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            margin: 80px auto;
-            padding: 60px 50px;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            text-align: center;
-            border: 2px solid var(--neon-blue);
+            transition: all 0.4s;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-section::before {
-            content: '🌴';
+        .quick-card::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 3rem;
-            opacity: 0.5;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--card-color) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        .cta-section::after {
-            content: '🍹';
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-size: 3rem;
-            opacity: 0.5;
+        .quick-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .quick-card:hover {
+            border-color: var(--card-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px var(--card-color);
+        }
+
+        .quick-card i {
+            font-size: 2rem;
+            color: var(--card-color);
+            transition: transform 0.3s;
+        }
+
+        .quick-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .quick-card span {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .quick-card:nth-child(1) {
+            --card-color: var(--neon-pink);
+        }
+
+        .quick-card:nth-child(2) {
+            --card-color: var(--neon-blue);
+        }
+
+        .quick-card:nth-child(3) {
+            --card-color: var(--neon-purple);
+        }
+
+        .quick-card:nth-child(4) {
+            --card-color: var(--neon-green);
+        }
+
+        .quick-card:nth-child(5) {
+            --card-color: var(--neon-orange);
+        }
+
+        .quick-card:nth-child(6) {
+            --card-color: var(--neon-yellow);
+        }
+
+        /* CTA - Franchise Style */
+        .cta-section {
+            margin: 80px auto;
+            padding: 70px 60px;
+            max-width: 900px;
+            background: linear-gradient(135deg, rgba(157, 0, 255, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            position: relative;
         }
 
         .cta-section h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3.5rem;
             margin-bottom: 15px;
-            color: white;
-            text-shadow: 0 0 30px var(--neon-blue);
+            letter-spacing: 6px;
+            background: linear-gradient(90deg, white, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         .btn-primary {
@@ -658,65 +713,83 @@
             border-radius: 50px;
             color: #000;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 900;
+            font-size: 1rem;
+            font-weight: 800;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             transition: all 0.3s;
         }
 
         .btn-primary:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 60px var(--neon-blue);
+            transform: scale(1.08);
+            box-shadow: 0 15px 50px rgba(0, 255, 255, 0.4);
         }
 
         /* FOOTER */
         .main-footer {
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
-            padding: 40px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.98) 100%);
+            padding: 50px 20px 30px;
             text-align: center;
-            font-size: 0.9rem;
-            color: #666;
             position: relative;
             z-index: 1;
         }
 
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            opacity: 0.7;
+            filter: grayscale(30%);
+        }
+
         .main-footer p {
             margin: 8px 0;
+            color: #555;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         .main-footer a {
             color: var(--neon-pink);
             text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
 
         .main-footer a:hover {
             color: white;
-            text-shadow: 0 0 20px var(--neon-pink);
         }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .quick-games {
+            .quick-access {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .roulette-container {
-                width: 300px;
-                height: 300px;
+            .wheel-wrapper {
+                width: 320px;
+                height: 320px;
             }
 
-            .wheel-center {
-                width: 90px;
-                height: 90px;
+            .needle-container {
+                width: 170px;
+                height: 170px;
             }
 
-            .wheel-center img {
+            .logo-hub {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-hub img {
                 width: 60px;
                 height: 60px;
+            }
+
+            .needle-arm {
+                height: 70px;
             }
         }
 
@@ -735,54 +808,73 @@
             }
 
             .hero-content h1 {
-                font-size: 3.5rem;
-                letter-spacing: 4px;
+                font-size: 3.2rem;
+                letter-spacing: 5px;
             }
 
-            .hero-content p {
+            .hero-content .tagline {
                 font-size: 1rem;
-                letter-spacing: 4px;
+                letter-spacing: 5px;
             }
 
-            .hub-title {
-                font-size: 2.5rem;
+            .game-selector {
+                padding: 40px 25px;
+                margin: 30px 15px;
             }
 
-            .game-hub {
-                padding: 40px 20px;
-                margin: 20px;
+            .selector-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .quick-access {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
 
             .cta-section {
-                padding: 40px 25px;
-                margin: 40px 20px;
+                padding: 50px 30px;
+                margin: 50px 15px;
             }
 
             .cta-section h2 {
                 font-size: 2.5rem;
             }
-
-            .quick-games {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
+            }
+
+            .wheel-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+
+            .needle-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .logo-hub {
+                width: 90px;
+                height: 90px;
+            }
+
+            .needle-arm {
+                height: 60px;
+            }
+
+            .quick-access {
+                grid-template-columns: 1fr;
             }
 
             .main-header {
-                padding: 10px 20px;
+                padding: 15px 20px;
             }
 
             .logo-container img {
                 height: 50px;
-            }
-
-            .roulette-container {
-                width: 280px;
-                height: 280px;
             }
         }
     </style>
@@ -805,6 +897,7 @@
                 <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
                     alt="Flavors Zante">
             </a>
+            <span class="brand-text">FLAVORS</span>
         </div>
         <nav class="main-nav">
             <a href="https://exposuresolutions.github.io/flavors-zante/flavors-menu.html">Menu</a>
@@ -837,142 +930,154 @@
     <!-- MAIN CONTENT -->
     <main class="container">
         <div class="hero-content">
-            <h1>ZANTE'S #1 PARTY BAR</h1>
-            <p>HOME OF THE FROZEN DAIQUIRI</p>
+            <h1>FLAVORS ZANTE</h1>
+            <p class="tagline">The Ultimate Party Bar</p>
+            <p class="sub-tagline">Home of the Frozen Daiquiri • Est. 2018</p>
         </div>
 
-        <div class="game-hub">
-            <h2 class="hub-title">🎰 SPIN TO PLAY 🎰</h2>
+        <div class="game-selector">
+            <div class="selector-title">
+                <h2>FLAVORS GAME ROULETTE</h2>
+                <p>Spin the needle to discover your next experience</p>
+            </div>
 
-            <!-- ROULETTE WHEEL -->
-            <div class="roulette-container">
-                <div class="wheel-pointer"></div>
-                <div class="roulette-wheel" id="rouletteWheel">
-                    <span class="wheel-icon"><i class="fas fa-traffic-light"></i></span>
-                    <span class="wheel-icon"><i class="fas fa-dice"></i></span>
-                    <span class="wheel-icon"><i class="fas fa-crown"></i></span>
-                    <span class="wheel-icon"><i class="fas fa-snowflake"></i></span>
-                    <span class="wheel-icon"><i class="fas fa-wine-bottle"></i></span>
-                    <span class="wheel-icon"><i class="fas fa-gamepad"></i></span>
+            <!-- WHEEL with SPINNING NEEDLE -->
+            <div class="wheel-wrapper">
+                <!-- Static Wheel -->
+                <div class="game-wheel">
+                    <div class="wheel-segment"><span><i class="fas fa-traffic-light"></i> Traffic</span></div>
+                    <div class="wheel-segment"><span><i class="fas fa-dice"></i> Casino</span></div>
+                    <div class="wheel-segment"><span><i class="fas fa-crown"></i> VIP</span></div>
+                    <div class="wheel-segment"><span><i class="fas fa-snowflake"></i> Frozen</span></div>
+                    <div class="wheel-segment"><span><i class="fas fa-wine-bottle"></i> Bottle</span></div>
+                    <div class="wheel-segment"><span><i class="fas fa-gamepad"></i> Games</span></div>
                 </div>
-                <div class="wheel-center" id="spinBtn">
+
+                <!-- Spinning Needle Container -->
+                <div class="needle-container">
+                    <div class="needle" id="needle">
+                        <div class="needle-arm"></div>
+                    </div>
+                </div>
+
+                <!-- Center Logo -->
+                <div class="logo-hub" id="spinBtn">
                     <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
-                        alt="SPIN">
+                        alt="Flavors">
+                    <span class="spin-text">Tap to Spin</span>
                 </div>
             </div>
 
-            <!-- Selected Game Display -->
-            <div class="selected-game">
-                <h3 id="selectedGameTitle">CLICK THE WHEEL TO SPIN!</h3>
-                <a href="#" class="play-btn" id="playBtn" style="display:none;">PLAY NOW</a>
+            <!-- Result -->
+            <div class="result-display">
+                <h3 id="resultTitle">YOUR DESTINY AWAITS</h3>
+                <a href="#" class="play-btn" id="playBtn">PLAY NOW</a>
             </div>
 
-            <!-- Quick Access -->
-            <div class="quick-games">
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html" class="quick-btn">
-                    <i class="fas fa-traffic-light"></i> Traffic Light
+            <!-- Quick Access Cards -->
+            <div class="quick-access">
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html" class="quick-card">
+                    <i class="fas fa-traffic-light"></i>
+                    <span>Flavors Traffic Light</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-casino.html" class="quick-btn">
-                    <i class="fas fa-dice"></i> Spin & Win
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-casino.html" class="quick-card">
+                    <i class="fas fa-dice"></i>
+                    <span>Flavors Casino</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html" class="quick-btn">
-                    <i class="fas fa-crown"></i> VIP Boss
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html" class="quick-card">
+                    <i class="fas fa-crown"></i>
+                    <span>Flavors VIP</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html" class="quick-btn">
-                    <i class="fas fa-snowflake"></i> Frozen Challenge
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html" class="quick-card">
+                    <i class="fas fa-snowflake"></i>
+                    <span>Flavors Frozen</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html" class="quick-btn">
-                    <i class="fas fa-wine-bottle"></i> Spin Bottle
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html" class="quick-card">
+                    <i class="fas fa-wine-bottle"></i>
+                    <span>Flavors Bottle</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html" class="quick-btn">
-                    <i class="fas fa-gamepad"></i> All Games
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html" class="quick-card">
+                    <i class="fas fa-gamepad"></i>
+                    <span>All Flavors Games</span>
                 </a>
             </div>
         </div>
 
         <section class="cta-section">
-            <h2>JOIN THE TEAM</h2>
-            <p>We're hiring for Zante 2025. Apply now for the summer of a lifetime!</p>
-            <a href="https://exposuresolutions.github.io/flavors-zante/feedback-survey.html?source=jobs"
-                class="btn-primary">APPLY NOW</a>
+            <h2>JOIN THE FLAVORS TEAM</h2>
+            <p>We're expanding! Apply now to be part of Zante's most iconic party bar for Summer 2025.</p>
+            <a href="https://exposuresolutions.github.io/flavors-zante/feedback-survey.html?source=jobs" class="btn-primary">Apply Now</a>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="main-footer">
+        <div class="footer-logo">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors">
+        </div>
         <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
-        <p>POWERED BY <a href="https://exposuresolutions.ie" target="_blank">EXPOSURE AI</a></p>
+        <p>Powered by <a href="https://exposuresolutions.ie" target="_blank">Exposure AI</a></p>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- SCRIPT -->
     <script>
-        // Games data
         const games = [
-            { name: 'TRAFFIC LIGHT GAME', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html', color: '#FF00FF' },
-            { name: 'SPIN & WIN', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-casino.html', color: '#00FFFF' },
-            { name: 'VIP / FINAL BOSS', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html', color: '#9D00FF' },
-            { name: 'FROZEN CHALLENGE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html', color: '#39FF14' },
-            { name: 'SPIN THE BOTTLE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html', color: '#FF6B00' },
-            { name: 'ALL GAMES', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html', color: '#FFE500' }
+            { name: 'FLAVORS TRAFFIC LIGHT', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html', color: '#FF00FF' },
+            { name: 'FLAVORS CASINO', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-casino.html', color: '#00FFFF' },
+            { name: 'FLAVORS VIP', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html', color: '#9D00FF' },
+            { name: 'FLAVORS FROZEN', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html', color: '#39FF14' },
+            { name: 'FLAVORS BOTTLE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html', color: '#FF6B00' },
+            { name: 'ALL FLAVORS GAMES', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html', color: '#FFE500' }
         ];
 
-        // DOM elements
-        const wheel = document.getElementById('rouletteWheel');
+        const needle = document.getElementById('needle');
         const spinBtn = document.getElementById('spinBtn');
-        const titleEl = document.getElementById('selectedGameTitle');
+        const resultTitle = document.getElementById('resultTitle');
         const playBtn = document.getElementById('playBtn');
+
         let isSpinning = false;
         let currentRotation = 0;
 
-        // Spin function
-        function spinWheel() {
+        function spin() {
             if (isSpinning) return;
             isSpinning = true;
 
-            wheel.classList.add('spinning');
-            titleEl.classList.remove('show');
+            resultTitle.classList.remove('show');
             playBtn.classList.remove('show');
-            playBtn.style.display = 'none';
 
-            // Random spin duration and final position
-            const spinDuration = 3000 + Math.random() * 2000;
-            const extraSpins = 5 + Math.floor(Math.random() * 3);
-            const finalAngle = Math.random() * 360;
-            const totalRotation = currentRotation + (extraSpins * 360) + finalAngle;
+            // Calculate spin
+            const spins = 5 + Math.floor(Math.random() * 5);
+            const extraAngle = Math.random() * 360;
+            const totalRotation = currentRotation + (spins * 360) + extraAngle;
 
-            // Animate
-            wheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.12, 0.99)`;
-            wheel.style.animation = 'none';
-            wheel.style.transform = `rotate(${totalRotation}deg)`;
+            // Spin the needle
+            needle.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+            needle.style.transform = `rotate(${totalRotation}deg)`;
 
             currentRotation = totalRotation;
 
             setTimeout(() => {
                 isSpinning = false;
-                wheel.classList.remove('spinning');
 
-                // Calculate which game was selected
-                const normalizedAngle = (360 - (totalRotation % 360)) % 360;
-                const gameIndex = Math.floor(normalizedAngle / 60);
-                const selectedGame = games[gameIndex];
+                // Calculate result (needle points UP, so we check where it landed)
+                const normalizedAngle = totalRotation % 360;
+                const gameIndex = Math.floor(((360 - normalizedAngle + 30) % 360) / 60);
+                const selectedGame = games[gameIndex % 6];
 
                 // Show result
-                titleEl.textContent = selectedGame.name;
-                titleEl.style.color = selectedGame.color;
-                titleEl.style.textShadow = `0 0 30px ${selectedGame.color}`;
-                titleEl.classList.add('show');
+                resultTitle.textContent = selectedGame.name;
+                resultTitle.style.color = selectedGame.color;
+                resultTitle.style.textShadow = `0 0 40px ${selectedGame.color}`;
+                resultTitle.classList.add('show');
 
                 playBtn.href = selectedGame.url;
                 playBtn.style.background = `linear-gradient(135deg, ${selectedGame.color}, #9D00FF)`;
-                playBtn.style.display = 'inline-block';
-                setTimeout(() => playBtn.classList.add('show'), 200);
+                setTimeout(() => playBtn.classList.add('show'), 300);
 
-            }, spinDuration);
+            }, 4000);
         }
 
-        // Event listeners
-        spinBtn.addEventListener('click', spinWheel);
-        wheel.addEventListener('click', spinWheel);
+        spinBtn.addEventListener('click', spin);
 
         // Mobile menu
         document.addEventListener('DOMContentLoaded', function () {
@@ -980,21 +1085,17 @@
             const closeBtn = document.getElementById('close-menu-btn');
             const menu = document.querySelector('.off-canvas-menu');
 
-            if (menuBtn && menu) {
-                menuBtn.addEventListener('click', () => menu.classList.add('active'));
-            }
-            if (closeBtn && menu) {
-                closeBtn.addEventListener('click', () => menu.classList.remove('active'));
-            }
+            menuBtn?.addEventListener('click', () => menu.classList.add('active'));
+            closeBtn?.addEventListener('click', () => menu.classList.remove('active'));
+
             document.addEventListener('click', (e) => {
-                if (menu && menu.classList.contains('active') &&
-                    !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                if (menu?.classList.contains('active') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
                     menu.classList.remove('active');
                 }
             });
 
-            // Show initial title
-            titleEl.classList.add('show');
+            // Initial state
+            resultTitle.classList.add('show');
         });
     </script>
 </body>
