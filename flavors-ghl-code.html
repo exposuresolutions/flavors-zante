@@ -1,97 +1,102 @@
-<!-- FLAVORS ZANTE - GHL CUSTOM CODE VERSION -->
-<!-- Paste this entire code into your GHL page custom code section -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FLAVORS ZANTE - GHL v3 - PREMIUM -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body,html{font-family:'Montserrat',sans-serif;background:#0a0a12;color:#fff;min-height:100vh}
+.fz-wrap{min-height:100vh;background:linear-gradient(180deg,#0a0a12 0%,#1a0a2a 50%,#0a0a12 100%)}
 
-.fz-wrap{position:relative;min-height:100vh;background:linear-gradient(180deg,#0a0a12 0%,#15102a 50%,#0a0a12 100%)}
+/* HEADER */
+.fz-header{position:fixed;top:0;left:0;right:0;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,10,0.98);z-index:100;border-bottom:1px solid rgba(255,0,255,0.3)}
+.fz-logo{height:55px;filter:drop-shadow(0 0 20px #ff00ff)}
+.fz-nav{display:flex;gap:35px}
+.fz-nav a{color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;transition:0.3s}
+.fz-nav a:hover{color:#ff00ff;text-shadow:0 0 25px #ff00ff}
+.fz-social{display:flex;gap:18px}
+.fz-social a{color:#fff;font-size:18px;transition:0.3s;text-decoration:none}
+.fz-social a:hover{color:#00ffff;transform:scale(1.2)}
 
-.fz-header{position:fixed;top:0;left:0;right:0;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,18,0.95);z-index:100;border-bottom:1px solid rgba(255,0,255,0.2)}
-.fz-logo{height:60px;filter:drop-shadow(0 0 15px #ff00ff)}
-.fz-nav{display:flex;gap:40px}
-.fz-nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;transition:0.3s}
-.fz-nav a:hover{color:#ff00ff;text-shadow:0 0 20px #ff00ff}
-.fz-social{display:flex;gap:20px}
-.fz-social a{color:#fff;font-size:20px;transition:0.3s;text-decoration:none}
-.fz-social a:hover{color:#ff00ff}
+/* MAIN */
+.fz-main{padding:110px 20px 50px;max-width:900px;margin:0 auto}
 
-.fz-main{padding:120px 20px 60px;max-width:1000px;margin:0 auto}
+/* HERO */
+.fz-hero{text-align:center;margin-bottom:35px}
+.fz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:68px;letter-spacing:10px;background:linear-gradient(90deg,#ff00ff,#00ffff,#ff00ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:200%}}
+.fz-hero p{font-family:'Orbitron',sans-serif;color:#00ffff;font-size:14px;letter-spacing:8px;text-shadow:0 0 25px #00ffff;margin-top:5px}
 
-.fz-hero{text-align:center;margin-bottom:40px}
-.fz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:72px;letter-spacing:8px;background:linear-gradient(90deg,#ff00ff,#00ffff,#ff00ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fzShine 3s linear infinite}
-@keyframes fzShine{to{background-position:200%}}
-.fz-hero p{font-family:'Orbitron',sans-serif;color:#00ffff;font-size:16px;letter-spacing:6px;text-shadow:0 0 30px #00ffff}
+/* GAME CARD */
+.fz-game{background:rgba(15,5,30,0.95);border-radius:25px;padding:45px 35px;border:2px solid rgba(255,0,255,0.4);box-shadow:0 0 80px rgba(255,0,255,0.15),inset 0 1px 0 rgba(255,255,255,0.05)}
+.fz-game h2{font-family:'Bebas Neue',sans-serif;font-size:38px;text-align:center;letter-spacing:6px;margin-bottom:8px;color:#fff}
+.fz-game>p{text-align:center;color:rgba(255,255,255,0.5);margin-bottom:35px;font-size:14px}
 
-.fz-game{background:rgba(20,10,40,0.9);border-radius:30px;padding:50px 40px;border:2px solid rgba(255,0,255,0.3);box-shadow:0 0 60px rgba(255,0,255,0.2)}
-.fz-game h2{font-family:'Bebas Neue',sans-serif;font-size:42px;text-align:center;letter-spacing:6px;margin-bottom:10px}
-.fz-game>p{text-align:center;color:rgba(255,255,255,0.6);margin-bottom:40px}
+/* WHEEL - PREMIUM */
+.fz-wheel-box{position:relative;width:360px;height:360px;margin:0 auto 35px}
 
-/* WHEEL */
-.fz-wheel-box{position:relative;width:400px;height:400px;margin:0 auto 40px}
+.fz-wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(
+    #ff00ff 0deg 60deg,
+    #00ffff 60deg 120deg,
+    #9d00ff 120deg 180deg,
+    #39ff14 180deg 240deg,
+    #ff6b00 240deg 300deg,
+    #ffe500 300deg 360deg
+);border:6px solid #d4af37;box-shadow:0 0 0 4px rgba(0,0,0,0.8),0 0 50px rgba(255,0,255,0.4),0 0 100px rgba(0,255,255,0.2)}
 
-.fz-wheel{width:100%;height:100%;border-radius:50%;position:relative;border:8px solid #d4af37;box-shadow:0 0 40px rgba(255,0,255,0.4),inset 0 0 60px rgba(0,0,0,0.5);overflow:hidden}
+/* ICONS ON WHEEL */
+.fz-icon{position:absolute;font-size:28px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.8);filter:drop-shadow(0 0 5px rgba(255,255,255,0.5))}
+.fz-icon.i1{top:12%;left:50%;transform:translateX(-50%)}
+.fz-icon.i2{top:28%;right:12%}
+.fz-icon.i3{bottom:28%;right:12%}
+.fz-icon.i4{bottom:12%;left:50%;transform:translateX(-50%)}
+.fz-icon.i5{bottom:28%;left:12%}
+.fz-icon.i6{top:28%;left:12%}
 
-/* Wheel segments with labels */
-.fz-seg{position:absolute;width:50%;height:50%;left:50%;top:50%;transform-origin:0 0;display:flex;align-items:center;padding-left:30px}
-.fz-seg span{color:#fff;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;text-shadow:1px 1px 3px #000;letter-spacing:1px;transform:rotate(-60deg);white-space:nowrap}
+/* CENTER HUB */
+.fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#333,#000);border:5px solid #d4af37;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 40px rgba(0,0,0,0.9),0 0 30px rgba(212,175,55,0.3);transition:0.3s}
+.fz-hub:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 60px #d4af37}
+.fz-hub-logo{width:65px;height:65px;object-fit:contain;filter:drop-shadow(0 0 15px #ff00ff);margin-bottom:5px}
+.fz-hub span{font-family:'Orbitron',sans-serif;font-size:9px;color:#d4af37;letter-spacing:2px;font-weight:700}
 
-.fz-seg:nth-child(1){transform:rotate(-90deg) skewY(30deg);background:#ff00ff}
-.fz-seg:nth-child(2){transform:rotate(-30deg) skewY(30deg);background:#00ffff}
-.fz-seg:nth-child(3){transform:rotate(30deg) skewY(30deg);background:#9d00ff}
-.fz-seg:nth-child(4){transform:rotate(90deg) skewY(30deg);background:#39ff14}
-.fz-seg:nth-child(5){transform:rotate(150deg) skewY(30deg);background:#ff6b00}
-.fz-seg:nth-child(6){transform:rotate(210deg) skewY(30deg);background:#ffe500}
+/* POINTER AT TOP */
+.fz-pointer{position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:15}
+.fz-pointer::before{content:'';display:block;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:35px solid #d4af37;filter:drop-shadow(0 5px 15px rgba(212,175,55,0.8))}
 
-/* Center hub with logo */
-.fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140px;height:140px;border-radius:50%;background:radial-gradient(#222,#000);border:5px solid #d4af37;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 30px rgba(0,0,0,0.8);transition:0.3s}
-.fz-hub:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 50px #d4af37}
-.fz-hub-logo{width:70px;height:70px;border-radius:50%;object-fit:cover;margin-bottom:5px}
-.fz-hub span{font-family:'Orbitron',sans-serif;font-size:10px;color:#d4af37;letter-spacing:2px}
+/* SPINNING WHEEL */
+.fz-spin-wheel{position:absolute;top:0;left:0;width:100%;height:100%;transition:transform 4s cubic-bezier(0.2,0.8,0.3,1)}
 
-/* Spinning needle */
-.fz-needle-box{position:absolute;top:50%;left:50%;width:180px;height:180px;transform:translate(-50%,-50%);z-index:5;pointer-events:none}
-.fz-needle{width:100%;height:100%;transition:transform 4s cubic-bezier(0.2,0.8,0.3,1)}
-.fz-arrow{position:absolute;top:5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:70px solid #d4af37;filter:drop-shadow(0 0 10px #d4af37)}
-
-/* Result */
-.fz-result{text-align:center;padding:30px 0}
-.fz-result h3{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;margin-bottom:20px;opacity:0;transition:0.5s}
+/* RESULT */
+.fz-result{text-align:center;padding:25px 0}
+.fz-result h3{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:5px;margin-bottom:18px;transition:0.5s;opacity:0}
 .fz-result h3.show{opacity:1}
-.fz-result a{display:inline-block;padding:16px 50px;background:linear-gradient(135deg,#ff00ff,#9d00ff);border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;text-decoration:none;letter-spacing:3px;transition:0.3s;opacity:0}
+.fz-result a{display:inline-block;padding:15px 45px;background:linear-gradient(135deg,#ff00ff,#9d00ff);border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:3px;transition:0.3s;opacity:0}
 .fz-result a.show{opacity:1}
-.fz-result a:hover{transform:scale(1.1);box-shadow:0 0 40px #ff00ff}
+.fz-result a:hover{transform:scale(1.08);box-shadow:0 0 40px #ff00ff}
 
 /* CTA */
-.fz-cta{margin-top:60px;padding:50px;background:rgba(0,255,255,0.05);border-radius:20px;text-align:center;border:1px solid rgba(0,255,255,0.2)}
-.fz-cta h2{font-family:'Bebas Neue',sans-serif;font-size:48px;margin-bottom:15px;letter-spacing:4px}
-.fz-cta p{color:rgba(255,255,255,0.7);margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto}
-.fz-cta a{display:inline-block;padding:18px 50px;background:linear-gradient(135deg,#00ffff,#39ff14);border-radius:50px;color:#000;font-family:'Orbitron',sans-serif;font-weight:800;text-decoration:none;letter-spacing:3px;transition:0.3s}
-.fz-cta a:hover{transform:scale(1.1);box-shadow:0 0 40px #00ffff}
+.fz-cta{margin-top:50px;padding:45px;background:linear-gradient(135deg,rgba(0,255,255,0.08),rgba(255,0,255,0.05));border-radius:20px;text-align:center;border:1px solid rgba(0,255,255,0.3)}
+.fz-cta h2{font-family:'Bebas Neue',sans-serif;font-size:42px;margin-bottom:12px;letter-spacing:5px}
+.fz-cta p{color:rgba(255,255,255,0.6);margin-bottom:25px;max-width:450px;margin-left:auto;margin-right:auto}
+.fz-cta a{display:inline-block;padding:16px 45px;background:linear-gradient(135deg,#00ffff,#39ff14);border-radius:50px;color:#000;font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;text-decoration:none;letter-spacing:3px;transition:0.3s}
+.fz-cta a:hover{transform:scale(1.08);box-shadow:0 0 50px #00ffff}
 
-.fz-footer{text-align:center;padding:40px 20px;color:#555;font-size:14px}
+.fz-footer{text-align:center;padding:35px 20px;color:#444;font-size:13px}
 .fz-footer a{color:#ff00ff}
 
 @media(max-width:768px){
 .fz-nav,.fz-social{display:none}
-.fz-hero h1{font-size:48px}
-.fz-wheel-box{width:300px;height:300px}
+.fz-hero h1{font-size:42px;letter-spacing:5px}
+.fz-wheel-box{width:280px;height:280px}
 .fz-hub{width:100px;height:100px}
 .fz-hub-logo{width:50px;height:50px}
-.fz-needle-box{width:140px;height:140px}
-.fz-arrow{border-bottom-width:50px;border-left-width:10px;border-right-width:10px}
+.fz-icon{font-size:20px}
 }
 </style>
 
 <div class="fz-wrap">
     <header class="fz-header">
         <a href="https://www.flavorsdaiquiribar.com/">
-            <img src="https://images.leadconnectorhq.com/image/f_webp/q_90/r_1200/u_https://assets.cdn.filesafe.space/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors" class="fz-logo">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors" class="fz-logo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>??</text></svg>'">
         </a>
         <nav class="fz-nav">
             <a href="https://www.flavorsdaiquiribar.com/menu">Menu</a>
@@ -113,27 +118,25 @@ body,html{font-family:'Montserrat',sans-serif;background:#0a0a12;color:#fff;min-
         </div>
 
         <div class="fz-game">
-            <h2>FLAVORS GAME ROULETTE</h2>
-            <p>Tap the logo to spin and discover your next experience!</p>
+            <h2>SPIN TO PLAY</h2>
+            <p>Tap the logo and let fate decide your next Flavors experience!</p>
 
             <div class="fz-wheel-box">
-                <div class="fz-wheel">
-                    <div class="fz-seg"><span>TRAFFIC LIGHT</span></div>
-                    <div class="fz-seg"><span>CASINO</span></div>
-                    <div class="fz-seg"><span>VIP BOSS</span></div>
-                    <div class="fz-seg"><span>FROZEN</span></div>
-                    <div class="fz-seg"><span>BOTTLE</span></div>
-                    <div class="fz-seg"><span>ALL GAMES</span></div>
-                </div>
-
-                <div class="fz-needle-box">
-                    <div class="fz-needle" id="fzNeedle">
-                        <div class="fz-arrow"></div>
+                <div class="fz-pointer"></div>
+                
+                <div class="fz-spin-wheel" id="fzWheel">
+                    <div class="fz-wheel">
+                        <i class="fz-icon i1 fas fa-traffic-light"></i>
+                        <i class="fz-icon i2 fas fa-dice"></i>
+                        <i class="fz-icon i3 fas fa-crown"></i>
+                        <i class="fz-icon i4 fas fa-snowflake"></i>
+                        <i class="fz-icon i5 fas fa-wine-bottle"></i>
+                        <i class="fz-icon i6 fas fa-gamepad"></i>
                     </div>
                 </div>
 
                 <div class="fz-hub" id="fzSpin">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_90/r_200/u_https://assets.cdn.filesafe.space/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Spin" class="fz-hub-logo">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="SPIN" class="fz-hub-logo" onerror="this.parentElement.innerHTML='<span style=font-size:30px>??</span><span>TAP TO SPIN</span>'">
                     <span>TAP TO SPIN</span>
                 </div>
             </div>
@@ -164,15 +167,13 @@ body,html{font-family:'Montserrat',sans-serif;background:#0a0a12;color:#fff;min-
         {name:'FLAVORS VIP',url:'https://www.flavorsdaiquiribar.com/vip',color:'#9d00ff'},
         {name:'FLAVORS FROZEN',url:'https://www.flavorsdaiquiribar.com/frozen',color:'#39ff14'},
         {name:'FLAVORS BOTTLE',url:'https://www.flavorsdaiquiribar.com/bottle',color:'#ff6b00'},
-        {name:'ALL FLAVORS GAMES',url:'https://www.flavorsdaiquiribar.com/games',color:'#ffe500'}
+        {name:'ALL GAMES',url:'https://www.flavorsdaiquiribar.com/games',color:'#ffe500'}
     ];
-    
-    var needle=document.getElementById('fzNeedle');
+    var wheel=document.getElementById('fzWheel');
     var spinBtn=document.getElementById('fzSpin');
     var title=document.getElementById('fzTitle');
     var btn=document.getElementById('fzBtn');
-    var spinning=false;
-    var rotation=0;
+    var spinning=false,rotation=0;
     
     spinBtn.onclick=function(){
         if(spinning)return;
@@ -183,23 +184,20 @@ body,html{font-family:'Montserrat',sans-serif;background:#0a0a12;color:#fff;min-
         var spins=5+Math.floor(Math.random()*5);
         var extra=Math.random()*360;
         rotation+=(spins*360)+extra;
-        
-        needle.style.transform='rotate('+rotation+'deg)';
+        wheel.style.transform='rotate('+rotation+'deg)';
         
         setTimeout(function(){
             spinning=false;
             var angle=rotation%360;
             var idx=Math.floor(((360-angle+30)%360)/60)%6;
             var game=games[idx];
-            
             title.textContent=game.name;
             title.style.color=game.color;
             title.style.textShadow='0 0 30px '+game.color;
             title.classList.add('show');
-            
             btn.href=game.url;
             btn.style.background='linear-gradient(135deg,'+game.color+',#9d00ff)';
-            btn.classList.add('show');
+            setTimeout(function(){btn.classList.add('show')},300);
         },4000);
     };
 })();
