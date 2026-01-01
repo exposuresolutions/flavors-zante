@@ -1,43 +1,49 @@
-<!-- FLAVORS SPIN & WIN CASINO - GHL v2 - CLASSIC DESIGN + CUSTOM POINTER -->
+<!-- FLAVORS SPIN & WIN CASINO - GHL v3 PREMIUM - CASINO GRADE DESIGN -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-:root{--gold:#FFD700;--purple:#9D00FF;--pink:#FF1493;--blue:#00BFFF;--dark:#0a0a0a}
+:root{--gold:#FFD700;--gold-dark:#B8860B;--purple:#9D00FF;--pink:#FF1493;--cyan:#00FFFF;--dark:#050505}
 *{margin:0;padding:0;box-sizing:border-box}
 body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;min-height:100vh;overflow-x:hidden}
 
-/* DARK BG */
-.sw-bg{position:fixed;inset:0;background:linear-gradient(180deg,#0a0510 0%,#000 100%);z-index:0}
+/* PREMIUM DARK BG WITH SUBTLE PATTERN */
+.sw-bg{position:fixed;inset:0;background:radial-gradient(ellipse at center top,#1a0a25 0%,#0a0510 40%,#000 100%);z-index:0}
+.sw-bg::before{content:'';position:absolute;inset:0;background:repeating-conic-gradient(from 0deg,transparent 0deg 10deg,rgba(157,0,255,0.02) 10deg 20deg);opacity:0.5}
+.sw-bg::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 30%,rgba(255,215,0,0.03) 0%,transparent 50%)}
 
 /* HEADER */
-.sw-header{position:fixed;top:0;left:0;right:0;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.9);z-index:100}
-.sw-back{color:#fff;text-decoration:none;font-size:12px;display:flex;align-items:center;gap:8px;transition:0.3s;font-weight:600;letter-spacing:1px;background:rgba(255,255,255,0.1);padding:10px 20px;border-radius:30px}
-.sw-back:hover{background:rgba(255,255,255,0.2)}
-.sw-logo{height:50px;filter:drop-shadow(0 0 15px var(--gold))}
+.sw-header{position:fixed;top:0;left:0;right:0;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.95) 0%,transparent 100%);z-index:100;border-bottom:1px solid rgba(255,215,0,0.15)}
+.sw-back{color:#fff;text-decoration:none;font-size:11px;display:flex;align-items:center;gap:8px;transition:0.3s;font-weight:600;letter-spacing:1px;background:rgba(255,215,0,0.1);padding:10px 20px;border-radius:30px;border:1px solid rgba(255,215,0,0.3)}
+.sw-back:hover{background:rgba(255,215,0,0.2);border-color:var(--gold)}
+.sw-logo{height:50px;filter:drop-shadow(0 0 20px rgba(255,215,0,0.5))}
 
 /* MAIN */
-.sw-main{position:relative;z-index:1;max-width:550px;margin:0 auto;padding:90px 20px 50px;text-align:center}
+.sw-main{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:100px 20px 50px;text-align:center}
 
 /* HERO */
-.sw-hero{margin-bottom:25px}
-.sw-hero-icon{font-size:2.5rem;color:var(--gold);margin-bottom:10px}
-.sw-hero h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:8px;color:var(--gold);text-shadow:0 0 30px rgba(255,215,0,0.5)}
-.sw-hero p{color:#888;font-size:14px;margin-top:8px}
+.sw-hero{margin-bottom:20px}
+.sw-hero h1{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:6px;background:linear-gradient(180deg,#FFD700 0%,#FFF8DC 40%,#FFD700 60%,#B8860B 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 10px rgba(255,215,0,0.4))}
+.sw-hero p{color:#666;font-size:13px;margin-top:8px;letter-spacing:1px}
 
-/* WHEEL CONTAINER */
-.sw-wheel-container{position:relative;width:340px;height:340px;margin:20px auto}
+/* WHEEL ASSEMBLY - THE MAIN ATTRACTION */
+.sw-wheel-assembly{position:relative;width:320px;height:380px;margin:0 auto}
 
-/* CUSTOM BRANDED POINTER */
-.sw-pointer{position:absolute;top:-70px;left:50%;transform:translateX(-50%);z-index:20;width:90px;height:110px}
-.sw-pointer img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,255,255,0.5)) drop-shadow(0 10px 30px rgba(255,20,147,0.5))}
+/* POINTER - POSITIONED AT TOP CENTER POINTING DOWN */
+.sw-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:30;width:80px;height:100px;pointer-events:none}
+.sw-pointer img{width:100%;height:100%;object-fit:contain}
 
-/* WHEEL */
-.sw-wheel-wrap{position:absolute;inset:0;transition:transform 5s cubic-bezier(0.17,0.67,0.12,0.99)}
-.sw-wheel{width:100%;height:100%;border-radius:50%;position:relative;border:8px solid var(--gold);box-shadow:0 0 0 4px #000,0 0 50px rgba(255,215,0,0.3);overflow:hidden}
+/* OUTER RING - PREMIUM GOLD FRAME */
+.sw-outer-ring{position:absolute;top:60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:linear-gradient(145deg,#FFD700 0%,#B8860B 50%,#FFD700 100%);padding:8px;box-shadow:0 0 60px rgba(255,215,0,0.4),0 20px 60px rgba(0,0,0,0.8),inset 0 2px 4px rgba(255,255,255,0.3)}
 
-/* 8 SEGMENT WHEEL - Purple & Black alternating with conic gradient */
-.sw-wheel-inner{width:100%;height:100%;position:relative;background:conic-gradient(
+/* INNER RING - SECONDARY FRAME */
+.sw-inner-ring{width:100%;height:100%;border-radius:50%;background:linear-gradient(145deg,#222 0%,#000 100%);padding:6px;box-shadow:inset 0 4px 20px rgba(0,0,0,0.9)}
+
+/* THE WHEEL ITSELF */
+.sw-wheel-wrap{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;transition:transform 6s cubic-bezier(0.2,0.8,0.15,1)}
+
+/* 8 SEGMENT WHEEL WITH GRADIENT SEGMENTS */
+.sw-wheel{width:100%;height:100%;border-radius:50%;position:relative;background:conic-gradient(
     #9D00FF 0deg 45deg,
     #1a1a1a 45deg 90deg,
     #9D00FF 90deg 135deg,
@@ -46,69 +52,79 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
     #1a1a1a 225deg 270deg,
     #9D00FF 270deg 315deg,
     #1a1a1a 315deg 360deg
-);border-radius:50%}
+);box-shadow:inset 0 0 30px rgba(0,0,0,0.5)}
 
-/* Segment labels positioned around wheel */
-.sw-labels{position:absolute;inset:0;pointer-events:none}
-.sw-label{position:absolute;font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.9);white-space:nowrap;transform-origin:center}
-.sw-label:nth-child(1){top:12%;left:50%;transform:translateX(-50%) rotate(0deg)}
-.sw-label:nth-child(2){top:22%;right:12%;transform:rotate(45deg)}
-.sw-label:nth-child(3){top:50%;right:5%;transform:translateY(-50%) rotate(90deg)}
-.sw-label:nth-child(4){bottom:22%;right:12%;transform:rotate(135deg)}
-.sw-label:nth-child(5){bottom:12%;left:50%;transform:translateX(-50%) rotate(180deg)}
-.sw-label:nth-child(6){bottom:22%;left:12%;transform:rotate(-135deg)}
-.sw-label:nth-child(7){top:50%;left:5%;transform:translateY(-50%) rotate(-90deg)}
-.sw-label:nth-child(8){top:22%;left:12%;transform:rotate(-45deg)}
+/* DIVIDER LINES */
+.sw-wheel::before{content:'';position:absolute;inset:0;background:repeating-conic-gradient(from 22.5deg,transparent 0deg 44deg,rgba(255,215,0,0.6) 44deg 46deg);border-radius:50%}
 
-/* CENTER HUB */
-.sw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:linear-gradient(145deg,#1a1a1a,#000);border:4px solid var(--gold);box-shadow:0 0 30px rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:15}
-.sw-hub i{font-size:1.8rem;color:var(--gold)}
+/* SEGMENT LABELS - RADIAL POSITIONING */
+.sw-segment{position:absolute;width:100%;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:15px}
+.sw-segment span{font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);letter-spacing:0.5px;text-transform:uppercase}
+.sw-segment:nth-child(1){transform:rotate(22.5deg)}
+.sw-segment:nth-child(2){transform:rotate(67.5deg)}
+.sw-segment:nth-child(3){transform:rotate(112.5deg)}
+.sw-segment:nth-child(4){transform:rotate(157.5deg)}
+.sw-segment:nth-child(5){transform:rotate(202.5deg)}
+.sw-segment:nth-child(6){transform:rotate(247.5deg)}
+.sw-segment:nth-child(7){transform:rotate(292.5deg)}
+.sw-segment:nth-child(8){transform:rotate(337.5deg)}
+.sw-segment span{transform:rotate(180deg)}
 
-/* SPIN BUTTON */
-.sw-spin-btn{display:block;width:100%;max-width:300px;margin:30px auto;padding:18px 40px;background:var(--gold);border:none;border-radius:50px;font-family:'Orbitron',sans-serif;font-size:16px;font-weight:900;color:#000;cursor:pointer;letter-spacing:3px;box-shadow:0 8px 30px rgba(255,215,0,0.4);transition:0.3s;display:flex;align-items:center;justify-content:center;gap:12px}
-.sw-spin-btn:hover{transform:scale(1.03);box-shadow:0 12px 40px rgba(255,215,0,0.6)}
-.sw-spin-btn:disabled{opacity:0.5;cursor:not-allowed}
-.sw-spin-btn i{font-size:1.2rem}
+/* CENTER HUB - PREMIUM 3D EFFECT */
+.sw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:linear-gradient(145deg,#2a2a2a 0%,#000 100%);border:4px solid;border-color:#FFD700 #B8860B #8B7500 #FFD700;box-shadow:0 0 20px rgba(0,0,0,0.9),0 0 40px rgba(255,215,0,0.2),inset 0 -5px 15px rgba(0,0,0,0.8),inset 0 5px 15px rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;z-index:20}
+.sw-hub i{font-size:1.6rem;color:var(--gold);filter:drop-shadow(0 2px 4px rgba(0,0,0,0.8))}
 
-.sw-spin-note{color:#555;font-size:11px;margin-top:10px;letter-spacing:1px}
+/* LED DOTS AROUND WHEEL */
+.sw-leds{position:absolute;top:60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;pointer-events:none}
+.sw-led{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 8px var(--gold);opacity:0.8}
 
-/* RESULT */
-.sw-result{min-height:80px;padding:15px;margin:15px 0}
-.sw-result-card{background:linear-gradient(145deg,rgba(255,215,0,0.1),rgba(0,0,0,0.8));border:2px solid var(--gold);border-radius:20px;padding:25px;display:none;animation:resultPop 0.5s}
+/* SPIN BUTTON - PREMIUM GOLD */
+.sw-spin-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:280px;margin:25px auto 0;padding:16px 40px;background:linear-gradient(180deg,#FFD700 0%,#FFC000 50%,#B8860B 100%);border:none;border-radius:50px;font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;color:#000;cursor:pointer;letter-spacing:3px;box-shadow:0 4px 20px rgba(255,215,0,0.4),0 8px 30px rgba(0,0,0,0.5),inset 0 2px 4px rgba(255,255,255,0.4),inset 0 -2px 4px rgba(0,0,0,0.2);transition:0.3s;text-transform:uppercase}
+.sw-spin-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(255,215,0,0.6),0 12px 40px rgba(0,0,0,0.5)}
+.sw-spin-btn:active{transform:translateY(1px)}
+.sw-spin-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.sw-spin-note{color:#444;font-size:10px;margin-top:12px;letter-spacing:2px}
+
+/* RESULT POPUP */
+.sw-result{min-height:100px;padding:20px;margin:20px 0}
+.sw-result-card{background:linear-gradient(145deg,rgba(255,215,0,0.1),rgba(0,0,0,0.9));border:2px solid var(--gold);border-radius:20px;padding:30px;display:none;animation:winPop 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)}
 .sw-result-card.show{display:block}
-@keyframes resultPop{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
-.sw-result-card h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);margin-bottom:10px;letter-spacing:3px}
-.sw-result-card p{color:#888;font-size:13px}
-.sw-result-card .prize-value{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;color:var(--purple);margin:15px 0}
-.sw-claim-btn{display:inline-block;padding:12px 35px;background:var(--gold);border-radius:30px;color:#000;font-family:'Orbitron',sans-serif;font-weight:700;font-size:11px;text-decoration:none;letter-spacing:2px;margin-top:10px;transition:0.3s}
-.sw-claim-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(255,215,0,0.5)}
+@keyframes winPop{0%{transform:scale(0.5);opacity:0}100%{transform:scale(1);opacity:1}}
+.sw-result-card h3{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;background:linear-gradient(180deg,#FFD700,#FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:5px;letter-spacing:3px}
+.sw-result-card .prize-value{font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:900;margin:15px 0;padding:10px;background:rgba(157,0,255,0.2);border-radius:10px;border:1px solid var(--purple)}
+.sw-result-card p{color:#888;font-size:12px;margin-bottom:15px}
+.sw-claim-btn{display:inline-block;padding:14px 40px;background:linear-gradient(180deg,#FFD700,#B8860B);border-radius:30px;color:#000;font-family:'Orbitron',sans-serif;font-weight:700;font-size:11px;text-decoration:none;letter-spacing:2px;transition:0.3s;box-shadow:0 4px 15px rgba(255,215,0,0.3)}
+.sw-claim-btn:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(255,215,0,0.5)}
 
 /* PRIZES GRID */
-.sw-prizes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0}
-.sw-prize-item{background:rgba(255,255,255,0.03);border:1px solid #222;border-radius:12px;padding:15px 8px;text-align:center;transition:0.3s}
-.sw-prize-item:hover{border-color:var(--gold);background:rgba(255,215,0,0.05)}
-.sw-prize-item i{font-size:1.8rem;margin-bottom:8px;display:block}
-.sw-prize-item span{font-size:10px;color:#888;display:block}
-.sw-prize-item.p1 i{color:#FF6B6B}
-.sw-prize-item.p2 i{color:#4ECDC4}
-.sw-prize-item.p3 i{color:#45B7D1}
-.sw-prize-item.p4 i{color:#96CEB4}
-.sw-prize-item.p5 i{color:var(--gold)}
-.sw-prize-item.p6 i{color:#DDA0DD}
-.sw-prize-item.p7 i{color:#F7DC6F}
-.sw-prize-item.p8 i{color:#BB8FCE}
+.sw-prizes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:25px 0;padding:20px;background:rgba(0,0,0,0.3);border-radius:15px;border:1px solid #222}
+.sw-prize-item{background:rgba(255,255,255,0.02);border:1px solid #1a1a1a;border-radius:10px;padding:12px 6px;text-align:center;transition:0.3s}
+.sw-prize-item:hover{border-color:var(--gold);background:rgba(255,215,0,0.05);transform:translateY(-2px)}
+.sw-prize-item i{font-size:1.5rem;margin-bottom:6px;display:block}
+.sw-prize-item span{font-size:9px;color:#666;display:block;line-height:1.3}
+.sw-prize-item:nth-child(1) i{color:#FF6B6B}
+.sw-prize-item:nth-child(2) i{color:#4ECDC4}
+.sw-prize-item:nth-child(3) i{color:#45B7D1}
+.sw-prize-item:nth-child(4) i{color:#96CEB4}
+.sw-prize-item:nth-child(5) i{color:var(--gold)}
+.sw-prize-item:nth-child(6) i{color:#DDA0DD}
+.sw-prize-item:nth-child(7) i{color:#F7DC6F}
+.sw-prize-item:nth-child(8) i{color:#BB8FCE}
 
 /* FOOTER */
-.sw-footer{text-align:center;padding:20px;color:#333;font-size:11px}
+.sw-footer{text-align:center;padding:20px;color:#333;font-size:10px}
 .sw-footer a{color:var(--pink)}
 
 /* RESPONSIVE */
 @media(max-width:400px){
-.sw-wheel-container{width:300px;height:300px}
-.sw-pointer{width:80px;height:95px;top:-60px}
+.sw-wheel-assembly{width:280px;height:340px}
+.sw-outer-ring{width:260px;height:260px;top:55px}
+.sw-leds{width:260px;height:260px;top:55px}
+.sw-pointer{width:70px;height:85px}
 .sw-hub{width:60px;height:60px}
-.sw-hero h1{font-size:3rem}
+.sw-hero h1{font-size:2.8rem}
 .sw-prizes{grid-template-columns:repeat(2,1fr)}
+.sw-segment span{font-size:7px}
 }
 </style>
 
@@ -120,120 +136,111 @@ body,html{font-family:'Montserrat',sans-serif;background:var(--dark);color:#fff;
 </header>
 
 <main class="sw-main">
-    <!-- HERO -->
     <div class="sw-hero">
-        <div class="sw-hero-icon">??</div>
         <h1>SPIN & WIN</h1>
         <p>Every drink = 1 spin. What will you win?</p>
     </div>
 
-    <!-- WHEEL -->
-    <div class="sw-wheel-container">
-        <!-- CUSTOM BRANDED POINTER -->
+    <!-- WHEEL ASSEMBLY -->
+    <div class="sw-wheel-assembly">
+        <!-- CUSTOM BRANDED POINTER - TOP CENTER -->
         <div class="sw-pointer">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f347e4125ac4cc7d64f8.png" alt="Flavors Pointer">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f347e4125ac4cc7d64f8.png" alt="Pointer">
         </div>
 
-        <!-- WHEEL -->
-        <div class="sw-wheel-wrap" id="swWheel">
-            <div class="sw-wheel">
-                <div class="sw-wheel-inner"></div>
-                <!-- Labels overlay -->
-                <div class="sw-labels">
-                    <span class="sw-label">FLAVORS BAND</span>
-                    <span class="sw-label">VIP TATTOO</span>
-                    <span class="sw-label">FREE SAMPLE</span>
-                    <span class="sw-label">FREE SHOT</span>
-                    <span class="sw-label">TEST TUBE</span>
-                    <span class="sw-label">FREE DAIQUIRI</span>
-                    <span class="sw-label">VIP BADGE</span>
-                    <span class="sw-label">€5 OFF</span>
+        <!-- PREMIUM GOLD OUTER RING -->
+        <div class="sw-outer-ring">
+            <div class="sw-inner-ring">
+                <!-- SPINNING WHEEL -->
+                <div class="sw-wheel-wrap" id="swWheel">
+                    <div class="sw-wheel">
+                        <!-- SEGMENT LABELS -->
+                        <div class="sw-segment"><span>FREE SHOT</span></div>
+                        <div class="sw-segment"><span>VIP TATTOO</span></div>
+                        <div class="sw-segment"><span>FREE SAMPLE</span></div>
+                        <div class="sw-segment"><span>€5 OFF</span></div>
+                        <div class="sw-segment"><span>TEST TUBE</span></div>
+                        <div class="sw-segment"><span>VIP BADGE</span></div>
+                        <div class="sw-segment"><span>DAIQUIRI</span></div>
+                        <div class="sw-segment"><span>BAND</span></div>
+                    </div>
+                    <!-- CENTER HUB -->
+                    <div class="sw-hub"><i class="fas fa-crown"></i></div>
                 </div>
             </div>
-        </div>
-
-        <!-- CENTER HUB -->
-        <div class="sw-hub">
-            <i class="fas fa-crown"></i>
         </div>
     </div>
 
     <!-- SPIN BUTTON -->
     <button class="sw-spin-btn" id="swSpinBtn"><i class="fas fa-dice"></i> PLACE YOUR BET</button>
-    <p class="sw-spin-note">1 DRINK = 1 CHIP. PLAY RESPONSIBLY.</p>
+    <p class="sw-spin-note">1 DRINK = 1 CHIP • PLAY RESPONSIBLY</p>
 
     <!-- RESULT -->
     <div class="sw-result">
         <div class="sw-result-card" id="swResult">
-            <h3>?? YOU WON!</h3>
+            <h3>?? WINNER!</h3>
             <div class="prize-value" id="swPrizeText">FREE SHOT</div>
-            <p>Show this to the bartender to claim!</p>
+            <p>Show this screen to the bartender to claim your prize!</p>
             <a href="#" class="sw-claim-btn">CLAIM PRIZE</a>
         </div>
     </div>
 
-    <!-- PRIZES GRID -->
+    <!-- PRIZES -->
     <div class="sw-prizes">
-        <div class="sw-prize-item p1"><i class="fas fa-cocktail"></i><span>Free Sample</span></div>
-        <div class="sw-prize-item p2"><i class="fas fa-glass-whiskey"></i><span>Free Shot</span></div>
-        <div class="sw-prize-item p3"><i class="fas fa-vial"></i><span>Test Tube</span></div>
-        <div class="sw-prize-item p4"><i class="fas fa-blender"></i><span>Free Daiquiri</span></div>
-        <div class="sw-prize-item p5"><i class="fas fa-crown"></i><span>VIP Badge</span></div>
-        <div class="sw-prize-item p6"><i class="fas fa-tag"></i><span>€5 Off</span></div>
-        <div class="sw-prize-item p7"><i class="fas fa-ribbon"></i><span>Flavors Band</span></div>
-        <div class="sw-prize-item p8"><i class="fas fa-star"></i><span>VIP Tattoo</span></div>
+        <div class="sw-prize-item"><i class="fas fa-glass-whiskey"></i><span>Free Shot</span></div>
+        <div class="sw-prize-item"><i class="fas fa-star"></i><span>VIP Tattoo</span></div>
+        <div class="sw-prize-item"><i class="fas fa-cocktail"></i><span>Free Sample</span></div>
+        <div class="sw-prize-item"><i class="fas fa-tag"></i><span>€5 Off</span></div>
+        <div class="sw-prize-item"><i class="fas fa-vial"></i><span>Test Tube</span></div>
+        <div class="sw-prize-item"><i class="fas fa-crown"></i><span>VIP Badge</span></div>
+        <div class="sw-prize-item"><i class="fas fa-blender"></i><span>Daiquiri</span></div>
+        <div class="sw-prize-item"><i class="fas fa-ribbon"></i><span>Band</span></div>
     </div>
 </main>
 
 <footer class="sw-footer">
-    <p>&copy; 2025 FLAVORS ZANTE. Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+    <p>&copy; 2025 FLAVORS ZANTE • Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
 </footer>
 
 <script>
 (function(){
     var prizes=[
-        {name:'FLAVORS BAND',color:'#F7DC6F'},
+        {name:'FREE SHOT',color:'#4ECDC4'},
         {name:'VIP TATTOO',color:'#BB8FCE'},
         {name:'FREE SAMPLE',color:'#FF6B6B'},
-        {name:'FREE SHOT',color:'#4ECDC4'},
+        {name:'€5 OFF',color:'#DDA0DD'},
         {name:'TEST TUBE',color:'#45B7D1'},
-        {name:'FREE DAIQUIRI',color:'#96CEB4'},
         {name:'VIP BADGE',color:'#FFD700'},
-        {name:'€5 OFF',color:'#DDA0DD'}
+        {name:'FREE DAIQUIRI',color:'#96CEB4'},
+        {name:'FLAVORS BAND',color:'#F7DC6F'}
     ];
+    var wheel=document.getElementById('swWheel'),btn=document.getElementById('swSpinBtn'),result=document.getElementById('swResult'),prizeText=document.getElementById('swPrizeText');
+    var spinning=false,rotation=0;
     
-    var wheel=document.getElementById('swWheel');
-    var spinBtn=document.getElementById('swSpinBtn');
-    var result=document.getElementById('swResult');
-    var prizeText=document.getElementById('swPrizeText');
-    var spinning=false;
-    var rotation=0;
-    
-    function spin(){
+    btn.onclick=function(){
         if(spinning)return;
         spinning=true;
-        spinBtn.disabled=true;
+        btn.disabled=true;
         result.classList.remove('show');
         
-        var spins=6+Math.floor(Math.random()*4);
+        // Casino-style spin: 8-12 full rotations + random landing
+        var spins=8+Math.floor(Math.random()*5);
         var extra=Math.random()*360;
         rotation+=(spins*360)+extra;
         wheel.style.transform='rotate('+rotation+'deg)';
         
+        // Reveal after spin completes
         setTimeout(function(){
             spinning=false;
-            spinBtn.disabled=false;
-            
-            var angle=(360-(rotation%360)+22.5)%360;
-            var idx=Math.floor(angle/45)%8;
+            btn.disabled=false;
+            // Calculate winning segment
+            var finalAngle=(360-(rotation%360)+22.5)%360;
+            var idx=Math.floor(finalAngle/45)%8;
             var prize=prizes[idx];
-            
             prizeText.textContent=prize.name;
             prizeText.style.color=prize.color;
             result.classList.add('show');
-        },5000);
-    }
-    
-    spinBtn.onclick=spin;
+        },6000);
+    };
 })();
 </script>
