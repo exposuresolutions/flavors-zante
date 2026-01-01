@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,34 @@
     <title>Flavors Zante | The Ultimate Party Bar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ========================================
-           FLAVORS ZANTE - COMPLETE EMBEDDED CSS
+           FLAVORS ZANTE - ULTIMATE PARTY REDESIGN
            ======================================== */
         :root {
             --neon-pink: #FF00FF;
             --neon-blue: #00FFFF;
-            --neon-purple: #BC13FE;
+            --neon-purple: #9D00FF;
+            --neon-green: #39FF14;
+            --neon-orange: #FF6B00;
+            --neon-yellow: #FFE500;
             --gold: #FFD700;
-            --primary-font: 'Montserrat', sans-serif;
-            --heading-font: 'Bebas Neue', sans-serif;
+            --dark-bg: #0a0a0a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: var(--primary-font);
+            font-family: 'Montserrat', sans-serif;
             color: white;
-            background-color: #000;
+            background: var(--dark-bg);
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -35,138 +43,214 @@
         /* VIDEO BACKGROUND */
         .video-background {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
             overflow: hidden;
         }
-        .video-background::before {
+
+        .video-background::after {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(10, 0, 20, 0.8) 50%,
+                    rgba(0, 0, 0, 0.9) 100%);
             z-index: 1;
         }
+
         #bg-video {
-            min-width: 100%; min-height: 100%;
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         /* HEADER */
         .main-header {
             position: fixed;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 15px 30px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
             z-index: 1000;
-            box-shadow: 0 2px 30px rgba(255, 0, 255, 0.3);
         }
-        .logo-container img { height: 60px; }
-        .main-nav { display: flex; gap: 30px; }
+
+        .logo-container img {
+            height: 70px;
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+            transition: all 0.3s;
+        }
+
+        .logo-container img:hover {
+            filter: drop-shadow(0 0 40px var(--neon-pink)) drop-shadow(0 0 60px var(--neon-blue));
+            transform: scale(1.05);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 40px;
+        }
+
         .main-nav a {
             color: white;
             text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
             transition: all 0.3s;
             position: relative;
+            padding: 10px 0;
         }
-        .main-nav a::after {
+
+        .main-nav a::before {
             content: '';
             position: absolute;
-            bottom: -5px; left: 0;
-            width: 0; height: 2px;
-            background: var(--neon-pink);
-            transition: width 0.3s;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            transition: all 0.3s;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
-        .main-nav a:hover { color: var(--neon-pink); }
-        .main-nav a:hover::after { width: 100%; }
 
-        .header-social { display: flex; gap: 15px; }
+        .main-nav a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .main-nav a:hover::before {
+            width: 100%;
+        }
+
+        .header-social {
+            display: flex;
+            gap: 20px;
+        }
+
         .header-social a {
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             transition: all 0.3s;
         }
+
         .header-social a:hover {
             color: var(--neon-pink);
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(10deg);
+            filter: drop-shadow(0 0 15px var(--neon-pink));
         }
 
         #mobile-menu-btn {
             display: none;
-            background: none;
+            background: transparent;
             border: 2px solid var(--neon-pink);
             color: white;
-            font-size: 1.5rem;
-            padding: 10px 15px;
+            font-size: 1.8rem;
+            padding: 12px 18px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        #mobile-menu-btn:hover {
+            background: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
         }
 
         /* OFF-CANVAS MENU */
         .off-canvas-menu {
             display: none;
             position: fixed;
-            top: 0; right: -300px;
-            width: 300px; height: 100%;
-            background: rgba(0, 0, 0, 0.98);
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2a 100%);
             z-index: 1001;
-            padding: 80px 30px 30px;
+            padding: 100px 40px 40px;
             flex-direction: column;
-            gap: 20px;
-            transition: right 0.4s;
+            gap: 25px;
+            transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 2px solid var(--neon-pink);
+            box-shadow: -10px 0 50px rgba(255, 0, 255, 0.3);
         }
-        .off-canvas-menu.active { right: 0; }
+
+        .off-canvas-menu.active {
+            right: 0;
+        }
+
         #close-menu-btn {
             position: absolute;
-            top: 20px; right: 20px;
-            background: none; border: none;
-            color: white;
-            font-size: 2.5rem;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--neon-pink);
+            font-size: 3rem;
             cursor: pointer;
+            transition: all 0.3s;
         }
+
+        #close-menu-btn:hover {
+            transform: rotate(90deg) scale(1.2);
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
         .off-canvas-menu a {
             color: white;
             text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            padding: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.3rem;
+            padding: 20px;
+            border-radius: 10px;
             transition: all 0.3s;
+            border: 1px solid transparent;
         }
+
         .off-canvas-menu a:hover {
             color: var(--neon-pink);
-            padding-left: 25px;
-            background: rgba(255,0,255,0.1);
+            background: rgba(255, 0, 255, 0.1);
+            border-color: var(--neon-pink);
+            padding-left: 30px;
         }
+
         .off-canvas-social {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin-top: auto;
             justify-content: center;
         }
-        .off-canvas-social a { border: none; padding: 0; font-size: 1.5rem; }
+
+        .off-canvas-social a {
+            font-size: 2rem;
+            padding: 0;
+            border: none;
+        }
 
         /* MAIN CONTAINER */
         .container {
             position: relative;
             z-index: 1;
-            padding: 120px 20px 50px;
+            padding: 140px 20px 60px;
             min-height: 100vh;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -174,179 +258,553 @@
         .hero-content {
             text-align: center;
             margin-bottom: 60px;
-            padding-top: 40px;
-        }
-        .hero-content h1 {
-            font-family: var(--heading-font);
-            font-size: 5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-pink);
-            animation: glow 2s ease-in-out infinite alternate;
-            letter-spacing: 5px;
-        }
-        .hero-content p {
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 0 20px rgba(0,255,255,0.5);
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-pink); }
-            to { text-shadow: 0 0 50px var(--neon-pink), 0 0 100px var(--neon-pink), 0 0 150px var(--neon-pink); }
+            padding-top: 20px;
         }
 
-        /* GAME HUB */
-        .game-hub {
-            margin: 60px 0;
-            padding: 40px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(255,0,255,0.3);
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-blue) 50%, var(--neon-pink) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.5));
         }
-        .hub-title {
-            font-family: var(--heading-font);
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 40px;
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-content p {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            font-weight: 400;
             color: var(--neon-blue);
             text-shadow: 0 0 30px var(--neon-blue);
         }
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+        /* ROULETTE GAME HUB */
+        .game-hub {
+            margin: 40px auto;
+            padding: 60px 40px;
+            max-width: 1000px;
+            background: radial-gradient(ellipse at center, rgba(20, 0, 40, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+            border-radius: 30px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .game-hub::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            background-size: 400% 400%;
+            border-radius: 32px;
+            z-index: -1;
+            animation: borderGlow 4s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hub-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+            text-shadow: 0 0 40px var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 20px;
         }
 
-        /* BUTTONS */
-        .btn {
-            display: inline-flex;
+        /* ROULETTE WHEEL */
+        .roulette-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 50px;
+        }
+
+        .roulette-wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            background: conic-gradient(
+                var(--neon-pink) 0deg 60deg,
+                var(--neon-blue) 60deg 120deg,
+                var(--neon-purple) 120deg 180deg,
+                var(--neon-green) 180deg 240deg,
+                var(--neon-orange) 240deg 300deg,
+                var(--neon-yellow) 300deg 360deg
+            );
+            box-shadow:
+                0 0 60px rgba(255, 0, 255, 0.5),
+                0 0 100px rgba(0, 255, 255, 0.3),
+                inset 0 0 80px rgba(0, 0, 0, 0.8);
+            animation: slowSpin 20s linear infinite;
+            cursor: pointer;
+            transition: animation-duration 0.5s;
+        }
+
+        .roulette-wheel:hover {
+            animation-duration: 2s;
+        }
+
+        .roulette-wheel.spinning {
+            animation: fastSpin 0.3s linear infinite;
+        }
+
+        @keyframes slowSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fastSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Game icons on wheel */
+        .wheel-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            transform-origin: center;
+        }
+
+        .wheel-icon:nth-child(1) {
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wheel-icon:nth-child(2) {
+            top: 30%;
+            right: 10%;
+        }
+
+        .wheel-icon:nth-child(3) {
+            bottom: 30%;
+            right: 10%;
+        }
+
+        .wheel-icon:nth-child(4) {
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wheel-icon:nth-child(5) {
+            bottom: 30%;
+            left: 10%;
+        }
+
+        .wheel-icon:nth-child(6) {
+            top: 30%;
+            left: 10%;
+        }
+
+        /* Center logo */
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 25px;
-            background: rgba(0,0,0,0.7);
-            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            border: 4px solid var(--gold);
+            z-index: 10;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .wheel-center:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 60px var(--gold);
+        }
+
+        .wheel-center img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px var(--neon-pink));
+        }
+
+        /* Pointer */
+        .wheel-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid var(--gold);
+            filter: drop-shadow(0 0 20px var(--gold));
+            z-index: 20;
+        }
+
+        /* Selected Game Display */
+        .selected-game {
+            text-align: center;
+            margin-bottom: 40px;
+            min-height: 80px;
+        }
+
+        .selected-game h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 30px var(--neon-pink);
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s;
+        }
+
+        .selected-game h3.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .selected-game .play-btn {
+            display: inline-block;
+            padding: 15px 50px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .selected-game .play-btn.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .selected-game .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px var(--neon-pink);
+        }
+
+        /* Quick Access Buttons */
+        .quick-games {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             color: white;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border-radius: 12px;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            cursor: pointer;
-        }
-        .btn i { font-size: 1.4rem; }
-        .btn:hover {
-            background: var(--neon-pink);
-            box-shadow: 0 0 40px var(--neon-pink);
-            transform: translateY(-5px);
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
 
-        .hub-btn { backdrop-filter: blur(5px); }
+        .quick-btn i {
+            font-size: 1.3rem;
+        }
 
-        .special-btn {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
-            border: none;
-            font-size: 1.2rem;
-            padding: 25px;
-            animation: pulse 2s infinite;
+        .quick-btn:nth-child(1) {
+            --btn-color: var(--neon-pink);
         }
-        .special-btn img { height: 40px; }
-        .special-btn:hover {
-            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
-            box-shadow: 0 0 60px var(--neon-pink), 0 0 60px var(--neon-blue);
+
+        .quick-btn:nth-child(2) {
+            --btn-color: var(--neon-blue);
         }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 25px var(--neon-pink), 0 0 25px var(--neon-blue); }
-            50% { box-shadow: 0 0 50px var(--neon-pink), 0 0 50px var(--neon-blue); }
+
+        .quick-btn:nth-child(3) {
+            --btn-color: var(--neon-purple);
+        }
+
+        .quick-btn:nth-child(4) {
+            --btn-color: var(--neon-green);
+        }
+
+        .quick-btn:nth-child(5) {
+            --btn-color: var(--neon-orange);
+        }
+
+        .quick-btn:nth-child(6) {
+            --btn-color: var(--neon-yellow);
+            color: #000;
+        }
+
+        .quick-btn:hover {
+            background: var(--btn-color);
+            border-color: var(--btn-color);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 40px var(--btn-color);
         }
 
         /* CTA SECTION */
         .cta-section {
-            margin: 60px 0;
-            padding: 50px 40px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            margin: 80px auto;
+            padding: 60px 50px;
+            max-width: 900px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
             text-align: center;
             border: 2px solid var(--neon-blue);
+            position: relative;
+            overflow: hidden;
         }
-        .cta-section h2 {
-            font-family: var(--heading-font);
+
+        .cta-section::before {
+            content: '🌴';
+            position: absolute;
+            top: 20px;
+            left: 30px;
             font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .cta-section::after {
+            content: '🍹';
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .cta-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
             margin-bottom: 15px;
-            color: var(--neon-blue);
-            text-shadow: 0 0 20px var(--neon-blue);
+            color: white;
+            text-shadow: 0 0 30px var(--neon-blue);
         }
+
         .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: rgba(255,255,255,0.85);
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .btn-primary {
-            background: var(--neon-blue);
-            border-color: var(--neon-blue);
-            color: black;
-            font-size: 1.1rem;
-            padding: 18px 50px;
+            display: inline-block;
+            padding: 20px 60px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            border: none;
+            border-radius: 50px;
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s;
         }
+
         .btn-primary:hover {
-            background: white;
-            box-shadow: 0 0 50px var(--neon-blue);
+            transform: scale(1.1);
+            box-shadow: 0 0 60px var(--neon-blue);
         }
 
         /* FOOTER */
         .main-footer {
-            background: rgba(0,0,0,0.95);
-            padding: 30px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+            padding: 40px 20px;
             text-align: center;
             font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+            position: relative;
+            z-index: 1;
         }
-        .main-footer p { margin: 5px 0; }
+
+        .main-footer p {
+            margin: 8px 0;
+        }
+
         .main-footer a {
             color: var(--neon-pink);
             text-decoration: none;
             font-weight: 700;
+            transition: all 0.3s;
         }
-        .main-footer a:hover { color: white; }
+
+        .main-footer a:hover {
+            color: white;
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .main-nav, .header-social { display: none; }
-            #mobile-menu-btn { display: block; }
-            .off-canvas-menu { display: flex; }
-            .hero-content h1 { font-size: 3rem; }
-            .hero-content p { font-size: 1.2rem; }
-            .hub-grid { grid-template-columns: 1fr; }
-            .special-btn { grid-column: 1; }
-            .game-hub { padding: 25px 15px; }
-            .cta-section { padding: 35px 20px; }
-            .cta-section h2 { font-size: 2rem; }
+        @media (max-width: 900px) {
+            .quick-games {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roulette-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .wheel-center {
+                width: 90px;
+                height: 90px;
+            }
+
+            .wheel-center img {
+                width: 60px;
+                height: 60px;
+            }
         }
+
+        @media (max-width: 768px) {
+            .main-nav,
+            .header-social {
+                display: none;
+            }
+
+            #mobile-menu-btn {
+                display: block;
+            }
+
+            .off-canvas-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+
+            .hub-title {
+                font-size: 2.5rem;
+            }
+
+            .game-hub {
+                padding: 40px 20px;
+                margin: 20px;
+            }
+
+            .cta-section {
+                padding: 40px 25px;
+                margin: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .quick-games {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 480px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .main-header { padding: 10px 15px; }
-            .logo-container img { height: 45px; }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .main-header {
+                padding: 10px 20px;
+            }
+
+            .logo-container img {
+                height: 50px;
+            }
+
+            .roulette-container {
+                width: 280px;
+                height: 280px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- VIDEO BACKGROUND -->
     <div class="video-background">
         <video autoplay muted loop playsinline id="bg-video">
-            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
+            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4"
+                type="video/mp4">
         </video>
     </div>
 
     <!-- HEADER -->
     <header class="main-header">
         <div class="logo-container">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors Zante Logo">
+            <a href="https://exposuresolutions.github.io/flavors-zante/">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
+                    alt="Flavors Zante">
+            </a>
         </div>
         <nav class="main-nav">
             <a href="https://exposuresolutions.github.io/flavors-zante/flavors-menu.html">Menu</a>
@@ -384,34 +842,59 @@
         </div>
 
         <div class="game-hub">
-            <h2 class="hub-title"><span>🎮 GAME HUB</span></h2>
-            <div class="hub-grid">
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html" class="btn hub-btn">
-                    <i class="fas fa-traffic-light"></i> TRAFFIC LIGHT GAME
+            <h2 class="hub-title">🎰 SPIN TO PLAY 🎰</h2>
+
+            <!-- ROULETTE WHEEL -->
+            <div class="roulette-container">
+                <div class="wheel-pointer"></div>
+                <div class="roulette-wheel" id="rouletteWheel">
+                    <span class="wheel-icon"><i class="fas fa-traffic-light"></i></span>
+                    <span class="wheel-icon"><i class="fas fa-dice"></i></span>
+                    <span class="wheel-icon"><i class="fas fa-crown"></i></span>
+                    <span class="wheel-icon"><i class="fas fa-snowflake"></i></span>
+                    <span class="wheel-icon"><i class="fas fa-wine-bottle"></i></span>
+                    <span class="wheel-icon"><i class="fas fa-gamepad"></i></span>
+                </div>
+                <div class="wheel-center" id="spinBtn">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
+                        alt="SPIN">
+                </div>
+            </div>
+
+            <!-- Selected Game Display -->
+            <div class="selected-game">
+                <h3 id="selectedGameTitle">CLICK THE WHEEL TO SPIN!</h3>
+                <a href="#" class="play-btn" id="playBtn" style="display:none;">PLAY NOW</a>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="quick-games">
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html" class="quick-btn">
+                    <i class="fas fa-traffic-light"></i> Traffic Light
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-casino.html" class="btn hub-btn">
-                    <i class="fas fa-dice"></i> SPIN & WIN
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-casino.html" class="quick-btn">
+                    <i class="fas fa-dice"></i> Spin & Win
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html" class="btn hub-btn">
-                    <i class="fas fa-skull-crossbones"></i> VIP / FINAL BOSS
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html" class="quick-btn">
+                    <i class="fas fa-crown"></i> VIP Boss
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html" class="btn hub-btn">
-                    <i class="fas fa-snowflake"></i> FROZEN CHALLENGE
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html" class="quick-btn">
+                    <i class="fas fa-snowflake"></i> Frozen Challenge
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html" class="btn hub-btn">
-                    <i class="fas fa-wine-bottle"></i> SPIN THE BOTTLE
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html" class="quick-btn">
+                    <i class="fas fa-wine-bottle"></i> Spin Bottle
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html" class="btn hub-btn special-btn">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors">
-                    ALL GAMES
+                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html" class="quick-btn">
+                    <i class="fas fa-gamepad"></i> All Games
                 </a>
             </div>
         </div>
 
         <section class="cta-section">
-            <h2>🌴 JOIN THE TEAM</h2>
-            <p>WE'RE HIRING FOR ZANTE 2025. APPLY NOW FOR THE SUMMER OF A LIFETIME.</p>
-            <a href="https://exposuresolutions.github.io/flavors-zante/feedback-survey.html?source=jobs" class="btn btn-primary">APPLY NOW</a>
+            <h2>JOIN THE TEAM</h2>
+            <p>We're hiring for Zante 2025. Apply now for the summer of a lifetime!</p>
+            <a href="https://exposuresolutions.github.io/flavors-zante/feedback-survey.html?source=jobs"
+                class="btn-primary">APPLY NOW</a>
         </section>
     </main>
 
@@ -421,31 +904,99 @@
         <p>POWERED BY <a href="https://exposuresolutions.ie" target="_blank">EXPOSURE AI</a></p>
     </footer>
 
-    <!-- MOBILE MENU SCRIPT -->
+    <!-- SCRIPTS -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var menuBtn = document.getElementById('mobile-menu-btn');
-            var closeBtn = document.getElementById('close-menu-btn');
-            var menu = document.querySelector('.off-canvas-menu');
-            
+        // Games data
+        const games = [
+            { name: 'TRAFFIC LIGHT GAME', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html', color: '#FF00FF' },
+            { name: 'SPIN & WIN', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-casino.html', color: '#00FFFF' },
+            { name: 'VIP / FINAL BOSS', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html', color: '#9D00FF' },
+            { name: 'FROZEN CHALLENGE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html', color: '#39FF14' },
+            { name: 'SPIN THE BOTTLE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html', color: '#FF6B00' },
+            { name: 'ALL GAMES', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html', color: '#FFE500' }
+        ];
+
+        // DOM elements
+        const wheel = document.getElementById('rouletteWheel');
+        const spinBtn = document.getElementById('spinBtn');
+        const titleEl = document.getElementById('selectedGameTitle');
+        const playBtn = document.getElementById('playBtn');
+        let isSpinning = false;
+        let currentRotation = 0;
+
+        // Spin function
+        function spinWheel() {
+            if (isSpinning) return;
+            isSpinning = true;
+
+            wheel.classList.add('spinning');
+            titleEl.classList.remove('show');
+            playBtn.classList.remove('show');
+            playBtn.style.display = 'none';
+
+            // Random spin duration and final position
+            const spinDuration = 3000 + Math.random() * 2000;
+            const extraSpins = 5 + Math.floor(Math.random() * 3);
+            const finalAngle = Math.random() * 360;
+            const totalRotation = currentRotation + (extraSpins * 360) + finalAngle;
+
+            // Animate
+            wheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.12, 0.99)`;
+            wheel.style.animation = 'none';
+            wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+            currentRotation = totalRotation;
+
+            setTimeout(() => {
+                isSpinning = false;
+                wheel.classList.remove('spinning');
+
+                // Calculate which game was selected
+                const normalizedAngle = (360 - (totalRotation % 360)) % 360;
+                const gameIndex = Math.floor(normalizedAngle / 60);
+                const selectedGame = games[gameIndex];
+
+                // Show result
+                titleEl.textContent = selectedGame.name;
+                titleEl.style.color = selectedGame.color;
+                titleEl.style.textShadow = `0 0 30px ${selectedGame.color}`;
+                titleEl.classList.add('show');
+
+                playBtn.href = selectedGame.url;
+                playBtn.style.background = `linear-gradient(135deg, ${selectedGame.color}, #9D00FF)`;
+                playBtn.style.display = 'inline-block';
+                setTimeout(() => playBtn.classList.add('show'), 200);
+
+            }, spinDuration);
+        }
+
+        // Event listeners
+        spinBtn.addEventListener('click', spinWheel);
+        wheel.addEventListener('click', spinWheel);
+
+        // Mobile menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const menu = document.querySelector('.off-canvas-menu');
+
             if (menuBtn && menu) {
-                menuBtn.addEventListener('click', function() {
-                    menu.classList.add('active');
-                });
+                menuBtn.addEventListener('click', () => menu.classList.add('active'));
             }
             if (closeBtn && menu) {
-                closeBtn.addEventListener('click', function() {
-                    menu.classList.remove('active');
-                });
+                closeBtn.addEventListener('click', () => menu.classList.remove('active'));
             }
-            document.addEventListener('click', function(e) {
-                if (menu && menu.classList.contains('active')) {
-                    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-                        menu.classList.remove('active');
-                    }
+            document.addEventListener('click', (e) => {
+                if (menu && menu.classList.contains('active') &&
+                    !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    menu.classList.remove('active');
                 }
             });
+
+            // Show initial title
+            titleEl.classList.add('show');
         });
     </script>
 </body>
+
 </html>
