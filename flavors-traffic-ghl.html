@@ -1,0 +1,191 @@
+<!-- FLAVORS TRAFFIC LIGHT - GHL VERSION -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{font-family:'Montserrat',sans-serif;background:#050505;color:#fff;min-height:100vh}
+
+:root{--red:#FF3B3B;--amber:#FFB627;--green:#00D26A}
+
+.tl-wrap{min-height:100vh;background:radial-gradient(ellipse at center,#111 0%,#000 100%);display:flex;flex-direction:column;align-items:center;padding:20px}
+
+/* HEADER */
+.tl-header{position:fixed;top:0;left:0;right:0;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.95);z-index:100;border-bottom:1px solid rgba(255,0,255,0.2)}
+.tl-logo{height:50px;filter:drop-shadow(0 0 15px #ff00ff)}
+.tl-back{color:#fff;text-decoration:none;font-size:14px;display:flex;align-items:center;gap:8px;transition:0.3s}
+.tl-back:hover{color:#ff00ff}
+
+/* MAIN */
+.tl-main{max-width:500px;width:100%;padding-top:100px;text-align:center}
+
+/* HERO */
+.tl-hero{margin-bottom:30px}
+.tl-hero h1{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:4px;line-height:1}
+.tl-hero h1 .red{color:var(--red);text-shadow:0 0 30px var(--red)}
+.tl-hero h1 .amber{color:var(--amber);text-shadow:0 0 30px var(--amber)}
+.tl-hero h1 .green{color:var(--green);text-shadow:0 0 30px var(--green)}
+.tl-hero p{font-family:'Orbitron',sans-serif;color:#888;font-size:12px;letter-spacing:4px;margin-top:10px}
+
+/* TRAFFIC LIGHT */
+.tl-light-box{background:linear-gradient(180deg,#222 0%,#111 100%);padding:35px 25px;border-radius:60px;display:inline-flex;flex-direction:column;gap:20px;border:3px solid #333;box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 2px 0 rgba(255,255,255,0.05);margin-bottom:30px}
+
+.tl-light{width:100px;height:100px;border-radius:50%;cursor:pointer;transition:all 0.4s;position:relative;border:4px solid rgba(0,0,0,0.3)}
+.tl-light::after{content:'';position:absolute;top:15%;left:15%;width:30%;height:30%;background:rgba(255,255,255,0.4);border-radius:50%;filter:blur(5px)}
+
+.tl-light.red{background:var(--red);box-shadow:0 0 30px var(--red)}
+.tl-light.amber{background:var(--amber);box-shadow:0 0 30px var(--amber)}
+.tl-light.green{background:var(--green);box-shadow:0 0 30px var(--green)}
+
+.tl-light:hover{transform:scale(1.1);filter:brightness(1.2)}
+
+/* When selected */
+.tl-light-box.selected .tl-light{opacity:0.2;transform:scale(0.85);box-shadow:none;filter:grayscale(0.8)}
+.tl-light-box.selected .tl-light.active{opacity:1;transform:scale(1.15);filter:brightness(1.3);border-color:#fff}
+.tl-light-box.selected .tl-light.active.red{box-shadow:0 0 80px var(--red),0 0 120px var(--red)}
+.tl-light-box.selected .tl-light.active.amber{box-shadow:0 0 80px var(--amber),0 0 120px var(--amber)}
+.tl-light-box.selected .tl-light.active.green{box-shadow:0 0 80px var(--green),0 0 120px var(--green)}
+
+/* STATUS CARD */
+.tl-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px;margin-top:20px;display:none;animation:fadeIn 0.5s}
+.tl-card.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.tl-status{font-family:'Bebas Neue',sans-serif;font-size:36px;margin-bottom:10px}
+.tl-desc{color:#aaa;font-size:14px;line-height:1.6;margin-bottom:20px}
+
+.tl-mission{background:rgba(0,0,0,0.4);border-radius:12px;padding:15px;margin-bottom:20px;border-left:4px solid #fff;text-align:left}
+.tl-mission-label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:5px}
+.tl-mission-text{font-weight:700;font-size:16px}
+
+.tl-btn{display:block;width:100%;padding:16px;border-radius:50px;border:none;font-family:'Montserrat',sans-serif;font-weight:800;text-transform:uppercase;font-size:14px;cursor:pointer;margin-bottom:12px;transition:0.3s;text-decoration:none;text-align:center}
+.tl-btn:hover{transform:scale(1.02)}
+.tl-btn-primary{background:#fff;color:#000}
+.tl-btn-whatsapp{background:#25D366;color:#fff}
+.tl-btn-reset{background:transparent;border:1px solid #444;color:#888}
+
+/* DEAL BADGE */
+.tl-deal{background:linear-gradient(45deg,#FFD700,#FFA500);color:#000;padding:12px 25px;border-radius:30px;font-family:'Orbitron',sans-serif;font-weight:900;font-size:12px;display:inline-block;margin-top:15px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05);box-shadow:0 0 30px rgba(255,215,0,0.6)}}
+
+/* STATS */
+.tl-stats{margin-top:40px;padding-top:20px;border-top:1px solid #222}
+.tl-stats-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:#222;margin-bottom:10px}
+.tl-stats-bar span{height:100%}
+.tl-stats-labels{display:flex;justify-content:space-between;font-size:11px;color:#555;font-family:'Orbitron',sans-serif}
+
+.tl-footer{margin-top:40px;text-align:center;color:#333;font-size:12px}
+.tl-footer a{color:#ff00ff}
+
+@media(max-width:480px){
+.tl-hero h1{font-size:38px}
+.tl-light{width:80px;height:80px}
+.tl-light-box{padding:25px 20px;gap:15px}
+}
+</style>
+
+<div class="tl-wrap">
+    <header class="tl-header">
+        <a href="https://flavorsdaiquiribar.com/">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="tl-logo">
+        </a>
+        <a href="https://flavorsdaiquiribar.com/" class="tl-back"><i class="fas fa-arrow-left"></i> Back</a>
+    </header>
+
+    <main class="tl-main">
+        <div class="tl-hero">
+            <h1>
+                <span class="red">STOP</span>
+                <span class="amber">LIGHT</span>
+                <span class="green">PARTY</span>
+            </h1>
+            <p>WHAT'S YOUR STATUS?</p>
+        </div>
+
+        <div class="tl-light-box" id="lightBox">
+            <div class="tl-light red" data-status="taken" onclick="selectStatus(this)"></div>
+            <div class="tl-light amber" data-status="complicated" onclick="selectStatus(this)"></div>
+            <div class="tl-light green" data-status="single" onclick="selectStatus(this)"></div>
+        </div>
+
+        <!-- RED CARD -->
+        <div class="tl-card" id="card-taken">
+            <div class="tl-status" style="color:var(--red)">?? TAKEN</div>
+            <p class="tl-desc">You're off the market but still here to party! Show off that red and let everyone know you're spoken for.</p>
+            <div class="tl-mission">
+                <div class="tl-mission-label">Your Mission</div>
+                <div class="tl-mission-text">Get your partner a drink & take a couples shot!</div>
+            </div>
+            <a href="#" class="tl-btn tl-btn-primary">GET YOUR RED WRISTBAND</a>
+            <div class="tl-deal">?? COUPLES DEAL: 2-FOR-1 SHOTS</div>
+        </div>
+
+        <!-- AMBER CARD -->
+        <div class="tl-card" id="card-complicated">
+            <div class="tl-status" style="color:var(--amber)">?? IT'S COMPLICATED</div>
+            <p class="tl-desc">Keeping your options open? Smart move. The amber light says "maybe" - you're open to conversation but not committing to anything.</p>
+            <div class="tl-mission">
+                <div class="tl-mission-label">Your Mission</div>
+                <div class="tl-mission-text">Make 3 new friends tonight & get their Instagrams!</div>
+            </div>
+            <a href="#" class="tl-btn tl-btn-primary">GET YOUR AMBER WRISTBAND</a>
+            <div class="tl-deal">?? SOCIAL HOUR: €5 DAIQUIRIS</div>
+        </div>
+
+        <!-- GREEN CARD -->
+        <div class="tl-card" id="card-single">
+            <div class="tl-status" style="color:var(--green)">?? SINGLE & READY</div>
+            <p class="tl-desc">Green means GO! You're single and ready to mingle. Tonight could be the night you meet someone special!</p>
+            <div class="tl-mission">
+                <div class="tl-mission-label">Your Mission</div>
+                <div class="tl-mission-text">Dance with a stranger & exchange numbers!</div>
+            </div>
+            <a href="#" class="tl-btn tl-btn-primary">GET YOUR GREEN WRISTBAND</a>
+            <a href="https://wa.me/353871234567?text=I'm%20GREEN%20at%20Flavors!" class="tl-btn tl-btn-whatsapp"><i class="fab fa-whatsapp"></i> Share on WhatsApp</a>
+            <div class="tl-deal">?? SINGLES SPECIAL: FREE SHOT WITH WRISTBAND</div>
+        </div>
+
+        <!-- RESET -->
+        <button class="tl-btn tl-btn-reset" id="resetBtn" style="display:none" onclick="resetSelection()">Change My Status</button>
+
+        <!-- LIVE STATS -->
+        <div class="tl-stats">
+            <div class="tl-stats-bar">
+                <span style="width:25%;background:var(--red)"></span>
+                <span style="width:30%;background:var(--amber)"></span>
+                <span style="width:45%;background:var(--green)"></span>
+            </div>
+            <div class="tl-stats-labels">
+                <span>?? 25% Taken</span>
+                <span>?? 30% Maybe</span>
+                <span>?? 45% Single</span>
+            </div>
+        </div>
+
+        <div class="tl-footer">
+            <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+        </div>
+    </main>
+</div>
+
+<script>
+var lightBox=document.getElementById('lightBox');
+var resetBtn=document.getElementById('resetBtn');
+
+function selectStatus(el){
+    var status=el.dataset.status;
+    lightBox.classList.add('selected');
+    document.querySelectorAll('.tl-light').forEach(function(l){l.classList.remove('active')});
+    el.classList.add('active');
+    document.querySelectorAll('.tl-card').forEach(function(c){c.classList.remove('show')});
+    document.getElementById('card-'+status).classList.add('show');
+    resetBtn.style.display='block';
+}
+
+function resetSelection(){
+    lightBox.classList.remove('selected');
+    document.querySelectorAll('.tl-light').forEach(function(l){l.classList.remove('active')});
+    document.querySelectorAll('.tl-card').forEach(function(c){c.classList.remove('show')});
+    resetBtn.style.display='none';
+}
+</script>
