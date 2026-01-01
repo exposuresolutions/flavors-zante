@@ -1,204 +1,264 @@
-<!-- FLAVORS ZANTE - GHL v4 - PREMIUM WITH CORRECT ASSETS -->
+<!-- FLAVORS ZANTE - GHL v5 - COMPLETE PREMIUM -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+:root{--pink:#FF00FF;--blue:#00FFFF;--purple:#9D00FF;--green:#39FF14;--orange:#FF6B00;--yellow:#FFE500;--gold:#D4AF37}
 *{margin:0;padding:0;box-sizing:border-box}
-body,html{font-family:'Montserrat',sans-serif;background:#0a0a12;color:#fff;min-height:100vh}
-.fz-wrap{min-height:100vh;background:linear-gradient(180deg,#0a0a12 0%,#1a0a2a 50%,#0a0a12 100%)}
+body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-height:100vh;overflow-x:hidden}
+
+/* VIDEO BG */
+.fz-video-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0}
+.fz-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,8,0.85) 0%,rgba(20,5,40,0.75) 50%,rgba(5,5,8,0.9) 100%);z-index:1}
+.fz-video-bg video{width:100%;height:100%;object-fit:cover}
 
 /* HEADER */
-.fz-header{position:fixed;top:0;left:0;right:0;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,10,0.98);z-index:100;border-bottom:1px solid rgba(255,0,255,0.3)}
-.fz-logo{height:55px;filter:drop-shadow(0 0 20px #ff00ff)}
-.fz-nav{display:flex;gap:35px}
-.fz-nav a{color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;transition:0.3s}
-.fz-nav a:hover{color:#ff00ff;text-shadow:0 0 25px #ff00ff}
-.fz-social{display:flex;gap:18px}
-.fz-social a{color:#fff;font-size:18px;transition:0.3s;text-decoration:none}
-.fz-social a:hover{color:#00ffff;transform:scale(1.2)}
+.fz-header{position:fixed;top:0;left:0;right:0;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.98) 0%,transparent 100%);z-index:1000;border-bottom:1px solid rgba(255,0,255,0.2)}
+.fz-logo{height:60px;filter:drop-shadow(0 0 20px var(--pink));transition:0.4s}
+.fz-logo:hover{filter:drop-shadow(0 0 40px var(--pink)) drop-shadow(0 0 60px var(--blue));transform:scale(1.08)}
+.fz-nav{display:flex;gap:40px}
+.fz-nav a{color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;transition:0.3s;position:relative;padding:10px 0}
+.fz-nav a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue));transform:scaleX(0);transition:0.3s}
+.fz-nav a:hover{color:#fff}
+.fz-nav a:hover::after{transform:scaleX(1)}
+.fz-social{display:flex;gap:20px}
+.fz-social a{color:rgba(255,255,255,0.7);font-size:18px;transition:0.3s;text-decoration:none}
+.fz-social a:hover{color:var(--pink);transform:translateY(-3px)}
+.fz-menu-btn{display:none;background:transparent;border:1px solid var(--pink);color:#fff;font-size:1.4rem;padding:10px 14px;cursor:pointer;border-radius:8px}
+
+/* MOBILE MENU */
+.fz-mobile-menu{display:none;position:fixed;top:0;right:-100%;width:100%;max-width:350px;height:100%;background:linear-gradient(180deg,#0a0510 0%,#150820 100%);z-index:1001;padding:80px 40px 40px;flex-direction:column;gap:25px;transition:right 0.4s;border-left:1px solid var(--pink)}
+.fz-mobile-menu.active{right:0}
+.fz-mobile-close{position:absolute;top:25px;right:25px;background:none;border:none;color:var(--pink);font-size:2.5rem;cursor:pointer}
+.fz-mobile-menu a{color:#fff;text-decoration:none;font-weight:600;font-size:1.1rem;letter-spacing:2px;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:0.3s}
+.fz-mobile-menu a:hover{color:var(--pink);padding-left:15px}
+.fz-mobile-social{display:flex;gap:25px;margin-top:auto}
+.fz-mobile-social a{font-size:1.5rem;border:none;padding:0}
 
 /* MAIN */
-.fz-main{padding:110px 20px 50px;max-width:900px;margin:0 auto}
+.fz-main{position:relative;z-index:1;padding:120px 20px 60px;max-width:1200px;margin:0 auto}
 
 /* HERO */
-.fz-hero{text-align:center;margin-bottom:35px}
-.fz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:68px;letter-spacing:10px;background:linear-gradient(90deg,#ff00ff,#00ffff,#ff00ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 3s linear infinite}
-@keyframes shine{to{background-position:200%}}
-.fz-hero p{font-family:'Orbitron',sans-serif;color:#00ffff;font-size:14px;letter-spacing:8px;text-shadow:0 0 25px #00ffff;margin-top:5px}
+.fz-hero{text-align:center;margin-bottom:50px}
+.fz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:5rem;letter-spacing:10px;background:linear-gradient(135deg,#fff 0%,var(--pink) 50%,var(--blue) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.fz-hero .tagline{font-family:'Orbitron',sans-serif;font-size:1.2rem;letter-spacing:10px;color:var(--blue);text-shadow:0 0 40px var(--blue);margin-top:10px}
+.fz-hero .sub{font-size:0.95rem;color:rgba(255,255,255,0.5);margin-top:15px;letter-spacing:3px}
 
-/* GAME CARD */
-.fz-game{background:rgba(15,5,30,0.95);border-radius:25px;padding:45px 35px;border:2px solid rgba(255,0,255,0.4);box-shadow:0 0 80px rgba(255,0,255,0.15),inset 0 1px 0 rgba(255,255,255,0.05)}
-.fz-game h2{font-family:'Bebas Neue',sans-serif;font-size:38px;text-align:center;letter-spacing:6px;margin-bottom:8px;color:#fff}
+/* GAME ROULETTE */
+.fz-game{margin:40px auto;padding:50px 40px;max-width:900px;background:rgba(10,5,20,0.95);border-radius:30px;border:2px solid rgba(255,0,255,0.3);box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative}
+.fz-game::before{content:'';position:absolute;inset:-2px;background:linear-gradient(45deg,var(--pink),transparent,var(--blue),transparent,var(--pink));background-size:400% 400%;border-radius:32px;z-index:-1;animation:borderGlow 8s linear infinite;opacity:0.5}
+@keyframes borderGlow{0%{background-position:0% 50%}100%{background-position:400% 50%}}
+.fz-game h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;text-align:center;letter-spacing:6px;margin-bottom:8px}
 .fz-game>p{text-align:center;color:rgba(255,255,255,0.5);margin-bottom:35px;font-size:14px}
 
-/* WHEEL - PREMIUM */
-.fz-wheel-box{position:relative;width:360px;height:360px;margin:0 auto 35px}
-
-.fz-wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(
-    #ff00ff 0deg 60deg,
-    #00ffff 60deg 120deg,
-    #9d00ff 120deg 180deg,
-    #39ff14 180deg 240deg,
-    #ff6b00 240deg 300deg,
-    #ffe500 300deg 360deg
-);border:6px solid #d4af37;box-shadow:0 0 0 4px rgba(0,0,0,0.8),0 0 50px rgba(255,0,255,0.4),0 0 100px rgba(0,255,255,0.2)}
-
-/* ICONS ON WHEEL */
-.fz-icon{position:absolute;font-size:28px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.8);filter:drop-shadow(0 0 5px rgba(255,255,255,0.5))}
-.fz-icon.i1{top:12%;left:50%;transform:translateX(-50%)}
-.fz-icon.i2{top:28%;right:12%}
-.fz-icon.i3{bottom:28%;right:12%}
-.fz-icon.i4{bottom:12%;left:50%;transform:translateX(-50%)}
-.fz-icon.i5{bottom:28%;left:12%}
-.fz-icon.i6{top:28%;left:12%}
-
-/* CENTER HUB */
-.fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#333,#000);border:5px solid #d4af37;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 40px rgba(0,0,0,0.9),0 0 30px rgba(212,175,55,0.3);transition:0.3s}
-.fz-hub:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 60px #d4af37}
-.fz-hub-logo{width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 15px #ff00ff);margin-bottom:5px}
-.fz-hub span{font-family:'Orbitron',sans-serif;font-size:9px;color:#d4af37;letter-spacing:2px;font-weight:700}
-
-/* POINTER AT TOP */
-.fz-pointer{position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:15}
-.fz-pointer::before{content:'';display:block;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:35px solid #d4af37;filter:drop-shadow(0 5px 15px rgba(212,175,55,0.8))}
-
-/* SPINNING WHEEL */
-.fz-spin-wheel{position:absolute;top:0;left:0;width:100%;height:100%;transition:transform 4s cubic-bezier(0.2,0.8,0.3,1)}
+/* WHEEL */
+.fz-wheel-box{position:relative;width:340px;height:340px;margin:0 auto 30px}
+.fz-pointer{position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:15;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:32px solid var(--gold);filter:drop-shadow(0 5px 15px rgba(212,175,55,0.8))}
+.fz-spin-wheel{position:absolute;inset:0;transition:transform 4s cubic-bezier(0.2,0.8,0.3,1)}
+.fz-wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--pink) 0deg 60deg,var(--blue) 60deg 120deg,var(--purple) 120deg 180deg,var(--green) 180deg 240deg,var(--orange) 240deg 300deg,var(--yellow) 300deg 360deg);border:6px solid var(--gold);box-shadow:0 0 0 4px rgba(0,0,0,0.8),0 0 50px rgba(255,0,255,0.4),0 0 100px rgba(0,255,255,0.2)}
+.fz-icon{position:absolute;font-size:26px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.8);filter:drop-shadow(0 0 5px rgba(255,255,255,0.5))}
+.fz-icon.i1{top:10%;left:50%;transform:translateX(-50%)}
+.fz-icon.i2{top:26%;right:10%}
+.fz-icon.i3{bottom:26%;right:10%}
+.fz-icon.i4{bottom:10%;left:50%;transform:translateX(-50%)}
+.fz-icon.i5{bottom:26%;left:10%}
+.fz-icon.i6{top:26%;left:10%}
+.fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#333,#000);border:5px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 40px rgba(0,0,0,0.9),0 0 30px rgba(212,175,55,0.3);transition:0.3s}
+.fz-hub:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 60px var(--gold)}
+.fz-hub img{width:65px;height:65px;object-fit:contain;filter:drop-shadow(0 0 15px var(--pink))}
+.fz-hub span{font-family:'Orbitron',sans-serif;font-size:8px;color:var(--gold);letter-spacing:2px;margin-top:5px}
 
 /* RESULT */
-.fz-result{text-align:center;padding:25px 0}
-.fz-result h3{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:5px;margin-bottom:18px;transition:0.5s;opacity:0}
+.fz-result{text-align:center;padding:20px 0}
+.fz-result h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;margin-bottom:15px;transition:0.5s;opacity:0}
 .fz-result h3.show{opacity:1}
-.fz-result a{display:inline-block;padding:15px 45px;background:linear-gradient(135deg,#ff00ff,#9d00ff);border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:3px;transition:0.3s;opacity:0}
+.fz-result a{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--pink),var(--purple));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:3px;transition:0.3s;opacity:0}
 .fz-result a.show{opacity:1}
-.fz-result a:hover{transform:scale(1.08);box-shadow:0 0 40px #ff00ff}
+.fz-result a:hover{transform:scale(1.08);box-shadow:0 0 40px var(--pink)}
+
+/* VIDEO GALLERY */
+.fz-gallery{margin:60px auto;max-width:900px}
+.fz-gallery h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;text-align:center;letter-spacing:5px;margin-bottom:30px;color:var(--blue);text-shadow:0 0 30px var(--blue)}
+.fz-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.fz-video{border-radius:15px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;cursor:pointer;transition:0.3s}
+.fz-video:hover{transform:scale(1.03);box-shadow:0 10px 40px rgba(255,0,255,0.3)}
+.fz-video video{width:100%;height:100%;object-fit:cover}
+.fz-video::after{content:'?';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;background:rgba(0,0,0,0.4);opacity:1;transition:0.3s}
+.fz-video:hover::after{opacity:0}
+.fz-video.playing::after{opacity:0}
+
+/* FINAL BOSS */
+.fz-boss{margin:60px auto;max-width:900px;background:linear-gradient(135deg,rgba(157,0,255,0.1),rgba(255,0,255,0.05));border-radius:25px;padding:40px;text-align:center;border:1px solid var(--purple)}
+.fz-boss img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);margin-bottom:20px;box-shadow:0 0 40px rgba(157,0,255,0.5)}
+.fz-boss h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);letter-spacing:4px}
+.fz-boss p{color:rgba(255,255,255,0.6);margin:10px 0 25px;font-size:14px}
+.fz-boss a{display:inline-block;padding:15px 40px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;text-decoration:none;letter-spacing:3px;transition:0.3s}
+.fz-boss a:hover{transform:scale(1.08);box-shadow:0 0 40px var(--purple)}
 
 /* CTA */
-.fz-cta{margin-top:50px;padding:45px;background:linear-gradient(135deg,rgba(0,255,255,0.08),rgba(255,0,255,0.05));border-radius:20px;text-align:center;border:1px solid rgba(0,255,255,0.3)}
-.fz-cta h2{font-family:'Bebas Neue',sans-serif;font-size:42px;margin-bottom:12px;letter-spacing:5px}
+.fz-cta{margin:60px auto;padding:50px;max-width:900px;background:linear-gradient(135deg,rgba(0,255,255,0.08),rgba(255,0,255,0.05));border-radius:25px;text-align:center;border:1px solid rgba(0,255,255,0.3)}
+.fz-cta h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;margin-bottom:12px;letter-spacing:5px}
 .fz-cta p{color:rgba(255,255,255,0.6);margin-bottom:25px;max-width:450px;margin-left:auto;margin-right:auto}
-.fz-cta a{display:inline-block;padding:16px 45px;background:linear-gradient(135deg,#00ffff,#39ff14);border-radius:50px;color:#000;font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;text-decoration:none;letter-spacing:3px;transition:0.3s}
-.fz-cta a:hover{transform:scale(1.08);box-shadow:0 0 50px #00ffff}
+.fz-cta a{display:inline-block;padding:16px 50px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:50px;color:#000;font-family:'Orbitron',sans-serif;font-weight:800;text-decoration:none;letter-spacing:3px;transition:0.3s}
+.fz-cta a:hover{transform:scale(1.08);box-shadow:0 0 50px var(--blue)}
 
-.fz-footer{text-align:center;padding:35px 20px;color:#444;font-size:13px}
-.fz-footer a{color:#ff00ff}
+/* FOOTER */
+.fz-footer{text-align:center;padding:40px 20px;color:#444;font-size:13px;position:relative;z-index:1}
+.fz-footer a{color:var(--pink)}
+.fz-footer img{height:40px;opacity:0.5;margin-bottom:15px}
 
+/* RESPONSIVE */
+@media(max-width:900px){.fz-videos{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
 .fz-nav,.fz-social{display:none}
-.fz-hero h1{font-size:42px;letter-spacing:5px}
+.fz-menu-btn{display:block}
+.fz-mobile-menu{display:flex}
+.fz-hero h1{font-size:3rem;letter-spacing:5px}
+.fz-hero .tagline{font-size:0.9rem;letter-spacing:5px}
 .fz-wheel-box{width:280px;height:280px}
 .fz-hub{width:100px;height:100px}
-.fz-hub-logo{width:50px;height:50px}
+.fz-hub img{width:50px;height:50px}
 .fz-icon{font-size:20px}
+.fz-game{padding:35px 25px;margin:20px 15px}
+.fz-cta,.fz-boss,.fz-gallery{margin:40px 15px;padding:35px 25px}
 }
+@media(max-width:600px){.fz-videos{grid-template-columns:1fr 1fr}}
 </style>
 
-<div class="fz-wrap">
-    <header class="fz-header">
-        <a href="https://flavorsdaiquiribar.com/">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo">
-        </a>
-        <nav class="fz-nav">
-            <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
-            <a href="https://flavorsdaiquiribar.com/events">Events</a>
-            <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
-            <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
-        </nav>
-        <div class="fz-social">
-            <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/FlavorsZante" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.tiktok.com/@flavorszante" target="_blank"><i class="fab fa-tiktok"></i></a>
-        </div>
-    </header>
-
-    <main class="fz-main">
-        <div class="fz-hero">
-            <h1>FLAVORS ZANTE</h1>
-            <p>THE ULTIMATE PARTY BAR</p>
-        </div>
-
-        <div class="fz-game">
-            <h2>SPIN TO PLAY</h2>
-            <p>Tap the logo and let fate decide your next Flavors experience!</p>
-
-            <div class="fz-wheel-box">
-                <div class="fz-pointer"></div>
-                
-                <div class="fz-spin-wheel" id="fzWheel">
-                    <div class="fz-wheel">
-                        <i class="fz-icon i1 fas fa-traffic-light"></i>
-                        <i class="fz-icon i2 fas fa-dice"></i>
-                        <i class="fz-icon i3 fas fa-crown"></i>
-                        <i class="fz-icon i4 fas fa-snowflake"></i>
-                        <i class="fz-icon i5 fas fa-wine-bottle"></i>
-                        <i class="fz-icon i6 fas fa-gamepad"></i>
-                    </div>
-                </div>
-
-                <div class="fz-hub" id="fzSpin">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="SPIN" class="fz-hub-logo">
-                    <span>TAP TO SPIN</span>
-                </div>
-            </div>
-
-            <div class="fz-result">
-                <h3 id="fzTitle" class="show">YOUR DESTINY AWAITS</h3>
-                <a href="#" id="fzBtn">PLAY NOW</a>
-            </div>
-        </div>
-
-        <div class="fz-cta">
-            <h2>JOIN THE FLAVORS TEAM</h2>
-            <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
-            <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
-        </div>
-    </main>
-
-    <footer class="fz-footer">
-        <p>&copy; 2025 Flavors Zante. Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
-    </footer>
+<div class="fz-video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
+    </video>
 </div>
 
+<header class="fz-header">
+    <a href="https://flavorsdaiquiribar.com/"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo"></a>
+    <nav class="fz-nav">
+        <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
+        <a href="https://flavorsdaiquiribar.com/events">Events</a>
+        <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
+        <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
+    </nav>
+    <div class="fz-social">
+        <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/FlavorsZante" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@flavorszante" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <button class="fz-menu-btn" onclick="document.querySelector('.fz-mobile-menu').classList.add('active')"><i class="fas fa-bars"></i></button>
+</header>
+
+<div class="fz-mobile-menu">
+    <button class="fz-mobile-close" onclick="this.parentElement.classList.remove('active')">&times;</button>
+    <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
+    <a href="https://flavorsdaiquiribar.com/events">Events</a>
+    <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
+    <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
+    <div class="fz-mobile-social">
+        <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/FlavorsZante" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@flavorszante" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+</div>
+
+<main class="fz-main">
+    <div class="fz-hero">
+        <h1>FLAVORS ZANTE</h1>
+        <p class="tagline">THE ULTIMATE PARTY BAR</p>
+        <p class="sub">Home of the Frozen Daiquiri • Est. 2018</p>
+    </div>
+
+    <div class="fz-game">
+        <h2>SPIN TO PLAY</h2>
+        <p>Tap the logo and let fate decide your next Flavors experience!</p>
+        <div class="fz-wheel-box">
+            <div class="fz-pointer"></div>
+            <div class="fz-spin-wheel" id="fzWheel">
+                <div class="fz-wheel">
+                    <i class="fz-icon i1 fas fa-traffic-light"></i>
+                    <i class="fz-icon i2 fas fa-dice"></i>
+                    <i class="fz-icon i3 fas fa-crown"></i>
+                    <i class="fz-icon i4 fas fa-snowflake"></i>
+                    <i class="fz-icon i5 fas fa-wine-bottle"></i>
+                    <i class="fz-icon i6 fas fa-gamepad"></i>
+                </div>
+            </div>
+            <div class="fz-hub" id="fzSpin">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="SPIN">
+                <span>TAP TO SPIN</span>
+            </div>
+        </div>
+        <div class="fz-result">
+            <h3 id="fzTitle" class="show">YOUR DESTINY AWAITS</h3>
+            <a href="#" id="fzBtn">PLAY NOW</a>
+        </div>
+    </div>
+
+    <div class="fz-gallery">
+        <h2>?? FROZEN CHALLENGE</h2>
+        <div class="fz-videos">
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video></div>
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video></div>
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video></div>
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c73a5e02c2f2b065f.mp4" playsinline loop muted></video></div>
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c42bb1cbdfb2c144b.mp4" playsinline loop muted></video></div>
+            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c6caf49867e59b05d.mp4" playsinline loop muted></video></div>
+        </div>
+    </div>
+
+    <div class="fz-boss">
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694fd0c4ee1047dcb0dd104f.jpg" alt="Chris - The Final Boss">
+        <h2>?? MEET THE FINAL BOSS</h2>
+        <p>Think you can handle Chris? Take on the VIP challenge and prove yourself worthy!</p>
+        <a href="https://flavorsdaiquiribar.com/vip">CHALLENGE THE BOSS</a>
+    </div>
+
+    <div class="fz-cta">
+        <h2>JOIN THE FLAVORS TEAM</h2>
+        <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
+        <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
+    </div>
+</main>
+
+<footer class="fz-footer">
+    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
+    <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
+    <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+</footer>
+
 <script>
+// ROULETTE
 (function(){
     var games=[
-        {name:'FLAVORS TRAFFIC LIGHT',url:'https://flavorsdaiquiribar.com/trafficlight',color:'#ff00ff'},
-        {name:'FLAVORS CASINO',url:'https://flavorsdaiquiribar.com/casino',color:'#00ffff'},
-        {name:'FLAVORS VIP',url:'https://flavorsdaiquiribar.com/vip',color:'#9d00ff'},
-        {name:'FLAVORS FROZEN',url:'https://flavorsdaiquiribar.com/frozen',color:'#39ff14'},
-        {name:'FLAVORS BOTTLE',url:'https://flavorsdaiquiribar.com/bottle',color:'#ff6b00'},
-        {name:'ALL GAMES',url:'https://flavorsdaiquiribar.com/games',color:'#ffe500'}
+        {name:'FLAVORS TRAFFIC LIGHT',url:'https://flavorsdaiquiribar.com/trafficlight',color:'#FF00FF'},
+        {name:'FLAVORS CASINO',url:'https://flavorsdaiquiribar.com/casino',color:'#00FFFF'},
+        {name:'FLAVORS VIP',url:'https://flavorsdaiquiribar.com/vip',color:'#9D00FF'},
+        {name:'FLAVORS FROZEN',url:'https://flavorsdaiquiribar.com/frozen',color:'#39FF14'},
+        {name:'FLAVORS BOTTLE',url:'https://flavorsdaiquiribar.com/bottle',color:'#FF6B00'},
+        {name:'ALL GAMES',url:'https://flavorsdaiquiribar.com/games',color:'#FFE500'}
     ];
-    var wheel=document.getElementById('fzWheel');
-    var spinBtn=document.getElementById('fzSpin');
-    var title=document.getElementById('fzTitle');
-    var btn=document.getElementById('fzBtn');
+    var wheel=document.getElementById('fzWheel'),spinBtn=document.getElementById('fzSpin'),title=document.getElementById('fzTitle'),btn=document.getElementById('fzBtn');
     var spinning=false,rotation=0;
-    
     spinBtn.onclick=function(){
-        if(spinning)return;
-        spinning=true;
-        title.classList.remove('show');
-        btn.classList.remove('show');
-        
-        var spins=5+Math.floor(Math.random()*5);
-        var extra=Math.random()*360;
+        if(spinning)return;spinning=true;
+        title.classList.remove('show');btn.classList.remove('show');
+        var spins=5+Math.floor(Math.random()*5),extra=Math.random()*360;
         rotation+=(spins*360)+extra;
         wheel.style.transform='rotate('+rotation+'deg)';
-        
         setTimeout(function(){
             spinning=false;
-            var angle=rotation%360;
-            var idx=Math.floor(((360-angle+30)%360)/60)%6;
-            var game=games[idx];
-            title.textContent=game.name;
-            title.style.color=game.color;
-            title.style.textShadow='0 0 30px '+game.color;
-            title.classList.add('show');
-            btn.href=game.url;
-            btn.style.background='linear-gradient(135deg,'+game.color+',#9d00ff)';
+            var angle=rotation%360,idx=Math.floor(((360-angle+30)%360)/60)%6,game=games[idx];
+            title.textContent=game.name;title.style.color=game.color;title.style.textShadow='0 0 30px '+game.color;title.classList.add('show');
+            btn.href=game.url;btn.style.background='linear-gradient(135deg,'+game.color+',#9D00FF)';
             setTimeout(function(){btn.classList.add('show')},300);
         },4000);
     };
 })();
+
+// VIDEO GALLERY
+function playVideo(el){
+    var vid=el.querySelector('video');
+    document.querySelectorAll('.fz-video').forEach(function(v){v.classList.remove('playing');v.querySelector('video').pause();v.querySelector('video').muted=true});
+    if(vid.paused){vid.muted=false;vid.play();el.classList.add('playing')}
+}
 </script>
