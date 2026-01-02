@@ -1,8 +1,16 @@
-<!-- FLAVORS ZANTE - GHL v6 - COMPLETE PREMIUM EXPERIENCE -->
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flavors Zante - The Ultimate Party Bar with Frozen Daiquiris, Games, and Entertainment">
+    <meta name="theme-color" content="#050508">
+    <title>Flavors Zante | The Ultimate Party Bar</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
 :root{--pink:#FF00FF;--blue:#00FFFF;--purple:#9D00FF;--green:#39FF14;--orange:#FF6B00;--yellow:#FFE500;--gold:#D4AF37;--red:#FF3B3B}
 *{margin:0;padding:0;box-sizing:border-box}
 body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-height:100vh;overflow-x:hidden}
@@ -13,13 +21,13 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-intro video{max-width:90%;max-height:90%}
 
 /* VIDEO BG */
-.fz-video-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0}
+.fz-video-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden}
 .fz-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,8,0.85) 0%,rgba(20,5,40,0.7) 50%,rgba(5,5,8,0.9) 100%);z-index:1}
 .fz-video-bg video{width:100%;height:100%;object-fit:cover}
 
 /* HEADER */
 .fz-header{position:fixed;top:0;left:0;right:0;padding:12px 35px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.95) 0%,transparent 100%);z-index:1000;border-bottom:1px solid rgba(255,0,255,0.2)}
-.fz-logo{height:55px;filter:drop-shadow(0 0 20px var(--pink));transition:0.4s}
+.fz-logo{height:55px;filter:drop-shadow(0 0 20px var(--pink));transition:0.4s;cursor:pointer}
 .fz-logo:hover{filter:drop-shadow(0 0 40px var(--pink)) drop-shadow(0 0 60px var(--blue));transform:scale(1.08)}
 .fz-nav{display:flex;gap:35px}
 .fz-nav a{color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:0.3s;position:relative;padding:8px 0}
@@ -28,12 +36,14 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-social{display:flex;gap:18px}
 .fz-social a{color:rgba(255,255,255,0.7);font-size:16px;transition:0.3s;text-decoration:none}
 .fz-social a:hover{color:var(--pink);transform:translateY(-3px)}
-.fz-menu-btn{display:none;background:transparent;border:1px solid var(--pink);color:#fff;font-size:1.3rem;padding:8px 12px;cursor:pointer;border-radius:6px}
+.fz-menu-btn{display:none;background:transparent;border:1px solid var(--pink);color:#fff;font-size:1.3rem;padding:8px 12px;cursor:pointer;border-radius:6px;transition:0.3s}
+.fz-menu-btn:hover{background:var(--pink)}
 
 /* MOBILE MENU */
-.fz-mobile-menu{display:none;position:fixed;top:0;right:-100%;width:100%;max-width:320px;height:100%;background:linear-gradient(180deg,#0a0510 0%,#150820 100%);z-index:1001;padding:70px 35px 35px;flex-direction:column;gap:20px;transition:right 0.4s;border-left:1px solid var(--pink)}
+.fz-mobile-menu{display:none;position:fixed;top:0;right:-100%;width:100%;max-width:320px;height:100%;background:linear-gradient(180deg,#0a0510 0%,#150820 100%);z-index:1001;padding:70px 35px 35px;flex-direction:column;gap:20px;transition:right 0.4s;border-left:1px solid var(--pink);overflow-y:auto}
 .fz-mobile-menu.active{right:0}
-.fz-mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--pink);font-size:2.2rem;cursor:pointer}
+.fz-mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--pink);font-size:2.2rem;cursor:pointer;transition:0.3s}
+.fz-mobile-close:hover{color:var(--blue)}
 .fz-mobile-menu a{color:#fff;text-decoration:none;font-weight:600;font-size:1rem;letter-spacing:2px;text-transform:uppercase;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:0.3s}
 .fz-mobile-menu a:hover{color:var(--pink);padding-left:10px}
 
@@ -56,6 +66,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:30px 0}
 .fz-action{display:flex;align-items:center;gap:8px;padding:12px 25px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.2);border-radius:50px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;transition:0.3s}
 .fz-action:hover{background:var(--pink);border-color:var(--pink);transform:scale(1.05)}
+.fz-action:focus{outline:2px solid var(--blue);outline-offset:2px}
 .fz-action i{font-size:14px}
 
 /* GAME ROULETTE */
@@ -79,6 +90,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-icon.i6{top:24%;left:8%}
 .fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#333,#000);border:4px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 30px rgba(0,0,0,0.9);transition:0.3s}
 .fz-hub:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 50px var(--gold)}
+.fz-hub:focus{outline:2px solid var(--blue)}
 .fz-hub img{width:55px;height:55px;object-fit:contain;filter:drop-shadow(0 0 12px var(--pink))}
 .fz-hub span{font-family:'Orbitron',sans-serif;font-size:7px;color:var(--gold);letter-spacing:2px;margin-top:4px}
 
@@ -89,24 +101,25 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-result a{display:inline-block;padding:12px 35px;background:linear-gradient(135deg,var(--pink),var(--purple));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:12px;text-decoration:none;letter-spacing:2px;transition:0.3s;opacity:0}
 .fz-result a.show{opacity:1}
 .fz-result a:hover{transform:scale(1.08);box-shadow:0 0 30px var(--pink)}
+.fz-result a:focus{outline:2px solid var(--blue);outline-offset:2px}
 
 /* GALLERY SECTION */
 .fz-section{margin:50px auto;max-width:900px}
 .fz-section h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;text-align:center;letter-spacing:4px;margin-bottom:25px}
-.fz-section h2 span{background:linear-gradient(90deg,var(--pink),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.fz-section h2 span{background:linear-gradient(90deg,var(--pink),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* VIDEO GALLERY */
 .fz-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .fz-video{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;cursor:pointer;transition:0.3s}
 .fz-video:hover{transform:scale(1.03);box-shadow:0 10px 35px rgba(255,0,255,0.3)}
-.fz-video video{width:100%;height:100%;object-fit:cover}
+.fz-video video{width:100%;height:100%;object-fit:cover;display:block}
 .fz-video::after{content:'?';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;background:rgba(0,0,0,0.4);opacity:1;transition:0.3s}
 .fz-video.playing::after{opacity:0}
 
 /* PHOTO GALLERY */
 .fz-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.fz-photo{border-radius:12px;overflow:hidden;aspect-ratio:1;background:#111}
-.fz-photo img{width:100%;height:100%;object-fit:cover;transition:0.3s}
+.fz-photo{border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:#111}
+.fz-photo img{width:100%;height:100%;object-fit:cover;transition:0.3s;display:block}
 .fz-photo:hover img{transform:scale(1.1)}
 
 /* MERCH SHOP */
@@ -115,14 +128,15 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .fz-product{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:15px;text-align:center;transition:0.3s}
 .fz-product:hover{border-color:var(--pink);transform:translateY(-5px);box-shadow:0 15px 40px rgba(255,0,255,0.2)}
-.fz-product img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:10px;margin-bottom:10px}
+.fz-product img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:10px;margin-bottom:10px;display:block}
 .fz-product h3{font-size:12px;font-weight:700;margin-bottom:5px}
 .fz-product .price{color:var(--green);font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px}
-.fz-product a{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--pink);border-radius:20px;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:1px}
+.fz-product a{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--pink);border-radius:20px;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:1px;transition:0.3s}
+.fz-product a:hover{transform:scale(1.05);box-shadow:0 0 20px var(--pink)}
 
 /* BOSS SECTION */
 .fz-boss{margin:50px auto;max-width:900px;background:linear-gradient(135deg,rgba(157,0,255,0.1),rgba(255,0,255,0.05));border-radius:20px;padding:35px;text-align:center;border:1px solid var(--purple)}
-.fz-boss img{width:130px;height:130px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);margin-bottom:15px;box-shadow:0 0 35px rgba(157,0,255,0.5)}
+.fz-boss img{width:130px;height:130px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);margin-bottom:15px;box-shadow:0 0 35px rgba(157,0,255,0.5);display:block}
 .fz-boss h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:3px}
 .fz-boss p{color:rgba(255,255,255,0.6);margin:8px 0 20px;font-size:13px}
 .fz-boss a{display:inline-block;padding:12px 35px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:12px;text-decoration:none;letter-spacing:2px;transition:0.3s}
@@ -134,7 +148,8 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-info-card:hover{border-color:var(--blue)}
 .fz-info-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin-bottom:10px;color:var(--blue)}
 .fz-info-card p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6}
-.fz-info-card a{color:var(--pink);text-decoration:none}
+.fz-info-card a{color:var(--pink);text-decoration:none;transition:0.3s}
+.fz-info-card a:hover{text-decoration:underline}
 
 /* CTA */
 .fz-cta{margin:50px auto;padding:40px;max-width:900px;background:linear-gradient(135deg,rgba(0,255,255,0.08),rgba(255,0,255,0.05));border-radius:20px;text-align:center;border:1px solid rgba(0,255,255,0.3)}
@@ -145,8 +160,9 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 
 /* FOOTER */
 .fz-footer{text-align:center;padding:35px 20px;color:#444;font-size:12px;position:relative;z-index:1}
-.fz-footer a{color:var(--pink)}
-.fz-footer img{height:35px;opacity:0.5;margin-bottom:12px}
+.fz-footer a{color:var(--pink);text-decoration:none;transition:0.3s}
+.fz-footer a:hover{text-decoration:underline}
+.fz-footer img{height:35px;opacity:0.5;margin-bottom:12px;display:block}
 
 /* RESPONSIVE */
 @media(max-width:900px){.fz-videos,.fz-photos,.fz-products{grid-template-columns:repeat(2,1fr)}.fz-info{grid-template-columns:1fr}}
@@ -158,213 +174,273 @@ body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-
 .fz-mascot-img{width:140px;height:140px}
 }
 @media(max-width:500px){.fz-videos,.fz-products{grid-template-columns:1fr 1fr}.fz-photos{grid-template-columns:1fr 1fr}}
-</style>
+    </style>
+</head>
+<body>
 
-<!-- LOGO INTRO -->
-<div class="fz-intro" id="fzIntro">
-    <video autoplay muted playsinline onended="document.getElementById('fzIntro').classList.add('hide')">
-        <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e16d873a5e0677f237059.mp4" type="video/mp4">
-    </video>
-</div>
-
-<!-- VIDEO BG -->
-<div class="fz-video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
-    </video>
-</div>
-
-<!-- HEADER -->
-<header class="fz-header">
-    <a href="https://flavorsdaiquiribar.com/"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo"></a>
-    <nav class="fz-nav">
-        <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
-        <a href="https://flavorsdaiquiribar.com/events">Events</a>
-        <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
-        <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
-        <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
-    </nav>
-    <div class="fz-social">
-        <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/FlavorsZante" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.tiktok.com/@flavorszante" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <button class="fz-menu-btn" onclick="document.querySelector('.fz-mobile-menu').classList.add('active')"><i class="fas fa-bars"></i></button>
-</header>
-
-<!-- MOBILE MENU -->
-<div class="fz-mobile-menu">
-    <button class="fz-mobile-close" onclick="this.parentElement.classList.remove('active')">&times;</button>
-    <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
-    <a href="https://flavorsdaiquiribar.com/events">Events</a>
-    <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
-    <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
-    <a href="https://flavorsdaiquiribar.com/bookings">Private Bookings</a>
-    <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
-</div>
-
-<!-- MAIN -->
-<main class="fz-main">
-    <div class="fz-hero">
-        <h1>FLAVORS ZANTE</h1>
-        <p class="tagline">THE ULTIMATE PARTY BAR</p>
-        <p class="sub">Home of the Frozen Daiquiri • Est. 2018</p>
+    <!-- LOGO INTRO -->
+    <div class="fz-intro" id="fzIntro">
+        <video autoplay muted playsinline onended="document.getElementById('fzIntro').classList.add('hide')">
+            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e16d873a5e0677f237059.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <!-- QUICK ACTIONS -->
-    <div class="fz-actions">
-        <a href="https://flavorsdaiquiribar.com/menu" class="fz-action"><i class="fas fa-glass-cheers"></i> ORDER NOW</a>
-        <a href="https://flavorsdaiquiribar.com/bookings" class="fz-action"><i class="fas fa-calendar"></i> BOOK TABLE</a>
-        <a href="https://flavorsdaiquiribar.com/vip" class="fz-action"><i class="fas fa-crown"></i> VIP ACCESS</a>
-        <a href="https://flavorsdaiquiribar.com/tickets" class="fz-action"><i class="fas fa-ticket-alt"></i> BUY TICKETS</a>
+    <!-- VIDEO BG -->
+    <div class="fz-video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <!-- GAME ROULETTE -->
-    <div class="fz-game">
-        <h2>?? SPIN TO PLAY</h2>
-        <p>Tap the logo and let fate decide your next Flavors experience!</p>
-        <div class="fz-wheel-box">
-            <div class="fz-pointer"></div>
-            <div class="fz-spin-wheel" id="fzWheel">
-                <div class="fz-wheel">
-                    <i class="fz-icon i1 fas fa-traffic-light"></i>
-                    <i class="fz-icon i2 fas fa-dice"></i>
-                    <i class="fz-icon i3 fas fa-crown"></i>
-                    <i class="fz-icon i4 fas fa-snowflake"></i>
-                    <i class="fz-icon i5 fas fa-wine-bottle"></i>
-                    <i class="fz-icon i6 fas fa-gamepad"></i>
+    <!-- HEADER -->
+    <header class="fz-header">
+        <a href="https://flavorsdaiquiribar.com/"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo"></a>
+        <nav class="fz-nav">
+            <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
+            <a href="https://flavorsdaiquiribar.com/events">Events</a>
+            <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
+            <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
+            <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
+        </nav>
+        <div class="fz-social">
+            <a href="https://www.instagram.com/flavors_zante/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/FlavorsZante" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@flavorszante" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <button class="fz-menu-btn" onclick="document.querySelector('.fz-mobile-menu').classList.add('active')" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="fz-mobile-menu">
+        <button class="fz-mobile-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&times;</button>
+        <a href="https://flavorsdaiquiribar.com/menu" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Menu</a>
+        <a href="https://flavorsdaiquiribar.com/events" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Events</a>
+        <a href="https://flavorsdaiquiribar.com/vip" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">VIP</a>
+        <a href="https://flavorsdaiquiribar.com/shop" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Shop</a>
+        <a href="https://flavorsdaiquiribar.com/bookings" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Private Bookings</a>
+        <a href="https://flavorsdaiquiribar.com/contact" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Contact</a>
+    </div>
+
+    <!-- MAIN -->
+    <main class="fz-main">
+        <div class="fz-hero">
+            <h1>FLAVORS ZANTE</h1>
+            <p class="tagline">THE ULTIMATE PARTY BAR</p>
+            <p class="sub">Home of the Frozen Daiquiri • Est. 2018</p>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="fz-actions">
+            <a href="https://flavorsdaiquiribar.com/menu" class="fz-action"><i class="fas fa-glass-cheers"></i> ORDER NOW</a>
+            <a href="https://flavorsdaiquiribar.com/bookings" class="fz-action"><i class="fas fa-calendar"></i> BOOK TABLE</a>
+            <a href="https://flavorsdaiquiribar.com/vip" class="fz-action"><i class="fas fa-crown"></i> VIP ACCESS</a>
+            <a href="https://flavorsdaiquiribar.com/tickets" class="fz-action"><i class="fas fa-ticket-alt"></i> BUY TICKETS</a>
+        </div>
+
+        <!-- GAME ROULETTE -->
+        <div class="fz-game">
+            <h2>?? SPIN TO PLAY</h2>
+            <p>Tap the logo and let fate decide your next Flavors experience!</p>
+            <div class="fz-wheel-box">
+                <div class="fz-pointer"></div>
+                <div class="fz-spin-wheel" id="fzWheel">
+                    <div class="fz-wheel">
+                        <i class="fz-icon i1 fas fa-traffic-light"></i>
+                        <i class="fz-icon i2 fas fa-dice"></i>
+                        <i class="fz-icon i3 fas fa-crown"></i>
+                        <i class="fz-icon i4 fas fa-snowflake"></i>
+                        <i class="fz-icon i5 fas fa-wine-bottle"></i>
+                        <i class="fz-icon i6 fas fa-gamepad"></i>
+                    </div>
+                </div>
+                <div class="fz-hub" id="fzSpin" role="button" tabindex="0" aria-label="Spin the wheel">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="">
+                    <span>TAP TO SPIN</span>
                 </div>
             </div>
-            <div class="fz-hub" id="fzSpin">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="SPIN">
-                <span>TAP TO SPIN</span>
+            <div class="fz-result">
+                <h3 id="fzTitle" class="show">YOUR DESTINY AWAITS</h3>
+                <a href="#" id="fzBtn">PLAY NOW</a>
             </div>
         </div>
-        <div class="fz-result">
-            <h3 id="fzTitle" class="show">YOUR DESTINY AWAITS</h3>
-            <a href="#" id="fzBtn">PLAY NOW</a>
-        </div>
-    </div>
 
-    <!-- FROZEN CHALLENGE VIDEOS -->
-    <div class="fz-section">
-        <h2>?? <span>FROZEN CHALLENGE</span></h2>
-        <div class="fz-videos">
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video></div>
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video></div>
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video></div>
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c73a5e02c2f2b065f.mp4" playsinline loop muted></video></div>
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c42bb1cbdfb2c144b.mp4" playsinline loop muted></video></div>
-            <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c6caf49867e59b05d.mp4" playsinline loop muted></video></div>
-        </div>
-    </div>
-
-    <!-- PHOTO GALLERY -->
-    <div class="fz-section">
-        <h2>?? <span>THE VIBE</span></h2>
-        <div class="fz-photos">
-            <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e4ff4c06da5f38cc991.jpg" alt="Flavors"></div>
-            <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304df08da96713949c6342.jpg" alt="Flavors"></div>
-            <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" alt="Frozen"></div>
-        </div>
-    </div>
-
-    <!-- MERCH SHOP -->
-    <div class="fz-shop">
-        <h2>??? FLAVORS MERCH</h2>
-        <div class="fz-products">
-            <div class="fz-product">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b1400d573506664f140e4.png" alt="Urban Splash Tee">
-                <h3>URBAN SPLASH TEE</h3>
-                <p class="price">€25</p>
-                <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
-            </div>
-            <div class="fz-product">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b14007d382a809b2e0b8e.png" alt="Tank Top">
-                <h3>PARTY TANK TOP</h3>
-                <p class="price">€20</p>
-                <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
-            </div>
-            <div class="fz-product">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b140021432b52ce952bd2.png" alt="Snapback">
-                <h3>SNAPBACK CAP</h3>
-                <p class="price">€20</p>
-                <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
+        <!-- FROZEN CHALLENGE VIDEOS -->
+        <div class="fz-section">
+            <h2>?? <span>FROZEN CHALLENGE</span></h2>
+            <div class="fz-videos">
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video></div>
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video></div>
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video></div>
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c73a5e02c2f2b065f.mp4" playsinline loop muted></video></div>
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c42bb1cbdfb2c144b.mp4" playsinline loop muted></video></div>
+                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c6caf49867e59b05d.mp4" playsinline loop muted></video></div>
             </div>
         </div>
-    </div>
 
-    <!-- FINAL BOSS -->
-    <div class="fz-boss">
-        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694fd0c4ee1047dcb0dd104f.jpg" alt="Chris - The Final Boss">
-        <h2>?? MEET THE FINAL BOSS</h2>
-        <p>Think you can handle Chris? Take on the VIP challenge and prove yourself worthy!</p>
-        <a href="https://flavorsdaiquiribar.com/vip">CHALLENGE THE BOSS</a>
-    </div>
-
-    <!-- INFO CARDS -->
-    <div class="fz-info">
-        <div class="fz-info-card">
-            <h3>?? PARTY NIGHTS</h3>
-            <p>Every night is a different vibe! Traffic Light Tuesdays, R&B Wednesdays, and more. Check our <a href="https://flavorsdaiquiribar.com/events">events calendar</a> for the full lineup.</p>
+        <!-- PHOTO GALLERY -->
+        <div class="fz-section">
+            <h2>?? <span>THE VIBE</span></h2>
+            <div class="fz-photos">
+                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e4ff4c06da5f38cc991.jpg" alt="Flavors party scene"></div>
+                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304df08da96713949c6342.jpg" alt="Flavors bar atmosphere"></div>
+                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" alt="Frozen daiquiri drink"></div>
+            </div>
         </div>
-        <div class="fz-info-card">
-            <h3>?? PRIVATE BOOKINGS</h3>
-            <p>Birthday? Stag/Hen? Group celebration? We've got VIP packages for any occasion. <a href="https://flavorsdaiquiribar.com/bookings">Book your party</a> today!</p>
+
+        <!-- MERCH SHOP -->
+        <div class="fz-shop">
+            <h2>??? FLAVORS MERCH</h2>
+            <div class="fz-products">
+                <div class="fz-product">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b1400d573506664f140e4.png" alt="Urban Splash Tee">
+                    <h3>URBAN SPLASH TEE</h3>
+                    <p class="price">€25</p>
+                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
+                </div>
+                <div class="fz-product">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b14007d382a809b2e0b8e.png" alt="Tank Top">
+                    <h3>PARTY TANK TOP</h3>
+                    <p class="price">€20</p>
+                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
+                </div>
+                <div class="fz-product">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b140021432b52ce952bd2.png" alt="Snapback">
+                    <h3>SNAPBACK CAP</h3>
+                    <p class="price">€20</p>
+                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- CTA -->
-    <div class="fz-cta">
-        <h2>JOIN THE FLAVORS TEAM</h2>
-        <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
-        <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
-    </div>
-</main>
+        <!-- FINAL BOSS -->
+        <div class="fz-boss">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694fd0c4ee1047dcb0dd104f.jpg" alt="Chris - The Final Boss">
+            <h2>?? MEET THE FINAL BOSS</h2>
+            <p>Think you can handle Chris? Take on the VIP challenge and prove yourself worthy!</p>
+            <a href="https://flavorsdaiquiribar.com/vip">CHALLENGE THE BOSS</a>
+        </div>
 
-<!-- FOOTER -->
-<footer class="fz-footer">
-    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
-    <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
-    <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
-</footer>
+        <!-- INFO CARDS -->
+        <div class="fz-info">
+            <div class="fz-info-card">
+                <h3>?? PARTY NIGHTS</h3>
+                <p>Every night is a different vibe! Traffic Light Tuesdays, R&B Wednesdays, and more. Check our <a href="https://flavorsdaiquiribar.com/events">events calendar</a> for the full lineup.</p>
+            </div>
+            <div class="fz-info-card">
+                <h3>?? PRIVATE BOOKINGS</h3>
+                <p>Birthday? Stag/Hen? Group celebration? We've got VIP packages for any occasion. <a href="https://flavorsdaiquiribar.com/bookings">Book your party</a> today!</p>
+            </div>
+        </div>
 
-<script>
-// Skip intro on tap
-document.getElementById('fzIntro').onclick=function(){this.classList.add('hide')};
+        <!-- CTA -->
+        <div class="fz-cta">
+            <h2>JOIN THE FLAVORS TEAM</h2>
+            <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
+            <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
+        </div>
+    </main>
 
-// ROULETTE
-(function(){
-    var games=[
-        {name:'TRAFFIC LIGHT',url:'https://flavorsdaiquiribar.com/trafficlight',color:'#FF00FF'},
-        {name:'SPIN & WIN',url:'https://flavorsdaiquiribar.com/casino',color:'#00FFFF'},
-        {name:'VIP CHALLENGE',url:'https://flavorsdaiquiribar.com/vip',color:'#9D00FF'},
-        {name:'FROZEN CHALLENGE',url:'https://flavorsdaiquiribar.com/frozen',color:'#39FF14'},
-        {name:'SPIN THE BOTTLE',url:'https://flavorsdaiquiribar.com/bottle',color:'#FF6B00'},
-        {name:'ALL GAMES',url:'https://flavorsdaiquiribar.com/games',color:'#FFE500'}
-    ];
-    var wheel=document.getElementById('fzWheel'),spinBtn=document.getElementById('fzSpin'),title=document.getElementById('fzTitle'),btn=document.getElementById('fzBtn');
-    var spinning=false,rotation=0;
-    spinBtn.onclick=function(){
-        if(spinning)return;spinning=true;
-        title.classList.remove('show');btn.classList.remove('show');
-        var spins=5+Math.floor(Math.random()*5),extra=Math.random()*360;
-        rotation+=(spins*360)+extra;
-        wheel.style.transform='rotate('+rotation+'deg)';
-        setTimeout(function(){
-            spinning=false;
-            var angle=rotation%360,idx=Math.floor(((360-angle+30)%360)/60)%6,game=games[idx];
-            title.textContent=game.name;title.style.color=game.color;title.style.textShadow='0 0 30px '+game.color;title.classList.add('show');
-            btn.href=game.url;btn.style.background='linear-gradient(135deg,'+game.color+',#9D00FF)';
-            setTimeout(function(){btn.classList.add('show')},300);
-        },4000);
-    };
-})();
+    <!-- FOOTER -->
+    <footer class="fz-footer">
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Zante">
+        <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
+        <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+    </footer>
 
-// VIDEO GALLERY
-function playVideo(el){
-    var vid=el.querySelector('video');
-    document.querySelectorAll('.fz-video').forEach(function(v){v.classList.remove('playing');v.querySelector('video').pause();v.querySelector('video').muted=true});
-    if(vid.paused){vid.muted=false;vid.play();el.classList.add('playing')}
-}
-</script>
+    <script>
+        // Skip intro on tap with null safety
+        var fzIntroEl = document.getElementById('fzIntro');
+        if (fzIntroEl) {
+            fzIntroEl.onclick = function() {
+                this.classList.add('hide');
+            };
+        }
+
+        // ROULETTE
+        (function(){
+            var games = [
+                {name:'TRAFFIC LIGHT', url:'https://flavorsdaiquiribar.com/trafficlight', color:'#FF00FF'},
+                {name:'SPIN & WIN', url:'https://flavorsdaiquiribar.com/casino', color:'#00FFFF'},
+                {name:'VIP CHALLENGE', url:'https://flavorsdaiquiribar.com/vip', color:'#9D00FF'},
+                {name:'FROZEN CHALLENGE', url:'https://flavorsdaiquiribar.com/frozen', color:'#39FF14'},
+                {name:'SPIN THE BOTTLE', url:'https://flavorsdaiquiribar.com/bottle', color:'#FF6B00'},
+                {name:'ALL GAMES', url:'https://flavorsdaiquiribar.com/games', color:'#FFE500'}
+            ];
+            var wheel = document.getElementById('fzWheel');
+            var spinBtn = document.getElementById('fzSpin');
+            var title = document.getElementById('fzTitle');
+            var btn = document.getElementById('fzBtn');
+            
+            if (!wheel || !spinBtn || !title || !btn) {
+                console.error('Wheel elements not found');
+                return;
+            }
+            
+            var spinning = false;
+            var rotation = 0;
+            
+            function handleSpin() {
+                if (spinning) return;
+                spinning = true;
+                title.classList.remove('show');
+                btn.classList.remove('show');
+                
+                var spins = 5 + Math.floor(Math.random() * 5);
+                var extra = Math.random() * 360;
+                rotation += (spins * 360) + extra;
+                wheel.style.transform = 'rotate(' + rotation + 'deg)';
+                
+                setTimeout(function(){
+                    spinning = false;
+                    var angle = rotation % 360;
+                    var idx = Math.floor(((360 - angle + 30) % 360) / 60) % 6;
+                    var game = games[idx];
+                    
+                    title.textContent = game.name;
+                    title.style.color = game.color;
+                    title.style.textShadow = '0 0 30px ' + game.color;
+                    title.classList.add('show');
+                    
+                    btn.href = game.url;
+                    btn.style.background = 'linear-gradient(135deg,' + game.color + ',#9D00FF)';
+                    
+                    setTimeout(function(){
+                        btn.classList.add('show');
+                    }, 300);
+                }, 4000);
+            }
+            
+            spinBtn.onclick = handleSpin;
+            spinBtn.onkeypress = function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSpin();
+                }
+            };
+        })();
+
+        // VIDEO GALLERY
+        function playVideo(el) {
+            var vid = el.querySelector('video');
+            if (!vid) return;
+            
+            document.querySelectorAll('.fz-video').forEach(function(v) {
+                v.classList.remove('playing');
+                var video = v.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.muted = true;
+                }
+            });
+            
+            if (vid.paused) {
+                vid.muted = false;
+                vid.play().catch(function(e) {
+                    console.error('Video playback error:', e);
+                });
+                el.classList.add('playing');
+            }
+        }
+    </script>
+</body>
+</html>
