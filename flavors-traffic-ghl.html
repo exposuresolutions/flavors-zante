@@ -3,84 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Flavors Gaming - Traffic Light Party</title>
-    <meta name="description" content="Flavors Gaming - The Ultimate Traffic Light Party Experience in Zante">
+    <title>Traffic Light Game - Council of Comedy Edition</title>
+    <meta name="description" content="The Ultimate Traffic Light Party Game - Comedy First, Powered by the Council of Comedy">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@400;500;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
 :root {
     --red: #FF3B3B;
-    --red-glow: rgba(255, 59, 59, 0.4);
+    --red-dark: #CC0000;
     --amber: #FFB627;
-    --amber-glow: rgba(255, 182, 39, 0.4);
+    --amber-dark: #CC8800;
     --green: #00D26A;
-    --green-glow: rgba(0, 210, 106, 0.4);
+    --green-dark: #009944;
     --pink: #FF00FF;
     --cyan: #00FFFF;
     --gold: #FFD700;
-    --purple: #9D00FF;
     --dark: #0a0a0f;
-    --card-bg: rgba(15, 15, 25, 0.9);
+    --metal: #2a2a35;
+    --metal-light: #3a3a45;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--dark);
+body, html {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0a0014 0%, #000 50%, #0a0a14 100%);
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* DYNAMIC BACKGROUND WITH GLAZE */
-.game-bg {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #0a0014 0%, #000 50%, #140a0a 100%);
-    z-index: 0;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.game-bg.glaze-red {
-    background: linear-gradient(135deg, rgba(255,59,59,0.25) 0%, #1a0505 40%, rgba(255,59,59,0.15) 100%);
-}
-
-.game-bg.glaze-amber {
-    background: linear-gradient(135deg, rgba(255,182,39,0.25) 0%, #1a1200 40%, rgba(255,182,39,0.15) 100%);
-}
-
-.game-bg.glaze-green {
-    background: linear-gradient(135deg, rgba(0,210,106,0.25) 0%, #051a0a 40%, rgba(0,210,106,0.15) 100%);
-}
-
-/* ANIMATED PARTICLES */
-.particles {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--pink);
-    border-radius: 50%;
-    opacity: 0;
-    animation: floatUp 15s infinite;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0); opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
-    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
 }
 
 /* HEADER */
@@ -89,7 +41,7 @@ html, body {
     top: 0;
     left: 0;
     right: 0;
-    height: 55px;
+    height: 60px;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -103,31 +55,24 @@ html, body {
 .game-logo {
     display: flex;
     align-items: center;
-    text-decoration: none;
     gap: 10px;
+    text-decoration: none;
 }
 
 .game-logo img {
-    height: 28px;
-    width: auto;
+    height: 35px;
     filter: drop-shadow(0 0 10px var(--pink));
 }
 
 .game-logo-text {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--pink);
     letter-spacing: 2px;
-    display: none;
 }
 
-@media (min-width: 500px) {
-    .game-logo-text { display: block; }
-}
-
-.header-actions {
+.header-btns {
     display: flex;
-    align-items: center;
     gap: 10px;
 }
 
@@ -135,406 +80,537 @@ html, body {
     background: transparent;
     border: 1px solid var(--pink);
     color: #fff;
-    padding: 8px 16px;
-    border-radius: 25px;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
 }
 
 .header-btn:hover {
     background: var(--pink);
     color: #000;
-    box-shadow: 0 0 20px var(--pink);
 }
 
-.header-btn i {
-    margin-right: 5px;
-}
-
-.back-link {
-    color: #888;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: 0.3s;
-}
-
-.back-link:hover { color: var(--pink); }
-
-/* MAIN CONTENT */
+/* MAIN CONTAINER */
 .game-main {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 70px 20px 40px;
+    padding: 80px 20px 40px;
     min-height: 100vh;
 }
 
-/* HERO */
-.game-hero {
-    text-align: center;
-    padding: 40px 0 30px;
-}
-
+/* TITLE */
 .game-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    letter-spacing: 4px;
-    line-height: 1;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg, var(--red), var(--amber), var(--green), var(--cyan), var(--pink));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 4s linear infinite;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-}
-
-.game-subtitle {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--cyan);
-    text-shadow: 0 0 20px var(--cyan);
-}
-
-/* LIVE STATS BAR */
-.live-stats-bar {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 15px;
-    padding: 15px 20px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.stats-label {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.stats-label i {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-.stats-display {
-    display: flex;
-    gap: 20px;
-}
-
-.stat-item {
     text-align: center;
-}
-
-.stat-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-}
-
-.stat-value.red { color: var(--red); }
-.stat-value.amber { color: var(--amber); }
-.stat-value.green { color: var(--green); }
-
-.stat-label {
-    font-size: 9px;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* GAME STEPS */
-.game-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin: 30px 0;
-}
-
-@media (max-width: 600px) {
-    .game-steps { grid-template-columns: repeat(2, 1fr); }
-}
-
-.step-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    border-radius: 15px;
-    padding: 20px 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.step-card:hover {
-    border-color: var(--pink);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.2);
-}
-
-.step-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 12px;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    color: #fff;
-}
-
-.step-number {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 11px;
-    color: var(--cyan);
-    margin-bottom: 5px;
-}
-
-.step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.step-desc {
-    font-size: 10px;
-    color: #888;
-}
-
-/* TRAFFIC LIGHTS GAME */
-.game-lights-section {
-    background: linear-gradient(135deg, rgba(20, 0, 40, 0.8), rgba(0, 0, 0, 0.9));
-    border: 2px solid rgba(255, 0, 255, 0.4);
-    border-radius: 30px;
-    padding: 40px 30px;
-    margin: 30px 0;
-    text-align: center;
-}
-
-.lights-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--gold);
     margin-bottom: 30px;
 }
 
-.lights-title i {
-    margin-right: 8px;
+.game-title h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--red), var(--amber), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.traffic-lights {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+.game-title p {
+    font-family: 'Permanent Marker', cursive;
+    color: var(--gold);
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.light-btn {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* ===============================================
+   ACTUAL TRAFFIC LIGHT DESIGN
+   =============================================== */
+.traffic-light-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    color: rgba(0, 0, 0, 0.8);
+    margin: 30px 0;
 }
 
-.light-btn::before {
+/* The pole */
+.traffic-pole {
+    width: 20px;
+    height: 60px;
+    background: linear-gradient(90deg, #444, #666, #444);
+    border-radius: 5px;
+}
+
+/* The traffic light housing */
+.traffic-light-box {
+    width: 140px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    border-radius: 20px;
+    padding: 20px 15px;
+    border: 4px solid #333;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        inset 0 2px 10px rgba(255, 255, 255, 0.1),
+        0 0 0 2px #222;
+    position: relative;
+}
+
+/* Metal texture overlay */
+.traffic-light-box::before {
     content: '';
     position: absolute;
-    inset: 8px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 60%);
+    inset: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.03) 50%, 
+        transparent 100%);
+    border-radius: 16px;
     pointer-events: none;
 }
 
-.light-btn::after {
-    content: '';
+/* Hood/visor for each light */
+.light-housing {
+    position: relative;
+    margin: 12px 0;
+}
+
+.light-visor {
     position: absolute;
-    inset: -5px;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 20px;
+    background: linear-gradient(180deg, #222, #111);
+    border-radius: 50% 50% 0 0;
+    z-index: 5;
+}
+
+/* The actual light buttons */
+.traffic-light {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 2px solid transparent;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
     transition: all 0.3s;
-}
-
-.light-red {
-    background: linear-gradient(145deg, #ff6b6b, var(--red));
-    box-shadow: 0 0 40px var(--red-glow), inset 0 -5px 20px rgba(0,0,0,0.3);
-}
-
-.light-amber {
-    background: linear-gradient(145deg, #ffd54f, var(--amber));
-    box-shadow: 0 0 40px var(--amber-glow), inset 0 -5px 20px rgba(0,0,0,0.3);
-}
-
-.light-green {
-    background: linear-gradient(145deg, #69f0ae, var(--green));
-    box-shadow: 0 0 40px var(--green-glow), inset 0 -5px 20px rgba(0,0,0,0.3);
-}
-
-.light-btn:hover:not(.disabled) {
-    transform: scale(1.15);
-    filter: brightness(1.2);
-}
-
-.light-red:hover:not(.disabled) {
-    box-shadow: 0 0 80px var(--red), 0 0 120px var(--red-glow);
-}
-
-.light-amber:hover:not(.disabled) {
-    box-shadow: 0 0 80px var(--amber), 0 0 120px var(--amber-glow);
-}
-
-.light-green:hover:not(.disabled) {
-    box-shadow: 0 0 80px var(--green), 0 0 120px var(--green-glow);
-}
-
-.light-btn.active {
-    transform: scale(1.2);
-    animation: lightPulse 1.5s ease-in-out infinite;
-}
-
-.light-btn.active::after {
-    border-color: #fff;
-    inset: -8px;
-}
-
-@keyframes lightPulse {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.3); }
-}
-
-.light-btn.disabled {
-    opacity: 0.2;
-    transform: scale(0.8);
-    cursor: not-allowed;
-    filter: grayscale(0.5);
-}
-
-.light-label {
-    display: block;
-    margin-top: 12px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #fff;
-    opacity: 0.7;
-}
-
-/* COOLDOWN TIMER */
-.cooldown-notice {
-    margin-top: 20px;
-    padding: 12px 20px;
-    background: rgba(255, 0, 0, 0.1);
-    border: 1px solid var(--red);
-    border-radius: 10px;
-    font-size: 12px;
-    color: var(--red);
-    display: none;
-}
-
-.cooldown-notice.show { display: block; }
-
-/* RESULT CARD */
-.result-card {
-    background: var(--card-bg);
-    border: 2px solid rgba(255, 0, 255, 0.4);
-    border-radius: 25px;
-    padding: 35px;
-    margin: 30px 0;
-    text-align: center;
-    display: none;
-    animation: slideUp 0.5s ease-out;
-}
-
-.result-card.show { display: block; }
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.result-status {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 6vw, 3rem);
-    letter-spacing: 3px;
-    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-}
-
-.result-status i {
-    font-size: 0.8em;
-}
-
-.result-image {
-    width: 100%;
-    max-width: 280px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin: 20px auto;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.result-desc {
     font-size: 14px;
-    color: #ccc;
-    line-height: 1.7;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Light OFF state */
+.traffic-light.off {
+    background: radial-gradient(circle at 30% 30%, #444, #222);
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Light ON states */
+.traffic-light.red-on {
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, var(--red), var(--red-dark));
+    box-shadow: 
+        0 0 30px var(--red),
+        0 0 60px var(--red),
+        0 0 90px rgba(255, 59, 59, 0.5),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 5px 15px rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.traffic-light.amber-on {
+    background: radial-gradient(circle at 30% 30%, #ffd54f, var(--amber), var(--amber-dark));
+    box-shadow: 
+        0 0 30px var(--amber),
+        0 0 60px var(--amber),
+        0 0 90px rgba(255, 182, 39, 0.5),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 5px 15px rgba(255, 255, 255, 0.2);
+    color: #000;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.traffic-light.green-on {
+    background: radial-gradient(circle at 30% 30%, #69f0ae, var(--green), var(--green-dark));
+    box-shadow: 
+        0 0 30px var(--green),
+        0 0 60px var(--green),
+        0 0 90px rgba(0, 210, 106, 0.5),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 5px 15px rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.traffic-light:hover:not(.selected) {
+    transform: scale(1.05);
+}
+
+.traffic-light.selected {
+    transform: scale(1.1);
+}
+
+/* Light labels */
+.light-label {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ===============================================
+   PLAYER PROFILE SECTION
+   =============================================== */
+.player-profile {
+    background: rgba(20, 20, 30, 0.9);
+    border: 2px solid var(--pink);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    display: none;
+}
+
+.player-profile.show { display: block; }
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     margin-bottom: 20px;
 }
 
-/* MISSION BOX */
-.mission-box {
-    background: rgba(0, 0, 0, 0.5);
-    border-left: 4px solid var(--gold);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    text-align: left;
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
 }
 
-.mission-label {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 10px;
+.profile-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
     letter-spacing: 2px;
+}
+
+.profile-status {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: 700;
+}
+
+.profile-status.red { background: var(--red); color: #fff; }
+.profile-status.amber { background: var(--amber); color: #000; }
+.profile-status.green { background: var(--green); color: #fff; }
+
+.profile-details {
+    margin-top: 15px;
+}
+
+.profile-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+}
+
+.profile-field label { color: #888; }
+.profile-field span { color: #fff; font-weight: 600; }
+
+/* ===============================================
+   COUNCIL OF COMEDY SECTION
+   =============================================== */
+.coc-section {
+    background: linear-gradient(135deg, rgba(157, 0, 255, 0.1), rgba(255, 0, 255, 0.05));
+    border: 2px solid var(--gold);
+    border-radius: 25px;
+    padding: 25px;
+    margin: 30px 0;
+    display: none;
+}
+
+.coc-section.show { display: block; }
+
+.coc-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.coc-header h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.coc-header p {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Comedian avatars */
+.coc-council {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.coc-member {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #222;
+    border: 3px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.coc-member:hover {
+    transform: scale(1.1);
+    border-color: var(--gold);
+}
+
+.coc-member.speaking {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px var(--gold);
+    animation: speakingPulse 1s ease-in-out infinite;
+}
+
+@keyframes speakingPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.coc-member-name {
+    position: absolute;
+    bottom: -20px;
+    font-size: 8px;
+    color: #888;
+    white-space: nowrap;
+}
+
+/* Comedy debate chat */
+.coc-debate {
+    background: #111;
+    border-radius: 15px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 15px 0;
+}
+
+.coc-message {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.coc-message-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.coc-message-content {
+    flex: 1;
+}
+
+.coc-message-name {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.coc-message-text {
+    font-size: 13px;
+    color: #ddd;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Pickup line result */
+.coc-result {
+    background: linear-gradient(135deg, var(--gold), #FFA500);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.coc-result h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: #000;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.coc-result .line {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.coc-result .instructions {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+}
+
+/* Generate button */
+.coc-generate-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.coc-generate-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4);
+}
+
+.coc-generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===============================================
+   CHASER MODE / HINT SYSTEM
+   =============================================== */
+.chaser-mode {
+    background: rgba(0, 210, 106, 0.1);
+    border: 2px solid var(--green);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    display: none;
+}
+
+.chaser-mode.show { display: block; }
+
+.chaser-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.chaser-header i {
+    font-size: 2rem;
+    color: var(--green);
+}
+
+.chaser-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--green);
+}
+
+.chaser-target {
+    background: #111;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.target-label {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.target-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.target-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green), #00a050);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.target-details h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.target-details p {
+    font-size: 12px;
+    color: #888;
+}
+
+.target-hint {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid var(--gold);
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 0 10px 10px 0;
+}
+
+.target-hint h5 {
+    font-size: 11px;
     color: var(--gold);
     margin-bottom: 8px;
     display: flex;
@@ -542,181 +618,139 @@ html, body {
     gap: 8px;
 }
 
-.mission-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
+.target-hint p {
+    font-size: 13px;
+    color: #ddd;
+    font-style: italic;
 }
 
-/* DEAL BADGE */
-.deal-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold), #FFA500);
-    color: #000;
+/* ===============================================
+   RATING SYSTEM
+   =============================================== */
+.rating-section {
+    background: rgba(255, 0, 255, 0.1);
+    border: 2px solid var(--pink);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    text-align: center;
+    display: none;
+}
+
+.rating-section.show { display: block; }
+
+.rating-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--pink);
+    margin-bottom: 5px;
+}
+
+.rating-header p {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.rating-star {
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.rating-star:hover,
+.rating-star.active {
+    color: var(--gold);
+    transform: scale(1.2);
+}
+
+.rating-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.stream-btn {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    border: none;
     padding: 15px 30px;
     border-radius: 30px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    margin: 15px 0;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-    animation: dealPulse 2s ease-in-out infinite;
-}
-
-@keyframes dealPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 215, 0, 0.6); }
-}
-
-/* ACTION BUTTONS */
-.action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.action-btn {
-    width: 100%;
-    padding: 16px 30px;
-    border-radius: 30px;
-    border: none;
+    color: #fff;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14px;
     letter-spacing: 2px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    text-decoration: none;
+    margin: 0 auto;
 }
 
-.btn-primary {
-    background: linear-gradient(135deg, #fff, #f0f0f0);
-    color: #000;
+.stream-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+.stream-btn i {
+    animation: livePulse 1s infinite;
 }
 
-.btn-whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+@keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ===============================================
+   GAME MODE SELECTOR
+   =============================================== */
+.mode-selector {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.mode-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
     color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.btn-whatsapp:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.btn-reset {
-    background: transparent;
-    border: 2px solid var(--pink);
-    color: #fff;
-}
-
-.btn-reset:hover {
+.mode-btn.active {
     background: var(--pink);
-    color: #000;
-}
-
-/* SCREEN GLOW (Phone as beacon) */
-.screen-glow {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    cursor: pointer;
-    animation: glowPulse 2s ease-in-out infinite;
-}
-
-.screen-glow.show { display: flex; }
-
-.screen-glow.glow-red { background: var(--red); }
-.screen-glow.glow-amber { background: var(--amber); }
-.screen-glow.glow-green { background: var(--green); }
-
-@keyframes glowPulse {
-    0%, 100% { opacity: 0.9; }
-    50% { opacity: 1; }
-}
-
-.glow-content {
-    margin: auto;
-    text-align: center;
-    color: #000;
-    padding: 20px;
-}
-
-.glow-status {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 30px rgba(0,0,0,0.3);
-}
-
-.glow-deal {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 18px;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    background: rgba(0,0,0,0.2);
-    padding: 15px 30px;
-    border-radius: 30px;
-}
-
-.glow-tap {
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-/* GALLERY */
-.gallery-section {
-    margin: 40px 0;
-}
-
-.section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--pink);
-    letter-spacing: 2px;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.gallery-img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 0, 255, 0.2);
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.gallery-img:hover {
     border-color: var(--pink);
-    transform: scale(1.03);
+    color: #fff;
 }
 
-/* FOOTER */
+/* ===============================================
+   FOOTER
+   =============================================== */
 .game-footer {
     text-align: center;
     padding: 30px 20px;
-    margin-top: 40px;
-    border-top: 1px solid rgba(255, 0, 255, 0.2);
-    color: #555;
+    color: #444;
     font-size: 11px;
 }
 
@@ -725,149 +759,19 @@ html, body {
     text-decoration: none;
 }
 
-.game-footer a:hover { text-decoration: underline; }
-
-/* MODALS */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 3000;
-    overflow-y: auto;
-    padding: 60px 20px;
-}
-
-.modal-overlay.show { display: block; }
-
-.modal-box {
-    max-width: 500px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    border: 2px solid var(--pink);
-    border-radius: 25px;
-    padding: 35px;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--pink);
-    font-size: 28px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.modal-close:hover {
-    transform: rotate(90deg);
-    color: var(--cyan);
-}
-
-.modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--pink);
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.modal-text {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #ccc;
-    margin-bottom: 15px;
-}
-
-.modal-text strong {
-    color: #fff;
-}
-
-.modal-btn {
-    width: 100%;
-    margin-top: 20px;
-}
-
-/* GREEN LIGHT HOUR OVERLAY */
-.green-hour-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 210, 106, 0.95);
-    z-index: 4000;
-    animation: flashGreen 0.5s ease-in-out 3;
-}
-
-.green-hour-overlay.show { display: flex; }
-
-@keyframes flashGreen {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.green-hour-content {
-    margin: auto;
-    text-align: center;
-    color: #000;
-    padding: 30px;
-}
-
-.green-hour-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
-}
-
-.green-hour-deal {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.green-hour-timer {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    .light-btn {
-        width: 90px;
-        height: 90px;
-        font-size: 22px;
-    }
-    
-    .traffic-lights { gap: 15px; }
-    
-    .game-lights-section { padding: 30px 20px; }
-    
-    .result-card { padding: 25px; }
-    
-    .header-btn span { display: none; }
-    .header-btn { padding: 8px 12px; }
-}
-
-@media (max-width: 400px) {
-    .light-btn {
-        width: 80px;
-        height: 80px;
-        font-size: 18px;
-    }
-    
-    .game-title { font-size: 2rem; }
+/* ===============================================
+   RESPONSIVE
+   =============================================== */
+@media (max-width: 500px) {
+    .traffic-light-box { width: 120px; padding: 15px 12px; }
+    .traffic-light { width: 85px; height: 85px; font-size: 12px; }
+    .light-visor { width: 75px; height: 15px; }
+    .coc-member { width: 50px; height: 50px; font-size: 20px; }
+    .game-title h1 { font-size: 2rem; }
 }
     </style>
 </head>
 <body>
-
-<!-- BACKGROUND -->
-<div class="game-bg" id="gameBg"></div>
-<div class="particles" id="particles"></div>
 
 <!-- HEADER -->
 <header class="game-header">
@@ -875,494 +779,584 @@ html, body {
         <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
         <span class="game-logo-text">GAMING</span>
     </a>
-    <div class="header-actions">
-        <button class="header-btn" onclick="openModal('howToPlay')">
-            <i class="fas fa-gamepad"></i> <span>How to Play</span>
-        </button>
-        <button class="header-btn" onclick="openModal('rewards')">
-            <i class="fas fa-gift"></i> <span>Rewards</span>
-        </button>
-        <a href="https://flavorsdaiquiribar.com/" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back
-        </a>
+    <div class="header-btns">
+        <button class="header-btn" onclick="openRules()"><i class="fas fa-question"></i> Rules</button>
+        <button class="header-btn" onclick="resetGame()"><i class="fas fa-redo"></i> Reset</button>
     </div>
 </header>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN GAME -->
 <main class="game-main">
-    <!-- HERO -->
-    <section class="game-hero">
-        <h1 class="game-title">TRAFFIC LIGHT GAMING</h1>
-        <p class="game-subtitle">Choose Your Status <i class="fas fa-circle" style="font-size:8px;margin:0 8px"></i> Win Your Destiny</p>
-    </section>
+    
+    <!-- TITLE -->
+    <div class="game-title">
+        <h1>TRAFFIC LIGHT GAME</h1>
+        <p>Comedy First Edition - Powered by the Council</p>
+    </div>
 
-    <!-- LIVE STATS -->
-    <div class="live-stats-bar">
-        <div class="stats-label">
-            <i class="fas fa-signal"></i> LIVE STATS
+    <!-- MODE SELECTOR -->
+    <div class="mode-selector">
+        <button class="mode-btn active" onclick="setMode('player')"><i class="fas fa-user"></i> Player</button>
+        <button class="mode-btn" onclick="setMode('chaser')"><i class="fas fa-heart"></i> Chaser</button>
+        <button class="mode-btn" onclick="setMode('spectator')"><i class="fas fa-eye"></i> Spectator</button>
+    </div>
+
+    <!-- ACTUAL TRAFFIC LIGHT -->
+    <div class="traffic-light-container">
+        <div class="traffic-light-box">
+            <!-- RED LIGHT -->
+            <div class="light-housing">
+                <div class="light-visor"></div>
+                <div class="traffic-light off" id="redLight" onclick="selectLight('red')">
+                    TAKEN
+                </div>
+                <div class="light-label">In a relationship</div>
+            </div>
+            
+            <!-- AMBER LIGHT -->
+            <div class="light-housing">
+                <div class="light-visor"></div>
+                <div class="traffic-light off" id="amberLight" onclick="selectLight('amber')">
+                    MAYBE
+                </div>
+                <div class="light-label">It's complicated</div>
+            </div>
+            
+            <!-- GREEN LIGHT -->
+            <div class="light-housing">
+                <div class="light-visor"></div>
+                <div class="traffic-light off" id="greenLight" onclick="selectLight('green')">
+                    SINGLE
+                </div>
+                <div class="light-label">Ready to mingle</div>
+            </div>
         </div>
-        <div class="stats-display">
-            <div class="stat-item">
-                <div class="stat-value red" id="statRed">18%</div>
-                <div class="stat-label">Taken</div>
+        <div class="traffic-pole"></div>
+    </div>
+
+    <!-- PLAYER PROFILE (shown after selection) -->
+    <div class="player-profile" id="playerProfile">
+        <div class="profile-header">
+            <div class="profile-avatar" id="profileAvatar">??</div>
+            <div class="profile-info">
+                <h3 id="profileName">Anonymous Player</h3>
+                <span class="profile-status" id="profileStatus">SELECTING...</span>
             </div>
-            <div class="stat-item">
-                <div class="stat-value amber" id="statAmber">27%</div>
-                <div class="stat-label">Maybe</div>
+        </div>
+        <div class="profile-details">
+            <div class="profile-field">
+                <label>Vibe:</label>
+                <span id="profileVibe">Loading...</span>
             </div>
-            <div class="stat-item">
-                <div class="stat-value green" id="statGreen">55%</div>
-                <div class="stat-label">Single</div>
+            <div class="profile-field">
+                <label>Looking for:</label>
+                <span id="profileLooking">Loading...</span>
+            </div>
+            <div class="profile-field">
+                <label>Fun fact:</label>
+                <span id="profileFact">Loading...</span>
             </div>
         </div>
     </div>
 
-    <!-- GAME STEPS -->
-    <div class="game-steps">
-        <div class="step-card" onclick="openModal('stepChoose')">
-            <div class="step-icon"><i class="fas fa-hand-pointer"></i></div>
-            <div class="step-number">STEP 1</div>
-            <div class="step-title">CHOOSE</div>
-            <div class="step-desc">Pick Your Color</div>
+    <!-- COUNCIL OF COMEDY -->
+    <div class="coc-section" id="cocSection">
+        <div class="coc-header">
+            <h2>?? COUNCIL OF COMEDY</h2>
+            <p>The legends are debating your best approach...</p>
         </div>
-        <div class="step-card" onclick="openModal('stepWear')">
-            <div class="step-icon"><i class="fas fa-id-badge"></i></div>
-            <div class="step-number">STEP 2</div>
-            <div class="step-title">WEAR</div>
-            <div class="step-desc">Get Wristband</div>
+        
+        <!-- Council Members -->
+        <div class="coc-council">
+            <div class="coc-member" id="cocRogan" title="Joe Rogan">
+                ???
+                <span class="coc-member-name">Rogan</span>
+            </div>
+            <div class="coc-member" id="cocChappelle" title="Dave Chappelle">
+                ??
+                <span class="coc-member-name">Dave</span>
+            </div>
+            <div class="coc-member" id="cocBurr" title="Bill Burr">
+                ??
+                <span class="coc-member-name">Burr</span>
+            </div>
+            <div class="coc-member" id="cocTheo" title="Theo Von">
+                ??
+                <span class="coc-member-name">Theo</span>
+            </div>
+            <div class="coc-member" id="cocSegura" title="Tom Segura">
+                ??
+                <span class="coc-member-name">Tom</span>
+            </div>
         </div>
-        <div class="step-card" onclick="openModal('stepSeen')">
-            <div class="step-icon"><i class="fas fa-eye"></i></div>
-            <div class="step-number">STEP 3</div>
-            <div class="step-title">SEEN</div>
-            <div class="step-desc">Be Discovered</div>
+
+        <!-- Debate Chat -->
+        <div class="coc-debate" id="cocDebate">
+            <div class="coc-message">
+                <div class="coc-message-avatar">???</div>
+                <div class="coc-message-content">
+                    <div class="coc-message-name">JOE ROGAN</div>
+                    <div class="coc-message-text">"It's entirely possible that a well-timed joke is the best approach. Have you tried DMT? No wait, have you tried... just being yourself? That's wild."</div>
+                </div>
+            </div>
         </div>
-        <div class="step-card" onclick="openModal('stepConnect')">
-            <div class="step-icon"><i class="fas fa-heart"></i></div>
-            <div class="step-number">STEP 4</div>
-            <div class="step-title">CONNECT</div>
-            <div class="step-desc">Make Memories</div>
+
+        <!-- Generate Button -->
+        <button class="coc-generate-btn" id="cocGenerateBtn" onclick="generatePickupLine()">
+            <i class="fas fa-magic"></i> SUMMON THE COUNCIL
+        </button>
+
+        <!-- Result -->
+        <div class="coc-result" id="cocResult" style="display:none">
+            <h4>THE COUNCIL HAS SPOKEN</h4>
+            <div class="line" id="pickupLine">"Loading legendary line..."</div>
+            <div class="instructions" id="pickupInstructions">Loading delivery instructions...</div>
         </div>
     </div>
 
-    <!-- TRAFFIC LIGHTS GAME -->
-    <section class="game-lights-section">
-        <div class="lights-title">
-            <i class="fas fa-bullseye"></i> TAP YOUR STATUS
+    <!-- CHASER MODE -->
+    <div class="chaser-mode" id="chaserMode">
+        <div class="chaser-header">
+            <i class="fas fa-crosshairs"></i>
+            <h3>CHASER MODE ACTIVATED</h3>
         </div>
-        <div class="traffic-lights">
-            <div>
-                <button class="light-btn light-red" id="lightRed" onclick="selectStatus('red')">
-                    <i class="fas fa-heart"></i>
-                </button>
-                <span class="light-label">TAKEN</span>
+        
+        <div class="chaser-target">
+            <div class="target-label"><i class="fas fa-bullseye"></i> YOUR TARGET</div>
+            <div class="target-info">
+                <div class="target-avatar" id="targetAvatar">??</div>
+                <div class="target-details">
+                    <h4 id="targetName">Scanning...</h4>
+                    <p id="targetStatus">Looking for GREEN lights nearby</p>
+                </div>
             </div>
-            <div>
-                <button class="light-btn light-amber" id="lightAmber" onclick="selectStatus('amber')">
-                    <i class="fas fa-question"></i>
-                </button>
-                <span class="light-label">MAYBE</span>
-            </div>
-            <div>
-                <button class="light-btn light-green" id="lightGreen" onclick="selectStatus('green')">
-                    <i class="fas fa-bolt"></i>
-                </button>
-                <span class="light-label">SINGLE</span>
+            
+            <div class="target-hint">
+                <h5><i class="fas fa-lightbulb"></i> COMEDY HINT</h5>
+                <p id="targetHint">The Council is preparing your approach strategy...</p>
             </div>
         </div>
-        <div class="cooldown-notice" id="cooldownNotice">
-            <i class="fas fa-clock"></i> Status locked for <span id="cooldownTime">30:00</span> - No switching!
-        </div>
-    </section>
 
-    <!-- RESULT CARD -->
-    <section class="result-card" id="resultCard">
-        <div class="result-status" id="resultStatus"></div>
-        <img class="result-image" id="resultImage" alt="Status">
-        <p class="result-desc" id="resultDesc"></p>
-        <div class="mission-box">
-            <div class="mission-label">
-                <i class="fas fa-crosshairs"></i> TONIGHT'S MISSION
-            </div>
-            <div class="mission-text" id="missionText"></div>
-        </div>
-        <div class="deal-badge" id="dealBadge"></div>
-        <div class="action-buttons">
-            <button class="action-btn btn-primary" id="ctaBtn" onclick="activateGlow()">
-                <i class="fas fa-mobile-alt"></i> <span id="ctaText">ACTIVATE GLOW</span>
-            </button>
-            <button class="action-btn btn-whatsapp" id="shareBtn" style="display:none" onclick="shareWhatsApp()">
-                <i class="fab fa-whatsapp"></i> TELL YOUR FRIENDS
-            </button>
-            <button class="action-btn btn-reset" onclick="resetGame()">
-                <i class="fas fa-redo"></i> CHANGE STATUS
-            </button>
-        </div>
-    </section>
+        <button class="coc-generate-btn" onclick="getNewHint()">
+            <i class="fas fa-dice"></i> GET NEW HINT
+        </button>
+    </div>
 
-    <!-- GALLERY -->
-    <section class="gallery-section">
-        <h2 class="section-title"><i class="fas fa-camera"></i> THE VIBE</h2>
-        <div class="gallery-grid">
-            <img class="gallery-img" src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a561b34c122.png" alt="Party vibe">
-            <img class="gallery-img" src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png" alt="Party vibe">
-            <img class="gallery-img" src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a064634c121.png" alt="Party vibe">
-            <img class="gallery-img" src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png" alt="Party vibe">
+    <!-- RATING SECTION -->
+    <div class="rating-section" id="ratingSection">
+        <div class="rating-header">
+            <h3>? RATE THE ATTEMPT</h3>
+            <p>How smooth was that approach?</p>
         </div>
-    </section>
+        
+        <div class="rating-stars">
+            <span class="rating-star" onclick="setRating(1)">?</span>
+            <span class="rating-star" onclick="setRating(2)">?</span>
+            <span class="rating-star" onclick="setRating(3)">?</span>
+            <span class="rating-star" onclick="setRating(4)">?</span>
+            <span class="rating-star" onclick="setRating(5)">?</span>
+        </div>
+        
+        <div class="rating-labels">
+            <span>?? Crashed & Burned</span>
+            <span>?? Legendary</span>
+        </div>
+
+        <button class="stream-btn" onclick="goLive()">
+            <i class="fas fa-circle"></i> GO LIVE - BRAVE MODE
+        </button>
+    </div>
+
 </main>
 
 <!-- FOOTER -->
 <footer class="game-footer">
-    <p>Flavors Gaming &bull; The Ultimate Traffic Light Experience</p>
-    <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+    <p>Traffic Light Game &bull; Comedy First Edition</p>
+    <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a> & The Council of Comedy</p>
 </footer>
 
-<!-- SCREEN GLOW (Phone as beacon) -->
-<div class="screen-glow" id="screenGlow" onclick="hideGlow()">
-    <div class="glow-content">
-        <div class="glow-status" id="glowStatus"></div>
-        <div class="glow-deal" id="glowDeal"></div>
-        <div class="glow-tap">Tap anywhere to exit</div>
-    </div>
-</div>
-
-<!-- MODALS -->
-<div class="modal-overlay" id="modalHowToPlay">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('howToPlay')">&times;</button>
-        <h2 class="modal-title"><i class="fas fa-gamepad"></i> How to Play</h2>
-        <p class="modal-text">The Traffic Light Game is simple but unforgettable:</p>
-        <p class="modal-text"><strong><i class="fas fa-hand-pointer" style="color:var(--cyan)"></i> STEP 1:</strong> Choose your status - Red (Taken), Amber (Complicated), or Green (Single)</p>
-        <p class="modal-text"><strong><i class="fas fa-id-badge" style="color:var(--cyan)"></i> STEP 2:</strong> Show your glowing screen at the bar to get your wristband</p>
-        <p class="modal-text"><strong><i class="fas fa-eye" style="color:var(--cyan)"></i> STEP 3:</strong> People see your color and know your status instantly</p>
-        <p class="modal-text"><strong><i class="fas fa-heart" style="color:var(--cyan)"></i> STEP 4:</strong> Complete your mission and make memories!</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('howToPlay')">
-            <i class="fas fa-check"></i> GOT IT
-        </button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modalRewards">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('rewards')">&times;</button>
-        <h2 class="modal-title"><i class="fas fa-gift"></i> Rewards & Deals</h2>
-        <p class="modal-text"><strong style="color:var(--red)"><i class="fas fa-heart"></i> RED (TAKEN)</strong><br>The Bodyguard Package: 2-for-1 shots! Celebrate your relationship while you party.</p>
-        <p class="modal-text"><strong style="color:var(--amber)"><i class="fas fa-question"></i> AMBER (COMPLICATED)</strong><br>Social Hour: €5 frozen daiquiris! Be the wingman and earn free shots.</p>
-        <p class="modal-text"><strong style="color:var(--green)"><i class="fas fa-bolt"></i> GREEN (SINGLE)</strong><br>Free shot with your wristband! Plus exclusive Green Light Hour deals.</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('rewards')">
-            <i class="fas fa-check"></i> PLAY NOW
-        </button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modalStepChoose">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('stepChoose')">&times;</button>
-        <h2 class="modal-title">Step 1: Choose Your Color</h2>
-        <p class="modal-text"><strong style="color:var(--red)"><i class="fas fa-circle"></i> RED = TAKEN</strong><br>You're in a relationship but ready to party with your partner!</p>
-        <p class="modal-text"><strong style="color:var(--amber)"><i class="fas fa-circle"></i> AMBER = COMPLICATED</strong><br>Keeping your options open. Be the social butterfly tonight.</p>
-        <p class="modal-text"><strong style="color:var(--green)"><i class="fas fa-circle"></i> GREEN = SINGLE</strong><br>Single and ready to mingle! Tonight could be legendary.</p>
-        <p class="modal-text">Everyone will see your status. No guessing games!</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('stepChoose')">
-            <i class="fas fa-arrow-right"></i> NEXT
-        </button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modalStepWear">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('stepWear')">&times;</button>
-        <h2 class="modal-title">Step 2: Get Your Wristband</h2>
-        <p class="modal-text">Once you've chosen your status, <strong>show your glowing phone screen</strong> at the bar.</p>
-        <p class="modal-text">Our staff will give you a matching wristband. It's your VIP pass to exclusive deals all night!</p>
-        <p class="modal-text">Pro tip: Your phone screen becomes your beacon - hold it up on the dance floor!</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('stepWear')">
-            <i class="fas fa-arrow-right"></i> NEXT
-        </button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modalStepSeen">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('stepSeen')">&times;</button>
-        <h2 class="modal-title">Step 3: Get Discovered</h2>
-        <p class="modal-text">Your color is your signal. No awkward conversations about whether someone is available.</p>
-        <p class="modal-text"><strong>Green sees Green?</strong> That's your opening! Go say hi.</p>
-        <p class="modal-text"><strong>See Red?</strong> Respect the status - they're here with someone.</p>
-        <p class="modal-text">The system does the hard work so you can focus on having fun!</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('stepSeen')">
-            <i class="fas fa-arrow-right"></i> NEXT
-        </button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modalStepConnect">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('stepConnect')">&times;</button>
-        <h2 class="modal-title">Step 4: Make Memories</h2>
-        <p class="modal-text">Complete your mission for bonus rewards!</p>
-        <p class="modal-text"><strong style="color:var(--red)">Red Mission:</strong> Buy your partner a drink & take a couples shot!</p>
-        <p class="modal-text"><strong style="color:var(--amber)">Amber Mission:</strong> Be the wingman - introduce two Greens and earn a free shot!</p>
-        <p class="modal-text"><strong style="color:var(--green)">Green Mission:</strong> Dance with a stranger & exchange numbers!</p>
-        <button class="action-btn btn-primary modal-btn" onclick="closeModal('stepConnect')">
-            <i class="fas fa-check"></i> LET'S GO
-        </button>
-    </div>
-</div>
-
 <script>
-// Game Data
-const gameData = {
-    red: {
-        title: 'TAKEN',
-        icon: 'fas fa-heart',
-        color: 'var(--red)',
-        glowClass: 'glow-red',
-        glazeClass: 'glaze-red',
-        image: 'https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f8495fcfb08e0b6.png',
-        desc: "You're off the market but here to PARTY! Rock that red and show the world you're taken but not tamed. Your partner is lucky!",
-        mission: 'Buy your partner a drink & take a couples shot together!',
-        deal: '2-FOR-1 SHOTS',
-        dealFull: 'COUPLES DEAL: 2-FOR-1 SHOTS'
+// ===============================================
+// COUNCIL OF COMEDY - PERSONALITY DATABASE
+// ===============================================
+const council = {
+    rogan: {
+        name: 'JOE ROGAN',
+        emoji: '???',
+        style: 'curious, enthusiastic, mind-blown',
+        phrases: [
+            "It's entirely possible that",
+            "Have you ever considered",
+            "That's WILD man",
+            "Jamie, pull that up",
+            "This is like a chimp at a zoo"
+        ],
+        pickupAdvice: [
+            "Walk up with CONFIDENCE. You're a apex predator in this bar. Not in a creepy way, in a... primal way.",
+            "Start with something genuine. Maybe talk about how wild it is that we're all just conscious beings in a bar right now.",
+            "Make eye contact like you're about to have a 3-hour conversation about the universe."
+        ]
     },
-    amber: {
-        title: 'COMPLICATED',
-        icon: 'fas fa-question',
-        color: 'var(--amber)',
-        glowClass: 'glow-amber',
-        glazeClass: 'glaze-amber',
-        image: 'https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830368b58b6e3e.png',
-        desc: "It's complicated? We get it. You're the social butterfly tonight - open to conversation but not committing. Let the night decide!",
-        mission: 'Be the wingman! Introduce two Greens and earn a free shot!',
-        deal: '€5 DAIQUIRIS',
-        dealFull: 'SOCIAL HOUR: €5 DAIQUIRIS'
+    chappelle: {
+        name: 'DAVE CHAPPELLE',
+        emoji: '??',
+        style: 'observational, smooth, storytelling',
+        phrases: [
+            "I'm gonna tell you something",
+            "Modern problems require modern solutions",
+            "Because I'm Rick James",
+            "Gotcha b****"
+        ],
+        pickupAdvice: [
+            "Don't be thirsty. Be like water - cool, refreshing, necessary for life.",
+            "Tell a story. Everyone loves a good story. Make yourself the interesting character.",
+            "Timing is everything. Wait for the right moment, then strike with the smoothness."
+        ]
     },
-    green: {
-        title: 'SINGLE & READY',
-        icon: 'fas fa-bolt',
-        color: 'var(--green)',
-        glowClass: 'glow-green',
-        glazeClass: 'glaze-green',
-        image: 'https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830371648b6e3d.png',
-        desc: "GREEN MEANS GO! You're single, ready to mingle, and tonight could be legendary. Show that green with pride!",
-        mission: 'Dance with a stranger & exchange numbers!',
-        deal: 'FREE SHOT',
-        dealFull: 'SINGLES: FREE SHOT WITH WRISTBAND',
-        hasShare: true
+    burr: {
+        name: 'BILL BURR',
+        emoji: '??',
+        style: 'ranty, honest, self-deprecating',
+        phrases: [
+            "OH JEEZUS",
+            "Fair enough",
+            "I'm just saying",
+            "What are you, a psychopath?"
+        ],
+        pickupAdvice: [
+            "Just be honest! 'Hey, I think you're attractive and I wanted to talk to you.' What's wrong with that?!",
+            "Don't overthink it. You're gonna die someday anyway, might as well shoot your shot.",
+            "If she's not into it, who cares? There's like 4 billion women on the planet!"
+        ]
+    },
+    theo: {
+        name: 'THEO VON',
+        emoji: '??',
+        style: 'southern, absurd, wholesome chaos',
+        phrases: [
+            "Gang gang",
+            "That's dark arts, bruh",
+            "Bless up",
+            "Get that hitter"
+        ],
+        pickupAdvice: [
+            "Gang gang! Just be real weird but in a charming way. Talk about your pet rat growing up or something.",
+            "Use a nickname immediately. 'Hey there, Sunshine' - people love nicknames, bruh.",
+            "Tell her about the time you got stuck in a drainage pipe. Vulnerability is attractive."
+        ]
+    },
+    segura: {
+        name: 'TOM SEGURA',
+        emoji: '??',
+        style: 'deadpan, dark, matter-of-fact',
+        phrases: [
+            "Bikes!",
+            "Try it out",
+            "Home here now",
+            "Keep 'em high and tight"
+        ],
+        pickupAdvice: [
+            "Just be straightforward. 'You seem cool. Want to get a drink?' Simple. Effective.",
+            "Don't do too much. The harder you try, the worse it gets. Just... be normal.",
+            "If it doesn't work, just say 'I understand' and walk away with dignity."
+        ]
     }
 };
 
-let currentStatus = null;
-let cooldownEnd = null;
+// ===============================================
+// PICKUP LINES DATABASE (Comedy Approved)
+// ===============================================
+const pickupLines = {
+    wholesome: [
+        { line: "Are you a magician? Because whenever I look at you, everyone else disappears.", delivery: "Say it with genuine wonder, like you just discovered magic is real." },
+        { line: "I must be a snowflake, because I've fallen for you.", delivery: "Use this in winter. Or just say it ironically in summer and own the cringe." },
+        { line: "Do you have a map? I just got lost in your eyes.", delivery: "Point to your own eyes confused, then to theirs. Commit to the bit." }
+    ],
+    comedy: [
+        { line: "Are you WiFi? Because I'm feeling a connection... wait, it dropped. Can you move closer?", delivery: "Pretend to check your phone signal. Method acting is key." },
+        { line: "I'm not a photographer, but I can picture us together... at separate tables... eating our own food... in silence. Relationships are hard.", delivery: "Trail off existentially. It's relatable." },
+        { line: "Do you believe in love at first sight, or should I walk by again... and again... until security asks me to leave?", delivery: "Actually start walking away slowly after saying it." }
+    ],
+    confident: [
+        { line: "I'm not saying I'm Batman, but have you ever seen me and Batman in the same room?", delivery: "Look around suspiciously. Leave mysteriously if she asks questions." },
+        { line: "I'd offer you my jacket, but I just realized I look really good in it.", delivery: "Flexing optional but encouraged." },
+        { line: "I'm writing a book. It's a phone book, and it's missing your number.", delivery: "Pull out an actual phone book if possible. Power move." }
+    ],
+    absurd: [
+        { line: "Are you a parking ticket? Because you've got 'fine' written all over you... and I want to contest you in court.", delivery: "Theo Von energy. Just commit to the weirdness." },
+        { line: "If you were a vegetable, you'd be a cute-cumber. Actually, let's workshop this one.", delivery: "Actively think of better options mid-conversation." },
+        { line: "I'm not drunk, I'm just intoxicated by you. Also I'm a little drunk.", delivery: "Honesty is the best policy. Bill Burr approved." }
+    ]
+};
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
-    loadSavedStatus();
-    updateLiveStats();
-    setInterval(updateLiveStats, 10000);
-});
+// ===============================================
+// GAME STATE
+// ===============================================
+let currentMode = 'player';
+let selectedLight = null;
+let currentRating = 0;
 
-// Create particles
-function createParticles() {
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 25; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (12 + Math.random() * 8) + 's';
-        container.appendChild(particle);
+// ===============================================
+// MODE SWITCHING
+// ===============================================
+function setMode(mode) {
+    currentMode = mode;
+    
+    // Update mode buttons
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Hide all mode-specific sections
+    document.getElementById('playerProfile').classList.remove('show');
+    document.getElementById('cocSection').classList.remove('show');
+    document.getElementById('chaserMode').classList.remove('show');
+    document.getElementById('ratingSection').classList.remove('show');
+    
+    // Show relevant sections based on mode
+    if (mode === 'chaser' && selectedLight) {
+        document.getElementById('chaserMode').classList.add('show');
+        document.getElementById('cocSection').classList.add('show');
+    }
+    
+    if (mode === 'spectator') {
+        document.getElementById('ratingSection').classList.add('show');
     }
 }
 
-// Update live stats (simulated)
-function updateLiveStats() {
-    const red = 15 + Math.floor(Math.random() * 10);
-    const amber = 20 + Math.floor(Math.random() * 15);
-    const green = 100 - red - amber;
+// ===============================================
+// TRAFFIC LIGHT SELECTION
+// ===============================================
+function selectLight(color) {
+    // Reset all lights
+    document.getElementById('redLight').className = 'traffic-light off';
+    document.getElementById('amberLight').className = 'traffic-light off';
+    document.getElementById('greenLight').className = 'traffic-light off';
     
-    document.getElementById('statRed').textContent = red + '%';
-    document.getElementById('statAmber').textContent = amber + '%';
-    document.getElementById('statGreen').textContent = green + '%';
+    // Turn on selected light
+    document.getElementById(color + 'Light').className = 'traffic-light ' + color + '-on selected';
+    selectedLight = color;
+    
+    // Show profile
+    showProfile(color);
+    
+    // Show CoC section for green lights
+    if (color === 'green') {
+        document.getElementById('cocSection').classList.add('show');
+        startCouncilDebate();
+    } else {
+        document.getElementById('cocSection').classList.remove('show');
+    }
+    
+    // Update chaser mode if active
+    if (currentMode === 'chaser') {
+        document.getElementById('chaserMode').classList.add('show');
+    }
 }
 
-// Load saved status from localStorage
-function loadSavedStatus() {
-    const saved = localStorage.getItem('flavorsStatus');
-    const savedTime = localStorage.getItem('flavorsStatusTime');
-    
-    if (saved && savedTime) {
-        const timePassed = Date.now() - parseInt(savedTime);
-        const cooldownMs = 30 * 60 * 1000; // 30 minutes
-        
-        if (timePassed < cooldownMs) {
-            currentStatus = saved;
-            cooldownEnd = parseInt(savedTime) + cooldownMs;
-            showResult(saved, false);
-            startCooldownTimer();
-        } else {
-            localStorage.removeItem('flavorsStatus');
-            localStorage.removeItem('flavorsStatusTime');
+// ===============================================
+// PROFILE SYSTEM
+// ===============================================
+function showProfile(color) {
+    const profiles = {
+        red: {
+            avatar: '??',
+            name: 'Taken & Loving It',
+            status: 'TAKEN',
+            vibe: 'Here with my person',
+            looking: 'Good times with my partner',
+            fact: 'We met at a bar like this!'
+        },
+        amber: {
+            avatar: '??',
+            name: 'The Wildcard',
+            status: 'IT\'S COMPLICATED',
+            vibe: 'Going with the flow',
+            looking: 'See what happens',
+            fact: 'Ask me after a few drinks'
+        },
+        green: {
+            avatar: '??',
+            name: 'Single & Ready',
+            status: 'SINGLE',
+            vibe: 'Main character energy',
+            looking: 'Someone to make laugh',
+            fact: 'I do a great dinosaur impression'
         }
-    }
-}
-
-// Select status
-function selectStatus(status) {
-    if (currentStatus && cooldownEnd && Date.now() < cooldownEnd) {
-        return; // Still in cooldown
-    }
-    
-    currentStatus = status;
-    localStorage.setItem('flavorsStatus', status);
-    localStorage.setItem('flavorsStatusTime', Date.now().toString());
-    cooldownEnd = Date.now() + (30 * 60 * 1000);
-    
-    showResult(status, true);
-    startCooldownTimer();
-}
-
-// Show result
-function showResult(status, animate) {
-    const data = gameData[status];
-    const bg = document.getElementById('gameBg');
-    
-    // Update background glaze
-    bg.className = 'game-bg ' + data.glazeClass;
-    
-    // Update lights
-    ['red', 'amber', 'green'].forEach(s => {
-        const btn = document.getElementById('light' + s.charAt(0).toUpperCase() + s.slice(1));
-        if (s === status) {
-            btn.classList.add('active');
-            btn.classList.remove('disabled');
-        } else {
-            btn.classList.add('disabled');
-            btn.classList.remove('active');
-        }
-    });
-    
-    // Update result card
-    document.getElementById('resultStatus').innerHTML = '<i class="' + data.icon + '"></i> ' + data.title;
-    document.getElementById('resultStatus').style.color = data.color;
-    document.getElementById('resultImage').src = data.image;
-    document.getElementById('resultDesc').textContent = data.desc;
-    document.getElementById('missionText').textContent = data.mission;
-    document.getElementById('dealBadge').textContent = data.dealFull;
-    
-    // Show/hide share button
-    document.getElementById('shareBtn').style.display = data.hasShare ? 'flex' : 'none';
-    
-    // Show result card
-    const card = document.getElementById('resultCard');
-    card.classList.add('show');
-    
-    if (animate) {
-        setTimeout(() => {
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
-    }
-}
-
-// Start cooldown timer
-function startCooldownTimer() {
-    const notice = document.getElementById('cooldownNotice');
-    const timerEl = document.getElementById('cooldownTime');
-    notice.classList.add('show');
-    
-    const updateTimer = () => {
-        if (!cooldownEnd) return;
-        
-        const remaining = cooldownEnd - Date.now();
-        if (remaining <= 0) {
-            notice.classList.remove('show');
-            return;
-        }
-        
-        const mins = Math.floor(remaining / 60000);
-        const secs = Math.floor((remaining % 60000) / 1000);
-        timerEl.textContent = mins + ':' + secs.toString().padStart(2, '0');
-        
-        setTimeout(updateTimer, 1000);
     };
     
-    updateTimer();
+    const profile = profiles[color];
+    document.getElementById('profileAvatar').textContent = profile.avatar;
+    document.getElementById('profileName').textContent = profile.name;
+    document.getElementById('profileStatus').textContent = profile.status;
+    document.getElementById('profileStatus').className = 'profile-status ' + color;
+    document.getElementById('profileVibe').textContent = profile.vibe;
+    document.getElementById('profileLooking').textContent = profile.looking;
+    document.getElementById('profileFact').textContent = profile.fact;
+    
+    document.getElementById('playerProfile').classList.add('show');
 }
 
-// Activate glow (phone as beacon)
-function activateGlow() {
-    if (!currentStatus) return;
+// ===============================================
+// COUNCIL OF COMEDY DEBATE
+// ===============================================
+function startCouncilDebate() {
+    const debate = document.getElementById('cocDebate');
+    debate.innerHTML = '';
     
-    const data = gameData[currentStatus];
-    const glow = document.getElementById('screenGlow');
+    // Initial messages
+    const messages = [
+        { member: 'rogan', text: "Okay okay okay, so you're GREEN. That's wild. You know what's also green? DMT. I'm kidding, but seriously, confidence is key here." },
+        { member: 'burr', text: "What situation?! Just say something! 'Hi, you seem nice.' Done! Why do we complicate everything?!" },
+        { member: 'theo', text: "Nah bruh, you gotta stand out. My cousin used to catch crawfish with his bare hands. Say something memorable like that." },
+        { member: 'chappelle', text: "The key is to say something that makes HER want to talk to YOU. Flip the script." },
+        { member: 'segura', text: "I've got it. Simple, direct, with just enough weird energy to be interesting." }
+    ];
     
-    glow.className = 'screen-glow show ' + data.glowClass;
-    document.getElementById('glowStatus').textContent = data.title;
-    document.getElementById('glowDeal').innerHTML = '<i class="fas fa-tag"></i> ' + data.deal;
-    
-    // Try to set max brightness (not always possible)
-    if (navigator.wakeLock) {
-        navigator.wakeLock.request('screen').catch(() => {});
-    }
+    // Add messages with delay
+    messages.forEach((msg, index) => {
+        setTimeout(() => {
+            addCouncilMessage(msg.member, msg.text);
+            
+            // Highlight speaking member
+            document.querySelectorAll('.coc-member').forEach(m => m.classList.remove('speaking'));
+            document.getElementById('coc' + msg.member.charAt(0).toUpperCase() + msg.member.slice(1)).classList.add('speaking');
+        }, index * 2000);
+    });
 }
 
-// Hide glow
-function hideGlow() {
-    document.getElementById('screenGlow').classList.remove('show');
+function addCouncilMessage(member, text) {
+    const debate = document.getElementById('cocDebate');
+    const memberData = council[member];
+    
+    const messageHtml = `
+        <div class="coc-message">
+            <div class="coc-message-avatar">${memberData.emoji}</div>
+            <div class="coc-message-content">
+                <div class="coc-message-name">${memberData.name}</div>
+                <div class="coc-message-text">"${text}"</div>
+            </div>
+        </div>
+    `;
+    
+    debate.insertAdjacentHTML('beforeend', messageHtml);
+    debate.scrollTop = debate.scrollHeight;
 }
 
-// Reset game
-function resetGame() {
-    // Only allow reset after cooldown
-    if (cooldownEnd && Date.now() < cooldownEnd) {
-        alert('You can change your status in ' + Math.ceil((cooldownEnd - Date.now()) / 60000) + ' minutes!');
-        return;
-    }
+// ===============================================
+// PICKUP LINE GENERATOR
+// ===============================================
+function generatePickupLine() {
+    const btn = document.getElementById('cocGenerateBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> COUNCIL DELIBERATING...';
     
-    currentStatus = null;
-    cooldownEnd = null;
-    localStorage.removeItem('flavorsStatus');
-    localStorage.removeItem('flavorsStatusTime');
+    // Clear previous debate
+    const debate = document.getElementById('cocDebate');
+    debate.innerHTML = '';
     
-    document.getElementById('gameBg').className = 'game-bg';
-    document.getElementById('resultCard').classList.remove('show');
-    document.getElementById('cooldownNotice').classList.remove('show');
+    // Council debates the line
+    const debateMessages = [
+        { member: 'rogan', text: "Alright, let's workshop this. What's the situation? Bar? Club? How's the lighting?" },
+        { member: 'burr', text: "What situation?! Just say something! 'Hi, you seem nice.' Done! Why do we complicate everything?!" },
+        { member: 'theo', text: "Nah bruh, you gotta stand out. My cousin used to catch crawfish with his bare hands. Say something memorable like that." },
+        { member: 'chappelle', text: "The key is to say something that makes HER want to talk to YOU. Flip the script." },
+        { member: 'segura', text: "I've got it. Simple, direct, with just enough weird energy to be interesting." }
+    ];
     
-    ['red', 'amber', 'green'].forEach(s => {
-        const btn = document.getElementById('light' + s.charAt(0).toUpperCase() + s.slice(1));
-        btn.classList.remove('active', 'disabled');
+    debateMessages.forEach((msg, index) => {
+        setTimeout(() => {
+            addCouncilMessage(msg.member, msg.text);
+            document.querySelectorAll('.coc-member').forEach(m => m.classList.remove('speaking'));
+            document.getElementById('coc' + msg.member.charAt(0).toUpperCase() + msg.member.slice(1)).classList.add('speaking');
+        }, index * 1500);
     });
     
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Show final result
+    setTimeout(() => {
+        const categories = Object.keys(pickupLines);
+        const category = categories[Math.floor(Math.random() * categories.length)];
+        const lines = pickupLines[category];
+        const selected = lines[Math.floor(Math.random() * lines.length)];
+        
+        // Random council member gives delivery advice
+        const members = Object.keys(council);
+        const advisor = council[members[Math.floor(Math.random() * members.length)]];
+        const advice = advisor.pickupAdvice[Math.floor(Math.random() * advisor.pickupAdvice.length)];
+        
+        document.getElementById('pickupLine').textContent = '"' + selected.line + '"';
+        document.getElementById('pickupInstructions').innerHTML = 
+            '<strong>' + advisor.name + '\'s delivery tip:</strong> ' + advice + 
+            '<br><br><em>Original delivery note: ' + selected.delivery + '</em>';
+        
+        document.getElementById('cocResult').style.display = 'block';
+        
+        // Add final council message
+        addCouncilMessage(members[Math.floor(Math.random() * members.length)], "THE COUNCIL HAS SPOKEN. Now go forth and don't embarrass us.");
+        
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-magic"></i> SUMMON AGAIN';
+    }, debateMessages.length * 1500 + 1000);
 }
 
-// Share on WhatsApp
-function shareWhatsApp() {
-    const text = "I'm GREEN at Flavors Traffic Light Party! ?? Come find me!";
-    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+// ===============================================
+// CHASER HINTS
+// ===============================================
+const chaserHints = [
+    { hint: "She laughed at her friend's joke. Timing opportunity: Jump in with 'Okay but what did the friend say?' and join the conversation naturally.", avatar: "??" },
+    { hint: "She's checking her phone. Power move: Wait till she puts it down, then say 'Anything good?' about what she was looking at.", avatar: "??" },
+    { hint: "She's at the bar ordering. Classic approach: Offer to guess her drink order. If you're wrong, buy her what she actually wanted.", avatar: "??" },
+    { hint: "Eye contact made! She held it for 2+ seconds. That's basically a wedding invitation. Go say hi.", avatar: "??" },
+    { hint: "She's dancing. Do NOT try to dance behind her. Walk up, make eye contact, smile, and invite her to get a drink.", avatar: "??" },
+    { hint: "She's with a group. Talk to the whole group first. Be funny. Then naturally shift focus.", avatar: "??" }
+];
+
+function getNewHint() {
+    const hint = chaserHints[Math.floor(Math.random() * chaserHints.length)];
+    document.getElementById('targetAvatar').textContent = hint.avatar;
+    document.getElementById('targetHint').textContent = hint.hint;
+    
+    // Random name
+    const names = ['Emma', 'Sophie', 'Mia', 'Charlotte', 'Amelia', 'Olivia', 'Lily', 'Grace'];
+    document.getElementById('targetName').textContent = names[Math.floor(Math.random() * names.length)];
+    document.getElementById('targetStatus').textContent = '?? GREEN LIGHT - Open to chat';
 }
 
-// Modal functions
-function openModal(type) {
-    const modalId = 'modal' + type.charAt(0).toUpperCase() + type.slice(1);
-    document.getElementById(modalId).classList.add('show');
-    document.body.style.overflow = 'hidden';
+// ===============================================
+// RATING SYSTEM
+// ===============================================
+function setRating(rating) {
+    currentRating = rating;
+    document.querySelectorAll('.rating-star').forEach((star, index) => {
+        star.classList.toggle('active', index < rating);
+    });
 }
 
-function closeModal(type) {
-    const modalId = 'modal' + type.charAt(0).toUpperCase() + type.slice(1);
-    document.getElementById(modalId).classList.remove('show');
-    document.body.style.overflow = '';
+function goLive() {
+    alert('?? BRAVE MODE ACTIVATED!\n\nYou\'re about to go live.\n\nRemember:\n- Keep it fun and respectful\n- Comedy first!\n- If she\'s not into it, gracefully exit\n\nThe Council believes in you! ??');
+    // In a real implementation, this would connect to streaming
 }
 
-// Close modal on escape
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
-        document.body.style.overflow = '';
-    }
+// ===============================================
+// UTILITY FUNCTIONS
+// ===============================================
+function resetGame() {
+    selectedLight = null;
+    document.querySelectorAll('.traffic-light').forEach(light => {
+        light.className = 'traffic-light off';
+    });
+    document.getElementById('playerProfile').classList.remove('show');
+    document.getElementById('cocSection').classList.remove('show');
+    document.getElementById('chaserMode').classList.remove('show');
+    document.getElementById('cocResult').style.display = 'none';
+}
+
+function openRules() {
+    alert('?? TRAFFIC LIGHT GAME RULES\n\n?? RED = TAKEN\nYou\'re in a relationship. Respect the status!\n\n?? AMBER = MAYBE\nIt\'s complicated. Proceed with curiosity.\n\n?? GREEN = SINGLE\nReady to mingle! Open for approaches.\n\n?? COUNCIL OF COMEDY\nOur AI comedians will help you craft the perfect approach. Comedy first - everything is meant in good fun!\n\n? BRAVE MODE\nRate attempts and go live for extra glory!');
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    getNewHint();
 });
 </script>
 
