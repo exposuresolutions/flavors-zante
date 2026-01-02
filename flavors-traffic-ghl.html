@@ -99,9 +99,17 @@ html,body{
 .game-logo{
     height:24px;
     width:auto;
+    max-width:150px;
     filter:drop-shadow(0 0 15px var(--pink));
     cursor:pointer;
-    transition:all 0.3s
+    transition:all 0.3s;
+    display:inline-block
+}
+
+.game-logo img{
+    height:100%;
+    width:auto;
+    display:block
 }
 
 .game-logo:hover{
