@@ -2,445 +2,1032 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Flavors Zante - The Ultimate Party Bar with Frozen Daiquiris, Games, and Entertainment">
     <meta name="theme-color" content="#050508">
     <title>Flavors Zante | The Ultimate Party Bar</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-:root{--pink:#FF00FF;--blue:#00FFFF;--purple:#9D00FF;--green:#39FF14;--orange:#FF6B00;--yellow:#FFE500;--gold:#D4AF37;--red:#FF3B3B}
-*{margin:0;padding:0;box-sizing:border-box}
-body,html{font-family:'Montserrat',sans-serif;background:#050508;color:#fff;min-height:100vh;overflow-x:hidden}
+:root {
+    --pink: #FF00FF;
+    --blue: #00FFFF;
+    --purple: #9D00FF;
+    --green: #39FF14;
+    --orange: #FF6B00;
+    --yellow: #FFE500;
+    --gold: #D4AF37;
+    --red: #FF3B3B;
+    --strawberry: #FF6B8A;
+    --mango: #FFB347;
+    --bluelagoon: #00BFFF;
+    --zombie: #8B0000;
+    --pina: #F5F5DC;
+    --margarita: #98FB98;
+    --pornstar: #FFD700;
+}
 
-/* LOGO INTRO */
-.fz-intro{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.8s,visibility 0.8s}
-.fz-intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-.fz-intro video{max-width:90%;max-height:90%}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+    font-family: 'Montserrat', sans-serif;
+    background: #050508;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
 
 /* VIDEO BG */
-.fz-video-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden}
-.fz-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,8,0.85) 0%,rgba(20,5,40,0.7) 50%,rgba(5,5,8,0.9) 100%);z-index:1}
-.fz-video-bg video{width:100%;height:100%;object-fit:cover}
+.fz-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.fz-video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5,5,8,0.85) 0%, rgba(20,5,40,0.7) 50%, rgba(5,5,8,0.95) 100%);
+    z-index: 1;
+}
+
+.fz-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* HEADER */
-.fz-header{position:fixed;top:0;left:0;right:0;padding:12px 35px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.95) 0%,transparent 100%);z-index:1000;border-bottom:1px solid rgba(255,0,255,0.2)}
-.fz-logo{height:55px;filter:drop-shadow(0 0 20px var(--pink));transition:0.4s;cursor:pointer}
-.fz-logo:hover{filter:drop-shadow(0 0 40px var(--pink)) drop-shadow(0 0 60px var(--blue));transform:scale(1.08)}
-.fz-nav{display:flex;gap:35px}
-.fz-nav a{color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:0.3s;position:relative;padding:8px 0}
-.fz-nav a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue));transform:scaleX(0);transition:0.3s}
-.fz-nav a:hover::after{transform:scaleX(1)}
-.fz-social{display:flex;gap:18px}
-.fz-social a{color:rgba(255,255,255,0.7);font-size:16px;transition:0.3s;text-decoration:none}
-.fz-social a:hover{color:var(--pink);transform:translateY(-3px)}
-.fz-menu-btn{display:none;background:transparent;border:1px solid var(--pink);color:#fff;font-size:1.3rem;padding:8px 12px;cursor:pointer;border-radius:6px;transition:0.3s}
-.fz-menu-btn:hover{background:var(--pink)}
+.fz-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.fz-header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.fz-logo-small {
+    height: 40px;
+    width: auto;
+    filter: drop-shadow(0 0 15px var(--pink));
+    transition: 0.3s;
+}
+
+.fz-logo-small:hover {
+    filter: drop-shadow(0 0 30px var(--pink));
+    transform: scale(1.05);
+}
+
+/* MASCOT IN HEADER */
+.fz-mascot-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 15px;
+    background: rgba(255, 0, 255, 0.1);
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fz-mascot-mini:hover {
+    background: rgba(255, 0, 255, 0.2);
+    border-color: var(--pink);
+}
+
+.mascot-cup-mini {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.mascot-name-mini {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.5s;
+}
+
+.fz-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.fz-nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    padding: 8px 0;
+    position: relative;
+}
+
+.fz-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--blue));
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+.fz-nav a:hover::after { transform: scaleX(1); }
+.fz-nav a:hover { color: #fff; }
+
+.fz-social {
+    display: flex;
+    gap: 15px;
+}
+
+.fz-social a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.fz-social a:hover {
+    color: var(--pink);
+    transform: translateY(-3px);
+}
+
+.fz-menu-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--pink);
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.fz-menu-btn:hover { background: var(--pink); }
 
 /* MOBILE MENU */
-.fz-mobile-menu{display:none;position:fixed;top:0;right:-100%;width:100%;max-width:320px;height:100%;background:linear-gradient(180deg,#0a0510 0%,#150820 100%);z-index:1001;padding:70px 35px 35px;flex-direction:column;gap:20px;transition:right 0.4s;border-left:1px solid var(--pink);overflow-y:auto}
-.fz-mobile-menu.active{right:0}
-.fz-mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--pink);font-size:2.2rem;cursor:pointer;transition:0.3s}
-.fz-mobile-close:hover{color:var(--blue)}
-.fz-mobile-menu a{color:#fff;text-decoration:none;font-weight:600;font-size:1rem;letter-spacing:2px;text-transform:uppercase;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:0.3s}
-.fz-mobile-menu a:hover{color:var(--pink);padding-left:10px}
+.fz-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    background: linear-gradient(180deg, #0a0510 0%, #150820 100%);
+    z-index: 1001;
+    padding: 80px 30px 30px;
+    flex-direction: column;
+    gap: 15px;
+    transition: right 0.4s;
+    border-left: 1px solid var(--pink);
+}
 
-/* MAIN */
-.fz-main{position:relative;z-index:1;padding:100px 20px 50px;max-width:1100px;margin:0 auto}
+.fz-mobile-menu.active { right: 0; }
 
-/* HERO */
-.fz-hero{text-align:center;margin-bottom:40px}
-.fz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;letter-spacing:8px;background:linear-gradient(135deg,#fff 0%,var(--pink) 50%,var(--blue) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
-@keyframes shine{to{background-position:200% center}}
-.fz-hero .tagline{font-family:'Orbitron',sans-serif;font-size:1.1rem;letter-spacing:8px;color:var(--blue);text-shadow:0 0 30px var(--blue);margin-top:8px}
-.fz-hero .sub{font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:12px;letter-spacing:2px}
+.fz-mobile-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--pink);
+    font-size: 32px;
+    cursor: pointer;
+}
 
-/* MASCOT */
-.fz-mascot{text-align:center;margin:30px 0}
-.fz-mascot-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);box-shadow:0 0 50px rgba(255,0,255,0.4);animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fz-mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.fz-mobile-menu a:hover {
+    color: var(--pink);
+    padding-left: 15px;
+}
+
+/* MAIN CONTENT */
+.fz-main {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+}
+
+/* HERO SECTION */
+.fz-hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.fz-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    letter-spacing: 8px;
+    background: linear-gradient(135deg, #fff 0%, var(--pink) 50%, var(--blue) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes shine { to { background-position: 200% center; } }
+
+.fz-tagline {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: var(--blue);
+    text-shadow: 0 0 30px var(--blue);
+}
+
+.fz-sub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 8px;
+    letter-spacing: 2px;
+}
+
+/* MASCOT - DAIQUIRI CHARACTER */
+.fz-mascot {
+    position: relative;
+    margin: 40px 0;
+}
+
+.mascot-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.mascot-cup {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 60px currentColor, inset 0 0 30px rgba(255, 255, 255, 0.2);
+    animation: mascotFloat 3s ease-in-out infinite;
+    cursor: pointer;
+    position: relative;
+}
+
+.mascot-cup::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+}
+
+@keyframes mascotFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.mascot-cup:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 100px currentColor, inset 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.mascot-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.mascot-eyes {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.mascot-mouth {
+    font-size: 20px;
+}
+
+.mascot-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    text-align: center;
+    transition: color 0.5s;
+    text-shadow: 0 0 20px currentColor;
+}
+
+.mascot-flavor {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* LOGO CENTER WITH RADIAL BUTTONS */
+.fz-radial-nav {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 30px auto;
+}
+
+.fz-center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #333, #000);
+    border: 4px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(255, 0, 255, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.fz-center-logo:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 80px var(--pink), inset 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.fz-center-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 20px var(--pink));
+}
+
+/* RADIAL BUTTONS */
+.radial-btn {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px currentColor;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.radial-btn i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.radial-btn span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.radial-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 60px currentColor;
+    border-color: #fff;
+    z-index: 20;
+}
+
+/* Position radial buttons in a circle */
+.radial-btn:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--pink), #c0c); }
+.radial-btn:nth-child(2) { top: 15%; right: 5%; background: linear-gradient(135deg, var(--blue), #0aa); }
+.radial-btn:nth-child(3) { top: 50%; right: -10%; transform: translateY(-50%); background: linear-gradient(135deg, var(--purple), #70f); }
+.radial-btn:nth-child(4) { bottom: 15%; right: 5%; background: linear-gradient(135deg, var(--green), #2a2); }
+.radial-btn:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--orange), #f50); }
+.radial-btn:nth-child(6) { bottom: 15%; left: 5%; background: linear-gradient(135deg, var(--yellow), #da0); }
+.radial-btn:nth-child(7) { top: 50%; left: -10%; transform: translateY(-50%); background: linear-gradient(135deg, var(--red), #c00); }
+.radial-btn:nth-child(8) { top: 15%; left: 5%; background: linear-gradient(135deg, var(--gold), #a80); }
+
+/* Hover position adjustments */
+.radial-btn:nth-child(1):hover { transform: translateX(-50%) scale(1.2); }
+.radial-btn:nth-child(3):hover { transform: translateY(-50%) scale(1.2); }
+.radial-btn:nth-child(5):hover { transform: translateX(-50%) scale(1.2); }
+.radial-btn:nth-child(7):hover { transform: translateY(-50%) scale(1.2); }
 
 /* QUICK ACTIONS */
-.fz-actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:30px 0}
-.fz-action{display:flex;align-items:center;gap:8px;padding:12px 25px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.2);border-radius:50px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;transition:0.3s}
-.fz-action:hover{background:var(--pink);border-color:var(--pink);transform:scale(1.05)}
-.fz-action:focus{outline:2px solid var(--blue);outline-offset:2px}
-.fz-action i{font-size:14px}
+.fz-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    max-width: 600px;
+}
 
-/* GAME ROULETTE */
-.fz-game{margin:40px auto;padding:40px 30px;max-width:850px;background:rgba(10,5,20,0.95);border-radius:25px;border:2px solid rgba(255,0,255,0.3);box-shadow:0 25px 60px rgba(0,0,0,0.5);position:relative}
-.fz-game::before{content:'';position:absolute;inset:-2px;background:linear-gradient(45deg,var(--pink),transparent,var(--blue),transparent,var(--pink));background-size:400% 400%;border-radius:27px;z-index:-1;animation:borderGlow 8s linear infinite;opacity:0.5}
-@keyframes borderGlow{0%{background-position:0% 50%}100%{background-position:400% 50%}}
-.fz-game h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;text-align:center;letter-spacing:5px;margin-bottom:5px}
-.fz-game>p{text-align:center;color:rgba(255,255,255,0.5);margin-bottom:30px;font-size:13px}
+.fz-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
 
-/* WHEEL */
-.fz-wheel-box{position:relative;width:300px;height:300px;margin:0 auto 25px}
-.fz-pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:15;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:28px solid var(--gold);filter:drop-shadow(0 4px 12px rgba(212,175,55,0.8))}
-.fz-spin-wheel{position:absolute;inset:0;transition:transform 4s cubic-bezier(0.2,0.8,0.3,1)}
-.fz-wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--pink) 0deg 60deg,var(--blue) 60deg 120deg,var(--purple) 120deg 180deg,var(--green) 180deg 240deg,var(--orange) 240deg 300deg,var(--yellow) 300deg 360deg);border:5px solid var(--gold);box-shadow:0 0 0 3px rgba(0,0,0,0.8),0 0 40px rgba(255,0,255,0.4)}
-.fz-icon{position:absolute;font-size:22px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,0.8)}
-.fz-icon.i1{top:8%;left:50%;transform:translateX(-50%)}
-.fz-icon.i2{top:24%;right:8%}
-.fz-icon.i3{bottom:24%;right:8%}
-.fz-icon.i4{bottom:8%;left:50%;transform:translateX(-50%)}
-.fz-icon.i5{bottom:24%;left:8%}
-.fz-icon.i6{top:24%;left:8%}
-.fz-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#333,#000);border:4px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 0 30px rgba(0,0,0,0.9);transition:0.3s}
-.fz-hub:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 50px var(--gold)}
-.fz-hub:focus{outline:2px solid var(--blue)}
-.fz-hub img{width:55px;height:55px;object-fit:contain;filter:drop-shadow(0 0 12px var(--pink))}
-.fz-hub span{font-family:'Orbitron',sans-serif;font-size:7px;color:var(--gold);letter-spacing:2px;margin-top:4px}
+.fz-action:hover {
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: scale(1.05);
+}
 
-/* RESULT */
-.fz-result{text-align:center;padding:15px 0}
-.fz-result h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;margin-bottom:12px;transition:0.5s;opacity:0}
-.fz-result h3.show{opacity:1}
-.fz-result a{display:inline-block;padding:12px 35px;background:linear-gradient(135deg,var(--pink),var(--purple));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:12px;text-decoration:none;letter-spacing:2px;transition:0.3s;opacity:0}
-.fz-result a.show{opacity:1}
-.fz-result a:hover{transform:scale(1.08);box-shadow:0 0 30px var(--pink)}
-.fz-result a:focus{outline:2px solid var(--blue);outline-offset:2px}
+.fz-action i { font-size: 14px; }
 
-/* GALLERY SECTION */
-.fz-section{margin:50px auto;max-width:900px}
-.fz-section h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;text-align:center;letter-spacing:4px;margin-bottom:25px}
-.fz-section h2 span{background:linear-gradient(90deg,var(--pink),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* SECTIONS */
+.fz-section {
+    margin: 60px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.fz-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+.fz-section-title span {
+    background: linear-gradient(90deg, var(--pink), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
 /* VIDEO GALLERY */
-.fz-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.fz-video{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;cursor:pointer;transition:0.3s}
-.fz-video:hover{transform:scale(1.03);box-shadow:0 10px 35px rgba(255,0,255,0.3)}
-.fz-video video{width:100%;height:100%;object-fit:cover;display:block}
-.fz-video::after{content:'?';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;background:rgba(0,0,0,0.4);opacity:1;transition:0.3s}
-.fz-video.playing::after{opacity:0}
+.fz-videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.fz-video {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 9/16;
+    background: #111;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid #222;
+}
+
+.fz-video:hover {
+    transform: scale(1.03);
+    border-color: var(--pink);
+    box-shadow: 0 10px 40px rgba(255, 0, 255, 0.3);
+}
+
+.fz-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fz-video::after {
+    content: '\f04b';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+.fz-video.playing::after { opacity: 0; }
 
 /* PHOTO GALLERY */
-.fz-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.fz-photo{border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:#111}
-.fz-photo img{width:100%;height:100%;object-fit:cover;transition:0.3s;display:block}
-.fz-photo:hover img{transform:scale(1.1)}
+.fz-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
 
-/* MERCH SHOP */
-.fz-shop{margin:50px auto;max-width:900px}
-.fz-shop h2{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;text-align:center;letter-spacing:4px;margin-bottom:25px}
-.fz-products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.fz-product{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:15px;text-align:center;transition:0.3s}
-.fz-product:hover{border-color:var(--pink);transform:translateY(-5px);box-shadow:0 15px 40px rgba(255,0,255,0.2)}
-.fz-product img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:10px;margin-bottom:10px;display:block}
-.fz-product h3{font-size:12px;font-weight:700;margin-bottom:5px}
-.fz-product .price{color:var(--green);font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px}
-.fz-product a{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--pink);border-radius:20px;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:1px;transition:0.3s}
-.fz-product a:hover{transform:scale(1.05);box-shadow:0 0 20px var(--pink)}
+.fz-photo {
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #111;
+}
 
-/* BOSS SECTION */
-.fz-boss{margin:50px auto;max-width:900px;background:linear-gradient(135deg,rgba(157,0,255,0.1),rgba(255,0,255,0.05));border-radius:20px;padding:35px;text-align:center;border:1px solid var(--purple)}
-.fz-boss img{width:130px;height:130px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);margin-bottom:15px;box-shadow:0 0 35px rgba(157,0,255,0.5);display:block}
-.fz-boss h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:3px}
-.fz-boss p{color:rgba(255,255,255,0.6);margin:8px 0 20px;font-size:13px}
-.fz-boss a{display:inline-block;padding:12px 35px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:50px;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:12px;text-decoration:none;letter-spacing:2px;transition:0.3s}
-.fz-boss a:hover{transform:scale(1.08);box-shadow:0 0 35px var(--purple)}
+.fz-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.fz-photo:hover img { transform: scale(1.1); }
 
 /* INFO CARDS */
-.fz-info{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:50px auto;max-width:900px}
-.fz-info-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:25px;transition:0.3s}
-.fz-info-card:hover{border-color:var(--blue)}
-.fz-info-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin-bottom:10px;color:var(--blue)}
-.fz-info-card p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6}
-.fz-info-card a{color:var(--pink);text-decoration:none;transition:0.3s}
-.fz-info-card a:hover{text-decoration:underline}
+.fz-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 60px auto;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.fz-info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.fz-info-card:hover { border-color: var(--blue); }
+
+.fz-info-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--blue);
+}
+
+.fz-info-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.fz-info-card a {
+    color: var(--pink);
+    text-decoration: none;
+}
+
+.fz-info-card a:hover { text-decoration: underline; }
 
 /* CTA */
-.fz-cta{margin:50px auto;padding:40px;max-width:900px;background:linear-gradient(135deg,rgba(0,255,255,0.08),rgba(255,0,255,0.05));border-radius:20px;text-align:center;border:1px solid rgba(0,255,255,0.3)}
-.fz-cta h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin-bottom:10px;letter-spacing:4px}
-.fz-cta p{color:rgba(255,255,255,0.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;font-size:14px}
-.fz-cta a{display:inline-block;padding:14px 45px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:50px;color:#000;font-family:'Orbitron',sans-serif;font-weight:800;font-size:13px;text-decoration:none;letter-spacing:2px;transition:0.3s}
-.fz-cta a:hover{transform:scale(1.08);box-shadow:0 0 40px var(--blue)}
+.fz-cta {
+    margin: 60px auto;
+    padding: 50px 40px;
+    max-width: 900px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.08), rgba(255, 0, 255, 0.05));
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.fz-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+}
+
+.fz-cta p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+}
+
+.fz-cta a {
+    display: inline-block;
+    padding: 16px 50px;
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    border-radius: 50px;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.fz-cta a:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px var(--blue);
+}
 
 /* FOOTER */
-.fz-footer{text-align:center;padding:35px 20px;color:#444;font-size:12px;position:relative;z-index:1}
-.fz-footer a{color:var(--pink);text-decoration:none;transition:0.3s}
-.fz-footer a:hover{text-decoration:underline}
-.fz-footer img{height:35px;opacity:0.5;margin-bottom:12px;display:block}
+.fz-footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #444;
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.fz-footer a {
+    color: var(--pink);
+    text-decoration: none;
+}
+
+.fz-footer a:hover { text-decoration: underline; }
+
+.fz-footer img {
+    height: 40px;
+    opacity: 0.5;
+    margin-bottom: 15px;
+}
 
 /* RESPONSIVE */
-@media(max-width:900px){.fz-videos,.fz-photos,.fz-products{grid-template-columns:repeat(2,1fr)}.fz-info{grid-template-columns:1fr}}
-@media(max-width:768px){
-.fz-nav,.fz-social{display:none}.fz-menu-btn{display:block}.fz-mobile-menu{display:flex}
-.fz-hero h1{font-size:2.8rem;letter-spacing:4px}.fz-hero .tagline{font-size:0.85rem;letter-spacing:4px}
-.fz-wheel-box{width:250px;height:250px}.fz-hub{width:85px;height:85px}.fz-hub img{width:45px;height:45px}.fz-icon{font-size:18px}
-.fz-game,.fz-cta,.fz-boss,.fz-section,.fz-shop{margin:30px 15px;padding:30px 20px}
-.fz-mascot-img{width:140px;height:140px}
+@media (max-width: 900px) {
+    .fz-videos, .fz-photos { grid-template-columns: repeat(2, 1fr); }
+    .fz-info { grid-template-columns: 1fr; }
+    .fz-radial-nav { width: 350px; height: 350px; }
+    .radial-btn { width: 75px; height: 75px; }
+    .radial-btn i { font-size: 20px; }
+    .radial-btn span { font-size: 7px; }
+    .fz-center-logo { width: 120px; height: 120px; }
+    .fz-center-logo img { width: 80px; height: 80px; }
 }
-@media(max-width:500px){.fz-videos,.fz-products{grid-template-columns:1fr 1fr}.fz-photos{grid-template-columns:1fr 1fr}}
+
+@media (max-width: 768px) {
+    .fz-nav, .fz-social { display: none; }
+    .fz-menu-btn { display: block; }
+    .fz-mobile-menu { display: flex; }
+    .fz-title { font-size: 2.5rem; letter-spacing: 4px; }
+    .fz-tagline { font-size: 11px; letter-spacing: 4px; }
+    .fz-radial-nav { width: 300px; height: 300px; }
+    .radial-btn { width: 65px; height: 65px; }
+    .radial-btn i { font-size: 18px; margin-bottom: 3px; }
+    .radial-btn span { font-size: 6px; }
+    .fz-center-logo { width: 100px; height: 100px; }
+    .fz-center-logo img { width: 70px; height: 70px; }
+    .mascot-cup { width: 150px; height: 150px; font-size: 60px; }
+    .mascot-name { font-size: 1.5rem; }
+    .fz-mascot-mini { display: none; }
+}
+
+@media (max-width: 500px) {
+    .fz-videos, .fz-photos { grid-template-columns: 1fr 1fr; }
+    .fz-radial-nav { width: 280px; height: 280px; }
+    .radial-btn { width: 55px; height: 55px; }
+    .radial-btn i { font-size: 16px; margin-bottom: 2px; }
+    .radial-btn span { display: none; }
+    .fz-center-logo { width: 90px; height: 90px; }
+    .fz-center-logo img { width: 60px; height: 60px; }
+}
     </style>
 </head>
 <body>
 
-    <!-- LOGO INTRO -->
-    <div class="fz-intro" id="fzIntro">
-        <video autoplay muted playsinline onended="document.getElementById('fzIntro').classList.add('hide')">
-            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e16d873a5e0677f237059.mp4" type="video/mp4">
-        </video>
+<!-- VIDEO BG -->
+<div class="fz-video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- HEADER -->
+<header class="fz-header">
+    <div class="fz-header-left">
+        <a href="https://flavorsdaiquiribar.com/">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo-small">
+        </a>
+        <!-- MASCOT IN HEADER -->
+        <div class="fz-mascot-mini" onclick="cycleFlavor()">
+            <div class="mascot-cup-mini" id="mascotMiniCup">
+                <i class="fas fa-glass-cheers"></i>
+            </div>
+            <span class="mascot-name-mini" id="mascotMiniName">STRAWBERRY</span>
+        </div>
+    </div>
+    <nav class="fz-nav">
+        <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
+        <a href="https://flavorsdaiquiribar.com/events">Events</a>
+        <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
+        <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
+        <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
+    </nav>
+    <div class="fz-social">
+        <a href="https://www.instagram.com/flavors_zante/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/FlavorsZante" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@flavorszante" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <button class="fz-menu-btn" onclick="document.querySelector('.fz-mobile-menu').classList.add('active')" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+    </button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="fz-mobile-menu">
+    <button class="fz-mobile-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&times;</button>
+    <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
+    <a href="https://flavorsdaiquiribar.com/events">Events</a>
+    <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
+    <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
+    <a href="https://flavorsdaiquiribar.com/bookings">Private Bookings</a>
+    <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
+</div>
+
+<!-- MAIN -->
+<main class="fz-main">
+    <!-- HERO -->
+    <div class="fz-hero">
+        <h1 class="fz-title">FLAVORS ZANTE</h1>
+        <p class="fz-tagline">THE ULTIMATE PARTY BAR</p>
+        <p class="fz-sub">Home of the Frozen Daiquiri &bull; Est. 2018</p>
     </div>
 
-    <!-- VIDEO BG -->
-    <div class="fz-video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
-        </video>
+    <!-- MASCOT - ANIMATED DAIQUIRI -->
+    <div class="fz-mascot">
+        <div class="mascot-container">
+            <div class="mascot-cup" id="mascotCup" onclick="cycleFlavor()">
+                <i class="fas fa-glass-cheers"></i>
+            </div>
+        </div>
+        <div class="mascot-name" id="mascotName">STRAWBERRY</div>
+        <div class="mascot-flavor" id="mascotFlavor">Tap to change flavor!</div>
     </div>
 
-    <!-- HEADER -->
-    <header class="fz-header">
-        <a href="https://flavorsdaiquiribar.com/"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors" class="fz-logo"></a>
-        <nav class="fz-nav">
-            <a href="https://flavorsdaiquiribar.com/menu">Menu</a>
-            <a href="https://flavorsdaiquiribar.com/events">Events</a>
-            <a href="https://flavorsdaiquiribar.com/vip">VIP</a>
-            <a href="https://flavorsdaiquiribar.com/shop">Shop</a>
-            <a href="https://flavorsdaiquiribar.com/contact">Contact</a>
-        </nav>
-        <div class="fz-social">
-            <a href="https://www.instagram.com/flavors_zante/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/FlavorsZante" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.tiktok.com/@flavorszante" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <!-- RADIAL NAVIGATION -->
+    <div class="fz-radial-nav">
+        <a href="https://flavorsdaiquiribar.com/trafficlight" class="radial-btn">
+            <i class="fas fa-traffic-light"></i>
+            <span>TRAFFIC LIGHT</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/casino" class="radial-btn">
+            <i class="fas fa-dice"></i>
+            <span>SPIN & WIN</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/vip" class="radial-btn">
+            <i class="fas fa-crown"></i>
+            <span>VIP</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/frozen" class="radial-btn">
+            <i class="fas fa-snowflake"></i>
+            <span>FROZEN CHALLENGE</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/menu" class="radial-btn">
+            <i class="fas fa-glass-cheers"></i>
+            <span>MENU</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/events" class="radial-btn">
+            <i class="fas fa-calendar-star"></i>
+            <span>EVENTS</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/bottle" class="radial-btn">
+            <i class="fas fa-wine-bottle"></i>
+            <span>SPIN BOTTLE</span>
+        </a>
+        <a href="https://flavorsdaiquiribar.com/games" class="radial-btn">
+            <i class="fas fa-gamepad"></i>
+            <span>ALL GAMES</span>
+        </a>
+        
+        <!-- CENTER LOGO -->
+        <div class="fz-center-logo" onclick="cycleFlavor()">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
         </div>
-        <button class="fz-menu-btn" onclick="document.querySelector('.fz-mobile-menu').classList.add('active')" aria-label="Open menu"><i class="fas fa-bars"></i></button>
-    </header>
-
-    <!-- MOBILE MENU -->
-    <div class="fz-mobile-menu">
-        <button class="fz-mobile-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&times;</button>
-        <a href="https://flavorsdaiquiribar.com/menu" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Menu</a>
-        <a href="https://flavorsdaiquiribar.com/events" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Events</a>
-        <a href="https://flavorsdaiquiribar.com/vip" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">VIP</a>
-        <a href="https://flavorsdaiquiribar.com/shop" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Shop</a>
-        <a href="https://flavorsdaiquiribar.com/bookings" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Private Bookings</a>
-        <a href="https://flavorsdaiquiribar.com/contact" onclick="document.querySelector('.fz-mobile-menu').classList.remove('active')">Contact</a>
     </div>
 
-    <!-- MAIN -->
-    <main class="fz-main">
-        <div class="fz-hero">
-            <h1>FLAVORS ZANTE</h1>
-            <p class="tagline">THE ULTIMATE PARTY BAR</p>
-            <p class="sub">Home of the Frozen Daiquiri • Est. 2018</p>
-        </div>
+    <!-- QUICK ACTIONS -->
+    <div class="fz-actions">
+        <a href="https://flavorsdaiquiribar.com/menu" class="fz-action"><i class="fas fa-glass-cheers"></i> ORDER NOW</a>
+        <a href="https://flavorsdaiquiribar.com/bookings" class="fz-action"><i class="fas fa-calendar"></i> BOOK TABLE</a>
+        <a href="https://flavorsdaiquiribar.com/vip" class="fz-action"><i class="fas fa-crown"></i> VIP ACCESS</a>
+        <a href="https://flavorsdaiquiribar.com/tickets" class="fz-action"><i class="fas fa-ticket-alt"></i> BUY TICKETS</a>
+    </div>
+</main>
 
-        <!-- QUICK ACTIONS -->
-        <div class="fz-actions">
-            <a href="https://flavorsdaiquiribar.com/menu" class="fz-action"><i class="fas fa-glass-cheers"></i> ORDER NOW</a>
-            <a href="https://flavorsdaiquiribar.com/bookings" class="fz-action"><i class="fas fa-calendar"></i> BOOK TABLE</a>
-            <a href="https://flavorsdaiquiribar.com/vip" class="fz-action"><i class="fas fa-crown"></i> VIP ACCESS</a>
-            <a href="https://flavorsdaiquiribar.com/tickets" class="fz-action"><i class="fas fa-ticket-alt"></i> BUY TICKETS</a>
-        </div>
+<!-- FROZEN CHALLENGE VIDEOS -->
+<div class="fz-section">
+    <h2 class="fz-section-title"><i class="fas fa-snowflake"></i> <span>FROZEN CHALLENGE</span></h2>
+    <div class="fz-videos">
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video></div>
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video></div>
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video></div>
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c73a5e02c2f2b065f.mp4" playsinline loop muted></video></div>
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c42bb1cbdfb2c144b.mp4" playsinline loop muted></video></div>
+        <div class="fz-video" onclick="playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c6caf49867e59b05d.mp4" playsinline loop muted></video></div>
+    </div>
+</div>
 
-        <!-- GAME ROULETTE -->
-        <div class="fz-game">
-            <h2>?? SPIN TO PLAY</h2>
-            <p>Tap the logo and let fate decide your next Flavors experience!</p>
-            <div class="fz-wheel-box">
-                <div class="fz-pointer"></div>
-                <div class="fz-spin-wheel" id="fzWheel">
-                    <div class="fz-wheel">
-                        <i class="fz-icon i1 fas fa-traffic-light"></i>
-                        <i class="fz-icon i2 fas fa-dice"></i>
-                        <i class="fz-icon i3 fas fa-crown"></i>
-                        <i class="fz-icon i4 fas fa-snowflake"></i>
-                        <i class="fz-icon i5 fas fa-wine-bottle"></i>
-                        <i class="fz-icon i6 fas fa-gamepad"></i>
-                    </div>
-                </div>
-                <div class="fz-hub" id="fzSpin" role="button" tabindex="0" aria-label="Spin the wheel">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="">
-                    <span>TAP TO SPIN</span>
-                </div>
-            </div>
-            <div class="fz-result">
-                <h3 id="fzTitle" class="show">YOUR DESTINY AWAITS</h3>
-                <a href="#" id="fzBtn">PLAY NOW</a>
-            </div>
-        </div>
+<!-- PHOTO GALLERY -->
+<div class="fz-section">
+    <h2 class="fz-section-title"><i class="fas fa-camera"></i> <span>THE VIBE</span></h2>
+    <div class="fz-photos">
+        <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e4ff4c06da5f38cc991.jpg" alt="Flavors vibe"></div>
+        <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304df08da96713949c6342.jpg" alt="Flavors atmosphere"></div>
+        <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" alt="Frozen daiquiri"></div>
+    </div>
+</div>
 
-        <!-- FROZEN CHALLENGE VIDEOS -->
-        <div class="fz-section">
-            <h2>?? <span>FROZEN CHALLENGE</span></h2>
-            <div class="fz-videos">
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cdda1923cd07035e5.mp4" playsinline loop muted></video></div>
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842cee104734adc0b257.mp4" playsinline loop muted></video></div>
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842ce889d3fe7570eab4.mp4" playsinline loop muted></video></div>
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c73a5e02c2f2b065f.mp4" playsinline loop muted></video></div>
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c42bb1cbdfb2c144b.mp4" playsinline loop muted></video></div>
-                <div class="fz-video" onclick="playVideo(this)" role="button" tabindex="0" aria-label="Play video" onkeypress="if(event.key==='Enter')playVideo(this)"><video src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694e842c6caf49867e59b05d.mp4" playsinline loop muted></video></div>
-            </div>
-        </div>
+<!-- INFO CARDS -->
+<div class="fz-info">
+    <div class="fz-info-card">
+        <h3><i class="fas fa-calendar-star"></i> PARTY NIGHTS</h3>
+        <p>Every night is a different vibe! Traffic Light Tuesdays, R&B Wednesdays, and more. Check our <a href="https://flavorsdaiquiribar.com/events">events calendar</a> for the full lineup.</p>
+    </div>
+    <div class="fz-info-card">
+        <h3><i class="fas fa-champagne-glasses"></i> PRIVATE BOOKINGS</h3>
+        <p>Birthday? Stag/Hen? Group celebration? We've got VIP packages for any occasion. <a href="https://flavorsdaiquiribar.com/bookings">Book your party</a> today!</p>
+    </div>
+</div>
 
-        <!-- PHOTO GALLERY -->
-        <div class="fz-section">
-            <h2>?? <span>THE VIBE</span></h2>
-            <div class="fz-photos">
-                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e4ff4c06da5f38cc991.jpg" alt="Flavors party scene"></div>
-                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304df08da96713949c6342.jpg" alt="Flavors bar atmosphere"></div>
-                <div class="fz-photo"><img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" alt="Frozen daiquiri drink"></div>
-            </div>
-        </div>
+<!-- CTA -->
+<div class="fz-cta">
+    <h2>JOIN THE FLAVORS TEAM</h2>
+    <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
+    <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
+</div>
 
-        <!-- MERCH SHOP -->
-        <div class="fz-shop">
-            <h2>??? FLAVORS MERCH</h2>
-            <div class="fz-products">
-                <div class="fz-product">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b1400d573506664f140e4.png" alt="Urban Splash Tee">
-                    <h3>URBAN SPLASH TEE</h3>
-                    <p class="price">€25</p>
-                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
-                </div>
-                <div class="fz-product">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b14007d382a809b2e0b8e.png" alt="Tank Top">
-                    <h3>PARTY TANK TOP</h3>
-                    <p class="price">€20</p>
-                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
-                </div>
-                <div class="fz-product">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b140021432b52ce952bd2.png" alt="Snapback">
-                    <h3>SNAPBACK CAP</h3>
-                    <p class="price">€20</p>
-                    <a href="https://flavorsdaiquiribar.com/shop">BUY NOW</a>
-                </div>
-            </div>
-        </div>
+<!-- FOOTER -->
+<footer class="fz-footer">
+    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Zante">
+    <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
+    <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
+</footer>
 
-        <!-- FINAL BOSS -->
-        <div class="fz-boss">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694fd0c4ee1047dcb0dd104f.jpg" alt="Chris - The Final Boss">
-            <h2>?? MEET THE FINAL BOSS</h2>
-            <p>Think you can handle Chris? Take on the VIP challenge and prove yourself worthy!</p>
-            <a href="https://flavorsdaiquiribar.com/vip">CHALLENGE THE BOSS</a>
-        </div>
+<script>
+// Daiquiri flavors with colors
+const flavors = [
+    { name: 'STRAWBERRY', color: '#FF6B8A', desc: 'Sweet & Fruity', icon: 'fa-strawberry' },
+    { name: 'MANGO', color: '#FFB347', desc: 'Tropical Paradise', icon: 'fa-mango' },
+    { name: 'BLUE LAGOON', color: '#00BFFF', desc: 'Cool & Refreshing', icon: 'fa-water' },
+    { name: 'PORNSTAR MARTINI', color: '#FFD700', desc: 'Passion Fruit Kick', icon: 'fa-star' },
+    { name: 'PINA COLADA', color: '#F5F5DC', desc: 'Coconut Dream', icon: 'fa-umbrella-beach' },
+    { name: 'MARGARITA', color: '#98FB98', desc: 'Classic Lime', icon: 'fa-lemon' },
+    { name: 'ZOMBIE', color: '#8B0000', desc: 'Deadly Strong', icon: 'fa-skull' },
+    { name: 'SEX ON THE BEACH', color: '#FF6B00', desc: 'Beach Vibes', icon: 'fa-sun' }
+];
 
-        <!-- INFO CARDS -->
-        <div class="fz-info">
-            <div class="fz-info-card">
-                <h3>?? PARTY NIGHTS</h3>
-                <p>Every night is a different vibe! Traffic Light Tuesdays, R&B Wednesdays, and more. Check our <a href="https://flavorsdaiquiribar.com/events">events calendar</a> for the full lineup.</p>
-            </div>
-            <div class="fz-info-card">
-                <h3>?? PRIVATE BOOKINGS</h3>
-                <p>Birthday? Stag/Hen? Group celebration? We've got VIP packages for any occasion. <a href="https://flavorsdaiquiribar.com/bookings">Book your party</a> today!</p>
-            </div>
-        </div>
+let currentFlavor = 0;
+let autoChangeInterval;
 
-        <!-- CTA -->
-        <div class="fz-cta">
-            <h2>JOIN THE FLAVORS TEAM</h2>
-            <p>We're hiring for Zante 2025! Apply now for the summer of a lifetime.</p>
-            <a href="https://flavorsdaiquiribar.com/careers">APPLY NOW</a>
-        </div>
-    </main>
+// Update mascot appearance
+function updateMascot() {
+    const flavor = flavors[currentFlavor];
+    
+    // Main mascot
+    const cup = document.getElementById('mascotCup');
+    const name = document.getElementById('mascotName');
+    const desc = document.getElementById('mascotFlavor');
+    
+    cup.style.background = `linear-gradient(135deg, ${flavor.color}, ${adjustColor(flavor.color, -30)})`;
+    cup.style.boxShadow = `0 0 60px ${flavor.color}, inset 0 0 30px rgba(255,255,255,0.2)`;
+    cup.style.color = getContrastColor(flavor.color);
+    
+    name.textContent = flavor.name;
+    name.style.color = flavor.color;
+    
+    desc.textContent = flavor.desc;
+    
+    // Mini mascot in header
+    const miniCup = document.getElementById('mascotMiniCup');
+    const miniName = document.getElementById('mascotMiniName');
+    
+    if (miniCup) {
+        miniCup.style.background = flavor.color;
+        miniCup.style.color = getContrastColor(flavor.color);
+    }
+    if (miniName) {
+        miniName.textContent = flavor.name;
+        miniName.style.color = flavor.color;
+    }
+}
 
-    <!-- FOOTER -->
-    <footer class="fz-footer">
-        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Zante">
-        <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
-        <p>Powered by <a href="https://exposuresolutions.ie">Exposure AI</a></p>
-    </footer>
+// Cycle to next flavor
+function cycleFlavor() {
+    currentFlavor = (currentFlavor + 1) % flavors.length;
+    updateMascot();
+    
+    // Reset auto-change timer
+    clearInterval(autoChangeInterval);
+    startAutoChange();
+}
 
-    <script>
-        // Skip intro on tap with null safety
-        var fzIntroEl = document.getElementById('fzIntro');
-        if (fzIntroEl) {
-            fzIntroEl.onclick = function() {
-                this.classList.add('hide');
-            };
+// Auto-change flavor every 5 seconds
+function startAutoChange() {
+    autoChangeInterval = setInterval(() => {
+        currentFlavor = (currentFlavor + 1) % flavors.length;
+        updateMascot();
+    }, 5000);
+}
+
+// Color utilities
+function adjustColor(hex, amount) {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+    const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
+    const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+    return '#' + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
+}
+
+function getContrastColor(hex) {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const r = (num >> 16);
+    const g = ((num >> 8) & 0x00FF);
+    const b = (num & 0x0000FF);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness > 128 ? '#000000' : '#ffffff';
+}
+
+// Video gallery
+function playVideo(el) {
+    const vid = el.querySelector('video');
+    if (!vid) return;
+    
+    document.querySelectorAll('.fz-video').forEach(v => {
+        v.classList.remove('playing');
+        const video = v.querySelector('video');
+        if (video) {
+            video.pause();
+            video.muted = true;
         }
+    });
+    
+    if (vid.paused) {
+        vid.muted = false;
+        vid.play().catch(e => console.error('Video error:', e));
+        el.classList.add('playing');
+    }
+}
 
-        // ROULETTE
-        (function(){
-            var games = [
-                {name:'TRAFFIC LIGHT', url:'https://flavorsdaiquiribar.com/trafficlight', color:'#FF00FF'},
-                {name:'SPIN & WIN', url:'https://flavorsdaiquiribar.com/casino', color:'#00FFFF'},
-                {name:'VIP CHALLENGE', url:'https://flavorsdaiquiribar.com/vip', color:'#9D00FF'},
-                {name:'FROZEN CHALLENGE', url:'https://flavorsdaiquiribar.com/frozen', color:'#39FF14'},
-                {name:'SPIN THE BOTTLE', url:'https://flavorsdaiquiribar.com/bottle', color:'#FF6B00'},
-                {name:'ALL GAMES', url:'https://flavorsdaiquiribar.com/games', color:'#FFE500'}
-            ];
-            var wheel = document.getElementById('fzWheel');
-            var spinBtn = document.getElementById('fzSpin');
-            var title = document.getElementById('fzTitle');
-            var btn = document.getElementById('fzBtn');
-            
-            if (!wheel || !spinBtn || !title || !btn) {
-                console.error('Wheel elements not found');
-                return;
-            }
-            
-            var spinning = false;
-            var rotation = 0;
-            
-            function handleSpin() {
-                if (spinning) return;
-                spinning = true;
-                title.classList.remove('show');
-                btn.classList.remove('show');
-                
-                var spins = 5 + Math.floor(Math.random() * 5);
-                var extra = Math.random() * 360;
-                rotation += (spins * 360) + extra;
-                wheel.style.transform = 'rotate(' + rotation + 'deg)';
-                
-                setTimeout(function(){
-                    spinning = false;
-                    var angle = rotation % 360;
-                    var idx = Math.floor(((360 - angle + 30) % 360) / 60) % 6;
-                    var game = games[idx];
-                    
-                    title.textContent = game.name;
-                    title.style.color = game.color;
-                    title.style.textShadow = '0 0 30px ' + game.color;
-                    title.classList.add('show');
-                    
-                    btn.href = game.url;
-                    btn.style.background = 'linear-gradient(135deg,' + game.color + ',#9D00FF)';
-                    
-                    setTimeout(function(){
-                        btn.classList.add('show');
-                    }, 300);
-                }, 4000);
-            }
-            
-            spinBtn.onclick = handleSpin;
-            spinBtn.onkeypress = function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleSpin();
-                }
-            };
-        })();
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    updateMascot();
+    startAutoChange();
+});
+</script>
 
-        // VIDEO GALLERY
-        function playVideo(el) {
-            var vid = el.querySelector('video');
-            if (!vid) return;
-            
-            document.querySelectorAll('.fz-video').forEach(function(v) {
-                v.classList.remove('playing');
-                var video = v.querySelector('video');
-                if (video) {
-                    video.pause();
-                    video.muted = true;
-                }
-            });
-            
-            if (vid.paused) {
-                vid.muted = false;
-                vid.play().catch(function(e) {
-                    console.error('Video playback error:', e);
-                });
-                el.classList.add('playing');
-            }
-        }
-    </script>
 </body>
 </html>
