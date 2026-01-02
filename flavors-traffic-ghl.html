@@ -1,11 +1,11 @@
-<!-- FLAVORS TRAFFIC LIGHT - GHL v2 - STORYTELLING EXPERIENCE -->
+<!-- FLAVORS TRAFFIC LIGHT - GHL v3 - ULTIMATE STORYTELLING EXPERIENCE -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root{--red:#FF3B3B;--amber:#FFB627;--green:#00D26A;--pink:#FF00FF;--blue:#00FFFF;--gold:#D4AF37}
 *{margin:0;padding:0;box-sizing:border-box}
-body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
+html,body{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
 
 /* BG GLOW */
 .tl-bg{position:fixed;inset:0;background:radial-gradient(ellipse at center,#111 0%,#000 100%);z-index:0;transition:0.5s}
@@ -14,29 +14,47 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 .tl-bg.green-glow{background:radial-gradient(ellipse at center,rgba(0,210,106,0.15) 0%,#000 70%)}
 
 /* HEADER */
-.tl-header{position:fixed;top:0;left:0;right:0;padding:12px 25px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.9);z-index:100;border-bottom:1px solid rgba(255,0,255,0.2)}
-.tl-logo{height:45px;filter:drop-shadow(0 0 15px var(--pink))}
+.tl-header{position:fixed;top:0;left:0;right:0;padding:12px 25px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.95);z-index:100;border-bottom:1px solid rgba(255,0,255,0.2)}
+.tl-logo{height:45px;filter:drop-shadow(0 0 15px var(--pink));cursor:pointer;transition:0.3s}
+.tl-logo:hover{transform:scale(1.05)}
 .tl-back{color:#fff;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:8px;transition:0.3s;font-weight:600}
 .tl-back:hover{color:var(--pink)}
 
 /* MAIN */
-.tl-main{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:80px 20px 40px;text-align:center}
+.tl-main{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:80px 20px 40px;text-align:center}
 
 /* HERO */
-.tl-hero{margin-bottom:25px}
+.tl-hero{margin-bottom:30px}
 .tl-hero h1{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:3px;line-height:1}
 .tl-hero h1 .red{color:var(--red);text-shadow:0 0 30px var(--red)}
 .tl-hero h1 .amber{color:var(--amber);text-shadow:0 0 30px var(--amber)}
 .tl-hero h1 .green{color:var(--green);text-shadow:0 0 30px var(--green)}
 .tl-hero p{font-family:'Orbitron',sans-serif;color:#888;font-size:11px;letter-spacing:4px;margin-top:8px}
 
-/* STORY SECTION */
-.tl-story{margin-bottom:30px;padding:20px;background:rgba(255,255,255,0.03);border-radius:15px;border:1px solid rgba(255,255,255,0.1)}
-.tl-story-img{width:100%;border-radius:10px;margin-bottom:15px}
+/* STORY INTRO */
+.tl-story{margin-bottom:30px;padding:20px;background:rgba(255,255,255,0.03);border-radius:15px;border:1px solid rgba(255,0,255,0.2);backdrop-filter:blur(5px)}
+.tl-story-img{width:100%;border-radius:10px;margin-bottom:15px;border:2px solid rgba(255,0,255,0.3)}
 .tl-story p{color:rgba(255,255,255,0.7);font-size:13px;line-height:1.6}
+.tl-story-emoji{font-size:2rem;margin-bottom:10px}
+
+/* HOW IT WORKS SECTION */
+.tl-how-it-works{margin:40px 0;padding:30px 20px;background:linear-gradient(135deg,rgba(255,0,255,0.08),rgba(0,255,255,0.08));border-radius:20px;border:1px solid rgba(255,0,255,0.3)}
+.tl-how-it-works h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:25px;color:var(--pink)}
+.tl-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;margin-bottom:20px}
+.tl-step{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:15px;transition:0.3s}
+.tl-step:hover{border-color:var(--pink);transform:translateY(-3px)}
+.tl-step-number{font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--pink);margin-bottom:8px}
+.tl-step-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:5px}
+.tl-step-desc{font-size:10px;color:#888;line-height:1.4}
+
+/* STORY FLOW IMAGES */
+.tl-story-flow{margin-top:20px}
+.tl-story-flow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:15px}
+.tl-story-flow-img{border-radius:12px;width:100%;aspect-ratio:1/1;object-fit:cover;border:2px solid rgba(255,0,255,0.2);transition:0.3s;cursor:pointer}
+.tl-story-flow-img:hover{border-color:var(--pink);transform:scale(1.02)}
 
 /* TRAFFIC LIGHT */
-.tl-light-box{background:linear-gradient(180deg,#1a1a1a 0%,#0a0a0a 100%);padding:30px 22px;border-radius:50px;display:inline-flex;flex-direction:column;gap:18px;border:3px solid #222;box-shadow:0 20px 50px rgba(0,0,0,0.8),inset 0 2px 0 rgba(255,255,255,0.05);margin-bottom:25px}
+.tl-light-box{background:linear-gradient(180deg,#1a1a1a 0%,#0a0a0a 100%);padding:30px 22px;border-radius:50px;display:inline-flex;flex-direction:column;gap:18px;border:3px solid #222;box-shadow:0 20px 50px rgba(0,0,0,0.8),inset 0 2px 0 rgba(255,255,255,0.05);margin:30px 0}
 
 .tl-light{width:90px;height:90px;border-radius:50%;cursor:pointer;transition:all 0.4s;position:relative;border:4px solid rgba(0,0,0,0.3)}
 .tl-light::after{content:'';position:absolute;top:15%;left:15%;width:30%;height:30%;background:rgba(255,255,255,0.4);border-radius:50%;filter:blur(5px)}
@@ -53,9 +71,11 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 .tl-light-box.selected .tl-light.active.green{box-shadow:0 0 60px var(--green),0 0 100px var(--green)}
 
 /* STATUS CARDS */
-.tl-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:25px;margin-top:20px;display:none;animation:fadeUp 0.5s}
+.tl-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:25px;margin-top:20px;display:none;animation:fadeUp 0.5s;backdrop-filter:blur(5px)}
 .tl-card.show{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.tl-card-image{width:100%;border-radius:15px;margin-bottom:15px;border:2px solid rgba(255,255,255,0.1);max-height:300px;object-fit:cover}
 
 .tl-status{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;margin-bottom:8px}
 .tl-desc{color:#aaa;font-size:13px;line-height:1.6;margin-bottom:15px}
@@ -66,6 +86,7 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 
 .tl-btn{display:block;width:100%;padding:14px;border-radius:50px;border:none;font-family:'Montserrat',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;cursor:pointer;margin-bottom:10px;transition:0.3s;text-decoration:none;text-align:center;letter-spacing:1px}
 .tl-btn:hover{transform:scale(1.02)}
+.tl-btn:focus{outline:2px solid var(--pink);outline-offset:2px}
 .tl-btn-primary{background:#fff;color:#000}
 .tl-btn-whatsapp{background:#25D366;color:#fff}
 .tl-btn-reset{background:transparent;border:1px solid #333;color:#666;margin-top:15px}
@@ -75,10 +96,10 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05);box-shadow:0 0 25px rgba(255,215,0,0.6)}}
 
 /* GALLERY */
-.tl-gallery{margin-top:30px}
-.tl-gallery h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin-bottom:15px;color:var(--pink)}
-.tl-gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.tl-gallery-img{border-radius:10px;width:100%;aspect-ratio:1;object-fit:cover;border:2px solid transparent;transition:0.3s}
+.tl-gallery{margin-top:40px;padding:30px 20px;background:rgba(255,255,255,0.02);border-radius:20px;border:1px solid rgba(255,255,255,0.1)}
+.tl-gallery h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:15px;color:var(--pink)}
+.tl-gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tl-gallery-img{border-radius:12px;width:100%;aspect-ratio:1/1;object-fit:cover;border:2px solid rgba(255,0,255,0.2);transition:0.3s}
 .tl-gallery-img:hover{border-color:var(--pink);transform:scale(1.03)}
 
 /* STATS */
@@ -88,12 +109,21 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
 .tl-stats-labels{display:flex;justify-content:space-between;font-size:10px;color:#555;font-family:'Orbitron',sans-serif}
 
 .tl-footer{margin-top:30px;text-align:center;color:#333;font-size:11px}
-.tl-footer a{color:var(--pink)}
+.tl-footer a{color:var(--pink);text-decoration:none;transition:0.3s}
+.tl-footer a:hover{text-decoration:underline}
 
-@media(max-width:400px){
+@media(max-width:600px){
 .tl-hero h1{font-size:2.8rem}
 .tl-light{width:75px;height:75px}
 .tl-light-box{padding:25px 18px;gap:15px}
+.tl-how-it-works h2{font-size:1.6rem}
+.tl-steps{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:400px){
+.tl-hero h1{font-size:2.2rem}
+.tl-light{width:65px;height:65px}
+.tl-status{font-size:1.8rem}
 }
 </style>
 
@@ -114,26 +144,70 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
         <p>WHAT'S YOUR STATUS TONIGHT?</p>
     </div>
 
-    <!-- STORY -->
+    <!-- STORY INTRO -->
     <div class="tl-story">
+        <div class="tl-story-emoji">?????</div>
         <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35141557c91a2b3010d.png" alt="Traffic Light Game" class="tl-story-img">
-        <p>?? Two strangers walk into Flavors. Both looking for connection. The Traffic Light Game brings them together. <strong>What color will YOU choose?</strong></p>
+        <p><strong>Two strangers walk into Flavors.</strong> Both looking for connection. The Traffic Light Game brings them together. You wear your status. They see you. <strong>What color will YOU choose?</strong></p>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="tl-how-it-works">
+        <h2>?? HOW IT WORKS</h2>
+        <div class="tl-steps">
+            <div class="tl-step">
+                <div class="tl-step-number">1??</div>
+                <div class="tl-step-title">CHOOSE</div>
+                <div class="tl-step-desc">Pick your status</div>
+            </div>
+            <div class="tl-step">
+                <div class="tl-step-number">2??</div>
+                <div class="tl-step-title">WEAR</div>
+                <div class="tl-step-desc">Get your wristband</div>
+            </div>
+            <div class="tl-step">
+                <div class="tl-step-number">3??</div>
+                <div class="tl-step-number" style="font-size:1.2rem">??</div>
+                <div class="tl-step-title">SEEN</div>
+                <div class="tl-step-desc">Be discovered</div>
+            </div>
+            <div class="tl-step">
+                <div class="tl-step-number">4??</div>
+                <div class="tl-step-title">CONNECT</div>
+                <div class="tl-step-desc">Make memories</div>
+            </div>
+        </div>
+
+        <!-- STORY FLOW IMAGES -->
+        <div class="tl-story-flow">
+            <p style="font-size:12px;color:#999;margin-bottom:15px">Real moments from Flavors Traffic Light parties:</p>
+            <div class="tl-story-flow-grid">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a561b34c122.png" alt="Green wristband - Active & Ready" class="tl-story-flow-img" title="Green: Active & Ready">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png" alt="Got connections" class="tl-story-flow-img" title="Making Connections">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a064634c121.png" alt="Want to be lit" class="tl-story-flow-img" title="Ready to Party">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png" alt="Party is lit" class="tl-story-flow-img" title="Party Peak">
+            </div>
+        </div>
     </div>
 
     <!-- TRAFFIC LIGHT -->
-    <div class="tl-light-box" id="lightBox">
-        <div class="tl-light red" data-status="taken" onclick="selectStatus(this)"></div>
-        <div class="tl-light amber" data-status="complicated" onclick="selectStatus(this)"></div>
-        <div class="tl-light green" data-status="single" onclick="selectStatus(this)"></div>
+    <div style="margin:30px 0;text-align:center">
+        <p style="font-size:12px;color:#666;margin-bottom:15px;font-family:'Orbitron',sans-serif">?? TAP YOUR STATUS</p>
+        <div class="tl-light-box" id="lightBox">
+            <div class="tl-light red" data-status="taken" onclick="selectStatus(this)" role="button" tabindex="0" aria-label="Taken status" onkeypress="if(event.key==='Enter')selectStatus(this)"></div>
+            <div class="tl-light amber" data-status="complicated" onclick="selectStatus(this)" role="button" tabindex="0" aria-label="Complicated status" onkeypress="if(event.key==='Enter')selectStatus(this)"></div>
+            <div class="tl-light green" data-status="single" onclick="selectStatus(this)" role="button" tabindex="0" aria-label="Single status" onkeypress="if(event.key==='Enter')selectStatus(this)"></div>
+        </div>
     </div>
 
     <!-- RED CARD -->
     <div class="tl-card" id="card-taken">
         <div class="tl-status" style="color:var(--red)">?? TAKEN</div>
-        <p class="tl-desc">You're off the market but still here to PARTY! Rock that red and let everyone know you're spoken for - but you can still have the best night ever!</p>
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f8495fcfb08e0b6.png" alt="Couples celebrating" class="tl-card-image">
+        <p class="tl-desc">You're off the market but still here to PARTY! Rock that red and let everyone know you're spoken for - but you can still have the best night ever! ??</p>
         <div class="tl-mission">
             <div class="tl-mission-label">Tonight's Mission</div>
-            <div class="tl-mission-text">Get your partner a drink & take a couples shot together!</div>
+            <div class="tl-mission-text">?? Get your partner a drink & take a couples shot together!</div>
         </div>
         <a href="#" class="tl-btn tl-btn-primary">GET YOUR RED WRISTBAND</a>
         <div class="tl-deal">?? COUPLES DEAL: 2-FOR-1 SHOTS</div>
@@ -142,10 +216,11 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
     <!-- AMBER CARD -->
     <div class="tl-card" id="card-complicated">
         <div class="tl-status" style="color:var(--amber)">?? IT'S COMPLICATED</div>
-        <p class="tl-desc">Keeping your options open? Smart move! Amber means "maybe" - you're open to conversation but not committing to anything yet. Let the night decide!</p>
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830368b58b6e3e.png" alt="Friends mingling" class="tl-card-image">
+        <p class="tl-desc">Keeping your options open? Smart move! Amber means "maybe" - you're open to conversation but not committing to anything yet. Let the night decide! ??</p>
         <div class="tl-mission">
             <div class="tl-mission-label">Tonight's Mission</div>
-            <div class="tl-mission-text">Make 3 new friends & exchange Instagrams!</div>
+            <div class="tl-mission-text">?? Make 3 new friends & exchange Instagrams!</div>
         </div>
         <a href="#" class="tl-btn tl-btn-primary">GET YOUR AMBER WRISTBAND</a>
         <div class="tl-deal">?? SOCIAL HOUR: €5 DAIQUIRIS</div>
@@ -154,33 +229,34 @@ body,html{font-family:'Montserrat',sans-serif;background:#000;color:#fff;min-hei
     <!-- GREEN CARD -->
     <div class="tl-card" id="card-single">
         <div class="tl-status" style="color:var(--green)">?? SINGLE & READY</div>
+        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830371648b6e3d.png" alt="Single and mingling" class="tl-card-image">
         <p class="tl-desc">GREEN MEANS GO! You're single and ready to mingle. Tonight could be the night you meet someone special. Wear your green with pride! ??</p>
         <div class="tl-mission">
             <div class="tl-mission-label">Tonight's Mission</div>
-            <div class="tl-mission-text">Dance with a stranger & exchange numbers!</div>
+            <div class="tl-mission-text">?? Dance with a stranger & exchange numbers!</div>
         </div>
         <a href="#" class="tl-btn tl-btn-primary">GET YOUR GREEN WRISTBAND</a>
         <a href="https://wa.me/?text=I'm%20GREEN%20at%20Flavors%20Traffic%20Light%20Party!%20??%20Come%20find%20me!" class="tl-btn tl-btn-whatsapp"><i class="fab fa-whatsapp"></i> Tell Your Friends</a>
-        <div class="tl-deal">?? SINGLES: FREE SHOT WITH WRISTBAND</div>
+        <div class="tl-deal">? SINGLES: FREE SHOT WITH WRISTBAND</div>
     </div>
 
     <!-- RESET -->
-    <button class="tl-btn tl-btn-reset" id="resetBtn" style="display:none" onclick="resetSelection()">Change My Status</button>
+    <button class="tl-btn tl-btn-reset" id="resetBtn" style="display:none" onclick="resetSelection()">? Change My Status</button>
 
     <!-- GALLERY -->
     <div class="tl-gallery">
         <h3>?? THE VIBE</h3>
         <div class="tl-gallery-grid">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a561b34c122.png" alt="Active Green" class="tl-gallery-img">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png" alt="Got an invite" class="tl-gallery-img">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a064634c121.png" alt="Want to be lit" class="tl-gallery-img">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png" alt="Party is lit" class="tl-gallery-img">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a561b34c122.png" alt="Green energy" class="tl-gallery-img">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png" alt="Making connections" class="tl-gallery-img">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a064634c121.png" alt="Party mood" class="tl-gallery-img">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png" alt="Celebration" class="tl-gallery-img">
         </div>
     </div>
 
     <!-- LIVE STATS -->
     <div class="tl-stats">
-        <p style="font-size:11px;color:#666;margin-bottom:10px;font-family:'Orbitron',sans-serif">TONIGHT'S MIX</p>
+        <p style="font-size:11px;color:#666;margin-bottom:10px;font-family:'Orbitron',sans-serif">?? TONIGHT'S MIX</p>
         <div class="tl-stats-bar">
             <span style="width:20%;background:var(--red)"></span>
             <span style="width:30%;background:var(--amber)"></span>
@@ -230,5 +306,6 @@ function resetSelection(){
     document.querySelectorAll('.tl-card').forEach(function(c){c.classList.remove('show')});
     resetBtn.style.display='none';
     bg.className='tl-bg';
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
