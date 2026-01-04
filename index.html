@@ -1053,7 +1053,7 @@
             const name = document.getElementById('mascotName');
             const desc = document.getElementById('mascotFlavor');
             if (img) img.style.filter = `hue-rotate(${flavor.hue}) saturate(${flavor.saturate}) brightness(${flavor.brightness}) drop-shadow(0 0 20px ${flavor.color})`;
-            if (name) { name.textContent = flavor.name; location.href=flavor.link; }
+            if (name) { name.textContent = flavor.name; name.style.color = flavor.color; name.style.textShadow = `0 0 20px ${flavor.color}`; }
             if (desc) desc.textContent = flavor.desc;
         }
 
