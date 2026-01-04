@@ -408,42 +408,68 @@
         }
 
         .chip-link:hover {
-            transform: translateY(-15px) scale(1.1);
+            transform: translateY(-15px) scale(1.05);
         }
 
-        .chip-img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        .chip-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(20, 10, 30, 0.9), rgba(5, 5, 10, 0.95));
+            border: 3px solid var(--chip-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 20px color-mix(in srgb, var(--chip-color) 30%, transparent),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.4s;
             animation: chipFloat 3s ease-in-out infinite;
         }
 
-        .chip-link:nth-child(1) .chip-img { animation-delay: 0s; }
-        .chip-link:nth-child(2) .chip-img { animation-delay: 0.5s; }
-        .chip-link:nth-child(3) .chip-img { animation-delay: 1s; }
-        .chip-link:nth-child(4) .chip-img { animation-delay: 1.5s; }
-        .chip-link:nth-child(5) .chip-img { animation-delay: 2s; }
-        .chip-link:nth-child(6) .chip-img { animation-delay: 2.5s; }
-
-        @keyframes chipFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(5deg); }
+        .chip-icon i {
+            font-size: 2.5rem;
+            color: var(--chip-color);
+            text-shadow: 0 0 20px var(--chip-color);
+            transition: all 0.3s;
         }
 
-        .chip-link:hover .chip-img {
-            filter: drop-shadow(0 20px 40px rgba(255, 0, 255, 0.4)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.3));
+        .chip-link:nth-child(1) .chip-icon { animation-delay: 0s; }
+        .chip-link:nth-child(2) .chip-icon { animation-delay: 0.3s; }
+        .chip-link:nth-child(3) .chip-icon { animation-delay: 0.6s; }
+        .chip-link:nth-child(4) .chip-icon { animation-delay: 0.9s; }
+        .chip-link:nth-child(5) .chip-icon { animation-delay: 1.2s; }
+        .chip-link:nth-child(6) .chip-icon { animation-delay: 1.5s; }
+
+        @keyframes chipFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .chip-link:hover .chip-icon {
+            border-color: white;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 40px var(--chip-color),
+                0 0 60px color-mix(in srgb, var(--chip-color) 50%, transparent),
+                inset 0 0 30px color-mix(in srgb, var(--chip-color) 20%, transparent);
             animation: none;
-            transform: rotate(15deg);
+            transform: rotate(10deg);
+        }
+
+        .chip-link:hover .chip-icon i {
+            color: white;
+            text-shadow: 0 0 30px var(--chip-color), 0 0 50px var(--chip-color);
+            transform: scale(1.2);
         }
 
         .chip-label {
             margin-top: 15px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
             text-align: center;
@@ -451,14 +477,14 @@
         }
 
         .chip-link:hover .chip-label {
-            color: var(--neon-pink);
-            text-shadow: 0 0 20px var(--neon-pink);
+            color: var(--chip-color);
+            text-shadow: 0 0 20px var(--chip-color);
         }
 
         /* FEATURED CHIP */
         .featured-chip {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -471,24 +497,55 @@
             transition: all 0.4s;
         }
 
-        .featured-chip-img {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.5));
+        .featured-icon {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(30, 20, 10, 0.9), rgba(10, 5, 0, 0.95));
+            border: 4px solid var(--premium-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.4),
+                inset 0 -5px 25px rgba(0, 0, 0, 0.4);
             transition: all 0.4s;
             animation: featuredPulse 2s ease-in-out infinite;
         }
 
-        @keyframes featuredPulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.5)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 20px 50px rgba(212, 175, 55, 0.7)); }
+        .featured-icon i {
+            font-size: 3.5rem;
+            color: var(--premium-gold);
+            text-shadow: 0 0 25px var(--premium-gold);
+            transition: all 0.3s;
         }
 
-        .featured-chip a:hover .featured-chip-img {
+        @keyframes featuredPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.4);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 50px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        .featured-chip a:hover .featured-icon {
             animation: none;
             transform: scale(1.15) rotate(10deg);
-            filter: drop-shadow(0 25px 60px rgba(255, 215, 0, 0.6));
+            border-color: var(--gold);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.4),
+                0 0 60px var(--gold),
+                inset 0 0 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .featured-chip a:hover .featured-icon i {
+            color: white;
+            text-shadow: 0 0 40px var(--gold), 0 0 60px var(--gold);
+            transform: scale(1.1);
         }
 
         .featured-label {
@@ -649,8 +706,10 @@
                 grid-template-columns: repeat(3, 1fr); 
                 gap: 20px;
             }
-            .chip-img { width: 100px; height: 100px; }
-            .featured-chip-img { width: 130px; height: 130px; }
+            .chip-icon { width: 85px; height: 85px; }
+            .chip-icon i { font-size: 2rem; }
+            .featured-icon { width: 110px; height: 110px; }
+            .featured-icon i { font-size: 3rem; }
         }
 
         @media (max-width: 768px) {
@@ -665,9 +724,11 @@
                 grid-template-columns: repeat(2, 1fr); 
                 gap: 25px;
             }
-            .chip-img { width: 90px; height: 90px; }
-            .chip-label { font-size: 0.6rem; }
-            .featured-chip-img { width: 120px; height: 120px; }
+            .chip-icon { width: 80px; height: 80px; }
+            .chip-icon i { font-size: 1.8rem; }
+            .chip-label { font-size: 0.55rem; }
+            .featured-icon { width: 100px; height: 100px; }
+            .featured-icon i { font-size: 2.5rem; }
             .featured-label { font-size: 1.2rem; }
             .cta-section { padding: 50px 30px; margin: 50px 15px; }
             .cta-section h2 { font-size: 2.5rem; }
@@ -682,9 +743,11 @@
                 gap: 15px;
                 padding: 10px;
             }
-            .chip-img { width: 70px; height: 70px; }
-            .chip-label { font-size: 0.55rem; letter-spacing: 1px; }
-            .featured-chip-img { width: 100px; height: 100px; }
+            .chip-icon { width: 65px; height: 65px; border-width: 2px; }
+            .chip-icon i { font-size: 1.5rem; }
+            .chip-label { font-size: 0.5rem; letter-spacing: 0.5px; margin-top: 10px; }
+            .featured-icon { width: 85px; height: 85px; }
+            .featured-icon i { font-size: 2rem; }
             .featured-label { font-size: 1rem; letter-spacing: 3px; }
             .main-header { padding: 15px 20px; }
             .logo-container img { height: 50px; }
@@ -758,41 +821,55 @@
         <div class="game-selector">
             <div class="selector-title">
                 <h2>PICK YOUR FLAVOR</h2>
-                <p>Tap a chip to explore our games & services</p>
+                <p>Tap to explore our games & services</p>
             </div>
 
-            <!-- CASINO CHIPS GRID -->
+            <!-- SERVICE CHIPS GRID -->
             <div class="chips-container">
-                <a href="https://flavorsdaiquiribar.com/trafficlight" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956f6b6e4125aef597db958.png" alt="Traffic Light" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/trafficlight" class="chip-link" style="--chip-color: var(--neon-pink);">
+                    <div class="chip-icon">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
                     <span class="chip-label">TRAFFIC LIGHT</span>
                 </a>
-                <a href="https://flavorsdaiquiribar.com/spinandwin" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f8c902bf5286dfa38c.png" alt="Spin & Win" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/spinandwin" class="chip-link" style="--chip-color: var(--neon-blue);">
+                    <div class="chip-icon">
+                        <i class="fas fa-dharmachakra"></i>
+                    </div>
                     <span class="chip-label">SPIN & WIN</span>
                 </a>
-                <a href="https://flavorsdaiquiribar.com/nolimitszante" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f8c902bf470cdfa388.png" alt="VIP" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/nolimitszante" class="chip-link" style="--chip-color: var(--neon-purple);">
+                    <div class="chip-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
                     <span class="chip-label">NO LIMITS VIP</span>
                 </a>
-                <a href="https://flavorsdaiquiribar.com/frozenchallenge" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f875f87475cc41eafd.png" alt="Frozen" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/frozenchallenge" class="chip-link" style="--chip-color: var(--neon-green);">
+                    <div class="chip-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
                     <span class="chip-label">FROZEN CHALLENGE</span>
                 </a>
-                <a href="https://flavorsdaiquiribar.com/flavorvenuebookings" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f875f874b7fd41eafe.png" alt="Bookings" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/flavorvenuebookings" class="chip-link" style="--chip-color: var(--neon-orange);">
+                    <div class="chip-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
                     <span class="chip-label">BOOKINGS</span>
                 </a>
-                <a href="https://flavorsdaiquiribar.com/flavorgaming" class="chip-link">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f8b831c414b5900b2a.png" alt="Gaming Hub" class="chip-img">
+                <a href="https://flavorsdaiquiribar.com/flavorgaming" class="chip-link" style="--chip-color: var(--neon-yellow);">
+                    <div class="chip-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
                     <span class="chip-label">GAMING HUB</span>
                 </a>
             </div>
 
-            <!-- FEATURED CHIP - Center piece -->
+            <!-- FEATURED - Menu Button -->
             <div class="featured-chip">
                 <a href="https://flavorsdaiquiribar.com/flavorsclassic">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/695718f87483037dfe8fa195.png" alt="Menu" class="featured-chip-img">
+                    <div class="featured-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
                     <span class="featured-label">VIEW MENU</span>
                 </a>
             </div>
