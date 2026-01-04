@@ -2,117 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavors Zante | Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flavors Zante | Digital Menu</title>
     <meta name="description" content="The best frozen daiquiris in Zante. Strawberry, Mango, Blue Lagoon, and more. View our full menu and deals.">
-    <meta name="theme-color" content="#000000">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* =========================================
+           EXPOSURE OS - MENU THEME
+           ========================================= */
         :root {
-            --neon-pink: #FF00FF;
-            --neon-blue: #00FFFF;
-            --neon-purple: #BC13FE;
-            --dark-bg: #050505;
+            --primary: #FF00FF;
+            --secondary: #00FFFF;
+            --gold: #FFD700;
+            --bg-dark: #050508;
             --card-bg: #161616;
             --text-main: #ffffff;
-            --gold: #FFD700;
-            --red: #FF3B3B;
-            --green: #00D26A;
         }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; background-color: #000 !important; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--text-main); line-height: 1.5; padding-bottom: 80px; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-dark); 
+            font-family: 'Montserrat', sans-serif; 
+            color: var(--text-main); 
+            padding-bottom: 100px; /* Space for dock */
+        }
 
         /* HEADER */
-        header { background: rgba(5,5,5,0.95); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); height: 80px; }
-        .header-container { width: 100%; padding: 0 20px; margin: 0 auto; display: flex; justify-content: flex-end; align-items: center; max-width: 1200px; height: 100%; }
-        
-        /* LOGO - 140px Top Left */
-        .logo { position: fixed; top: 10px; left: 10px; z-index: 1100; }
-        .logo img { height: 140px; width: 140px; border-radius: 50%; border: 3px solid var(--neon-pink); background: #000; box-shadow: 0 0 20px rgba(255,0,255,0.3); }
-        
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: all 0.3s ease; }
-        .nav-links a:hover { background: var(--neon-pink); }
+        .os-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,5,8,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-btn {
+            color: #fff; font-size: 1.1rem; text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--secondary);
+        }
 
         /* HERO */
         .menu-hero {
-            padding: 160px 20px 60px;
+            padding: 100px 20px 40px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), #000), url('https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b43122dd46f03dd570e51.jpg');
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--bg-dark)), url('https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b43122dd46f03dd570e51.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
-            border-bottom: 1px solid #333;
         }
-        .menu-title { font-size: 4rem; margin: 0; color: #fff; text-shadow: 0 0 20px var(--neon-pink); line-height: 1; }
-        .menu-subtitle { color: #fff; font-size: 1.2rem; margin-top: 10px; letter-spacing: 4px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .menu-title { 
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem; margin: 0; 
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 0.9;
+        }
+        .menu-subtitle { 
+            color: #ccc; font-size: 1rem; margin-top: 10px; 
+            letter-spacing: 3px; text-transform: uppercase; 
+        }
 
         /* MENU GRID */
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+            gap: 15px; 
+        }
         
         .menu-item {
-            background: #111;
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            border: 1px solid #222;
-            position: relative;
+            border: 1px solid #333;
             transition: transform 0.3s;
+            position: relative;
         }
-        .menu-item:hover { transform: translateY(-5px); border-color: var(--neon-blue); }
-        .menu-item img { width: 100%; height: 180px; object-fit: cover; }
+        .menu-item:hover { transform: translateY(-5px); border-color: var(--secondary); }
+        
+        .menu-item img { width: 100%; height: 160px; object-fit: cover; }
         
         .item-content { padding: 15px; }
-        .item-title { font-size: 1.3rem; margin: 0 0 5px; color: #fff; line-height: 1; }
-        .item-desc { font-size: 0.8rem; color: #888; margin-bottom: 15px; line-height: 1.3; min-height: 40px; }
+        .item-title { 
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem; margin: 0 0 5px; color: #fff; 
+            letter-spacing: 1px;
+        }
+        .item-desc { font-size: 0.75rem; color: #888; margin-bottom: 10px; min-height: 35px; line-height: 1.3; }
         
-        .item-price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .item-price { font-size: 1.4rem; font-weight: 800; color: var(--gold); }
+        .item-price { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem; font-weight: 700; color: var(--gold); 
+            display: block; margin-bottom: 10px;
+        }
         
-        /* ADD ON SECTION */
+        /* ADD ON */
         .add-on-box {
             background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 10px;
+            border-radius: 8px;
+            padding: 8px;
             border: 1px dashed #444;
         }
-        .add-on-title { font-size: 0.8rem; color: var(--neon-blue); font-weight: 700; margin-bottom: 5px; display: flex; justify-content: space-between; }
-        .add-on-opts { font-size: 0.7rem; color: #aaa; display: flex; flex-wrap: wrap; gap: 5px; }
-        .opt-tag { background: #222; padding: 2px 6px; border-radius: 4px; }
+        .add-on-title { 
+            font-size: 0.7rem; color: var(--secondary); font-weight: 700; 
+            display: flex; justify-content: space-between; margin-bottom: 5px;
+        }
+        .opt-tag { 
+            font-size: 0.6rem; background: #222; padding: 2px 6px; 
+            border-radius: 4px; color: #aaa; display: inline-block; margin-right: 3px;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            text-align: center; margin: 50px 0 30px;
+            border-top: 1px solid #222; padding-top: 30px;
+        }
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem; color: #fff; margin: 0;
+        }
+        .section-sub { color: #666; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* MERCH */
+        .merch-img { object-fit: contain !important; padding: 20px; background: #222; }
+        .buy-btn {
+            width: 100%; padding: 10px;
+            background: linear-gradient(90deg, var(--primary), #9D00FF);
+            border: none; border-radius: 20px;
+            color: #fff; font-weight: 700; font-size: 0.8rem;
+            cursor: pointer; margin-top: 10px;
+        }
 
         /* REDEEM BAR */
         .redeem-bar {
-            position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            background: #1a1a1a;
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(10,10,15,0.95);
             border-top: 1px solid var(--gold);
             padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 999;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 900;
+            backdrop-filter: blur(10px);
         }
-        .redeem-text { font-size: 0.9rem; color: #ccc; }
-        .redeem-text strong { color: var(--gold); display: block; font-size: 1.1rem; }
+        .redeem-info strong { color: var(--gold); display: block; font-size: 1rem; }
+        .redeem-info span { font-size: 0.8rem; color: #ccc; }
         .redeem-btn {
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
+            background: var(--gold); color: #000; border: none;
+            padding: 8px 20px; border-radius: 20px;
+            font-weight: 800; font-family: 'Orbitron', sans-serif;
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); } }
@@ -120,95 +170,76 @@
         /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
-        .modal-content { background: #111; padding: 30px; border-radius: 20px; border: 2px solid var(--gold); text-align: center; max-width: 350px; width: 90%; }
-        .qr-code { font-size: 8rem; color: #fff; margin: 20px 0; }
+        .modal-content { background: #111; padding: 30px; border-radius: 20px; border: 2px solid var(--gold); text-align: center; width: 90%; max-width: 350px; }
+        .qr-code { font-size: 6rem; color: #fff; margin: 20px 0; }
 
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .logo img { height: 100px; width: 100px; } /* Slightly smaller on mobile but still big */
-            .menu-title { font-size: 2.5rem; }
-        }
     </style>
 </head>
 <body>
 
     <!-- HEADER -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="FLAVORS">
-            </a>
-            <nav class="nav-links">
-                <a href="index.html"><i class="fas fa-home"></i></a>
-                <a href="flavors-casino.html"><i class="fas fa-dice"></i></a>
-            </nav>
-        </div>
+    <header class="os-header">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HUB</a>
+        <div class="header-title">MENU</div>
+        <div style="width: 50px;"></div>
     </header>
 
     <!-- HERO -->
     <section class="menu-hero">
-        <h1 class="menu-title">THE CLASSIC MENU</h1>
-        <p class="menu-subtitle">FROZEN DAIQUIRIS</p>
+        <h1 class="menu-title">FROZEN DAIQUIRIS</h1>
+        <p class="menu-subtitle">The Taste of Summer</p>
     </section>
 
     <div class="container">
-        <!-- MENU GRID -->
+        <!-- DRINKS GRID -->
         <div class="menu-grid" id="menuGrid">
-            <!-- Items injected via JS -->
+            <!-- Injected via JS -->
         </div>
 
-        <!-- VIBE GALLERY -->
-        <div class="vibe-section" style="margin-top: 60px; padding-top: 20px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 5px;">THE VIBE</h2>
-                <p style="color: #aaa;">MOMENTS @ FLAVORS</p>
-            </div>
-            <div class="vibe-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf1dea1006e2af8014.webp" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf7d382a64fe438d3f.webp" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf1dea100d41af8013.webp" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf7d382a5a7d438d40.webp" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf2dd46f874056dd90.webp" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" style="width: 100%; height: 140px; object-fit: cover; border-radius: 10px; filter: grayscale(30%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(30%)'">
-            </div>
+        <!-- VIBE SECTION -->
+        <div class="section-header">
+            <h2 class="section-title">THE VIBE</h2>
+            <p class="section-sub">Moments @ Flavors</p>
+        </div>
+        <div class="menu-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf1dea1006e2af8014.webp" style="height: 100px; border-radius: 10px; object-fit: cover;">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf7d382a64fe438d3f.webp" style="height: 100px; border-radius: 10px; object-fit: cover;">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b42bf1dea100d41af8013.webp" style="height: 100px; border-radius: 10px; object-fit: cover;">
         </div>
 
-        <!-- MERCH STORE SECTION -->
-        <div class="merch-section" style="margin-top: 60px; border-top: 1px solid #333; padding-top: 40px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 5px;">FLAVORS STORE</h2>
-                <p style="color: #aaa;">TAKE THE VIBE HOME</p>
-            </div>
-            
-            <div class="menu-grid" id="merchGrid">
-                <!-- Merch Items injected via JS -->
-            </div>
+        <!-- MERCH SECTION -->
+        <div class="section-header">
+            <h2 class="section-title">STORE</h2>
+            <p class="section-sub">Take the Vibe Home</p>
+        </div>
+        <div class="menu-grid" id="merchGrid">
+            <!-- Injected via JS -->
         </div>
     </div>
 
     <!-- REDEEM BAR -->
     <div class="redeem-bar">
-        <div class="redeem-text">
-            Have a voucher?
+        <div class="redeem-info">
+            <span>Have a voucher?</span>
             <strong>REDEEM PRIZE</strong>
         </div>
-        <button class="redeem-btn" onclick="showRedeemModal()">SHOW STAFF</button>
+        <button class="redeem-btn" onclick="document.getElementById('redeemModal').classList.add('active')">SHOW STAFF</button>
     </div>
 
-    <!-- REDEEM MODAL -->
+    <!-- MODAL -->
     <div id="redeemModal" class="modal" onclick="this.classList.remove('active')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <h2 style="color: var(--gold);">YOUR VOUCHER</h2>
-            <p style="color: #aaa;">Show this screen to the bartender.</p>
+            <h2 style="color: var(--gold); font-family: 'Bebas Neue'; margin: 0;">YOUR VOUCHER</h2>
+            <p style="color: #aaa; font-size: 0.8rem;">Show this screen to the bartender.</p>
             <div class="qr-code"><i class="fas fa-qrcode"></i></div>
-            <h3 style="color: #fff;">FREE SAMPLE</h3>
-            <p style="font-size: 0.8rem; color: #666;">Valid for 1 person. One time use.</p>
-            <button class="redeem-btn" style="width: 100%; margin-top: 10px;" onclick="document.getElementById('redeemModal').classList.remove('active')">CLOSE</button>
+            <h3 style="color: #fff; margin: 0;">FREE SAMPLE</h3>
+            <p style="font-size: 0.7rem; color: #666; margin-top: 5px;">Valid for 1 person. One time use.</p>
+            <button class="buy-btn" style="background: #333; margin-top: 15px;" onclick="document.getElementById('redeemModal').classList.remove('active')">CLOSE</button>
         </div>
     </div>
 
     <script>
-        // Drink Menu Items with specific images
+        // DATA
         const menuItems = [
             { name: "STRAWBERRY", price: "€6.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69302526d637daf46bc32197.png", desc: "Rum, Strawberry, Lime, Sugar" },
             { name: "MANGO", price: "€6.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/693024e7e0f092dc995961a1.png", desc: "Rum, Mango, Lime, Sugar" },
@@ -220,7 +251,6 @@
             { name: "MARGARITA", price: "€6.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/693024f57bbd8db0e4fd0d4d.png", desc: "Tequila, Triple Sec, Lime" }
         ];
 
-        // Merch Items
         const merchItems = [
             { name: "FLAVORS TOWEL", price: "€20.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b14007d382a1fd62e0b8d.png", desc: "Premium Beach Towel" },
             { name: "FLAVORS T-SHIRT", price: "€15.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b1400aaebe86fbe0ae72e.png", desc: "Classic Logo Tee" },
@@ -229,61 +259,43 @@
             { name: "BIKINI", price: "€15.00", img: "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694b1400aaebe84f6d0ae72a.png", desc: "Flavors Swimwear" }
         ];
 
+        // RENDER
         const grid = document.getElementById('menuGrid');
-        const merchGrid = document.getElementById('merchGrid');
-
-        function renderMenu() {
-            grid.innerHTML = menuItems.map(item => `
-                <div class="menu-item">
-                    <img src="${item.img}" alt="${item.name}">
-                    <div class="item-content">
-                        <h3 class="item-title">${item.name}</h3>
-                        <p class="item-desc">${item.desc}</p>
-                        <div class="item-price-row">
-                            <span class="item-price">${item.price}</span>
+        grid.innerHTML = menuItems.map(item => `
+            <div class="menu-item">
+                <img src="${item.img}" alt="${item.name}">
+                <div class="item-content">
+                    <h3 class="item-title">${item.name}</h3>
+                    <p class="item-desc">${item.desc}</p>
+                    <span class="item-price">${item.price}</span>
+                    <div class="add-on-box">
+                        <div class="add-on-title">
+                            <span><i class="fas fa-vial"></i> ADD SHOT</span>
+                            <span>+€1.00</span>
                         </div>
-                        
-                        <!-- ADD ON -->
-                        <div class="add-on-box">
-                            <div class="add-on-title">
-                                <span><i class="fas fa-vial"></i> ADD TEST TUBE</span>
-                                <span>+€1.00</span>
-                            </div>
-                            <div class="add-on-opts">
-                                <span class="opt-tag">Rum</span>
-                                <span class="opt-tag">Vodka</span>
-                                <span class="opt-tag">Tequila</span>
-                                <span class="opt-tag">Peach</span>
-                            </div>
+                        <div>
+                            <span class="opt-tag">Rum</span>
+                            <span class="opt-tag">Vodka</span>
+                            <span class="opt-tag">Tequila</span>
                         </div>
                     </div>
                 </div>
-            `).join('');
-        }
+            </div>
+        `).join('');
 
-        function renderMerch() {
-            merchGrid.innerHTML = merchItems.map(item => `
-                <div class="menu-item">
-                    <img src="${item.img}" alt="${item.name}" style="object-fit: contain; padding: 10px; background: #222;">
-                    <div class="item-content">
-                        <h3 class="item-title">${item.name}</h3>
-                        <p class="item-desc">${item.desc}</p>
-                        <div class="item-price-row">
-                            <span class="item-price">${item.price}</span>
-                            <button class="add-btn" onclick="window.open('https://wa.me/306900000000?text=I want to buy ${item.name}', '_blank')"><i class="fas fa-shopping-cart"></i></button>
-                        </div>
-                    </div>
+        const mGrid = document.getElementById('merchGrid');
+        mGrid.innerHTML = merchItems.map(item => `
+            <div class="menu-item">
+                <img src="${item.img}" alt="${item.name}" class="merch-img">
+                <div class="item-content">
+                    <h3 class="item-title">${item.name}</h3>
+                    <p class="item-desc">${item.desc}</p>
+                    <span class="item-price">${item.price}</span>
+                    <button class="buy-btn" onclick="window.open('https://wa.me/306900000000?text=I want to buy ${item.name}', '_blank')">BUY NOW</button>
                 </div>
-            `).join('');
-        }
+            </div>
+        `).join('');
 
-        function showRedeemModal() {
-            document.getElementById('redeemModal').classList.add('active');
-        }
-
-        // Init
-        renderMenu();
-        renderMerch();
     </script>
 </body>
 </html>

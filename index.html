@@ -8,8 +8,7 @@
     <title>Flavors Zante | The Ultimate Party Bar Franchise</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ========================================
@@ -64,6 +63,7 @@
                     rgba(20, 5, 40, 0.75) 40%,
                     rgba(5, 5, 8, 0.9) 100%);
             z-index: 1;
+            pointer-events: none;
         }
 
         #bg-video {
@@ -85,9 +85,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 0, 255, 0.1);
+        }
+
+        .main-header * {
+            pointer-events: auto;
         }
 
         .logo-container {
@@ -97,7 +101,8 @@
         }
 
         .logo-container img {
-            height: 65px;
+            height: 70px;
+            border-radius: 50%;
             filter: drop-shadow(0 0 25px var(--neon-pink));
             transition: all 0.4s;
         }
@@ -107,19 +112,11 @@
             transform: scale(1.08);
         }
 
-        .brand-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: none;
-        }
-
         .main-nav {
             display: flex;
-            gap: 45px;
+            gap: 40px;
+            position: relative;
+            z-index: 100;
         }
 
         .main-nav a {
@@ -128,11 +125,13 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 0.85rem;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s;
             position: relative;
             padding: 12px 0;
+            cursor: pointer;
+            z-index: 100;
         }
 
         .main-nav a::after {
@@ -147,13 +146,8 @@
             transition: transform 0.3s;
         }
 
-        .main-nav a:hover {
-            color: white;
-        }
-
-        .main-nav a:hover::after {
-            transform: scaleX(1);
-        }
+        .main-nav a:hover { color: white; }
+        .main-nav a:hover::after { transform: scaleX(1); }
 
         .header-social {
             display: flex;
@@ -200,9 +194,7 @@
             border-left: 1px solid var(--neon-pink);
         }
 
-        .off-canvas-menu.active {
-            right: 0;
-        }
+        .off-canvas-menu.active { right: 0; }
 
         #close-menu-btn {
             position: absolute;
@@ -225,6 +217,8 @@
             padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
+            cursor: pointer;
+            display: block;
         }
 
         .off-canvas-menu a:hover {
@@ -274,9 +268,7 @@
         }
 
         @keyframes textShine {
-            to {
-                background-position: 200% center;
-            }
+            to { background-position: 200% center; }
         }
 
         .hero-content .tagline {
@@ -294,6 +286,56 @@
             color: rgba(255, 255, 255, 0.5);
             margin-top: 15px;
             letter-spacing: 3px;
+        }
+
+        /* MASCOT - ANIMATED DAIQUIRI */
+        .fz-mascot {
+            position: relative;
+            margin: 30px 0;
+            z-index: 10;
+        }
+
+        .mascot-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        .mascot-cup {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            transition: filter 0.5s ease, transform 0.3s;
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+            animation: mascotFloat 3s ease-in-out infinite;
+        }
+
+        .mascot-cup:hover { transform: scale(1.1); }
+
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .mascot-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-top: 15px;
+            text-align: center;
+            transition: color 0.5s;
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .mascot-flavor {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-top: 5px;
         }
 
         /* FLAVORS GAME SELECTOR - Premium Roulette */
@@ -324,13 +366,8 @@
         }
 
         @keyframes borderRotate {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 400% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
 
         .selector-title {
@@ -360,7 +397,7 @@
             margin: 0 auto 40px;
         }
 
-        /* GAME SEGMENTS - Static wheel */
+        /* GAME SEGMENTS - Static wheel with conic gradient */
         .game-wheel {
             width: 100%;
             height: 100%;
@@ -376,62 +413,44 @@
             );
             box-shadow:
                 0 0 0 8px rgba(0, 0, 0, 0.8),
-                0 0 0 10px var(--premium-gold),
-                0 0 60px rgba(255, 0, 255, 0.3),
-                inset 0 0 100px rgba(0, 0, 0, 0.7);
+                0 0 0 12px var(--premium-gold),
+                0 0 80px rgba(255, 0, 255, 0.4),
+                inset 0 0 100px rgba(0, 0, 0, 0.6);
         }
 
-        /* Game Labels on Wheel */
-        .wheel-segment {
+        /* WHEEL SEGMENT LABELS - Beautiful text styling */
+        .wheel-label {
             position: absolute;
-            width: 50%;
-            height: 50%;
-            transform-origin: 100% 100%;
-            display: flex;
-            align-items: center;
-            padding-left: 25px;
-        }
-
-        .wheel-segment span {
-            transform: rotate(15deg);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
             color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.9),
+                0 0 10px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
         }
 
-        .wheel-segment i {
-            font-size: 1.5rem;
-            margin-right: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .wheel-label:hover {
+            transform: scale(1.15);
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.9),
+                0 0 15px rgba(255, 255, 255, 0.5),
+                0 0 30px currentColor;
         }
 
-        .wheel-segment:nth-child(1) {
-            transform: rotate(-60deg) translateY(-100%);
-        }
-
-        .wheel-segment:nth-child(2) {
-            transform: rotate(0deg) translateY(-100%);
-        }
-
-        .wheel-segment:nth-child(3) {
-            transform: rotate(60deg) translateY(-100%);
-        }
-
-        .wheel-segment:nth-child(4) {
-            transform: rotate(120deg) translateY(-100%);
-        }
-
-        .wheel-segment:nth-child(5) {
-            transform: rotate(180deg) translateY(-100%);
-        }
-
-        .wheel-segment:nth-child(6) {
-            transform: rotate(240deg) translateY(-100%);
-        }
+        /* Position each label around the wheel */
+        .wheel-label:nth-child(1) { top: 15%; left: 50%; transform: translateX(-50%) rotate(-60deg); transform-origin: center; }
+        .wheel-label:nth-child(2) { top: 30%; right: 8%; transform: rotate(-30deg); }
+        .wheel-label:nth-child(3) { top: 60%; right: 5%; transform: rotate(30deg); }
+        .wheel-label:nth-child(4) { bottom: 15%; left: 50%; transform: translateX(-50%) rotate(60deg); }
+        .wheel-label:nth-child(5) { top: 60%; left: 5%; transform: rotate(-30deg); }
+        .wheel-label:nth-child(6) { top: 30%; left: 8%; transform: rotate(30deg); }
 
         /* SPINNING NEEDLE with Logo */
         .needle-container {
@@ -452,10 +471,6 @@
             height: 100%;
             transform: translate(-50%, -50%);
             transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-        }
-
-        .needle.spinning {
-            transition: none;
         }
 
         /* Needle arm */
@@ -491,29 +506,31 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
-            border: 4px solid var(--premium-gold);
+            border: 5px solid var(--premium-gold);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 100px var(--premium-gold);
             z-index: 25;
+            overflow: hidden;
         }
 
         .logo-hub:hover {
             transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 80px var(--premium-gold);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 100px var(--premium-gold);
         }
 
         .logo-hub img {
-            width: 75px;
-            height: 75px;
+            width: 90px;
+            height: 90px;
             object-fit: contain;
+            border-radius: 50%;
             filter: drop-shadow(0 0 15px var(--neon-pink));
             transition: filter 0.3s;
         }
@@ -524,13 +541,14 @@
 
         .logo-hub .spin-text {
             position: absolute;
-            bottom: -35px;
+            bottom: -40px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--premium-gold);
             letter-spacing: 3px;
             text-transform: uppercase;
             white-space: nowrap;
+            text-shadow: 0 0 10px var(--premium-gold);
         }
 
         /* Result Display */
@@ -580,7 +598,7 @@
 
         .result-display .play-btn:hover {
             transform: scale(1.08);
-            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
         }
 
         /* QUICK ACCESS - Premium Cards */
@@ -620,9 +638,7 @@
             transition: opacity 0.4s;
         }
 
-        .quick-card:hover::before {
-            opacity: 0.2;
-        }
+        .quick-card:hover::before { opacity: 0.2; }
 
         .quick-card:hover {
             border-color: var(--card-color);
@@ -636,9 +652,7 @@
             transition: transform 0.3s;
         }
 
-        .quick-card:hover i {
-            transform: scale(1.2);
-        }
+        .quick-card:hover i { transform: scale(1.2); }
 
         .quick-card span {
             font-family: 'Orbitron', sans-serif;
@@ -649,29 +663,12 @@
             text-align: center;
         }
 
-        .quick-card:nth-child(1) {
-            --card-color: var(--neon-pink);
-        }
-
-        .quick-card:nth-child(2) {
-            --card-color: var(--neon-blue);
-        }
-
-        .quick-card:nth-child(3) {
-            --card-color: var(--neon-purple);
-        }
-
-        .quick-card:nth-child(4) {
-            --card-color: var(--neon-green);
-        }
-
-        .quick-card:nth-child(5) {
-            --card-color: var(--neon-orange);
-        }
-
-        .quick-card:nth-child(6) {
-            --card-color: var(--neon-yellow);
-        }
+        .quick-card:nth-child(1) { --card-color: var(--neon-pink); }
+        .quick-card:nth-child(2) { --card-color: var(--neon-blue); }
+        .quick-card:nth-child(3) { --card-color: var(--neon-purple); }
+        .quick-card:nth-child(4) { --card-color: var(--neon-green); }
+        .quick-card:nth-child(5) { --card-color: var(--neon-orange); }
+        .quick-card:nth-child(6) { --card-color: var(--neon-yellow); }
 
         /* CTA - Franchise Style */
         .cta-section {
@@ -682,7 +679,6 @@
             border-radius: 30px;
             text-align: center;
             border: 1px solid rgba(255, 0, 255, 0.2);
-            position: relative;
         }
 
         .cta-section h2 {
@@ -740,14 +736,15 @@
         }
 
         .footer-logo img {
-            height: 50px;
-            opacity: 0.7;
-            filter: grayscale(30%);
+            height: 60px;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px var(--neon-pink));
         }
 
         .main-footer p {
             margin: 8px 0;
-            color: #555;
+            color: #666;
             font-size: 0.85rem;
             letter-spacing: 1px;
         }
@@ -758,124 +755,117 @@
             transition: color 0.3s;
         }
 
-        .main-footer a:hover {
-            color: white;
+        .main-footer a:hover { color: white; }
+
+        /* HYPE REEL CAROUSEL */
+        .hype-reel {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border: 1px solid var(--neon-pink);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+        }
+
+        .hype-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+        }
+
+        .hype-image.active { opacity: 1; }
+
+        .promo-section {
+            margin: 60px auto;
+            max-width: 1000px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .promo-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+        }
+
+        .promo-content p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* ExposureOS Dashboard */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        #eos-dashboard {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--neon-pink);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Orbitron', sans-serif;
+            z-index: 9999;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
         }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .quick-access {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .wheel-wrapper {
-                width: 320px;
-                height: 320px;
-            }
-
-            .needle-container {
-                width: 170px;
-                height: 170px;
-            }
-
-            .logo-hub {
-                width: 100px;
-                height: 100px;
-            }
-
-            .logo-hub img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .needle-arm {
-                height: 70px;
-            }
+            .quick-access { grid-template-columns: repeat(2, 1fr); }
+            .wheel-wrapper { width: 320px; height: 320px; }
+            .needle-container { width: 170px; height: 170px; }
+            .logo-hub { width: 110px; height: 110px; }
+            .logo-hub img { width: 75px; height: 75px; }
+            .needle-arm { height: 70px; }
+            .wheel-label { font-size: 0.9rem; }
         }
 
         @media (max-width: 768px) {
-            .main-nav,
-            .header-social {
-                display: none;
-            }
-
-            #mobile-menu-btn {
-                display: block;
-            }
-
-            .off-canvas-menu {
-                display: flex;
-            }
-
-            .hero-content h1 {
-                font-size: 3.2rem;
-                letter-spacing: 5px;
-            }
-
-            .hero-content .tagline {
-                font-size: 1rem;
-                letter-spacing: 5px;
-            }
-
-            .game-selector {
-                padding: 40px 25px;
-                margin: 30px 15px;
-            }
-
-            .selector-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .quick-access {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-
-            .cta-section {
-                padding: 50px 30px;
-                margin: 50px 15px;
-            }
-
-            .cta-section h2 {
-                font-size: 2.5rem;
-            }
+            .main-nav, .header-social { display: none; }
+            #mobile-menu-btn { display: block; }
+            .off-canvas-menu { display: flex; }
+            .hero-content h1 { font-size: 3.2rem; letter-spacing: 5px; }
+            .hero-content .tagline { font-size: 1rem; letter-spacing: 5px; }
+            .game-selector { padding: 40px 25px; margin: 30px 15px; }
+            .selector-title h2 { font-size: 2.2rem; }
+            .quick-access { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .cta-section { padding: 50px 30px; margin: 50px 15px; }
+            .cta-section h2 { font-size: 2.5rem; }
+            .promo-section { grid-template-columns: 1fr; text-align: center; }
+            .hype-reel { height: 200px; }
         }
 
         @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .wheel-wrapper {
-                width: 280px;
-                height: 280px;
-            }
-
-            .needle-container {
-                width: 150px;
-                height: 150px;
-            }
-
-            .logo-hub {
-                width: 90px;
-                height: 90px;
-            }
-
-            .needle-arm {
-                height: 60px;
-            }
-
-            .quick-access {
-                grid-template-columns: 1fr;
-            }
-
-            .main-header {
-                padding: 15px 20px;
-            }
-
-            .logo-container img {
-                height: 50px;
-            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .wheel-wrapper { width: 280px; height: 280px; }
+            .needle-container { width: 150px; height: 150px; }
+            .logo-hub { width: 100px; height: 100px; }
+            .logo-hub img { width: 65px; height: 65px; }
+            .needle-arm { height: 60px; }
+            .quick-access { grid-template-columns: 1fr; }
+            .main-header { padding: 15px 20px; }
+            .logo-container img { height: 50px; }
+            .wheel-label { font-size: 0.75rem; letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -885,25 +875,23 @@
     <!-- VIDEO BACKGROUND -->
     <div class="video-background">
         <video autoplay muted loop playsinline id="bg-video">
-            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4"
-                type="video/mp4">
+            <source src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad7504e3460c0475f148c.mp4" type="video/mp4">
         </video>
     </div>
 
     <!-- HEADER -->
     <header class="main-header">
         <div class="logo-container">
-            <a href="https://exposuresolutions.github.io/flavors-zante/">
-                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
-                    alt="Flavors Zante">
+            <a href="index.html">
+                <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Zante">
             </a>
-            <span class="brand-text">FLAVORS</span>
         </div>
         <nav class="main-nav">
-            <a href="https://exposuresolutions.github.io/flavors-zante/flavors-menu.html">Menu</a>
-            <a href="https://www.flavorsdaiquiribar.com/events">Events</a>
-            <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html">VIP</a>
-            <a href="https://www.flavorsdaiquiribar.com/contact">Contact</a>
+            <a href="flavors-menu.html">Menu</a>
+            <a href="flavors-traffic.html">Events</a>
+            <a href="flavors-nlz.html">VIP</a>
+            <a href="flavors-gaming.html">Games</a>
+            <a href="franchise-hub.html">Franchise</a>
         </nav>
         <div class="header-social">
             <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -916,10 +904,11 @@
     <!-- MOBILE MENU -->
     <div class="off-canvas-menu">
         <button id="close-menu-btn">&times;</button>
-        <a href="https://exposuresolutions.github.io/flavors-zante/flavors-menu.html">Menu</a>
-        <a href="https://www.flavorsdaiquiribar.com/events">Events</a>
-        <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html">VIP</a>
-        <a href="https://www.flavorsdaiquiribar.com/contact">Contact</a>
+        <a href="flavors-menu.html">Menu</a>
+        <a href="flavors-traffic.html">Events</a>
+        <a href="flavors-nlz.html">VIP</a>
+        <a href="flavors-gaming.html">Games</a>
+        <a href="franchise-hub.html">Franchise</a>
         <div class="off-canvas-social">
             <a href="https://www.instagram.com/flavors_zante/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/FlavorsZante" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -932,12 +921,21 @@
         <div class="hero-content">
             <h1>FLAVORS ZANTE</h1>
             <p class="tagline">The Ultimate Party Bar</p>
-            <p class="sub-tagline">Home of the Frozen Daiquiri • Est. 2018</p>
+            <p class="sub-tagline">Home of the Frozen Daiquiri</p>
+
+            <!-- MASCOT -->
+            <div class="fz-mascot">
+                <div class="mascot-container">
+                    <img id="mascotImage" src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694dccc6cfb90c4819a9401c.png" alt="Flavors Daiquiri Avatar" class="mascot-cup" onclick="cycleFlavor()">
+                </div>
+                <div class="mascot-name" id="mascotName">STRAWBERRY</div>
+                <div class="mascot-flavor" id="mascotFlavor">Tap to change flavor!</div>
+            </div>
         </div>
 
         <div class="game-selector">
             <div class="selector-title">
-                <h2>FLAVORS GAME ROULETTE</h2>
+                <h2>FLAVORS - GAMING & SERVICES</h2>
                 <p>Spin the needle to discover your next experience</p>
             </div>
 
@@ -945,12 +943,13 @@
             <div class="wheel-wrapper">
                 <!-- Static Wheel -->
                 <div class="game-wheel">
-                    <div class="wheel-segment"><span><i class="fas fa-traffic-light"></i> Traffic</span></div>
-                    <div class="wheel-segment"><span><i class="fas fa-dice"></i> Casino</span></div>
-                    <div class="wheel-segment"><span><i class="fas fa-crown"></i> VIP</span></div>
-                    <div class="wheel-segment"><span><i class="fas fa-snowflake"></i> Frozen</span></div>
-                    <div class="wheel-segment"><span><i class="fas fa-wine-bottle"></i> Bottle</span></div>
-                    <div class="wheel-segment"><span><i class="fas fa-gamepad"></i> Games</span></div>
+                    <!-- Beautiful text labels positioned around the wheel -->
+                    <span class="wheel-label" onclick="window.location.href='flavors-traffic.html'" style="color: #fff;">TRAFFIC</span>
+                    <span class="wheel-label" onclick="window.location.href='flavors-casino.html'" style="color: #fff;">CASINO</span>
+                    <span class="wheel-label" onclick="window.location.href='flavors-nlz.html'" style="color: #fff;">VIP</span>
+                    <span class="wheel-label" onclick="window.location.href='flavors-frozen.html'" style="color: #000;">FROZEN</span>
+                    <span class="wheel-label" onclick="window.location.href='flavors-bottle.html'" style="color: #fff;">BOTTLE</span>
+                    <span class="wheel-label" onclick="window.location.href='flavors-gaming.html'" style="color: #000;">GAMES</span>
                 </div>
 
                 <!-- Spinning Needle Container -->
@@ -960,10 +959,9 @@
                     </div>
                 </div>
 
-                <!-- Center Logo -->
+                <!-- Center Logo Hub -->
                 <div class="logo-hub" id="spinBtn">
-                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png"
-                        alt="Flavors">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
                     <span class="spin-text">Tap to Spin</span>
                 </div>
             </div>
@@ -976,127 +974,213 @@
 
             <!-- Quick Access Cards -->
             <div class="quick-access">
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html" class="quick-card">
+                <a href="laganas.html" class="quick-card" style="--card-color: #FF00FF;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>VISIT LAGANAS</span>
+                </a>
+                <a href="tsilivi.html" class="quick-card" style="--card-color: #00FFFF;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>VISIT TSILIVI</span>
+                </a>
+                <a href="flavors-traffic.html" class="quick-card">
                     <i class="fas fa-traffic-light"></i>
-                    <span>Flavors Traffic Light</span>
+                    <span>Traffic Light</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-casino.html" class="quick-card">
+                <a href="flavors-casino.html" class="quick-card">
                     <i class="fas fa-dice"></i>
-                    <span>Flavors Casino</span>
+                    <span>Casino</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html" class="quick-card">
+                <a href="flavors-nlz.html" class="quick-card">
                     <i class="fas fa-crown"></i>
-                    <span>Flavors VIP</span>
+                    <span>VIP Access</span>
                 </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html" class="quick-card">
+                <a href="flavors-frozen.html" class="quick-card">
                     <i class="fas fa-snowflake"></i>
-                    <span>Flavors Frozen</span>
-                </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html" class="quick-card">
-                    <i class="fas fa-wine-bottle"></i>
-                    <span>Flavors Bottle</span>
-                </a>
-                <a href="https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html" class="quick-card">
-                    <i class="fas fa-gamepad"></i>
-                    <span>All Flavors Games</span>
+                    <span>Frozen Challenge</span>
                 </a>
             </div>
         </div>
 
+        <!-- TRAFFIC LIGHT PROMO -->
+        <section class="promo-section">
+            <div class="promo-visual">
+                <div class="hype-reel" id="hypeReel"></div>
+            </div>
+            <div class="promo-content">
+                <h2 style="color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink);">TRAFFIC LIGHT PARTY</h2>
+                <p>The legendary event is back. Choose your status: Red (Taken), Amber (Maybe), or Green (Single). Unlock exclusive quests, earn XP, and find your match in the chaos.</p>
+                <a href="flavors-traffic.html" class="btn-primary" style="background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));">ENTER THE GAME</a>
+            </div>
+        </section>
+
+        <!-- FROZEN CHALLENGE PROMO -->
+        <section class="promo-section" style="direction: rtl;">
+            <div class="promo-visual" style="direction: ltr;">
+                <div style="width: 300px; height: 300px; margin: 0 auto;">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304e47abbae624e1e39385.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid var(--neon-green); box-shadow: 0 0 30px var(--neon-green);">
+                </div>
+            </div>
+            <div class="promo-content" style="direction: ltr;">
+                <h2 style="color: var(--neon-green); text-shadow: 0 0 20px var(--neon-green);">FROZEN CHALLENGE</h2>
+                <p>Think you can handle the brain freeze? Take on the legendary Frozen Challenge. Finish the giant yard glass in record time to win the T-Shirt and eternal glory on our Wall of Fame.</p>
+                <a href="flavors-frozen.html" class="btn-primary" style="background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); color: #000;">TAKE THE CHALLENGE</a>
+            </div>
+        </section>
+
         <section class="cta-section">
             <h2>JOIN THE FLAVORS TEAM</h2>
             <p>We're expanding! Apply now to be part of Zante's most iconic party bar for Summer 2025.</p>
-            <a href="https://exposuresolutions.github.io/flavors-zante/feedback-survey.html?source=jobs" class="btn-primary">Apply Now</a>
+            <a href="franchise-hub.html" class="btn-primary">Apply Now</a>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="main-footer">
         <div class="footer-logo">
-            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/668ad51e4e3460c0475f148a.png" alt="Flavors">
+            <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors">
         </div>
         <p>&copy; 2025 FLAVORS ZANTE. ALL RIGHTS RESERVED.</p>
         <p>Powered by <a href="https://exposuresolutions.ie" target="_blank">Exposure AI</a></p>
     </footer>
 
+    <!-- EXPOSURE OS DASHBOARD -->
+    <div id="eos-dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px;">
+            <span style="color: var(--neon-pink); font-size: 0.8rem;">EXPOSURE OS <span style="color: #fff;">v2.4</span></span>
+            <span style="width: 8px; height: 8px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 5px var(--neon-green); animation: pulse 1s infinite;"></span>
+        </div>
+        <div style="font-family: 'Montserrat', monospace; font-size: 0.7rem; color: #aaa; line-height: 1.6;">
+            <div>> SYSTEM: <span style="color: #fff;">ONLINE</span></div>
+            <div>> EGD CONNECTION: <span style="color: var(--neon-blue);">ESTABLISHED</span></div>
+            <div>> ACTIVE USERS: <span style="color: var(--neon-yellow);">1,420</span></div>
+            <div>> TRAFFIC LIGHT: <span style="color: var(--neon-green);">ACTIVE</span></div>
+            <div style="margin-top: 10px; color: var(--neon-pink);">> WAITING FOR INPUT...</div>
+        </div>
+    </div>
+
     <!-- SCRIPT -->
     <script>
+        // GAMES DATA
         const games = [
-            { name: 'FLAVORS TRAFFIC LIGHT', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-traffic.html', color: '#FF00FF' },
-            { name: 'FLAVORS CASINO', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-casino.html', color: '#00FFFF' },
-            { name: 'FLAVORS VIP', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-nlz.html', color: '#9D00FF' },
-            { name: 'FLAVORS FROZEN', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-frozen.html', color: '#39FF14' },
-            { name: 'FLAVORS BOTTLE', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-bottle.html', color: '#FF6B00' },
-            { name: 'ALL FLAVORS GAMES', url: 'https://exposuresolutions.github.io/flavors-zante/flavors-gaming.html', color: '#FFE500' }
+            { name: 'FLAVORS TRAFFIC LIGHT', url: 'flavors-traffic.html', color: '#FF00FF' },
+            { name: 'FLAVORS CASINO', url: 'flavors-casino.html', color: '#00FFFF' },
+            { name: 'FLAVORS VIP', url: 'flavors-nlz.html', color: '#9D00FF' },
+            { name: 'FLAVORS FROZEN', url: 'flavors-frozen.html', color: '#39FF14' },
+            { name: 'FLAVORS BOTTLE', url: 'flavors-bottle.html', color: '#FF6B00' },
+            { name: 'FLAVORS GAMES', url: 'flavors-gaming.html', color: '#FFE500' }
         ];
 
+        // MASCOT DATA
+        const flavors = [
+            { name: 'MANGO', color: '#FFB347', desc: 'Tropical Paradise', hue: '45deg', saturate: '150%', brightness: '110%' },
+            { name: 'STRAWBERRY', color: '#FF6B8A', desc: 'Sweet & Fruity', hue: '0deg', saturate: '100%', brightness: '100%' },
+            { name: 'PORNSTAR MARTINI', color: '#FFD700', desc: 'Passion Fruit Kick', hue: '55deg', saturate: '200%', brightness: '110%' },
+            { name: 'BLUE LAGOON', color: '#00BFFF', desc: 'Cool & Refreshing', hue: '190deg', saturate: '150%', brightness: '120%' },
+            { name: 'PINA COLADA', color: '#F5F5DC', desc: 'Coconut Dream', hue: '45deg', saturate: '20%', brightness: '150%' },
+            { name: 'MARGARITA', color: '#98FB98', desc: 'Classic Lime', hue: '100deg', saturate: '120%', brightness: '120%' },
+            { name: 'SEX ON THE BEACH', color: '#FF6B00', desc: 'Beach Vibes', hue: '25deg', saturate: '150%', brightness: '100%' }
+        ];
+
+        let currentFlavor = 0;
+        let autoChangeInterval;
+
+        function updateMascot() {
+            const flavor = flavors[currentFlavor];
+            const img = document.getElementById('mascotImage');
+            const name = document.getElementById('mascotName');
+            const desc = document.getElementById('mascotFlavor');
+            if (img) img.style.filter = `hue-rotate(${flavor.hue}) saturate(${flavor.saturate}) brightness(${flavor.brightness}) drop-shadow(0 0 20px ${flavor.color})`;
+            if (name) { name.textContent = flavor.name; name.style.color = flavor.color; name.style.textShadow = `0 0 20px ${flavor.color}`; }
+            if (desc) desc.textContent = flavor.desc;
+        }
+
+        function cycleFlavor() {
+            currentFlavor = (currentFlavor + 1) % flavors.length;
+            updateMascot();
+            clearInterval(autoChangeInterval);
+            startAutoChange();
+        }
+
+        function startAutoChange() {
+            autoChangeInterval = setInterval(() => { currentFlavor = (currentFlavor + 1) % flavors.length; updateMascot(); }, 4000);
+        }
+
+        // HYPE REEL
+        const gameAssets = [
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830371648b6e3d.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35141557c91a2b3010d.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830368b58b6e3e.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351c902bf1a53db4e31.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png"
+        ];
+
+        function startHypeReel() {
+            const container = document.getElementById('hypeReel');
+            if (!container) return;
+            gameAssets.forEach((url, index) => {
+                const div = document.createElement('div');
+                div.className = `hype-image ${index === 0 ? 'active' : ''}`;
+                div.style.backgroundImage = `url('${url}')`;
+                container.appendChild(div);
+            });
+            let currentIndex = 0;
+            const images = container.querySelectorAll('.hype-image');
+            setInterval(() => { images[currentIndex].classList.remove('active'); currentIndex = (currentIndex + 1) % images.length; images[currentIndex].classList.add('active'); }, 3000);
+        }
+
+        // ROULETTE SPIN LOGIC
         const needle = document.getElementById('needle');
         const spinBtn = document.getElementById('spinBtn');
         const resultTitle = document.getElementById('resultTitle');
         const playBtn = document.getElementById('playBtn');
-
         let isSpinning = false;
         let currentRotation = 0;
 
         function spin() {
             if (isSpinning) return;
             isSpinning = true;
-
             resultTitle.classList.remove('show');
             playBtn.classList.remove('show');
-
-            // Calculate spin
             const spins = 5 + Math.floor(Math.random() * 5);
             const extraAngle = Math.random() * 360;
             const totalRotation = currentRotation + (spins * 360) + extraAngle;
-
-            // Spin the needle
             needle.style.transition = 'transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
             needle.style.transform = `rotate(${totalRotation}deg)`;
-
             currentRotation = totalRotation;
-
             setTimeout(() => {
                 isSpinning = false;
-
-                // Calculate result (needle points UP, so we check where it landed)
                 const normalizedAngle = totalRotation % 360;
                 const gameIndex = Math.floor(((360 - normalizedAngle + 30) % 360) / 60);
                 const selectedGame = games[gameIndex % 6];
-
-                // Show result
                 resultTitle.textContent = selectedGame.name;
                 resultTitle.style.color = selectedGame.color;
                 resultTitle.style.textShadow = `0 0 40px ${selectedGame.color}`;
                 resultTitle.classList.add('show');
-
                 playBtn.href = selectedGame.url;
                 playBtn.style.background = `linear-gradient(135deg, ${selectedGame.color}, #9D00FF)`;
                 setTimeout(() => playBtn.classList.add('show'), 300);
-
             }, 4000);
         }
 
         spinBtn.addEventListener('click', spin);
 
-        // Mobile menu
+        // MOBILE MENU
         document.addEventListener('DOMContentLoaded', function () {
             const menuBtn = document.getElementById('mobile-menu-btn');
             const closeBtn = document.getElementById('close-menu-btn');
             const menu = document.querySelector('.off-canvas-menu');
-
-            menuBtn?.addEventListener('click', () => menu.classList.add('active'));
-            closeBtn?.addEventListener('click', () => menu.classList.remove('active'));
-
-            document.addEventListener('click', (e) => {
-                if (menu?.classList.contains('active') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
-                    menu.classList.remove('active');
-                }
-            });
-
-            // Initial state
+            if (menuBtn) menuBtn.addEventListener('click', () => menu.classList.add('active'));
+            if (closeBtn) closeBtn.addEventListener('click', () => menu.classList.remove('active'));
+            document.addEventListener('click', (e) => { if (menu && menu.classList.contains('active') && !menu.contains(e.target) && !menuBtn.contains(e.target)) menu.classList.remove('active'); });
             resultTitle.classList.add('show');
+            startHypeReel();
+            updateMascot();
+            startAutoChange();
         });
+
+        // LAUNCH DASHBOARD
+        setTimeout(() => { const dash = document.getElementById('eos-dashboard'); if (dash) dash.style.transform = 'translateX(0)'; }, 1000);
     </script>
 </body>
 

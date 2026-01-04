@@ -2,274 +2,213 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavors Gaming | Play & Win</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flavors Gaming | ExposureOS</title>
+    <meta name="description" content="Play & Win at Flavors Zante. Spin the Wheel, Traffic Light Party, and more.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* =========================================
+           EXPOSURE OS - GAMING THEME
+           ========================================= */
         :root {
-            --neon-pink: #FF00FF;
-            --neon-blue: #00FFFF;
-            --neon-purple: #BC13FE;
+            --primary: #FF00FF;
+            --secondary: #00FFFF;
             --gold: #FFD700;
-            --red: #FF3B3B;
-            --green: #00D26A;
-            --amber: #FFB627;
+            --bg-dark: #050508;
+            --card-bg: #161616;
+            --text-main: #ffffff;
         }
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at center, #1a0a1a 0%, #000 100%);
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-dark); 
+            font-family: 'Montserrat', sans-serif; 
+            color: var(--text-main); 
+            padding-bottom: 40px;
         }
 
-        /* Header */
-        .gaming-header {
-            text-align: center;
-            padding: 60px 20px 40px;
+        /* HEADER */
+        .os-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,5,8,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .gaming-header img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--neon-pink);
-            margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+        .back-btn {
+            color: #fff; font-size: 1.1rem; text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
         }
-        .gaming-header h1 {
+        .header-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            margin: 0;
-            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        /* HERO */
+        .gaming-hero {
+            padding: 100px 20px 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a0a1a 0%, #000 100%);
+        }
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem; margin: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+            line-height: 0.9;
         }
-        .tagline {
-            color: #ccc;
-            font-size: 1.1rem;
-            margin-top: 15px;
-        }
+        .hero-sub { color: #ccc; font-size: 1rem; margin-top: 10px; letter-spacing: 2px; }
 
-        /* Games Grid */
+        /* GAMES GRID */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-        .game-card {
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border: 2px solid #333;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: #fff;
-            display: block;
-        }
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(255, 0, 255, 0.3);
-        }
-        .game-card.spin:hover { border-color: var(--gold); }
-        .game-card.traffic:hover { border-color: var(--green); }
-        .game-card.bottle:hover { border-color: var(--neon-pink); }
-        .game-card.frozen:hover { border-color: var(--neon-blue); }
-
-        .game-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-        }
-        .game-card.spin .game-icon { background: linear-gradient(135deg, var(--gold), #B8860B); color: #000; }
-        .game-card.traffic .game-icon { background: linear-gradient(135deg, var(--red), var(--amber), var(--green)); color: #fff; }
-        .game-card.bottle .game-icon { background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)); color: #fff; }
-        .game-card.frozen .game-icon { background: linear-gradient(135deg, var(--neon-blue), #fff); color: #000; }
-
-        .game-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            margin: 15px 0 10px;
-        }
-        .game-card p {
-            color: #aaa;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .game-status {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-top: 15px;
-            text-transform: uppercase;
-        }
-        .status-live { background: var(--green); color: #fff; }
-        .status-coming { background: var(--amber); color: #000; }
-
-        /* How It Works */
-        .how-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 50px;
-            margin: 50px 0;
-            text-align: center;
-        }
-        .how-section h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-bottom: 40px;
         }
-        .steps {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        .step {
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
-        }
-        .step-num {
-            width: 60px;
-            height: 60px;
-            background: var(--neon-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin: 0 auto 15px;
+        
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
             color: #fff;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .step h4 {
-            color: #fff;
-            margin: 10px 0;
+        .game-card:hover { transform: translateY(-5px); border-color: var(--hover-color); }
+        
+        .game-icon {
+            width: 80px; height: 80px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 15px; font-size: 2rem;
+            background: rgba(255,255,255,0.05);
+            color: var(--hover-color);
         }
-        .step p {
-            color: #aaa;
-            font-size: 0.85rem;
+        
+        .game-title { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin: 10px 0; }
+        .game-desc { font-size: 0.8rem; color: #888; line-height: 1.4; margin-bottom: 15px; }
+        
+        .status-badge {
+            font-size: 0.6rem; padding: 4px 10px; border-radius: 10px;
+            background: var(--hover-color); color: #000; font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .back-link {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: #888;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s;
-            z-index: 100;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 15px;
-            border-radius: 30px;
+        /* Card Themes */
+        .card-spin { --hover-color: var(--gold); }
+        .card-traffic { --hover-color: #00D26A; }
+        .card-bottle { --hover-color: var(--primary); }
+        .card-frozen { --hover-color: var(--secondary); }
+
+        /* HOW IT WORKS */
+        .how-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px; padding: 30px;
+            margin-bottom: 40px; text-align: center;
         }
-        .back-link:hover { color: #fff; }
+        .how-title { font-family: 'Bebas Neue'; font-size: 2rem; margin-bottom: 20px; }
+        .steps { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .step { flex: 1; min-width: 140px; }
+        .step-num { 
+            width: 40px; height: 40px; background: var(--primary); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px; font-weight: 800; font-family: 'Orbitron';
+        }
+        .step h4 { margin: 5px 0; font-size: 0.9rem; }
+        .step p { font-size: 0.7rem; color: #aaa; }
+
     </style>
 </head>
 <body>
-    <a href="flavors-zante-v5.html" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO FLAVORS</a>
 
-    <div class="gaming-header">
-        <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69301b7d0b0f9de1d1588a77.jpg" alt="Flavors Logo">
-        <h1>FLAVORS GAMING</h1>
-        <p class="tagline">Play. Win. Party. Repeat.<br>Every drink unlocks a game. Every game unlocks a prize.</p>
-    </div>
+    <!-- HEADER -->
+    <header class="os-header">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HUB</a>
+        <div class="header-title">GAME ZONE</div>
+        <div style="width: 50px;"></div>
+    </header>
+
+    <!-- HERO -->
+    <section class="gaming-hero">
+        <h1 class="hero-title">PLAY TO WIN</h1>
+        <p class="hero-sub">Every Drink Unlocks a Game</p>
+    </section>
 
     <div class="container">
         <div class="games-grid">
-            <a href="flavors-casino.html" class="game-card spin">
+            
+            <!-- SPIN -->
+            <a href="flavors-casino.html" class="game-card card-spin">
                 <div class="game-icon"><i class="fas fa-dice"></i></div>
-                <h3>SPIN & WIN</h3>
-                <p>The ultimate casino experience. Spin the wheel and win free drinks, VIP badges, and exclusive merch.</p>
-                <span class="game-status status-live">LIVE NOW</span>
+                <h3 class="game-title">SPIN & WIN</h3>
+                <p class="game-desc">The ultimate casino experience. Win free drinks, VIP badges, and merch.</p>
+                <span class="status-badge">LIVE NOW</span>
             </a>
 
-            <a href="flavors-traffic.html" class="game-card traffic">
+            <!-- TRAFFIC -->
+            <a href="flavors-traffic.html" class="game-card card-traffic">
                 <div class="game-icon"><i class="fas fa-traffic-light"></i></div>
-                <h3>TRAFFIC LIGHT</h3>
-                <p>Are you single, taken, or complicated? Set your status, find your match, and let the night begin.</p>
-                <span class="game-status status-live">LIVE NOW</span>
+                <h3 class="game-title">TRAFFIC LIGHT</h3>
+                <p class="game-desc">Single, Taken, or Complicated? Find your match tonight.</p>
+                <span class="status-badge">POPULAR</span>
             </a>
 
-            <a href="flavors-bottle.html" class="game-card bottle">
+            <!-- BOTTLE -->
+            <a href="flavors-bottle.html" class="game-card card-bottle">
                 <div class="game-icon"><i class="fas fa-wine-bottle"></i></div>
-                <h3>BOTTLE OF LOVE</h3>
-                <p>The classic spin-the-bottle with a digital twist. Dare to play. Dare to kiss.</p>
-                <span class="game-status status-live">LIVE NOW</span>
+                <h3 class="game-title">BOTTLE OF LOVE</h3>
+                <p class="game-desc">Classic spin-the-bottle with a digital twist. Dare to play?</p>
+                <span class="status-badge">DARE MODE</span>
             </a>
 
-            <a href="flavors-frozen.html" class="game-card frozen">
+            <!-- FROZEN -->
+            <a href="flavors-frozen.html" class="game-card card-frozen">
                 <div class="game-icon"><i class="fas fa-snowflake"></i></div>
-                <h3>FROZEN CHALLENGE</h3>
-                <p>Can you handle the brain freeze? Down a slushy in record time and win the legendary t-shirt.</p>
-                <span class="game-status status-live">LIVE NOW</span>
+                <h3 class="game-title">FROZEN CHALLENGE</h3>
+                <p class="game-desc">Can you handle the brain freeze? Down a slushy in record time.</p>
+                <span class="status-badge">CHALLENGE</span>
             </a>
+
         </div>
 
         <div class="how-section">
-            <h2><i class="fas fa-gamepad"></i> HOW IT WORKS</h2>
+            <h2 class="how-title">HOW IT WORKS</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
                     <h4>BUY A DRINK</h4>
-                    <p>Every drink at Flavors gives you a spin, a status, or a challenge entry.</p>
+                    <p>Get a game code</p>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <h4>PLAY THE GAME</h4>
-                    <p>Use your phone or the venue screens to play. It's that simple.</p>
+                    <h4>PLAY</h4>
+                    <p>Use your phone</p>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <h4>WIN PRIZES</h4>
-                    <p>Free drinks, VIP access, merch, and bragging rights. Winners get it all.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <h4>REPEAT</h4>
-                    <p>The more you play, the more you win. Keep the party going.</p>
+                    <h4>WIN</h4>
+                    <p>Claim prizes instantly</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FLAVORS GHL Integration Helper -->
-    <script src="js/flavors-ghl.js"></script>
-
-    <script>
-        // Track game page visits for analytics
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.FLAVORS_GHL) {
-                FLAVORS_GHL.storeLocalEvent('page_view', {
-                    page: 'gaming-hub',
-                    timestamp: new Date().toISOString()
-                });
-                console.log('?? Gaming Hub viewed');
-            }
-        });
-    </script>
 </body>
 </html>

@@ -2,522 +2,1514 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavors Stop Light Party | What's Your Status?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Traffic Light Game | ExposureOS</title>
+    <meta name="description" content="The Ultimate Traffic Light Party Game - Powered by Exposure Solutions AI">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Orbitron:wght@400;500;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* =========================================
+           EXPOSURE OS - TRAFFIC LIGHT THEME
+           ========================================= */
         :root {
             --red: #FF3B3B;
+            --red-dark: #CC0000;
             --amber: #FFB627;
+            --amber-dark: #CC8800;
             --green: #00D26A;
-            --neon-blue: #00FFFF;
-            --bg: #050505;
-            --neon-pink: #FF007F;
-            --neon-purple: #8000FF;
-            --card-bg: #111;
+            --green-dark: #009944;
+            --primary: #FF00FF; /* Configurable Brand Color */
+            --gold: #FFD700;
+            --bg-dark: #050508;
+            --card-bg: rgba(20, 20, 30, 0.9);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
         body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #fff;
             font-family: 'Montserrat', sans-serif;
+            background-color: #000000 !important;
+            /* BRANDING BACKGROUND */
+            background: url('https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/69304ed57bbd8d2d7701ae68.png') no-repeat center center fixed !important;
+            background-size: cover !important;
+            color: #fff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             overflow-x: hidden;
-        }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Background Animation */
-        .bg-glow {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle, rgba(20,20,20,1) 0%, rgba(0,0,0,1) 100%);
-            z-index: 1;
-            transition: background 0.5s ease;
-        }
-        .bg-glow.pulsing {
-            animation: bgPulse 2s infinite alternate;
-        }
-        @keyframes bgPulse {
-            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        /* Header */
-        .header { margin-top: 40px; margin-bottom: 30px; }
-        .header h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            margin: 0;
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .header h1 span { display: block; }
-        .header .sub { font-size: 1.2rem; color: #aaa; letter-spacing: 3px; margin-top: 10px; font-family: 'Orbitron', sans-serif; }
-
-        /* Traffic Light Interactive */
-        .traffic-light-container {
-            background: rgba(20, 20, 20, 0.6);
-            padding: 30px;
-            border-radius: 60px;
-            display: inline-flex;
+            display: flex;
             flex-direction: column;
-            gap: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);
-            position: relative;
-            margin-bottom: 40px;
-            backdrop-filter: blur(15px);
-        }
-        .light {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            border: 4px solid rgba(0,0,0,0.2);
-            /* Default State: ON (Bright) */
-            opacity: 1;
-            transform: scale(1);
-            box-shadow: 0 0 20px currentColor;
-        }
-        .light.red { background: var(--red); color: var(--red); box-shadow: 0 0 25px var(--red); }
-        .light.amber { background: var(--amber); color: var(--amber); box-shadow: 0 0 25px var(--amber); }
-        .light.green { background: var(--green); color: var(--green); box-shadow: 0 0 25px var(--green); }
-
-        .light::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            left: 15%;
-            width: 30%;
-            height: 30%;
-            background: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            filter: blur(4px);
-        }
-        
-        /* Interaction States */
-        .light:hover { transform: scale(1.05); filter: brightness(1.2); }
-        
-        /* When one is selected, others go dim */
-        .traffic-light-container.has-selection .light {
-            opacity: 0.2;
-            transform: scale(0.9);
-            box-shadow: none;
-            filter: grayscale(0.8);
-        }
-        
-        /* The Selected One */
-        .traffic-light-container.has-selection .light.active {
-            opacity: 1;
-            transform: scale(1.2);
-            filter: brightness(1.3);
-            z-index: 10;
-            border-color: #fff;
-        }
-        .traffic-light-container.has-selection .light.active.red { box-shadow: 0 0 60px var(--red), 0 0 100px var(--red); }
-        .traffic-light-container.has-selection .light.active.amber { box-shadow: 0 0 60px var(--amber), 0 0 100px var(--amber); }
-        .traffic-light-container.has-selection .light.active.green { box-shadow: 0 0 60px var(--green), 0 0 100px var(--green); }
-
-        /* Status Card */
-        .status-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.5s ease;
-            display: none;
-        }
-        .status-card.visible {
-            display: block;
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .status-title { font-family: 'Bebas Neue'; font-size: 2.5rem; margin: 0 0 10px; }
-        .status-desc { color: #ccc; font-size: 1rem; margin-bottom: 20px; line-height: 1.5; }
-        
-        .mission-box {
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 4px solid #fff;
-            text-align: left;
-        }
-        .mission-label { font-size: 0.7rem; text-transform: uppercase; color: #888; display: block; margin-bottom: 5px; }
-        .mission-text { font-weight: bold; font-size: 1.1rem; }
-
-        /* Action Buttons */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            border-radius: 50px;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-bottom: 15px;
-            transition: transform 0.2s;
-            text-decoration: none;
-        }
-        .btn:active { transform: scale(0.98); }
-        .btn-primary { background: #fff; color: #000; }
-        .btn-whatsapp { background: #25D366; color: #fff; }
-        
-        /* Live Stats */
-        .stats-bar {
-            display: flex;
-            width: 100%;
-            height: 10px;
-            background: #333;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 40px 0 10px;
-        }
-        .stat-segment { height: 100%; transition: width 1s ease; }
-        .stat-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; font-family: 'Orbitron'; }
-
-        /* Back Button */
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            z-index: 10;
         }
 
-        /* Animations */
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        .pulse { animation: pulse 2s infinite; }
-
-        /* Deal Badges */
-        .deal-badge {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            margin-top: 15px;
-            display: inline-block;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-            animation: pulse-gold 2s infinite;
-            display: none; /* Hidden by default */
+        /* Dark Overlay to make text readable over the branding */
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); /* Dark overlay */
+            z-index: -1;
         }
-        @keyframes pulse-gold { 0% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.9); } 100% { transform: scale(1); } }
 
-        /* Info Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+        /* Force HTML to be black too, just in case GHL leaks */
+        html {
+            background-color: #000000 !important;
+        }
+
+        /* HEADER */
+        .game-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .modal-overlay.visible {
-            opacity: 1;
-            pointer-events: auto;
+
+        .back-btn {
+            color: #fff; font-size: 1.2rem; text-decoration: none;
+            display: flex; align-items: center; gap: 5px;
         }
-        .modal-content {
-            background: var(--card-bg);
-            border: 1px solid var(--neon-blue);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
-        .modal-title {
-            font-family: 'Bebas Neue';
-            font-size: 2.5rem;
-            margin: 0 0 15px;
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+
+        /* ANIMATED HEADER TEXT */
+        .header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--red), var(--amber), var(--green), var(--red));
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: trafficFlow 5s linear infinite;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
         }
-        .modal-text {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .modal-text strong {
-            color: #fff;
-        }
-        .modal-close-btn {
-            background: var(--neon-blue);
-            color: #000;
-            font-weight: bold;
-            padding: 12px 30px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
+        @keyframes trafficFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
+        .header-btns { display: flex; gap: 10px; }
+        .header-btn {
+            background: transparent; border: 1px solid var(--primary); color: #fff;
+            padding: 5px 10px; border-radius: 15px; font-size: 0.7rem; cursor: pointer;
+        }
+
+        /* MAIN CONTAINER */
+        .game-main {
+            flex: 1;
+            padding: 80px 20px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* DESKTOP LAYOUT (3-COLUMN) */
+        .desktop-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .side-panel {
+            display: none; /* Hidden on mobile */
+            width: 300px;
+            padding: 100px 20px 20px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 1200px) {
+            .side-panel { display: flex; }
+            .game-main { flex: 0 0 600px; max-width: 600px; margin: 0; }
+        }
+
+        /* SIDE PANEL STYLES */
+        .panel-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        .panel-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+            display: flex; justify-content: space-between;
+        }
+
+        /* MODE SELECTOR */
+        .mode-selector {
+            display: flex;
+            background: rgba(20, 20, 20, 0.5); /* Darker overlay */
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 5px;
+            margin-bottom: 30px;
+        }
+        .mode-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .mode-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+
+        /* 3D TRAFFIC LIGHT - DREAM ORBS STYLE */
+        .traffic-light-container {
+            display: flex; flex-direction: column; align-items: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        /* The "Force Field" Container */
+        .traffic-light-box {
+            width: 140px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 30px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 0 30px rgba(0,0,0,0.5),
+                inset 0 0 20px rgba(255,255,255,0.05);
+            display: flex; flex-direction: column; gap: 20px;
+            transform: perspective(1000px) rotateX(0deg); /* Reset rotation for cleaner look */
+        }
+
+        .traffic-pole { display: none; } /* Remove the old pole */
+
+        .light-housing { 
+            position: relative; 
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+        }
+        .light-visor { display: none; } /* Remove old visors */
+
+        .traffic-light {
+            width: 90px; height: 90px;
+            border-radius: 50%; margin: 0 auto;
+            cursor: pointer; position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            
+            /* Glass Orb Look (Inactive) */
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), rgba(0,0,0,0.8));
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            text-shadow: none;
+        }
+        
+        /* Active States - GLOWING ORBS */
+        .traffic-light.red-on {
+            background: radial-gradient(circle at 30% 30%, #ff8888, var(--red), #550000);
+            box-shadow: 
+                0 0 20px var(--red), 
+                0 0 60px var(--red),
+                inset 0 0 20px rgba(255,255,255,0.5);
+            color: #fff; text-shadow: 0 0 10px #fff;
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+        .traffic-light.amber-on {
+            background: radial-gradient(circle at 30% 30%, #ffeebb, var(--amber), #664400);
+            box-shadow: 
+                0 0 20px var(--amber), 
+                0 0 60px var(--amber),
+                inset 0 0 20px rgba(255,255,255,0.5);
+            color: #fff; text-shadow: 0 0 10px #fff;
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+        .traffic-light.green-on {
+            background: radial-gradient(circle at 30% 30%, #88ffaa, var(--green), #004411);
+            box-shadow: 
+                0 0 20px var(--green), 
+                0 0 60px var(--green),
+                inset 0 0 20px rgba(255,255,255,0.5);
+            color: #fff; text-shadow: 0 0 10px #fff;
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+
+        /* STATUS CARD */
+        .status-card {
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            display: none;
+            animation: slideUp 0.4s ease;
+        }
+        .status-card.active { display: block; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .status-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .status-avatar {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: #333; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; border: 2px solid var(--gold);
+        }
+        .status-title h3 { font-family: 'Bebas Neue'; font-size: 1.8rem; margin: 0; line-height: 1; }
+        .status-badge { font-size: 0.7rem; padding: 3px 10px; border-radius: 10px; background: #333; display: inline-block; margin-top: 5px; }
+
+        /* COUNCIL OF COMEDY */
+        .coc-section {
+            margin-top: 20px;
+            background: rgba(255,215,0,0.05);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .coc-title { font-family: 'Permanent Marker'; color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; text-align: center; }
+        .coc-chat {
+            background: #000; border-radius: 10px; padding: 10px;
+            max-height: 150px; overflow-y: auto; font-size: 0.8rem; color: #ccc;
+        }
+        .coc-msg { margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .coc-name { color: var(--gold); font-weight: bold; font-size: 0.7rem; }
+        
+        .btn-action {
+            width: 100%; padding: 15px; margin-top: 15px;
+            background: linear-gradient(135deg, var(--primary), #9D00FF);
+            border: none; border-radius: 30px;
+            color: #fff; font-family: 'Bebas Neue'; font-size: 1.2rem; letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* CHASER MODE */
+        .chaser-card {
+            background: rgba(0, 210, 106, 0.1);
+            border: 1px solid var(--green);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .chaser-card.active { display: block; }
+        .target-hint { font-style: italic; color: #aaa; margin-top: 10px; font-size: 0.9rem; }
+
+        /* HOW TO PLAY */
+        .how-to-play {
+            background: rgba(10, 10, 10, 0.8); /* Darker overlay */
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .how-to-play h3 { font-family: 'Bebas Neue'; color: var(--gold); margin-bottom: 15px; letter-spacing: 1px; }
+        .how-to-play p { font-size: 0.8rem; color: #ccc; margin-bottom: 15px; line-height: 1.4; }
+        .rules-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .rule-item { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.7rem; color: #ccc; }
+        .rule-item i { font-size: 1.5rem; margin-bottom: 5px; }
+        .rule-red i { color: var(--red); }
+        .rule-amber i { color: var(--amber); }
+        .rule-green i { color: var(--green); }
+
+        /* SPECTATOR CARD */
+        .spectator-card {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            display: none;
+            text-align: center;
+        }
+        .spectator-card.active { display: block; }
+
+        /* QUEST CARD */
+        .quest-card {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
+        }
+        .quest-card.active { display: block; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .quest-title { font-family: 'Bebas Neue'; color: var(--gold); font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 10px; }
+        .quest-text { font-size: 0.9rem; color: #fff; font-style: italic; line-height: 1.5; margin-bottom: 15px; }
+        .quest-persona { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid #333; padding-top: 10px; }
+
+        /* REGISTRATION MODAL */
+        .reg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .reg-card {
+            background: #111;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.2);
+            animation: popIn 0.5s ease;
+        }
+        .reg-title {
+            font-family: 'Bebas Neue'; font-size: 2rem; color: #fff; margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .reg-subtitle {
+            font-size: 0.9rem; color: #aaa; margin-bottom: 25px;
+        }
+        .social-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;
+        }
+        .social-btn {
+            background: #222; border: 1px solid #333; border-radius: 10px;
+            height: 60px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff; cursor: pointer; transition: 0.3s;
+        }
+        .social-btn:hover {
+            background: #333; border-color: var(--primary); transform: translateY(-2px);
+        }
+        .social-google { color: #DB4437; }
+        .social-snap { color: #FFFC00; text-shadow: 0 0 5px #000; }
+        .social-insta { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .social-fb { color: #4267B2; }
+        .social-wa { color: #25D366; }
+        .social-tg { color: #0088cc; }
+
+        .divider {
+            display: flex; align-items: center; gap: 10px; color: #555; font-size: 0.8rem; margin-bottom: 20px;
+        }
+        .divider::before, .divider::after {
+            content: ""; flex: 1; height: 1px; background: #333;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        .reg-input {
+            width: 100%; padding: 15px; background: #000; border: 1px solid #333;
+            border-radius: 10px; color: #fff; font-family: 'Montserrat';
+        }
+        .reg-input:focus { outline: none; border-color: var(--primary); }
+        
+        .reg-submit {
+            width: 100%; padding: 15px; background: var(--primary); border: none;
+            border-radius: 30px; color: #fff; font-family: 'Bebas Neue'; font-size: 1.2rem;
+            cursor: pointer; margin-top: 10px;
+        }
+
+        /* XP SYSTEM */
+        .xp-container {
+            background: rgba(0,0,0,0.8);
+            border-top: 1px solid #333;
+            padding: 10px 20px;
+            position: fixed; bottom: 40px; left: 0; width: 100%;
+            z-index: 900;
+        }
+        .xp-header { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; color: var(--gold); }
+        .xp-track { width: 100%; height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
+        .xp-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--gold)); width: 0%; transition: width 0.5s ease; }
+
+        /* LIVE TICKER */
+        .ticker-wrap {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: var(--primary); color: #000;
+            font-family: 'Share Tech Mono', monospace; font-size: 0.8rem;
+            height: 40px; line-height: 40px; overflow: hidden;
+            z-index: 1000; border-top: 2px solid #fff;
+        }
+        .ticker { display: inline-block; white-space: nowrap; animation: ticker 20s linear infinite; padding-left: 100%; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        /* REMOTE OPS BUTTONS */
+        .remote-ops {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;
+        }
+        .op-btn {
+            background: rgba(255,255,255,0.1); border: 1px solid var(--primary);
+            color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem;
+            cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        .op-btn i { font-size: 1.2rem; color: var(--gold); }
+
+        /* SHARE & RETENTION UI */
+        .share-btn {
+            background: linear-gradient(45deg, #1DA1F2, #0099FF);
+            border: none; padding: 10px 20px; border-radius: 20px;
+            color: #fff; font-weight: bold; margin-top: 10px; cursor: pointer;
+            display: flex; align-items: center; gap: 10px; margin: 10px auto;
+        }
+        
+        .daily-spin-btn {
+            position: fixed; top: 80px; right: 20px;
+            background: radial-gradient(circle, var(--gold), #b8860b);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px var(--gold);
+            animation: spin 10s linear infinite;
+            z-index: 950; cursor: pointer; border: 2px solid #fff;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* HYPE REEL CAROUSEL */
+        .hype-reel {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+        }
+        .hype-image {
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute; top: 0; left: 0;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+        }
+        .hype-image.active { opacity: 1; }
+        
+        /* Scanline Overlay for Cyberpunk feel */
+        .hype-reel::after {
+            content: "";
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* GHOST WRITER (Left Panel) */
+        .terminal-text {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: #0f0;
+            line-height: 1.4;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .terminal-text::after {
+            content: "_";
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* RADAR MAP (Right Panel) */
+        .radar-box {
+            width: 100%; aspect-ratio: 1;
+            background: radial-gradient(circle, rgba(0,255,148,0.1) 0%, rgba(0,0,0,0) 70%);
+            border: 1px solid rgba(0,255,148,0.2);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+        .radar-sweep {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(0,255,148,0.4) 360deg);
+            animation: radarSpin 4s linear infinite;
+            opacity: 0.3;
+        }
+        .radar-dot {
+            position: absolute; width: 6px; height: 6px; background: #fff; border-radius: 50%;
+            box-shadow: 0 0 5px #fff;
+            animation: fadeDot 2s infinite;
+        }
+        @keyframes radarSpin { 100% { transform: rotate(360deg); } }
+        @keyframes fadeDot { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* AI CHATBOT UI */
+        .ai-fab {
+            position: fixed; bottom: 60px; right: 20px;
+            width: 60px; height: 60px;
+            background: #000; border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px var(--primary);
+            z-index: 950; cursor: pointer;
+            animation: pulseAI 3s infinite;
+        }
+        @keyframes pulseAI { 0% { box-shadow: 0 0 10px var(--primary); } 50% { box-shadow: 0 0 25px var(--primary); } 100% { box-shadow: 0 0 10px var(--primary); } }
+
+        .ai-panel {
+            position: fixed; bottom: -100%; left: 0; width: 100%;
+            height: 60vh; background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 2px solid var(--primary);
+            border-radius: 20px 20px 0 0;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 960; display: flex; flex-direction: column;
+            box-shadow: 0 -10px 50px rgba(0,0,0,0.8);
+        }
+        .ai-panel.open { bottom: 0; }
+
+        .ai-header {
+            padding: 15px; border-bottom: 1px solid #333;
+            display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Orbitron'; color: var(--primary);
+        }
+        .ai-messages {
+            flex: 1; padding: 20px; overflow-y: auto;
+            font-family: 'Montserrat'; font-size: 0.9rem;
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .msg { max-width: 80%; padding: 10px 15px; border-radius: 15px; line-height: 1.4; }
+        .msg.bot { background: rgba(255, 0, 255, 0.1); border: 1px solid var(--primary); align-self: flex-start; color: #fff; }
+        .msg.user { background: #333; align-self: flex-end; color: #fff; }
+
+        .ai-input-area {
+            padding: 15px; border-top: 1px solid #333;
+            display: flex; gap: 10px; background: #000;
+        }
+        .ai-input {
+            flex: 1; background: #111; border: 1px solid #333;
+            color: #fff; padding: 10px; border-radius: 20px;
+            font-family: 'Montserrat';
+        }
+        .ai-btn {
+            background: var(--primary); border: none; width: 40px; height: 40px;
+            border-radius: 50%; color: #fff; cursor: pointer;
+        }
+        .ai-mic { background: #333; border: 1px solid #555; }
+        .ai-mic.listening { background: var(--red); animation: pulse 1s infinite; }
+
     </style>
+    <!-- PWA MANIFEST LINK (Placeholder) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
-    <div class="bg-glow" id="bgGlow"></div>
-
-    <a href="flavors-zante-v5.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
-
-    <div class="container">
-        <div class="header">
-            <h1>
-                <span style="color: var(--red);">STOP.</span>
-                <span style="color: var(--amber);">LOOK.</span>
-                <span style="color: var(--green);">HOOK UP.</span>
-            </h1>
-            <div class="sub">OFFICIAL PARTY STATUS</div>
-        </div>
-
-        <div class="traffic-light-container" id="lightContainer">
-            <div class="light red" onclick="setStatus('red')"></div>
-            <div class="light amber" onclick="setStatus('amber')"></div>
-            <div class="light green" onclick="setStatus('green')"></div>
-        </div>
-
-        <p id="instruction" style="color: #aaa; font-size: 1rem; font-family: 'Orbitron'; letter-spacing: 1px; margin-top: -20px; margin-bottom: 30px;">TAP YOUR COLOUR</p>
-
-        <!-- RED STATUS -->
-        <div id="card-red" class="status-card" style="border-color: var(--red);">
-            <h2 class="status-title" style="color: var(--red);">TAKEN / STOP</h2>
-            <p class="status-desc">"I'm just here for the music (and the cocktails). Try again next year."</p>
-            
-            <!-- RED TAX DEAL -->
-            <div class="deal-badge">? BODYGUARD PACKAGE UNLOCKED</div>
-            <p style="font-size: 0.9rem; color: #fff; margin-top: 10px;">Show this screen for <strong>€5 OFF</strong> a Bucket of Beers.</p>
-            
-            <div class="mission-box" style="border-color: var(--red); margin-top: 20px;">
-                <span class="mission-label">YOUR MISSION</span>
-                <div class="mission-text">Buy a round of shots for your crew to prove loyalty.</div>
-            </div>
-
-            <button class="btn btn-primary" onclick="shareStatus('Taken ?')">SHARE STATUS</button>
-        </div>
-
-        <!-- AMBER STATUS -->
-        <div id="card-amber" class="status-card" style="border-color: var(--amber);">
-            <h2 class="status-title" style="color: var(--amber);">COMPLICATED</h2>
-            <p class="status-desc">"It's... a long story. Buy me a drink and I might tell you about it."</p>
-            
-            <div class="deal-badge" style="background: linear-gradient(45deg, var(--amber), #FFD700); color: #000;">? WINGMAN MISSION</div>
-
-            <div class="mission-box" style="border-color: var(--amber);">
-                <span class="mission-label">YOUR MISSION: THE WINGMAN</span>
-                <div class="mission-text">Find a Green Status and introduce them to your friend.</div>
-            </div>
-
-            <button class="btn btn-primary" style="background: var(--amber); color: #000;" onclick="shareStatus('It\'s Complicated ?')">SHARE STATUS</button>
-        </div>
-
-        <!-- GREEN STATUS -->
-        <div id="card-green" class="status-card" style="border-color: var(--green);">
-            <h2 class="status-title" style="color: var(--green);">SINGLE / GO</h2>
-            <p class="status-desc">"Ready to mingle. If you're reading this, you owe me a drink."</p>
-            
-            <!-- GREEN HOUR DEAL -->
-            <div class="deal-badge" style="background: linear-gradient(45deg, var(--green), #fff);">? GREEN HOUR ACTIVE</div>
-            <p style="font-size: 0.9rem; color: #fff; margin-top: 10px;">Show this screen for <strong>2-4-1 SHOTS</strong> at the bar.</p>
-            
-            <div class="mission-box" style="border-color: var(--green); margin-top: 20px;">
-                <span class="mission-label">YOUR MISSION</span>
-                <div class="mission-text">Find the DJ and request "Single Ladies" or "Mr. Brightside".</div>
-            </div>
-
-            <button class="btn btn-primary" style="background: var(--green); color: #000;" onclick="shareStatus('Single & Ready ?')">SHARE STATUS</button>
-            <button class="btn btn-whatsapp" onclick="sendDrink()"><i class="fab fa-whatsapp"></i> SEND A DRINK</button>
-        </div>
-
-        <!-- LIVE STATS -->
-        <div style="margin-top: 50px;">
-            <div style="text-align: left; color: #888; font-size: 0.8rem; margin-bottom: 5px;">LIVE ROOM STATS</div>
-            <div class="stats-bar">
-                <div class="stat-segment" style="width: 30%; background: var(--red);"></div>
-                <div class="stat-segment" style="width: 25%; background: var(--amber);"></div>
-                <div class="stat-segment" style="width: 45%; background: var(--green);"></div>
-            </div>
-            <div class="stat-labels">
-                <span>30% TAKEN</span>
-                <span>25% MAYBE</span>
-                <span style="color: var(--green); font-weight: bold;">45% SINGLE</span>
-            </div>
-        </div>
-
+    <!-- AI CHATBOT -->
+    <div class="ai-fab" onclick="toggleAI()">
+        <i class="fas fa-robot" style="color: #fff; font-size: 1.5rem;"></i>
     </div>
 
-    <!-- Info Modal -->
-    <div id="infoModal" class="modal-overlay">
-        <div class="modal-content">
-            <h2 class="modal-title">THE TRAFFIC LIGHT GAME</h2>
-            <p class="modal-text">
-                Welcome to the official Flavors Stop Light Party! This is how you find your summer romance (or just a drinking buddy).
-                <br><br>
-                <strong style="color: var(--green);">GREEN:</strong> You're single & ready to mingle.
-                <br>
-                <strong style="color: var(--amber);">AMBER:</strong> It's complicated, but you could be persuaded.
-                <br>
-                <strong style="color: var(--red);">RED:</strong> You're taken or just here for the music.
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-header">
+            <span>EGD ASSISTANT</span>
+            <i class="fas fa-times" onclick="toggleAI()" style="cursor: pointer;"></i>
+        </div>
+        <div class="ai-messages" id="aiMessages">
+            <div class="msg bot">
+                Greetings Agent. I am EGD, your tactical guide. Ask me about the game rules, or say "Status Report".
+            </div>
+        </div>
+        <div class="ai-input-area">
+            <button class="ai-btn ai-mic" id="micBtn" onclick="toggleVoice()">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <input type="text" class="ai-input" id="userInput" placeholder="Ask EGD..." onkeypress="handleEnter(event)">
+            <button class="ai-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- REGISTRATION MODAL -->
+    <div id="regModal" class="reg-overlay" style="display: flex;">
+        <div class="reg-card">
+            <div class="reg-title">JOIN THE COMMUNITY</div>
+            <div class="reg-subtitle">Unlock games, rewards, and exclusive events at Flavors locations globally.</div>
+            
+            <div class="social-grid">
+                <button class="social-btn" onclick="socialLogin('google')"><i class="fab fa-google social-google"></i></button>
+                <button class="social-btn" onclick="socialLogin('snapchat')"><i class="fab fa-snapchat social-snap"></i></button>
+                <button class="social-btn" onclick="socialLogin('instagram')"><i class="fab fa-instagram social-insta"></i></button>
+                <button class="social-btn" onclick="socialLogin('facebook')"><i class="fab fa-facebook-f social-fb"></i></button>
+                <button class="social-btn" onclick="socialLogin('whatsapp')"><i class="fab fa-whatsapp social-wa"></i></button>
+                <button class="social-btn" onclick="socialLogin('telegram')"><i class="fab fa-telegram-plane social-tg"></i></button>
+            </div>
+
+            <div class="divider">OR CONTINUE WITH</div>
+
+            <div class="input-group">
+                <input type="email" id="regEmail" class="reg-input" placeholder="Email or Mobile Number">
+            </div>
+            <button class="reg-submit" onclick="emailLogin()">CONTINUE TO GAME</button>
+            
+            <p style="font-size: 0.7rem; color: #666; margin-top: 15px;">
+                By joining, you agree to our Terms & Vibes Policy.
             </p>
-            <button id="closeModalBtn" class="modal-close-btn">Got It, Let's Play</button>
+        </div>
+    </div>
+
+    <!-- DAILY SPIN -->
+    <div class="daily-spin-btn" onclick="dailySpin()">
+        <i class="fas fa-gift" style="color: #000; font-size: 1.2rem;"></i>
+    </div>
+
+    <!-- HEADER -->
+    <header class="game-header">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HUB</a>
+        <!-- LOGO REMOVED (Now Background) -->
+        <div class="header-title" style="display:block; font-size: 1.2rem; letter-spacing: 3px; text-shadow: 0 0 10px var(--primary);">
+            FLAVORS <span style="color: var(--primary);">TRAFFIC</span>
+        </div>
+        <div class="header-btns">
+            <button class="header-btn" onclick="resetGame()"><i class="fas fa-redo"></i> RESET</button>
+        </div>
+    </header>
+
+    <div class="desktop-wrapper">
+        
+        <!-- LEFT PANEL: SYSTEM INTEL -->
+        <aside class="side-panel">
+            <div class="panel-card">
+                <div class="panel-title">
+                    <span>SYSTEM INTEL</span>
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="terminal-text" id="ghostTerminal">
+                    INITIALIZING CONNECTION...<br>
+                    > SECURE CHANNEL ESTABLISHED.<br>
+                    > WELCOME TO THE HYBRID REALITY LAYER.<br>
+                </div>
+            </div>
+
+            <div class="panel-card">
+                <div class="panel-title">
+                    <span>AR PROTOCOLS</span>
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p style="font-size: 0.8rem; color: #aaa; line-height: 1.4;">
+                    Scan QR codes hidden in the venue to unlock:
+                </p>
+                <ul style="font-size: 0.7rem; color: var(--primary); margin-top: 10px; padding-left: 20px;">
+                    <li>Secret Menu Items</li>
+                    <li>Rare "Wingman" Badges</li>
+                    <li>AR Loot Boxes</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CENTER: THE GAME -->
+        <main class="game-main">
+        
+        <!-- HOW TO PLAY -->
+        <div class="how-to-play">
+            <h3><i class="fas fa-info-circle"></i> HOW TO PLAY</h3>
+            
+            <!-- HYPE REEL -->
+            <div class="hype-reel" id="hypeReel">
+                <!-- Images injected by JS -->
+            </div>
+
+            <p>Welcome to the ultimate social icebreaker. Choose your mode below to get started:</p>
+            
+            <!-- VISUAL RULES -->
+            <div class="rules-visuals" style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div class="rule-card">
+                    <img src="https://placehold.co/80x80/FF3B3B/FFF?text=RED" alt="Red Light" style="border-radius: 50%; border: 2px solid var(--red); box-shadow: 0 0 10px var(--red);">
+                    <div style="color: var(--red); font-weight: bold; margin-top: 5px;">TAKEN</div>
+                </div>
+                <div class="rule-card">
+                    <img src="https://placehold.co/80x80/FFB627/000?text=AMBER" alt="Amber Light" style="border-radius: 50%; border: 2px solid var(--amber); box-shadow: 0 0 10px var(--amber);">
+                    <div style="color: var(--amber); font-weight: bold; margin-top: 5px;">MAYBE</div>
+                </div>
+                <div class="rule-card">
+                    <img src="https://placehold.co/80x80/00D26A/FFF?text=GREEN" alt="Green Light" style="border-radius: 50%; border: 2px solid var(--green); box-shadow: 0 0 10px var(--green);">
+                    <div style="color: var(--green); font-weight: bold; margin-top: 5px;">SINGLE</div>
+                </div>
+            </div>
+
+            <div style="text-align: left; font-size: 0.8rem; color: #aaa; margin-bottom: 15px; padding: 0 10px;">
+                1. <strong>PLAYER:</strong> Set your status on the traffic light.<br>
+                2. <strong>CHASER:</strong> Get hints to find matches in the room.<br>
+                3. <strong>SPECTATOR:</strong> Watch the chaos unfold.
+            </div>
+        </div>
+
+        <!-- MODE SELECTOR -->
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('player')">PLAYER</button>
+            <button class="mode-btn" onclick="setMode('chaser')">CHASER</button>
+            <button class="mode-btn" onclick="setMode('spectator')">SPECTATOR</button>
+        </div>
+
+        <!-- 3D TRAFFIC LIGHT -->
+        <div class="traffic-light-container">
+            <div class="traffic-light-box">
+                <div class="light-housing">
+                    <div class="traffic-light red-on" id="redLight" onclick="selectLight('red')">TAKEN</div>
+                </div>
+                <div class="light-housing">
+                    <div class="traffic-light amber-on" id="amberLight" onclick="selectLight('amber')">MAYBE</div>
+                </div>
+                <div class="light-housing">
+                    <div class="traffic-light green-on" id="greenLight" onclick="selectLight('green')">SINGLE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAYER PROFILE / QUEST SYSTEM -->
+        <div id="playerSection" class="status-card">
+            <div class="status-header">
+                <!-- 3D AVATAR -->
+                <div class="status-avatar" id="pAvatar" style="overflow: hidden; border: 2px solid var(--gold); background: #000;">
+                    <img src="https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/694dccc6cfb90c4819a9401c.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="status-title">
+                    <h3 id="pStatus">SELECT STATUS</h3>
+                    <span class="status-badge" id="pBadge">WAITING...</span>
+                </div>
+            </div>
+            
+            <!-- QUEST CARD (Dynamic) -->
+            <div id="questCard" class="quest-card">
+                <div class="quest-title"><i class="fas fa-scroll"></i> YOUR MISSION</div>
+                <div class="quest-text" id="questText">Select a light to receive your viral quest.</div>
+                <div class="quest-persona" id="questPersona">AWAITING ASSIGNMENT</div>
+                
+                <!-- QUEST ACTIONS FLOW -->
+                <div id="questFlow" style="margin-top: 15px; display: none;">
+                    
+                    <!-- STEP 1: ACCEPT -->
+                    <button id="btnAccept" class="btn-action" style="background: linear-gradient(45deg, var(--gold), #b8860b); color: #000; font-weight: 900;" onclick="acceptMission()">
+                        <i class="fas fa-check-circle"></i> ACCEPT MISSION
+                    </button>
+
+                    <!-- ACTIVE MISSION CONTROLS -->
+                    <div id="activeMissionControls" style="display: none; flex-direction: column; gap: 10px;">
+                        
+                        <!-- STEP 2: PROOF (Conditional) -->
+                        <div id="proofArea" style="display: none; flex-direction: column; gap: 10px;">
+                            <div style="font-size: 0.8rem; color: #aaa; text-align: center; margin-bottom: 5px;">
+                                <i class="fas fa-camera"></i> Proof Required to Level Up
+                            </div>
+                            
+                            <label for="proofInput" class="btn-action" style="background: rgba(255,255,255,0.1); border: 1px dashed var(--primary); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                <i class="fas fa-upload"></i> UPLOAD PHOTO / VIDEO
+                            </label>
+                            <input type="file" id="proofInput" accept="image/*,video/*" style="display:none;" onchange="handleProof(this)">
+                            
+                            <!-- PREVIEW -->
+                            <div id="proofPreview" style="display:none; width: 100%; height: 200px; background: #000; border-radius: 15px; overflow: hidden; border: 1px solid #333; position: relative;">
+                                <img id="previewImg" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                                <video id="previewVid" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;" controls></video>
+                                <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 10px; font-size: 0.7rem; color: #0f0;">
+                                    <i class="fas fa-check"></i> VERIFIED
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: COMPLETE -->
+                        <button id="btnComplete" class="btn-action" style="display:none; background: linear-gradient(45deg, var(--green), #006400); box-shadow: 0 0 20px var(--green);" onclick="completeMission()">
+                            <i class="fas fa-trophy"></i> CLAIM REWARD
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SHARE BUTTON (Moved below flow) -->
+                <button class="share-btn" onclick="shareStatus()">
+                    <i class="fas fa-share-alt"></i> SHARE STATUS
+                </button>
+            </div>
+            
+    </div>
+
+    <!-- RIGHT PANEL: GLOBAL OPS -->
+    <aside class="side-panel">
+        <div class="panel-card">
+            <div class="panel-title">
+                <span>GLOBAL NETWORK</span>
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="radar-box">
+                <div class="radar-sweep"></div>
+                <!-- Dots will be added by JS -->
+                <div class="radar-dot" style="top: 30%; left: 40%;"></div>
+                <div class="radar-dot" style="top: 60%; left: 70%; animation-delay: 0.5s;"></div>
+                <div class="radar-dot" style="top: 80%; left: 20%; animation-delay: 1s;"></div>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-size: 0.7rem; color: var(--primary);">
+                ACTIVE AGENTS: <span id="agentCount">1,042</span>
+            </div>
+        </div>
+
+        <div class="panel-card">
+            <div class="panel-title">
+                <span>TOP AGENTS</span>
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div style="font-size: 0.8rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>1. Agent_K</span>
+                    <span style="color: var(--gold);">LVL 50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>2. Sarah_X</span>
+                    <span style="color: var(--gold);">LVL 48</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>3. Neo_99</span>
+                    <span style="color: var(--gold);">LVL 45</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+</div> <!-- End Desktop Wrapper -->
+
+    <!-- XP SYSTEM -->
+    <div class="xp-container">
+        <div class="xp-header">
+            <span id="xpLevel">LVL 1: ROOKIE</span>
+            <span id="xpPoints">0 / 100 XP</span>
+        </div>
+        <div class="xp-track">
+            <div class="xp-fill" id="xpBar"></div>
+        </div>
+    </div>
+
+    <!-- LIVE TICKER -->
+    <div class="ticker-wrap">
+        <div class="ticker" id="liveTicker">
+            /// WELCOME TO FLAVORS TRAFFIC /// LIVE: DJ JUST DROPPED A BANGER /// USER 'CHAD' JUST SENT A DRINK TO TABLE 4 /// RED LIGHTS: REMEMBER TO WINGMAN ///
         </div>
     </div>
 
     <script>
-        const COOLDOWN_MINUTES = 30;
-
-        function setStatus(color) {
-            // Check Cooldown
-            const lastChange = localStorage.getItem('traffic_last_change');
-            const now = new Date().getTime();
-            
-            if (lastChange) {
-                const diff = (now - parseInt(lastChange)) / 1000 / 60; // in minutes
-                if (diff < COOLDOWN_MINUTES) {
-                    const remaining = Math.ceil(COOLDOWN_MINUTES - diff);
-                    alert(`🌟 COOLDOWN ACTIVE\nYou can only change your status once every ${COOLDOWN_MINUTES} minutes.\n\nWait ${remaining} more minutes.`);
-                    return;
-                }
-            }
-
-            // Save State & Time
-            localStorage.setItem('traffic_status', color);
-            localStorage.setItem('traffic_last_change', now.toString());
-
-            applyVisuals(color);
+        // FRANCHISE CONFIGURATION
+        const defaultConfig = {
+            brand: "Flavors Zante",
+            primaryColor: "#FF00FF",
+            councilEnabled: true
+        };
+        
+        let config = defaultConfig;
+        
+        // Check if we are running inside the ExposureOS environment
+        if (window.parent && window.parent.FRANCHISE_CONFIG && window.parent.LOCATION_ID) {
+             const locId = window.parent.LOCATION_ID;
+             const franchiseData = window.parent.FRANCHISE_CONFIG[locId];
+             if (franchiseData) {
+                 config = {
+                     brand: franchiseData.name,
+                     primaryColor: franchiseData.theme.primary,
+                     councilEnabled: true
+                 };
+                 // Apply theme color
+                 document.documentElement.style.setProperty('--primary', config.primaryColor);
+             }
         }
 
-        function applyVisuals(color) {
-            const container = document.getElementById('lightContainer');
-            
-            // Add selection state to container (dims other lights)
-            container.classList.add('has-selection');
+        // STATE
+        let currentMode = 'player';
+        let xp = 0;
+        let level = 1;
+        const xpToLevel = 100;
+        let currentMissionType = 'simple'; // 'simple' or 'proof'
 
-            // Reset lights
-            document.querySelectorAll('.light').forEach(l => l.classList.remove('active'));
-            
-            // Activate selected light
-            document.querySelector(`.light.${color}`).classList.add('active');
-            
-            // Hide instruction
-            document.getElementById('instruction').style.display = 'none';
+        // TICKER DATA
+        const tickerMessages = [
+            "USER 'SARAH' JUST UNLOCKED 'CUPID' BADGE",
+            "TABLE 5 IS LOOKING FOR A WINGMAN",
+            "FLAVORS ALERT: 2-FOR-1 SHOTS FOR GREEN LIGHTS IN 5 MINS",
+            "NEW QUEST: FIND SOMEONE WITH BLUE SHOES",
+            "USER 'MIKE' SENT A MYSTERY SHOT TO THE BAR",
+            "REMINDER: RED LIGHTS ARE THE ULTIMATE WINGMEN"
+        ];
 
-            // Hide all cards
-            document.querySelectorAll('.status-card').forEach(c => c.classList.remove('visible'));
+        // COUNCIL DATA
+        const council = [
+            { name: "ROGAN", text: "It's entirely possible that confidence is key here. Have you tried just saying hello?" },
+            { name: "BURR", text: "Just go over there! What's the worst that can happen? They say no? Who cares!" },
+            { name: "THEO", text: "Gang gang! Tell 'em you have a hamster named Theodore. People love hamsters." },
+            { name: "CHAPPELLE", text: "Modern problems require modern solutions. Buy them a drink." },
+            { name: "COC", text: "MISSION: Accidentally bump into someone cute. If they smile, buy them a drink. If they frown, say you were dodging a bee." },
+            { name: "COC", text: "MISSION: Raise your glass to the person across the room. If they raise theirs back, you are legally required to go say hi." },
+            { name: "COC", text: "ADVICE: Text your 'situation'. If they don't reply in 5 minutes, you are officially Green for the next hour." }
+        ];
 
-            // Show selected card
-            const card = document.getElementById(`card-${color}`);
-            card.classList.add('visible');
-            
-            // Show Deal Badges (if applicable)
-            const badges = card.querySelectorAll('.deal-badge');
-            badges.forEach(b => b.style.display = 'inline-block');
+        const chaserHints = [
+            "Look for someone checking their phone near the entrance.",
+            "Target is likely holding a blue drink.",
+            "Find the person laughing the loudest.",
+            "Someone wearing sunglasses inside. Bold move."
+        ];
 
-            // Update Background Glow & Pulse
-            const bg = document.getElementById('bgGlow');
-            bg.classList.add('pulsing');
-            
-            if(color === 'red') bg.style.background = 'radial-gradient(circle, rgba(255,0,0,0.6) 0%, rgba(0,0,0,1) 100%)';
-            if(color === 'amber') bg.style.background = 'radial-gradient(circle, rgba(255,180,0,0.6) 0%, rgba(0,0,0,1) 100%)';
-            if(color === 'green') bg.style.background = 'radial-gradient(circle, rgba(0,255,100,0.6) 0%, rgba(0,0,0,1) 100%)';
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('playerSection').classList.remove('active');
+            document.getElementById('chaserSection').classList.remove('active');
+            document.getElementById('spectatorSection').classList.remove('active');
+
+            if(mode === 'player') document.getElementById('playerSection').classList.add('active');
+            if(mode === 'chaser') document.getElementById('chaserSection').classList.add('active');
+            if(mode === 'spectator') document.getElementById('spectatorSection').classList.add('active');
         }
 
-        function shareStatus(status) {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Flavors Stop Light Party',
-                    text: `My Status is: ${status} Come find me at Flavors Zante!`,
-                    url: window.location.href
-                });
-            } else {
-                alert('Screenshot this screen and show it at the bar!');
-            }
-        }
-
-        function sendDrink() {
-            window.open('https://api.whatsapp.com/send?text=I%20saw%20your%20Green%20Light%20at%20Flavors...%20Can%20I%20buy%20you%20a%20drink%3F', '_blank');
-        }
-
-        // Randomize stats slightly on load for realism
-        document.addEventListener('DOMContentLoaded', () => {
-            // Modal Logic
-            const infoModal = document.getElementById('infoModal');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const hasSeenModal = localStorage.getItem('traffic_modal_seen');
-
-            if (!hasSeenModal) {
-                infoModal.classList.add('visible');
-            }
-
-            closeModalBtn.addEventListener('click', () => {
-                infoModal.classList.remove('visible');
-                localStorage.setItem('traffic_modal_seen', 'true');
+        function selectLight(color) {
+            // Reset all to OFF first
+            ['red', 'amber', 'green'].forEach(c => {
+                document.getElementById(c+'Light').className = 'traffic-light off';
             });
 
+            // Turn ON the selected one
+            const light = document.getElementById(color+'Light');
+            light.className = `traffic-light ${color}-on`;
 
-            // Restore State if exists
-            const savedStatus = localStorage.getItem('traffic_status');
-            if (savedStatus) {
-                applyVisuals(savedStatus);
+            // Update Profile
+            updateProfile(color);
+        }
+        
+        function resetGame() {
+            // Turn ALL ON
+            document.getElementById('redLight').className = 'traffic-light red-on';
+            document.getElementById('amberLight').className = 'traffic-light amber-on';
+            document.getElementById('greenLight').className = 'traffic-light green-on';
+            
+            // Reset Profile
+            document.getElementById('pStatus').innerText = "SELECT STATUS";
+            document.getElementById('pStatus').style.color = "#fff";
+            document.getElementById('pBadge').innerText = "WAITING...";
+            document.getElementById('cocSection').style.display = 'none';
+        }
+
+        function updateProfile(color) {
+            const pStatus = document.getElementById('pStatus');
+            const pBadge = document.getElementById('pBadge');
+            const cocSection = document.getElementById('cocSection');
+            const questCard = document.getElementById('questCard');
+            const questText = document.getElementById('questText');
+            const questPersona = document.getElementById('questPersona');
+            
+            // RESET QUEST FLOW
+            document.getElementById('questFlow').style.display = 'block';
+            document.getElementById('btnAccept').style.display = 'block';
+            document.getElementById('activeMissionControls').style.display = 'none';
+            document.getElementById('proofArea').style.display = 'none';
+            document.getElementById('proofInput').value = ''; // Clear file
+            document.getElementById('proofPreview').style.display = 'none';
+            document.getElementById('btnComplete').style.display = 'none';
+
+            document.getElementById('playerSection').classList.add('active');
+            questCard.classList.add('active');
+
+            if(color === 'red') {
+                currentMissionType = 'proof'; // Wingman needs proof
+                pStatus.innerText = "WINGMAN";
+                pStatus.style.color = "var(--red)";
+                pBadge.innerText = "THE CO-PILOT";
+                questText.innerHTML = '"Your mission is to be the ultimate Wingman. Use the Council of Comedy to send lines to your friends. You are not playing, you are MANAGING."';
+                questPersona.innerText = "ROLE: COMEDIC SUPPORT";
+                cocSection.style.display = 'block'; 
+            } else if(color === 'amber') {
+                currentMissionType = 'simple';
+                pStatus.innerText = "COMPLICATED";
+                pStatus.style.color = "var(--amber)";
+                pBadge.innerText = "THE WILDCARD";
+                questText.innerHTML = '"Flip a coin. Heads: You\'re single for the next hour. Tails: You mention your \'situation\' in the first 30 seconds of every conversation."';
+                questPersona.innerText = "ROLE: CHAOS AGENT";
+                cocSection.style.display = 'none';
+            } else if(color === 'green') {
+                currentMissionType = 'simple';
+                pStatus.innerText = "SINGLE";
+                pStatus.style.color = "var(--green)";
+                pBadge.innerText = "THE HUNTER";
+                questText.innerHTML = '"The \'Oops\' Strategy. Accidentally bump into the cutest person here. If they smile, buy them a drink. If they frown, tell them you were dodging a bee."';
+                questPersona.innerText = "ROLE: MAIN CHARACTER";
+                if(config.councilEnabled) cocSection.style.display = 'block';
+            }
+            
+            // Add XP for selecting a status
+            addXP(10);
+        }
+
+        // QUEST LOGIC
+        function acceptMission() {
+            document.getElementById('btnAccept').style.display = 'none';
+            document.getElementById('activeMissionControls').style.display = 'flex';
+            
+            if(currentMissionType === 'proof') {
+                // Show Proof Upload Area
+                document.getElementById('proofArea').style.display = 'flex';
+                document.getElementById('btnComplete').style.display = 'none'; // Hidden until upload
+            } else {
+                // Simple Mission - Show Complete Button Immediately
+                document.getElementById('proofArea').style.display = 'none';
+                document.getElementById('btnComplete').style.display = 'block';
+                document.getElementById('btnComplete').innerHTML = '<i class="fas fa-check"></i> MISSION ACCOMPLISHED';
+            }
+        }
+
+        function handleProof(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                const isVideo = file.type.startsWith('video/');
+
+                reader.onload = function(e) {
+                    const previewBox = document.getElementById('proofPreview');
+                    const img = document.getElementById('previewImg');
+                    const vid = document.getElementById('previewVid');
+                    
+                    previewBox.style.display = 'block';
+                    
+                    if(isVideo) {
+                        img.style.display = 'none';
+                        vid.style.display = 'block';
+                        vid.src = e.target.result;
+                    } else {
+                        vid.style.display = 'none';
+                        img.style.display = 'block';
+                        img.src = e.target.result;
+                    }
+
+                    // Unlock Complete Button
+                    document.getElementById('btnComplete').style.display = 'block';
+                    document.getElementById('btnComplete').innerHTML = '<i class="fas fa-trophy"></i> CLAIM REWARD (+200 XP)';
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function completeMission() {
+            const btn = document.getElementById('btnComplete');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING...';
+            
+            // Determine Reward
+            const rewardXP = currentMissionType === 'proof' ? 200 : 50;
+            
+            setTimeout(() => {
+                addXP(rewardXP);
+                
+                if(currentMissionType === 'proof') {
+                    alert(`MISSION COMPLETE! \n\nProof Verified by EGD.\nReward: +${rewardXP} XP`);
+                    // Staff Alert Simulation
+                    const ticker = document.getElementById('liveTicker');
+                    ticker.innerHTML = "/// STAFF ALERT: WINGMAN MISSION VERIFIED AT TABLE 4 - DISPENSE REWARD /// " + ticker.innerHTML;
+                } else {
+                    alert(`MISSION COMPLETE! \n\nReward: +${rewardXP} XP`);
+                }
+                
+                // Reset UI
+                document.getElementById('questFlow').style.display = 'none';
+                document.getElementById('questText').innerHTML = "<span style='color:var(--green)'>MISSION ACCOMPLISHED.</span><br>Standby for new directives...";
+                
+            }, 1500);
+        }
+
+        // NEW GAMIFICATION FUNCTIONS
+        function addXP(amount) {
+            xp += amount;
+            if(xp >= xpToLevel) {
+                xp = 0;
+                level++;
+                alert(`LEVEL UP! YOU ARE NOW LEVEL ${level}`);
+            }
+            updateXPUI();
+            saveProgress();
+        }
+
+        function updateXPUI() {
+            document.getElementById('xpLevel').innerText = `LVL ${level}: ${getLevelTitle(level)}`;
+            document.getElementById('xpPoints').innerText = `${xp} / ${xpToLevel} XP`;
+            document.getElementById('xpBar').style.width = `${(xp / xpToLevel) * 100}%`;
+        }
+
+        function getLevelTitle(lvl) {
+            if(lvl < 5) return "ROOKIE";
+            if(lvl < 10) return "REGULAR";
+            if(lvl < 20) return "PLAYER";
+            if(lvl < 50) return "LEGEND";
+            return "GOD MODE";
+        }
+
+        function saveProgress() {
+            localStorage.setItem('flavors_xp', xp);
+            localStorage.setItem('flavors_level', level);
+        }
+
+        function loadProgress() {
+            const savedXP = localStorage.getItem('flavors_xp');
+            const savedLevel = localStorage.getItem('flavors_level');
+            if(savedXP) xp = parseInt(savedXP);
+            if(savedLevel) level = parseInt(savedLevel);
+            updateXPUI();
+        }
+
+        function triggerAction(action) {
+            // Simulate Remote Action
+            alert(`ACTION TRIGGERED: ${action.toUpperCase()}\n(This would open a payment/menu gateway)`);
+            addXP(20); // Big XP for spending money/interacting
+        }
+
+        // TICKER LOGIC
+        function startTicker() {
+            const ticker = document.getElementById('liveTicker');
+            setInterval(() => {
+                // Randomly inject a new message into the ticker text
+                const msg = tickerMessages[Math.floor(Math.random() * tickerMessages.length)];
+                // In a real app, we'd append this to the scrolling text dynamically
+                // For now, the CSS animation handles the loop, we just update the content occasionally
+                // ticker.innerText += " /// " + msg; 
+            }, 5000);
+        }
+
+        // GHOST TERMINAL LOGIC
+        const terminalMessages = [
+            "> SCANNING LOCAL NETWORK...",
+            "> 3 NEW 'RED LIGHT' SIGNALS DETECTED.",
+            "> TIP: BUY AROUND TO UNLOCK 'HERO' STATUS.",
+            "> AR LOOT BOX DETECTED NEAR THE DJ BOOTH.",
+            "> INCOMING TRANSMISSION FROM EGD...",
+            "> REMEMBER: SOCIAL PROOF IS CURRENCY.",
+            "> HYBRID REALITY SYNC: 98% COMPLETE."
+        ];
+
+        function startTerminal() {
+            const term = document.getElementById('ghostTerminal');
+            let msgIndex = 0;
+
+            setInterval(() => {
+                const msg = terminalMessages[msgIndex];
+                // Typewriter effect simulation (simple append for now)
+                const line = document.createElement('div');
+                line.innerText = msg;
+                term.appendChild(line);
+                
+                // Scroll to bottom
+                term.scrollTop = term.scrollHeight;
+
+                // Keep only last 10 lines
+                if(term.children.length > 10) {
+                    term.removeChild(term.firstChild);
+                }
+
+                msgIndex = (msgIndex + 1) % terminalMessages.length;
+            }, 3000);
+        }
+
+        // ASSETS
+        const gameAssets = [
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830371648b6e3d.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351b831c460b18bbd11.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35141557c91a2b3010d.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e35174830368b58b6e3e.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351c902bf1a53db4e31.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f84956be408e0b5.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a064634c121.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e351035c3a561b34c122.png",
+            "https://storage.googleapis.com/msgsndr/KbiucErIMNPbO1mY4qXL/media/6956e3518f8495fcfb08e0b6.png"
+        ];
+
+        function startHypeReel() {
+            const container = document.getElementById('hypeReel');
+            
+            // Preload and create divs
+            gameAssets.forEach((url, index) => {
+                const div = document.createElement('div');
+                div.className = `hype-image ${index === 0 ? 'active' : ''}`;
+                div.style.backgroundImage = `url('${url}')`;
+                container.appendChild(div);
+            });
+
+            let currentIndex = 0;
+            const images = document.querySelectorAll('.hype-image');
+
+            setInterval(() => {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            }, 3000); // 3 second rotation
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            checkRegistration();
+            loadProgress(); // Load XP
+            // Start with all lights ON
+            resetGame();
+            document.getElementById('playerSection').classList.add('active');
+            startTicker();
+            startTerminal(); // Start the side panel animation
+            startHypeReel(); // Start the visual loop
+        });
+
+        // REGISTRATION LOGIC
+        function checkRegistration() {
+            const isRegistered = localStorage.getItem('flavors_user_registered');
+            if (isRegistered === 'true') {
+                document.getElementById('regModal').style.display = 'none';
+            }
+        }
+
+        function socialLogin(provider) {
+            // Simulate Login
+            console.log(`Logging in with ${provider}...`);
+            
+            // In a real app, this would redirect to OAuth
+            // For GHL/Demo, we just save the state
+            completeRegistration(provider);
+        }
+
+        function emailLogin() {
+            const email = document.getElementById('regEmail').value;
+            if(email.length > 3) {
+                completeRegistration('email');
+            } else {
+                alert("Please enter a valid email or mobile number.");
+            }
+        }
+
+        function completeRegistration(method) {
+            localStorage.setItem('flavors_user_registered', 'true');
+            localStorage.setItem('flavors_auth_method', method);
+            
+            // Animation out
+            const modal = document.getElementById('regModal');
+            modal.style.opacity = '0';
+            modal.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        function shareStatus() {
+            const status = document.getElementById('pStatus').innerText;
+            const text = `I'm currently ${status} at Flavors Zante! Come find me. #ExposureOS #TrafficLightParty`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Flavors Traffic Status',
+                    text: text,
+                    url: window.location.href,
+                })
+                .then(() => addXP(50)) // Reward for sharing
+                .catch((error) => console.log('Error sharing', error));
+            } else {
+                // Fallback
+                alert("Copy this to your story:\n\n" + text);
+                addXP(20);
+            }
+        }
+
+        function dailySpin() {
+            const lastSpin = localStorage.getItem('flavors_last_spin');
+            const today = new Date().toDateString();
+            
+            if(lastSpin === today) {
+                alert("You've already spun today! Come back tomorrow.");
+                return;
+            }
+            
+            // Spin Logic
+            const prizes = [50, 100, 200, "FREE SHOT", "2x XP BOOST"];
+            const prize = prizes[Math.floor(Math.random() * prizes.length)];
+            
+            alert(`DAILY SPIN RESULT: ${prize}!`);
+            
+            if(typeof prize === 'number') {
+                addXP(prize);
+            } else {
+                // Handle item prizes
+                alert(`Show this screen to the bartender to claim: ${prize}`);
+            }
+            
+            localStorage.setItem('flavors_last_spin', today);
+        }
+
+        // AI CHATBOT LOGIC
+        function toggleAI() {
+            document.getElementById('aiPanel').classList.toggle('open');
+        }
+
+        function handleEnter(e) {
+            if(e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            addMessage(text, 'user');
+            input.value = '';
+            
+            // Simulate AI Thinking
+            setTimeout(() => {
+                processAI(text);
+            }, 800);
+        }
+
+        function addMessage(text, sender) {
+            const container = document.getElementById('aiMessages');
+            const div = document.createElement('div');
+            div.className = `msg ${sender}`;
+            div.innerText = text;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function processAI(text) {
+            const lower = text.toLowerCase();
+            let response = "I am analyzing that request... Try asking about 'Red Light', 'XP', or 'Quests'.";
+
+            if(lower.includes('hello') || lower.includes('hi')) {
+                response = "Greetings, Agent. Ready to deploy?";
+            } else if(lower.includes('play') || lower.includes('rules')) {
+                response = "PROTOCOL: 1. Select your Traffic Light status. 2. Complete Quests to earn XP. 3. Use 'Spectator Mode' to influence the room.";
+            } else if(lower.includes('red')) {
+                response = "RED LIGHT: You are 'Taken'. Your role is WINGMAN. Use the Council of Comedy to assist your single friends.";
+            } else if(lower.includes('green')) {
+                response = "GREEN LIGHT: You are 'Single'. Your mission is to mingle. Look for AR Loot Boxes to break the ice.";
+            } else if(lower.includes('amber') || lower.includes('yellow')) {
+                response = "AMBER LIGHT: 'It's Complicated'. You are the Wildcard. Flip a coin to decide your fate tonight.";
+            } else if(lower.includes('xp') || lower.includes('level')) {
+                response = "XP is earned by social interaction. Level up to unlock 'God Mode' and control the venue music.";
+            } else if(lower.includes('status')) {
+                response = `SYSTEM STATUS: ONLINE. Active Agents: ${document.getElementById('agentCount').innerText}. Vibe: ELECTRIC.`;
             }
 
-            const r = 20 + Math.floor(Math.random() * 20); // 20-40
-            const a = 15 + Math.floor(Math.random() * 15); // 15-30
-            const g = 100 - r - a; // Remainder
+            addMessage(response, 'bot');
+        }
+
+        // VOICE RECOGNITION
+        let recognition;
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = function() {
+                document.getElementById('micBtn').classList.add('listening');
+            };
+
+            recognition.onend = function() {
+                document.getElementById('micBtn').classList.remove('listening');
+            };
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('userInput').value = transcript;
+                sendMessage();
+            };
+        }
+
+        function toggleVoice() {
+            if(recognition) {
+                recognition.start();
+            } else {
+                alert("Voice command module not installed on this device.");
+            }
+        }
+
+        /* QUEST CARD LOGIC */
+        function acceptMission() {
+            document.getElementById('btnAccept').style.display = 'none';
+            document.getElementById('activeMissionControls').style.display = 'flex';
             
-            const segments = document.querySelectorAll('.stat-segment');
-            segments[0].style.width = `${r}%`;
-            segments[1].style.width = `${a}%`;
-            segments[2].style.width = `${g}%`;
+            if(currentMissionType === 'proof') {
+                // Show Proof Upload Area
+                document.getElementById('proofArea').style.display = 'flex';
+                document.getElementById('btnComplete').style.display = 'none'; // Hidden until upload
+            } else {
+                // Simple Mission - Show Complete Button Immediately
+                document.getElementById('proofArea').style.display = 'none';
+                document.getElementById('btnComplete').style.display = 'block';
+                document.getElementById('btnComplete').innerHTML = '<i class="fas fa-check"></i> MISSION ACCOMPLISHED';
+            }
+        }
+
+        function handleProof(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                const isVideo = file.type.startsWith('video/');
+
+                reader.onload = function(e) {
+                    const previewBox = document.getElementById('proofPreview');
+                    const img = document.getElementById('previewImg');
+                    const vid = document.getElementById('previewVid');
+                    
+                    previewBox.style.display = 'block';
+                    
+                    if(isVideo) {
+                        img.style.display = 'none';
+                        vid.style.display = 'block';
+                        vid.src = e.target.result;
+                    } else {
+                        vid.style.display = 'none';
+                        img.style.display = 'block';
+                        img.src = e.target.result;
+                    }
+
+                    // Unlock Complete Button
+                    document.getElementById('btnComplete').style.display = 'block';
+                    document.getElementById('btnComplete').innerHTML = '<i class="fas fa-trophy"></i> CLAIM REWARD (+200 XP)';
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function completeMission() {
+            const btn = document.getElementById('btnComplete');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING...';
             
-            const labels = document.querySelectorAll('.stat-labels span');
-            labels[0].innerText = `${r}% TAKEN`;
-            labels[1].innerText = `${a}% MAYBE`;
-            labels[2].innerText = `${g}% SINGLE`;
-        });
+            // Determine Reward
+            const rewardXP = currentMissionType === 'proof' ? 200 : 50;
+            
+            setTimeout(() => {
+                addXP(rewardXP);
+                
+                if(currentMissionType === 'proof') {
+                    alert(`MISSION COMPLETE! \n\nProof Verified by EGD.\nReward: +${rewardXP} XP`);
+                    // Staff Alert Simulation
+                    const ticker = document.getElementById('liveTicker');
+                    ticker.innerHTML = "/// STAFF ALERT: WINGMAN MISSION VERIFIED AT TABLE 4 - DISPENSE REWARD /// " + ticker.innerHTML;
+                } else {
+                    alert(`MISSION COMPLETE! \n\nReward: +${rewardXP} XP`);
+                }
+                
+                // Reset UI
+                document.getElementById('questFlow').style.display = 'none';
+                document.getElementById('questText').innerHTML = "<span style='color:var(--green)'>MISSION ACCOMPLISHED.</span><br>Standby for new directives...";
+                
+            }, 1500);
+        }
+
+        // END OF FILE
     </script>
 </body>
 </html>
