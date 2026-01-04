@@ -271,6 +271,11 @@
             to { background-position: 200% center; }
         }
 
+        @keyframes spinBall {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .hero-content .tagline {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.3rem;
@@ -914,6 +919,23 @@
                 <h2 style="color: var(--neon-purple); text-shadow: 0 0 20px var(--neon-purple);">THE ZANTE PARTY QUEEN</h2>
                 <p>Meet Natasha - Co-founder of Flavors and the ultimate party curator. From VIP experiences to exclusive stag & hen packages, private bookings, and unforgettable nights - she's your gateway to Zante's best kept secrets.</p>
                 <a href="https://flavorsdaiquiribar.com/thezantepartyqueen" class="btn-primary" style="background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));">MEET THE QUEEN</a>
+            </div>
+        </section>
+
+        <!-- WORLD CUP 2026 PROMO -->
+        <section class="promo-section" style="direction: rtl;">
+            <div class="promo-visual" style="direction: ltr;">
+                <div style="width: 300px; height: 300px; margin: 0 auto;">
+                    <div style="width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--neon-orange); box-shadow: 0 0 30px var(--neon-orange), 0 0 60px var(--neon-yellow); background: linear-gradient(135deg, #1a472a 0%, #2d5016 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <i class="fas fa-futbol" style="font-size: 4rem; color: white; text-shadow: 0 0 30px var(--neon-orange); animation: spinBall 4s linear infinite;"></i>
+                        <div style="position: absolute; top: 10px; right: 10px; background: var(--neon-orange); color: #000; font-family: 'Bebas Neue', sans-serif; padding: 5px 12px; border-radius: 5px; font-size: 0.9rem; letter-spacing: 2px;">2026</div>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-content" style="direction: ltr;">
+                <h2 style="color: var(--neon-orange); text-shadow: 0 0 20px var(--neon-orange);">WORLD CUP 2026</h2>
+                <p>Watch the World Cup at Flavors! Big screens, cold daiquiris, and electric atmosphere. Book your spot for all the major matches - group stages to the final. The ultimate football viewing experience in Zante.</p>
+                <a href="https://flavorsdaiquiribar.com/flavorsworldcupbookings" class="btn-primary" style="background: linear-gradient(135deg, var(--neon-orange), var(--neon-yellow)); color: #000;">BOOK YOUR SPOT</a>
             </div>
         </section>
 
