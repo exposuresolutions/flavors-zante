@@ -807,28 +807,6 @@
             margin-bottom: 25px;
         }
 
-        /* ExposureOS Dashboard */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        #eos-dashboard {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid var(--neon-pink);
-            border-radius: 10px;
-            padding: 15px;
-            font-family: 'Orbitron', sans-serif;
-            z-index: 9999;
-            transform: translateX(120%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
-        }
-
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .quick-access { grid-template-columns: repeat(2, 1fr); }
@@ -1043,21 +1021,6 @@
         <p>Powered by <a href="https://exposuresolutions.ie" target="_blank">Exposure AI</a></p>
     </footer>
 
-    <!-- EXPOSURE OS DASHBOARD -->
-    <div id="eos-dashboard">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px;">
-            <span style="color: var(--neon-pink); font-size: 0.8rem;">EXPOSURE OS <span style="color: #fff;">v2.4</span></span>
-            <span style="width: 8px; height: 8px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 5px var(--neon-green); animation: pulse 1s infinite;"></span>
-        </div>
-        <div style="font-family: 'Montserrat', monospace; font-size: 0.7rem; color: #aaa; line-height: 1.6;">
-            <div>> SYSTEM: <span style="color: #fff;">ONLINE</span></div>
-            <div>> EGD CONNECTION: <span style="color: var(--neon-blue);">ESTABLISHED</span></div>
-            <div>> ACTIVE USERS: <span style="color: var(--neon-yellow);">1,420</span></div>
-            <div>> TRAFFIC LIGHT: <span style="color: var(--neon-green);">ACTIVE</span></div>
-            <div style="margin-top: 10px; color: var(--neon-pink);">> WAITING FOR INPUT...</div>
-        </div>
-    </div>
-
     <!-- SCRIPT -->
     <script>
         // GAMES DATA
@@ -1178,9 +1141,6 @@
             updateMascot();
             startAutoChange();
         });
-
-        // LAUNCH DASHBOARD
-        setTimeout(() => { const dash = document.getElementById('eos-dashboard'); if (dash) dash.style.transform = 'translateX(0)'; }, 1000);
     </script>
 </body>
 
