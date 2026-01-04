@@ -731,19 +731,25 @@
 
             <p>Welcome to the ultimate social icebreaker. Choose your mode below to get started:</p>
             
-            <!-- VISUAL RULES -->
+            <!-- VISUAL RULES - Using CSS Orbs instead of placehold.co -->
             <div class="rules-visuals" style="display: flex; justify-content: space-around; margin: 20px 0;">
-                <div class="rule-card">
-                    <img src="https://placehold.co/80x80/FF3B3B/FFF?text=RED" alt="Red Light" style="border-radius: 50%; border: 2px solid var(--red); box-shadow: 0 0 10px var(--red);">
-                    <div style="color: var(--red); font-weight: bold; margin-top: 5px;">TAKEN</div>
+                <div class="rule-card" style="text-align: center;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ff8888, var(--red), #550000); border: 2px solid var(--red); box-shadow: 0 0 20px var(--red); margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-heart" style="color: #fff; font-size: 1.5rem;"></i>
+                    </div>
+                    <div style="color: var(--red); font-weight: bold; margin-top: 8px; font-size: 0.9rem;">TAKEN</div>
                 </div>
-                <div class="rule-card">
-                    <img src="https://placehold.co/80x80/FFB627/000?text=AMBER" alt="Amber Light" style="border-radius: 50%; border: 2px solid var(--amber); box-shadow: 0 0 10px var(--amber);">
-                    <div style="color: var(--amber); font-weight: bold; margin-top: 5px;">MAYBE</div>
+                <div class="rule-card" style="text-align: center;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ffeebb, var(--amber), #664400); border: 2px solid var(--amber); box-shadow: 0 0 20px var(--amber); margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-question" style="color: #fff; font-size: 1.5rem;"></i>
+                    </div>
+                    <div style="color: var(--amber); font-weight: bold; margin-top: 8px; font-size: 0.9rem;">MAYBE</div>
                 </div>
-                <div class="rule-card">
-                    <img src="https://placehold.co/80x80/00D26A/FFF?text=GREEN" alt="Green Light" style="border-radius: 50%; border: 2px solid var(--green); box-shadow: 0 0 10px var(--green);">
-                    <div style="color: var(--green); font-weight: bold; margin-top: 5px;">SINGLE</div>
+                <div class="rule-card" style="text-align: center;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #88ffaa, var(--green), #004411); border: 2px solid var(--green); box-shadow: 0 0 20px var(--green); margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user-plus" style="color: #fff; font-size: 1.5rem;"></i>
+                    </div>
+                    <div style="color: var(--green); font-weight: bold; margin-top: 8px; font-size: 0.9rem;">SINGLE</div>
                 </div>
             </div>
 
@@ -840,7 +846,82 @@
                 </button>
             </div>
             
-    </div>
+            <!-- COUNCIL OF COMEDY -->
+            <div class="coc-section" id="cocSection" style="display: none;">
+                <div class="coc-title">🎤 COUNCIL OF COMEDY</div>
+                <div class="coc-chat">
+                    <div class="coc-msg">
+                        <span class="coc-name">ROGAN:</span> It's entirely possible that confidence is key here.
+                    </div>
+                    <div class="coc-msg">
+                        <span class="coc-name">BURR:</span> Just go over there! What's the worst that can happen?
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- CHASER MODE SECTION -->
+        <div id="chaserSection" class="chaser-card">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <i class="fas fa-crosshairs" style="font-size: 2rem; color: var(--green);"></i>
+                <div>
+                    <h3 style="font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--green);">CHASER MODE</h3>
+                    <p style="font-size: 0.8rem; color: #888;">Find your match in the room</p>
+                </div>
+            </div>
+            
+            <div style="background: #111; border-radius: 15px; padding: 20px; margin-bottom: 15px;">
+                <div style="font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px;">
+                    <i class="fas fa-bullseye"></i> YOUR TARGET
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--green), #00a050); display: flex; align-items: center; justify-content: center; font-size: 24px;">🎯</div>
+                    <div>
+                        <h4 id="chaserTargetName" style="font-size: 16px; margin-bottom: 5px;">Scanning...</h4>
+                        <p id="chaserTargetStatus" style="font-size: 12px; color: #888;">Looking for GREEN lights nearby</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255, 215, 0, 0.1); border-left: 4px solid var(--gold); padding: 15px; margin-top: 15px; border-radius: 0 10px 10px 0;">
+                    <h5 style="font-size: 11px; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-lightbulb"></i> COMEDY HINT
+                    </h5>
+                    <p id="chaserHintText" style="font-size: 13px; color: #ddd; font-style: italic;">Look for someone checking their phone near the entrance.</p>
+                </div>
+            </div>
+
+            <button class="btn-action" onclick="getNewChaserHint()" style="background: linear-gradient(135deg, var(--green), #006400);">
+                <i class="fas fa-dice"></i> GET NEW HINT
+            </button>
+        </div>
+
+        <!-- SPECTATOR MODE SECTION -->
+        <div id="spectatorSection" class="spectator-card">
+            <h3 style="font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">
+                <i class="fas fa-eye"></i> SPECTATOR MODE
+            </h3>
+            <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 20px;">Watch the chaos unfold and rate the attempts!</p>
+            
+            <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+                <span class="rating-star" onclick="setSpectatorRating(1)" style="font-size: 2rem; color: #333; cursor: pointer;">⭐</span>
+                <span class="rating-star" onclick="setSpectatorRating(2)" style="font-size: 2rem; color: #333; cursor: pointer;">⭐</span>
+                <span class="rating-star" onclick="setSpectatorRating(3)" style="font-size: 2rem; color: #333; cursor: pointer;">⭐</span>
+                <span class="rating-star" onclick="setSpectatorRating(4)" style="font-size: 2rem; color: #333; cursor: pointer;">⭐</span>
+                <span class="rating-star" onclick="setSpectatorRating(5)" style="font-size: 2rem; color: #333; cursor: pointer;">⭐</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #666; margin-bottom: 20px;">
+                <span>😬 Crashed & Burned</span>
+                <span>🔥 Legendary</span>
+            </div>
+
+            <button class="btn-action" style="background: linear-gradient(135deg, #FF0000, #CC0000);">
+                <i class="fas fa-circle"></i> GO LIVE - BRAVE MODE
+            </button>
+        </div>
+
+        </main>
 
     <!-- RIGHT PANEL: GLOBAL OPS -->
     <aside class="side-panel">
@@ -960,7 +1041,9 @@
             "Look for someone checking their phone near the entrance.",
             "Target is likely holding a blue drink.",
             "Find the person laughing the loudest.",
-            "Someone wearing sunglasses inside. Bold move."
+            "Someone wearing sunglasses inside. Bold move.",
+            "Look for the person dancing alone - they're waiting for you.",
+            "Check near the bar - someone just ordered for one."
         ];
 
         function setMode(mode) {
@@ -1434,79 +1517,34 @@
             }
         }
 
-        /* QUEST CARD LOGIC */
-        function acceptMission() {
-            document.getElementById('btnAccept').style.display = 'none';
-            document.getElementById('activeMissionControls').style.display = 'flex';
+        // CHASER MODE FUNCTIONS
+        function getNewChaserHint() {
+            const hints = [
+                "Look for someone checking their phone near the entrance.",
+                "Target is likely holding a blue drink.",
+                "Find the person laughing the loudest.",
+                "Someone wearing sunglasses inside. Bold move.",
+                "Look for the person dancing alone - they're waiting for you.",
+                "Check near the bar - someone just ordered for one."
+            ];
+            const names = ['Emma', 'Sophie', 'Mia', 'Charlotte', 'Amelia', 'Olivia', 'Lily', 'Grace', 'Jake', 'Tom', 'Alex', 'Max'];
             
-            if(currentMissionType === 'proof') {
-                // Show Proof Upload Area
-                document.getElementById('proofArea').style.display = 'flex';
-                document.getElementById('btnComplete').style.display = 'none'; // Hidden until upload
-            } else {
-                // Simple Mission - Show Complete Button Immediately
-                document.getElementById('proofArea').style.display = 'none';
-                document.getElementById('btnComplete').style.display = 'block';
-                document.getElementById('btnComplete').innerHTML = '<i class="fas fa-check"></i> MISSION ACCOMPLISHED';
-            }
+            document.getElementById('chaserHintText').innerText = hints[Math.floor(Math.random() * hints.length)];
+            document.getElementById('chaserTargetName').innerText = names[Math.floor(Math.random() * names.length)];
+            document.getElementById('chaserTargetStatus').innerText = '🟢 GREEN LIGHT - Open to chat';
+            
+            addXP(5);
         }
 
-        function handleProof(input) {
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const reader = new FileReader();
-                const isVideo = file.type.startsWith('video/');
-
-                reader.onload = function(e) {
-                    const previewBox = document.getElementById('proofPreview');
-                    const img = document.getElementById('previewImg');
-                    const vid = document.getElementById('previewVid');
-                    
-                    previewBox.style.display = 'block';
-                    
-                    if(isVideo) {
-                        img.style.display = 'none';
-                        vid.style.display = 'block';
-                        vid.src = e.target.result;
-                    } else {
-                        vid.style.display = 'none';
-                        img.style.display = 'block';
-                        img.src = e.target.result;
-                    }
-
-                    // Unlock Complete Button
-                    document.getElementById('btnComplete').style.display = 'block';
-                    document.getElementById('btnComplete').innerHTML = '<i class="fas fa-trophy"></i> CLAIM REWARD (+200 XP)';
-                }
-
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function completeMission() {
-            const btn = document.getElementById('btnComplete');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING...';
-            
-            // Determine Reward
-            const rewardXP = currentMissionType === 'proof' ? 200 : 50;
-            
-            setTimeout(() => {
-                addXP(rewardXP);
-                
-                if(currentMissionType === 'proof') {
-                    alert(`MISSION COMPLETE! \n\nProof Verified by EGD.\nReward: +${rewardXP} XP`);
-                    // Staff Alert Simulation
-                    const ticker = document.getElementById('liveTicker');
-                    ticker.innerHTML = "/// STAFF ALERT: WINGMAN MISSION VERIFIED AT TABLE 4 - DISPENSE REWARD /// " + ticker.innerHTML;
-                } else {
-                    alert(`MISSION COMPLETE! \n\nReward: +${rewardXP} XP`);
-                }
-                
-                // Reset UI
-                document.getElementById('questFlow').style.display = 'none';
-                document.getElementById('questText').innerHTML = "<span style='color:var(--green)'>MISSION ACCOMPLISHED.</span><br>Standby for new directives...";
-                
-            }, 1500);
+        // SPECTATOR MODE FUNCTIONS
+        let spectatorRating = 0;
+        function setSpectatorRating(rating) {
+            spectatorRating = rating;
+            const stars = document.querySelectorAll('#spectatorSection .rating-star');
+            stars.forEach((star, index) => {
+                star.style.color = index < rating ? 'var(--gold)' : '#333';
+            });
+            addXP(10);
         }
 
         // END OF FILE
