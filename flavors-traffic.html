@@ -675,15 +675,100 @@
 
     <!-- HEADER -->
     <header class="game-header">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HUB</a>
-        <!-- LOGO REMOVED (Now Background) -->
         <div class="header-title" style="display:block; font-size: 1.2rem; letter-spacing: 3px; text-shadow: 0 0 10px var(--primary);">
-            FLAVORS <span style="color: var(--primary);">TRAFFIC</span>
+            FLAVORS
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: #fff;">
+            Menu | Zante Active | Parties
         </div>
         <div class="header-btns">
             <button class="header-btn" onclick="resetGame()"><i class="fas fa-redo"></i> RESET</button>
         </div>
     </header>
+
+    <!-- HERO SECTION - Hosted by Howard -->
+    <section style="text-align: center; padding: 100px 20px 40px; max-width: 800px; margin: 0 auto;">
+        <img src="howard-logo-animated.gif" alt="Traffic Light Game" style="max-width: 300px; width: 100%; height: auto; margin: 0 auto 20px; display: block; border-radius: 15px; box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);">
+        
+        <h1 style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 4px; margin-bottom: 10px; background: linear-gradient(90deg, var(--red), var(--amber), var(--green)); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: trafficFlow 5s linear infinite;">
+            TRAFFIC LIGHT GAME
+        </h1>
+        
+        <p style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 25px; letter-spacing: 2px;">
+            Hosted by Howard
+        </p>
+        
+        <!-- LIVE STATS -->
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem;">
+            <span style="background: rgba(0, 210, 106, 0.15); border: 1px solid var(--green); padding: 8px 15px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;">
+                🟢 <strong>42</strong> Greens
+            </span>
+            <span style="background: rgba(255, 182, 39, 0.15); border: 1px solid var(--amber); padding: 8px 15px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;">
+                🟡 <strong>15</strong> Ambers
+            </span>
+            <span style="background: rgba(255, 59, 59, 0.15); border: 1px solid var(--red); padding: 8px 15px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;">
+                🔴 <strong>31</strong> Reds
+            </span>
+            <span style="background: rgba(255, 255, 255, 0.1); border: 1px solid #fff; padding: 8px 15px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; background: #0f0; border-radius: 50%; display: inline-block; animation: blink 1s infinite;"></span>
+                online now
+            </span>
+        </div>
+        
+        <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 20px; font-style: italic;">
+            Choose your status. Unlock your vibe.
+        </p>
+        
+        <button class="btn-action" onclick="document.getElementById('playerSection').scrollIntoView({behavior: 'smooth'})" style="background: linear-gradient(135deg, var(--primary), #9D00FF); border: none; padding: 15px 40px; border-radius: 30px; color: #fff; font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; cursor: pointer; box-shadow: 0 0 20px var(--primary); margin-bottom: 15px;">
+            JOIN THE GAME
+        </button>
+        
+        <p style="font-size: 0.85rem; color: #888; margin-top: 15px;">
+            Official After-Party of Ladies Night
+        </p>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
+        <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; text-align: center; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; text-shadow: 0 0 15px var(--gold);">
+            HOW HOWARD'S GAME WORKS
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 50px;">
+            <!-- Step 1 -->
+            <div style="background: rgba(20, 20, 30, 0.8); border: 1px solid var(--primary); border-radius: 20px; padding: 30px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">📱</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px;">
+                    1. SCAN CODE
+                </h3>
+                <p style="color: #aaa; font-size: 0.9rem;">
+                    At the bar
+                </p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div style="background: rgba(20, 20, 30, 0.8); border: 1px solid var(--amber); border-radius: 20px; padding: 30px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">🚦</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px;">
+                    2. CHOOSE STATUS
+                </h3>
+                <p style="color: #aaa; font-size: 0.9rem;">
+                    Red, Amber, or Green
+                </p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div style="background: rgba(20, 20, 30, 0.8); border: 1px solid var(--green); border-radius: 20px; padding: 30px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">⚡</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px;">
+                    3. UNLOCK
+                </h3>
+                <p style="color: #aaa; font-size: 0.9rem;">
+                    Deals & Missions
+                </p>
+            </div>
+        </div>
+    </section>
 
     <div class="desktop-wrapper">
         
